@@ -46,7 +46,6 @@ bib_database = bibtexparser.loads(bibtex_str)
 
 
 
-
 # Customize format
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
@@ -79,8 +78,11 @@ with open('bibtex.bib') as bibtex_file:
 
 # Print specific part of the example
 for each_entry in bib_database.entries:
+
     #print (each_entry['author'])
     try:
-        print (each_entry["ENTRYTYPE"])
+        #print (each_entry)
+        print (each_entry["title"])
+        #print (each_entry["ENTRYTYPE"])
     except:
         pass
