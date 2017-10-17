@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Milestone_2/bibtex_parser.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Milestone_2/bibtex-to-rdf-example.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Milestone_2/bibtex.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Milestone_2/second_approach.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Milestone_2/second_approach_enhanced.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Milestone_2/bibtex-to-rdf.py" afterPath="$PROJECT_DIR$/Milestone_2/bibtex-to-rdf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Milestone_2/bibtex_parser.py" afterPath="$PROJECT_DIR$/Milestone_2/bibtex_parser.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +18,9 @@
     <SUITE FILE_PATH="coverage/KAD$second_approach_enhanced.coverage" NAME="second_approach_enhanced Coverage Results" MODIFIED="1508234448023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf_example__1_.coverage" NAME="bibtex-to-rdf-example (1) Coverage Results" MODIFIED="1508202140017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$second_approach.coverage" NAME="second_approach Coverage Results" MODIFIED="1508230420136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
+    <SUITE FILE_PATH="coverage/KAD$bibtex_parser.coverage" NAME="bibtex_parser Coverage Results" MODIFIED="1508235579849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$bib_to_rdf.coverage" NAME="bib-to-rdf Coverage Results" MODIFIED="1508189330790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone2" />
-    <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf__1_.coverage" NAME="bibtex-to-rdf (1) Coverage Results" MODIFIED="1508234460806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
+    <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf__1_.coverage" NAME="bibtex-to-rdf (1) Coverage Results" MODIFIED="1508238006864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf.coverage" NAME="bibtex-to-rdf Coverage Results" MODIFIED="1508190248739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone2" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -42,8 +39,8 @@
       <file leaf-file-name="bibtex_parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Milestone_2/bibtex_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="203" column="25" lean-forward="true" selection-start-line="203" selection-start-column="25" selection-end-line="203" selection-end-column="25" />
+            <state relative-caret-position="318">
+              <caret line="205" column="0" lean-forward="true" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -54,8 +51,18 @@
       <file leaf-file-name="bibtex-to-rdf.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Milestone_2/bibtex-to-rdf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLN940-Assignment_5C-comprehensive-solution.rq" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignment_5/5C/CLN940-Assignment_5C-comprehensive-solution.rq">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="27" column="44" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -113,6 +120,7 @@
       <find>pages</find>
       <find>doi</find>
       <find>volume</find>
+      <find>is_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,6 +141,7 @@
         <option value="$PROJECT_DIR$/Assignment_1/Propositional Logic and Data .ipynb" />
         <option value="$PROJECT_DIR$/Milestone_2/second_approach.py" />
         <option value="$PROJECT_DIR$/Milestone_2/second_approach_enhanced.py" />
+        <option value="$PROJECT_DIR$/Milestone_2/bibtex_parser.py" />
         <option value="$PROJECT_DIR$/Milestone_2/bibtex-to-rdf.py" />
       </list>
     </option>
@@ -349,6 +358,56 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="5D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="5C" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Assignment_2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -418,25 +477,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="bibtex-to-rdf-example" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Milestone2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="KAD" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Milestone2/bibtex-to-rdf-example.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="bibtex-to-rdf-example (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -489,6 +529,25 @@
       <module name="KAD" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\bibtex_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="bibtex_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Milestone_2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="KAD" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Milestone_2/bibtex_parser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -664,18 +723,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.second_approach" />
       <item index="1" class="java.lang.String" itemvalue="Python.bibtex-to-rdf" />
-      <item index="2" class="java.lang.String" itemvalue="Python.bibtex-to-rdf-example" />
-      <item index="3" class="java.lang.String" itemvalue="Python.bibtex-to-rdf-example (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.bibtex-to-rdf (1)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.second_approach_enhanced" />
+      <item index="2" class="java.lang.String" itemvalue="Python.bibtex-to-rdf-example (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.bibtex-to-rdf (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.second_approach_enhanced" />
+      <item index="5" class="java.lang.String" itemvalue="Python.bibtex_parser" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.bibtex-to-rdf (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.second_approach_enhanced" />
-        <item index="2" class="java.lang.String" itemvalue="Python.bibtex-to-rdf-example (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.bibtex-to-rdf" />
-        <item index="4" class="java.lang.String" itemvalue="Python.bibtex-to-rdf-example" />
+        <item index="1" class="java.lang.String" itemvalue="Python.bibtex_parser" />
+        <item index="2" class="java.lang.String" itemvalue="Python.second_approach_enhanced" />
+        <item index="3" class="java.lang.String" itemvalue="Python.bibtex-to-rdf-example (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.bibtex-to-rdf" />
       </list>
     </recent_temporary>
   </component>
@@ -707,7 +766,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508219323245</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Testing VCS in IDE">
+      <created>1508234495615</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1508234495615</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -718,9 +784,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.40874037" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899868" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4720416" sideWeight="0.59125966" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4720416" sideWeight="0.59125966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -753,28 +819,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assignment_2/2563162-cln940-Assignment_2.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="-1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignment_1/2563162-cln940-Assignment_1.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="-1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27-not-on-path/Lib/site-packages/bibtexparser/customization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Milestone_2/bibtex-to-rdf-example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -960,18 +1004,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Milestone_2/bibtex_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="203" column="25" lean-forward="true" selection-start-line="203" selection-start-column="25" selection-end-line="203" selection-end-column="25" />
+        <state relative-caret-position="318">
+          <caret line="205" column="0" lean-forward="true" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment_5/5D/ass5d/bnb-2000.ttl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment_5/5C/CLN940-Assignment_5C-simple-solution.rq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignment_5/5C/CLN940-Assignment_5C-comprehensive-solution.rq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="27" column="44" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Milestone_2/bibtex-to-rdf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
           <folding />
         </state>
       </provider>

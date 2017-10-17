@@ -37,7 +37,7 @@ for bib_id in bibdata.entries:
 
             # prepare an empty container for author entities (merged author first names and last names), so it can be
             # appended later. This is a JSON-like structure.
-            bibDictionary[bib_id.encode("utf-8")] = [{"has_author": []}]
+            bibDictionary[bib_id.encode("utf-8")] = [{"b_author": []}]
 
             # omit these characters from text
             omittedCharacters = "[\{\}\ \.]"
@@ -49,15 +49,15 @@ for bib_id in bibdata.entries:
 
                 # stitch last and first names to each other
                 # and add them to the JSON-like container constructed before
-                bibDictionary[bib_id.encode("utf-8")][0]["has_author"].append((str(lastName + "_" + firstName)))
+                bibDictionary[bib_id.encode("utf-8")][0]["b_author"].append((str(lastName + "_" + firstName)))
 
-                # bibDictionary[bib_id.encode("utf-8")] = [{"authors":[(str(lastName + "_" + firstName))]}]
+                # bibDictionary[bib_id.encode("utf-8")] = [{"b_author":[(str(lastName + "_" + firstName))]}]
 
 
             # if author's first name is missing:
             except:
                 lastName = re.sub(omittedCharacters, "", author.last()[0].encode("utf-8"))
-                bibDictionary[bib_id.encode("utf-8")][0]["has_author"].append((str(lastName)))
+                bibDictionary[bib_id.encode("utf-8")][0]["b_author"].append((str(lastName)))
 
                 # a case where author's last name is missing but first name is present was deliberately not included.
 
@@ -83,7 +83,7 @@ for bib_id in bibdata.entries:
 
         longTitle = re.sub(omittedCharactersForInstanceNames, "", longTitle.encode("utf-8"))
 
-        bibDictionary[bib_id.encode("utf-8")].append({"is_equivalent_to": longTitle})
+        bibDictionary[bib_id.encode("utf-8")].append({"b_instance": longTitle})
 
     # if title field missing from bibliography:
     except(KeyError):
@@ -92,7 +92,7 @@ for bib_id in bibdata.entries:
 
     # TYPE
     try:
-        bibDictionary[bib_id.encode("utf-8")].append({"has_type": bibdata.entries[bib_id].type.encode("utf-8")})
+        bibDictionary[bib_id.encode("utf-8")].append({"b_type": bibdata.entries[bib_id].type.encode("utf-8")})
     # if the type information is missing from bibliography:
     except(KeyError):
         pass
@@ -112,7 +112,7 @@ for bib_id in bibdata.entries:
         omittedCharactersForJournalNames = "[\{\}\ \. ,]"
         journalName = re.sub(omittedCharactersForJournalNames, "", journalName.encode("utf-8"))
 
-        bibDictionary[bib_id.encode("utf-8")].append({"is_published_on": journalName.encode("utf-8")})
+        bibDictionary[bib_id.encode("utf-8")].append({"b_publication": journalName.encode("utf-8")})
 
     # if journal field missing from bibliography
     except(KeyError):
@@ -133,52 +133,52 @@ for bib_id in bibdata.entries:
         omittedCharactersForPublisherNames = "[\{\}\ \. ,]"
         publisherName = re.sub(omittedCharactersForPublisherNames, "", publisherName.encode("utf-8"))
 
-        bibDictionary[bib_id.encode("utf-8")].append({"is_published_by": publisherName.encode("utf-8")})
+        bibDictionary[bib_id.encode("utf-8")].append({"b_publisher": publisherName.encode("utf-8")})
     # if publisher field missing from bibliography
     except(KeyError):
         pass
 
     # TITLE
-    transform_to_ontology_property("title", "has_title")
+    transform_to_ontology_property("title", "b_title")
 
     # YEAR
-    transform_to_ontology_property ("year", "is_published_on_year")
+    transform_to_ontology_property ("year", "b_publication_year")
 
     # MONTH
-    transform_to_ontology_property ("month", "is_published_on_month")
+    transform_to_ontology_property ("month", "b_publication_month")
 
     # NUMBER
-    transform_to_ontology_property ("number", "is_published_on_issue_number")
+    transform_to_ontology_property ("number", "b_issue_number")
 
     # VOLUME
-    transform_to_ontology_property ("volume", "is_published_on_volume")
+    transform_to_ontology_property ("volume", "b_volume")
 
     # PAGES
-    transform_to_ontology_property ("pages", "is_on_pages")
+    transform_to_ontology_property ("pages", "b_pages")
 
     # DOI
-    transform_to_ontology_property ("doi", "has_doi")
+    transform_to_ontology_property ("doi", "b_doi")
 
     # ISSN
-    transform_to_ontology_property ("issn", "has_issn")
+    transform_to_ontology_property ("issn", "b_issn")
 
     # ISBN
-    transform_to_ontology_property ("isbn", "has_isbn")
+    transform_to_ontology_property ("isbn", "b_isbn")
 
     # EDITION
-    transform_to_ontology_property ("edition", "is_edition")
+    transform_to_ontology_property ("edition", "b_edition")
 
     # BOOKTITLE
-    transform_to_ontology_property("booktitle", "has_book_title")
+    transform_to_ontology_property("booktitle", "b_book_title")
 
     # ABSTRACT
-    transform_to_ontology_property("abstract", "has_abstract")
+    transform_to_ontology_property("abstract", "b_abstract")
 
     # KEYWORDS
-    transform_to_ontology_property("keywords", "has_keywords")
+    transform_to_ontology_property("keywords", "b_keywords")
 
     # NOTE
-    transform_to_ontology_property("note", "has_note")
+    transform_to_ontology_property("note", "b_note")
 
 
 
