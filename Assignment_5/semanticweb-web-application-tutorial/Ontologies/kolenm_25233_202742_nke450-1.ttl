@@ -1,0 +1,319 @@
+@prefix : <http://www.example.org/nadine/assignment4#> .
+@prefix kg: <http://www.example.org/nadine/assignment4/> .
+@prefix st: <http://www.example.org/nadine/showtime/> .
+@prefix dbc: <http://dbpedia.org/page/Category:> .
+@prefix dbp: <http://dbpedia.org/page/> .
+@prefix dct: <http://dublincore.org/2012/06/14/dcterms#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/nadine/assignment4> .
+
+<http://www.example.org/nadine/assignment4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/nadine/assignment4/contains_event
+kg:contains_event rdf:type owl:ObjectProperty ;
+                  owl:inverseOf kg:event_at .
+
+
+###  http://www.example.org/nadine/assignment4/event_at
+kg:event_at rdf:type owl:ObjectProperty ;
+            owl:propertyChainAxiom ( kg:performed_by
+                                     kg:performed_at
+                                   ) .
+
+
+###  http://www.example.org/nadine/assignment4/medal_from
+kg:medal_from rdf:type owl:ObjectProperty ,
+                       owl:IrreflexiveProperty ;
+              owl:propertyDisjointWith kg:performs_sport .
+
+
+###  http://www.example.org/nadine/assignment4/performed_at
+kg:performed_at rdf:type owl:ObjectProperty ;
+                owl:propertyChainAxiom ( kg:won
+                                         kg:medal_from
+                                       ) .
+
+
+###  http://www.example.org/nadine/assignment4/performed_by
+kg:performed_by rdf:type owl:ObjectProperty ;
+                owl:inverseOf kg:performs_sport .
+
+
+###  http://www.example.org/nadine/assignment4/performs_sport
+kg:performs_sport rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/nadine/assignment4/won
+kg:won rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/nadine/assignment4/won_bronze_os_medal
+kg:won_bronze_os_medal rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf kg:won .
+
+
+###  http://www.example.org/nadine/assignment4/won_gold_os_medal
+kg:won_gold_os_medal rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf kg:won .
+
+
+###  http://www.example.org/nadine/assignment4/won_silver_os_medal
+kg:won_silver_os_medal rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf kg:won .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/nadine/assignment4/MultipleChampion
+kg:MultipleChampion rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty kg:won_gold_os_medal ;
+                                          owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                          owl:onClass kg:OlympicGoldMedal
+                                        ] ;
+                    rdfs:subClassOf kg:OlympicChampion .
+
+
+###  http://www.example.org/nadine/assignment4/Olympian
+kg:Olympian rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty kg:performed_at ;
+                                  owl:someValuesFrom kg:OlympicGame
+                                ] ;
+            rdfs:subClassOf kg:Person .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicBronzeMedal
+kg:OlympicBronzeMedal rdf:type owl:Class ;
+                      rdfs:subClassOf kg:OlympicPrize .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicChampion
+kg:OlympicChampion rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty kg:won_gold_os_medal ;
+                                         owl:someValuesFrom kg:OlympicGoldMedal
+                                       ] ;
+                   rdfs:subClassOf kg:OlympicMedalist .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicGame
+kg:OlympicGame rdf:type owl:Class .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicGoldMedal
+kg:OlympicGoldMedal rdf:type owl:Class ;
+                    rdfs:subClassOf kg:OlympicPrize .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicMedalist
+kg:OlympicMedalist rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty kg:won ;
+                                         owl:someValuesFrom kg:OlympicPrize
+                                       ] ;
+                   rdfs:subClassOf kg:Olympian .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicPrize
+kg:OlympicPrize rdf:type owl:Class ;
+                owl:disjointWith kg:Person .
+
+
+###  http://www.example.org/nadine/assignment4/OlympicSilverMedal
+kg:OlympicSilverMedal rdf:type owl:Class ;
+                      rdfs:subClassOf kg:OlympicPrize .
+
+
+###  http://www.example.org/nadine/assignment4/Person
+kg:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/nadine/assignment4/Sport
+kg:Sport rdf:type owl:Class .
+
+
+###  http://www.example.org/nadine/assignment4/SummerOlympicGame
+kg:SummerOlympicGame rdf:type owl:Class ;
+                     rdfs:subClassOf kg:OlympicGame ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kg:contains_event ;
+                                       owl:allValuesFrom kg:SummerSport
+                                     ] .
+
+
+###  http://www.example.org/nadine/assignment4/SummerSport
+kg:SummerSport rdf:type owl:Class ;
+               rdfs:subClassOf kg:Sport .
+
+
+###  http://www.example.org/nadine/assignment4/WinterOlympicGame
+kg:WinterOlympicGame rdf:type owl:Class ;
+                     rdfs:subClassOf kg:OlympicGame ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty kg:contains_event ;
+                                       owl:allValuesFrom kg:WinterSport
+                                     ] .
+
+
+###  http://www.example.org/nadine/assignment4/WinterSport
+kg:WinterSport rdf:type owl:Class ;
+               rdfs:subClassOf kg:Sport .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/nadine/assignment4/Annemiek_van_Vleuten
+kg:Annemiek_van_Vleuten rdf:type owl:NamedIndividual ;
+                        kg:performed_at kg:Rio_2016 ;
+                        kg:performs_sport kg:Cycling .
+
+
+###  http://www.example.org/nadine/assignment4/Athletics
+kg:Athletics rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/nadine/assignment4/Cycling
+kg:Cycling rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/nadine/assignment4/Dafne_Schippers
+kg:Dafne_Schippers rdf:type owl:NamedIndividual ;
+                   kg:performed_at kg:Rio_2016 ;
+                   kg:performs_sport kg:Athletics ;
+                   kg:won_silver_os_medal kg:OS_2016_silver_womens_200mtrack .
+
+
+###  http://www.example.org/nadine/assignment4/Edith_Bos
+kg:Edith_Bos rdf:type owl:NamedIndividual ;
+             kg:performs_sport kg:Judo ;
+             kg:won_bronze_os_medal kg:OS_2012_bronze_women_judo .
+
+
+###  http://www.example.org/nadine/assignment4/Ellen_Hoog
+kg:Ellen_Hoog rdf:type owl:NamedIndividual ;
+              kg:performed_at kg:London_2012 ;
+              kg:performs_sport kg:Hockey ;
+              kg:won_gold_os_medal kg:OS_2012_gold_womens_hockey .
+
+
+###  http://www.example.org/nadine/assignment4/Hockey
+kg:Hockey rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/nadine/assignment4/Iceskating
+kg:Iceskating rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/nadine/assignment4/Judo
+kg:Judo rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/nadine/assignment4/London_2012
+kg:London_2012 rdf:type owl:NamedIndividual ,
+                        kg:SummerOlympicGame .
+
+
+###  http://www.example.org/nadine/assignment4/OS_2010_gold_men_5kIceSkating
+kg:OS_2010_gold_men_5kIceSkating rdf:type owl:NamedIndividual ,
+                                          kg:OlympicGoldMedal ;
+                                 kg:medal_from kg:Vancouver_2010 .
+
+
+###  http://www.example.org/nadine/assignment4/OS_2012_bronze_women_judo
+kg:OS_2012_bronze_women_judo rdf:type owl:NamedIndividual ,
+                                      kg:OlympicBronzeMedal ;
+                             kg:medal_from kg:London_2012 .
+
+
+###  http://www.example.org/nadine/assignment4/OS_2012_gold_womens_hockey
+kg:OS_2012_gold_womens_hockey rdf:type owl:NamedIndividual ,
+                                       kg:OlympicGoldMedal ;
+                              kg:medal_from kg:London_2012 .
+
+
+###  http://www.example.org/nadine/assignment4/OS_2014_gold_men_5kIceSkating
+kg:OS_2014_gold_men_5kIceSkating rdf:type owl:NamedIndividual ,
+                                          kg:OlympicGoldMedal ;
+                                 kg:medal_from kg:Sotsji_2014 .
+
+
+###  http://www.example.org/nadine/assignment4/OS_2014_tp
+kg:OS_2014_tp rdf:type owl:NamedIndividual ,
+                       kg:OlympicGoldMedal ;
+              kg:medal_from kg:Sotsji_2014 .
+
+
+###  http://www.example.org/nadine/assignment4/OS_2016_silver_womens_200mtrack
+kg:OS_2016_silver_womens_200mtrack rdf:type owl:NamedIndividual ,
+                                            kg:OlympicSilverMedal ;
+                                   kg:medal_from kg:Rio_2016 .
+
+
+###  http://www.example.org/nadine/assignment4/Rio_2016
+kg:Rio_2016 rdf:type owl:NamedIndividual ,
+                     kg:SummerOlympicGame .
+
+
+###  http://www.example.org/nadine/assignment4/Sotsji_2014
+kg:Sotsji_2014 rdf:type owl:NamedIndividual ,
+                        kg:WinterOlympicGame .
+
+
+###  http://www.example.org/nadine/assignment4/Sven_Kramer
+kg:Sven_Kramer rdf:type owl:NamedIndividual ;
+               kg:performed_at kg:Sotsji_2014 ,
+                               kg:Vancouver_2010 ;
+               kg:performs_sport kg:Iceskating ;
+               kg:won_gold_os_medal kg:OS_2010_gold_men_5kIceSkating ,
+                                    kg:OS_2014_gold_men_5kIceSkating ,
+                                    kg:OS_2014_tp .
+
+
+###  http://www.example.org/nadine/assignment4/Vancouver_2010
+kg:Vancouver_2010 rdf:type owl:NamedIndividual ,
+                           kg:WinterOlympicGame .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( kg:OlympicBronzeMedal
+                kg:OlympicGoldMedal
+                kg:OlympicSilverMedal
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( kg:Athletics
+                        kg:Cycling
+                        kg:Hockey
+                        kg:Iceskating
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( kg:OS_2010_gold_men_5kIceSkating
+                        kg:OS_2012_gold_womens_hockey
+                        kg:OS_2014_gold_men_5kIceSkating
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

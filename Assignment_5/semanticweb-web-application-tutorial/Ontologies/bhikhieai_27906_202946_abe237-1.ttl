@@ -1,0 +1,269 @@
+@prefix : <http://www.semanticweb.org/arun/mod4#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mod4: <http://www.semanticweb.org/arun/mod4/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/arun/mod4> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/arun/mod4#goes_to
+
+:goes_to a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	rdfs:domain mod4:Student ;
+	rdfs:range :Universities .
+# 
+# http://www.semanticweb.org/arun/mod4#has_knowledge_of
+
+:has_knowledge_of a owl:ObjectProperty ;
+	rdfs:subPropertyOf mod4:teaches ;
+	rdfs:domain mod4:Teacher ;
+	rdfs:range mod4:Module .
+# 
+# http://www.semanticweb.org/arun/mod4/is_studied_by
+
+mod4:is_studied_by a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.semanticweb.org/arun/mod4/studies
+
+mod4:studies a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	rdfs:domain mod4:Student ;
+	rdfs:range mod4:Module .
+# 
+# http://www.semanticweb.org/arun/mod4/teaches
+
+mod4:teaches a owl:ObjectProperty , owl:IrreflexiveProperty ;
+	rdfs:domain mod4:Teacher ;
+	rdfs:range mod4:Module .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/arun/mod4/first_name
+
+mod4:first_name a owl:DatatypeProperty ;
+	rdfs:domain mod4:Person ;
+	rdfs:range xsd:string .
+# 
+# http://www.semanticweb.org/arun/mod4/last_name
+
+mod4:last_name a owl:DatatypeProperty ;
+	rdfs:domain mod4:Person ;
+	rdfs:range xsd:string .
+# 
+# http://www.semanticweb.org/arun/mod4/staff_ID
+
+mod4:staff_ID a owl:DatatypeProperty ;
+	rdfs:domain mod4:Teacher ;
+	rdfs:range xsd:integer .
+# 
+# http://www.semanticweb.org/arun/mod4/student_ID
+
+mod4:student_ID a owl:DatatypeProperty ;
+	rdfs:domain mod4:Student ;
+	rdfs:range xsd:integer .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/arun/mod4#Excellent_students
+
+:Excellent_students a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty mod4:studies ;
+	owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+	owl:onClass mod4:Module .
+
+:Excellent_students rdfs:subClassOf mod4:Student .
+# 
+# http://www.semanticweb.org/arun/mod4#Universities
+
+:Universities a owl:Class .
+# 
+# http://www.semanticweb.org/arun/mod4/CS_Module
+
+mod4:CS_Module a owl:Class ;
+	rdfs:subClassOf mod4:Module .
+# 
+# http://www.semanticweb.org/arun/mod4/IMM_Module
+
+mod4:IMM_Module a owl:Class ;
+	rdfs:subClassOf mod4:Module .
+# 
+# http://www.semanticweb.org/arun/mod4/LI_MODULE
+
+mod4:LI_MODULE a owl:Class ;
+	owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty mod4:is_studied_by ;
+	owl:maxQualifiedCardinality "150"^^xsd:nonNegativeInteger ;
+	owl:onClass mod4:Student .
+
+mod4:LI_MODULE rdfs:subClassOf mod4:Module .
+# 
+# http://www.semanticweb.org/arun/mod4/Module
+
+mod4:Module a owl:Class .
+# 
+# http://www.semanticweb.org/arun/mod4/Person
+
+mod4:Person a owl:Class .
+# 
+# http://www.semanticweb.org/arun/mod4/Student
+
+mod4:Student a owl:Class ;
+	owl:equivalentClass _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty mod4:studies ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass mod4:Module .
+
+mod4:Student owl:equivalentClass _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty mod4:studies ;
+	owl:maxQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+	owl:onClass mod4:Module .
+
+mod4:Student rdfs:subClassOf mod4:Person .
+# 
+# http://www.semanticweb.org/arun/mod4/Teacher
+
+mod4:Teacher a owl:Class ;
+	owl:equivalentClass _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty mod4:teaches ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass mod4:Module .
+
+mod4:Teacher owl:equivalentClass _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty mod4:teaches ;
+	owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+	owl:onClass mod4:Module .
+
+mod4:Teacher rdfs:subClassOf mod4:Person .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/arun/mod4#Student_3
+
+:Student_3 a owl:NamedIndividual , :Excellent_students , mod4:Student ;
+	mod4:studies mod4:CS_214 , mod4:IMM_101 , mod4:IMM_129 , mod4:LI_392 ;
+	mod4:first_name "Henk"^^xsd:string ;
+	mod4:last_name "Boersma"^^xsd:string ;
+	mod4:student_ID "2496729"^^xsd:integer .
+# 
+# http://www.semanticweb.org/arun/mod4#UVA
+
+:UVA a owl:NamedIndividual , :Universities .
+# 
+# http://www.semanticweb.org/arun/mod4#VU
+
+:VU a owl:NamedIndividual , :Universities .
+# 
+# http://www.semanticweb.org/arun/mod4/Barack_Obama
+
+mod4:Barack_Obama a owl:NamedIndividual , mod4:Person .
+# 
+# http://www.semanticweb.org/arun/mod4/CS_102
+
+mod4:CS_102 a owl:NamedIndividual , mod4:CS_Module .
+# 
+# http://www.semanticweb.org/arun/mod4/CS_214
+
+mod4:CS_214 a owl:NamedIndividual , mod4:CS_Module .
+# 
+# http://www.semanticweb.org/arun/mod4/IMM101
+
+mod4:IMM101 a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/arun/mod4/IMM_101
+
+mod4:IMM_101 a owl:NamedIndividual , mod4:IMM_Module .
+# 
+# http://www.semanticweb.org/arun/mod4/IMM_129
+
+mod4:IMM_129 a owl:NamedIndividual , mod4:IMM_Module .
+# 
+# http://www.semanticweb.org/arun/mod4/LI_155
+
+mod4:LI_155 a owl:NamedIndividual , mod4:LI_MODULE .
+# 
+# http://www.semanticweb.org/arun/mod4/LI_392
+
+mod4:LI_392 a owl:NamedIndividual , mod4:LI_MODULE .
+# 
+# http://www.semanticweb.org/arun/mod4/Maths_200
+
+mod4:Maths_200 a owl:NamedIndividual , mod4:Module .
+# 
+# http://www.semanticweb.org/arun/mod4/Student_1
+
+mod4:Student_1 a owl:NamedIndividual , mod4:Student ;
+	mod4:studies mod4:CS_214 , mod4:IMM_101 ;
+	mod4:first_name "Arun"^^xsd:string ;
+	mod4:last_name "Bhikhie"^^xsd:string ;
+	mod4:student_ID "2598393"^^xsd:integer .
+# 
+# http://www.semanticweb.org/arun/mod4/Student_2
+
+mod4:Student_2 a owl:NamedIndividual , mod4:Student ;
+	mod4:studies mod4:IMM_129 , mod4:LI_155 ;
+	mod4:first_name "Jack"^^xsd:string ;
+	mod4:last_name "Jansen"^^xsd:string ;
+	mod4:student_ID "2528494"^^xsd:integer .
+# 
+# http://www.semanticweb.org/arun/mod4/Teacher_1
+
+mod4:Teacher_1 a owl:NamedIndividual , mod4:Teacher ;
+	:has_knowledge_of mod4:CS_102 , mod4:IMM_129 ;
+	mod4:teaches mod4:CS_102 , mod4:IMM_129 ;
+	mod4:first_name "Stefan"^^xsd:string ;
+	mod4:last_name "Schlobach"^^xsd:string ;
+	mod4:staff_ID "2534563"^^xsd:integer .
+# 
+# http://www.semanticweb.org/arun/mod4/Teacher_2
+
+mod4:Teacher_2 a owl:NamedIndividual , mod4:Teacher ;
+	:has_knowledge_of mod4:CS_214 , mod4:LI_392 ;
+	mod4:teaches mod4:CS_214 , mod4:LI_392 ;
+	mod4:first_name "Rinke"^^xsd:string ;
+	mod4:last_name "Hoekstra"^^xsd:string ;
+	mod4:staff_ID "2501927"^^xsd:integer .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

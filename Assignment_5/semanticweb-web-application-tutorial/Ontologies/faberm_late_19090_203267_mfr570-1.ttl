@@ -1,0 +1,650 @@
+@prefix : <http://www.example.org/mfr570/assignment4/mfr570.ttl#> .
+@prefix ex: <http://www.example.org/mfr570/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:mfr570.ttl a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mfr570/assignment4/consists_out_of
+
+ex:consists_out_of a owl:ObjectProperty ;
+	owl:inverseOf ex:is_part_of .
+# 
+# http://www.example.org/mfr570/assignment4/has_Genre
+
+ex:has_Genre a owl:ObjectProperty .
+# 
+# http://www.example.org/mfr570/assignment4/is_about
+
+ex:is_about a owl:ObjectProperty ;
+	owl:inverseOf ex:is_in .
+# 
+# http://www.example.org/mfr570/assignment4/is_about_writer_of
+
+ex:is_about_writer_of a owl:ObjectProperty ;
+	owl:propertyChainAxiom _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first ex:is_about ;
+	rdf:rest _:genid1 .
+
+_:genid1 a rdf:List ;
+	rdf:first ex:wrote ;
+	rdf:rest rdf:nil .
+# 
+# http://www.example.org/mfr570/assignment4/is_in
+
+ex:is_in a owl:ObjectProperty .
+# 
+# http://www.example.org/mfr570/assignment4/is_part_of
+
+ex:is_part_of a owl:ObjectProperty .
+# 
+# http://www.example.org/mfr570/assignment4/written_by
+
+ex:written_by a owl:ObjectProperty ;
+	owl:inverseOf ex:wrote .
+# 
+# http://www.example.org/mfr570/assignment4/wrote
+
+ex:wrote a owl:ObjectProperty .
+# 
+# http://www.example.org/mfr570/assignment4/wrote_about
+
+ex:wrote_about a owl:ObjectProperty ;
+	owl:propertyChainAxiom _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first ex:wrote ;
+	rdf:rest _:genid3 .
+
+_:genid3 a rdf:List ;
+	rdf:first ex:is_about ;
+	rdf:rest rdf:nil .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mfr570/assignment4/part
+
+ex:part a owl:DatatypeProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mfr570/assignment4/Book
+
+ex:Book a owl:Class ;
+	owl:equivalentClass _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty ex:written_by ;
+	owl:someValuesFrom ex:Person .
+# 
+# http://www.example.org/mfr570/assignment4/Character
+
+ex:Character a owl:Class ;
+	owl:equivalentClass _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty ex:is_in ;
+	owl:someValuesFrom ex:Fiction .
+# 
+# http://www.example.org/mfr570/assignment4/Fiction
+
+ex:Fiction a owl:Class ;
+	owl:equivalentClass _:genid7 .
+
+_:genid7 owl:intersectionOf _:genid10 .
+
+_:genid10 a rdf:List ;
+	rdf:first ex:Book ;
+	rdf:rest _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty ex:is_about ;
+	owl:someValuesFrom ex:Character .
+
+_:genid8 rdf:rest rdf:nil .
+
+_:genid7 a owl:Class .
+
+ex:Fiction owl:disjointWith ex:Non-Fiction .
+# 
+# http://www.example.org/mfr570/assignment4/Genre
+
+ex:Genre a owl:Class .
+# 
+# http://www.example.org/mfr570/assignment4/Non-Fiction
+
+ex:Non-Fiction a owl:Class ;
+	owl:equivalentClass _:genid11 .
+
+_:genid11 owl:intersectionOf _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first ex:Book ;
+	rdf:rest _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first _:genid13 .
+
+_:genid13 a owl:Class ;
+	owl:unionOf _:genid16 .
+
+_:genid16 a rdf:List ;
+	rdf:first _:genid17 .
+
+_:genid17 owl:intersectionOf _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first _:genid21 .
+
+_:genid21 a owl:Restriction ;
+	owl:onProperty ex:is_about ;
+	owl:someValuesFrom ex:Person .
+
+_:genid20 rdf:rest _:genid18 .
+
+_:genid18 a rdf:List ;
+	rdf:first _:genid19 .
+
+_:genid19 a owl:Restriction ;
+	owl:onProperty ex:has_Genre ;
+	owl:hasValue ex:Biography .
+
+_:genid18 rdf:rest rdf:nil .
+
+_:genid17 a owl:Class .
+
+_:genid16 rdf:rest _:genid14 .
+
+_:genid14 a rdf:List ;
+	rdf:first _:genid15 .
+
+_:genid15 a owl:Restriction ;
+	owl:onProperty ex:has_Genre ;
+	owl:hasValue ex:Cooking .
+
+_:genid14 rdf:rest rdf:nil .
+
+_:genid12 rdf:rest rdf:nil .
+
+_:genid11 a owl:Class .
+
+ex:Non-Fiction rdfs:subClassOf ex:Book .
+# 
+# http://www.example.org/mfr570/assignment4/Person
+
+ex:Person a owl:Class .
+# 
+# http://www.example.org/mfr570/assignment4/ProfessionalWriter
+
+ex:ProfessionalWriter a owl:Class ;
+	owl:equivalentClass _:genid23 .
+
+_:genid23 owl:intersectionOf _:genid26 .
+
+_:genid26 a rdf:List ;
+	rdf:first ex:Writer ;
+	rdf:rest _:genid24 .
+
+_:genid24 a rdf:List ;
+	rdf:first _:genid25 .
+
+_:genid25 a owl:Restriction ;
+	owl:onProperty ex:wrote ;
+	owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+	owl:onClass ex:Book .
+
+_:genid24 rdf:rest rdf:nil .
+
+_:genid23 a owl:Class .
+
+ex:ProfessionalWriter rdfs:subClassOf ex:Writer .
+# 
+# http://www.example.org/mfr570/assignment4/Series
+
+ex:Series a owl:Class .
+# 
+# http://www.example.org/mfr570/assignment4/Trilogy
+
+ex:Trilogy a owl:Class ;
+	owl:equivalentClass _:genid27 .
+
+_:genid27 owl:intersectionOf _:genid30 .
+
+_:genid30 a rdf:List ;
+	rdf:first ex:Series ;
+	rdf:rest _:genid28 .
+
+_:genid28 a rdf:List ;
+	rdf:first _:genid29 .
+
+_:genid29 a owl:Restriction ;
+	owl:onProperty ex:consists_out_of ;
+	owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+	owl:onClass ex:Book .
+
+_:genid28 rdf:rest rdf:nil .
+
+_:genid27 a owl:Class .
+# 
+# http://www.example.org/mfr570/assignment4/Writer
+
+ex:Writer a owl:Class ;
+	owl:equivalentClass _:genid31 .
+
+_:genid31 owl:intersectionOf _:genid34 .
+
+_:genid34 a rdf:List ;
+	rdf:first ex:Person ;
+	rdf:rest _:genid32 .
+
+_:genid32 a rdf:List ;
+	rdf:first _:genid33 .
+
+_:genid33 a owl:Restriction ;
+	owl:onProperty ex:wrote ;
+	owl:someValuesFrom ex:Book .
+
+_:genid32 rdf:rest rdf:nil .
+
+_:genid31 a owl:Class .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mfr570/assignment4/AnneFrank
+
+ex:AnneFrank a owl:NamedIndividual , ex:Person ;
+	rdfs:label "Anne Frank"^^xsd:Name .
+# 
+# http://www.example.org/mfr570/assignment4/Biography
+
+ex:Biography a owl:NamedIndividual , ex:Genre ;
+	rdfs:label "Biography"@en .
+# 
+# http://www.example.org/mfr570/assignment4/CatchingFire
+
+ex:CatchingFire a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:ScienceFiction ;
+	ex:is_about ex:KatnissEverdeen ;
+	ex:written_by ex:SuzanneCollins ;
+	ex:part "2"^^xsd:integer ;
+	rdfs:label "Catching Fire"@en .
+# 
+# http://www.example.org/mfr570/assignment4/Cooking
+
+ex:Cooking a owl:NamedIndividual , ex:Genre ;
+	rdfs:label "Cooking"@en .
+# 
+# http://www.example.org/mfr570/assignment4/Fantasy
+
+ex:Fantasy a owl:NamedIndividual , ex:Genre ;
+	rdfs:label "Fantasy"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotter
+
+ex:HarryPotter a owl:NamedIndividual , ex:Character ;
+	rdfs:label "Harry Potter"@en , "Harry Potter"@nl .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndTheChamberOfSecrets
+
+ex:HarryPotterAndTheChamberOfSecrets a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:written_by ex:JKRowling ;
+	ex:part "2"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Chamber of Secrets"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndTheDeathlyHallows
+
+ex:HarryPotterAndTheDeathlyHallows a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:written_by ex:JKRowling ;
+	ex:part "7"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Deathly Hallows"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndTheGobletOfFire
+
+ex:HarryPotterAndTheGobletOfFire a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:written_by ex:JKRowling ;
+	ex:part "4"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Goblet of Fire"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndTheHalfBloodPrince
+
+ex:HarryPotterAndTheHalfBloodPrince a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:written_by ex:JKRowling ;
+	ex:part "6"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Half Blood Prince"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndTheOrderOfThePhoenix
+
+ex:HarryPotterAndTheOrderOfThePhoenix a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:written_by ex:JKRowling ;
+	ex:part "5"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Order of the Phoenix"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndThePhilosophersStone
+
+ex:HarryPotterAndThePhilosophersStone a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:part "1"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Philosopher's Stone"@en .
+# 
+# http://www.example.org/mfr570/assignment4/HarryPotterAndThePrisonerOfAzkaban
+
+ex:HarryPotterAndThePrisonerOfAzkaban a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Fantasy ;
+	ex:is_about ex:HarryPotter ;
+	ex:written_by ex:JKRowling ;
+	ex:part "3"^^xsd:integer ;
+	rdfs:label "Harry Potter and the Prisoner of Azkaban"@en .
+# 
+# http://www.example.org/mfr570/assignment4/JKRowling
+
+ex:JKRowling a owl:NamedIndividual , ex:Person ;
+	rdfs:label "J. K. Rowling"^^xsd:Name .
+# 
+# http://www.example.org/mfr570/assignment4/JKRowlingABiography
+
+ex:JKRowlingABiography a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Biography ;
+	ex:is_about ex:JKRowling ;
+	rdfs:label "J K. Rowling: A Biography"@en .
+# 
+# http://www.example.org/mfr570/assignment4/KatnissEverdeen
+
+ex:KatnissEverdeen a owl:NamedIndividual , ex:Character ;
+	rdfs:label "Katniss Everdeen"@en .
+# 
+# http://www.example.org/mfr570/assignment4/Mockingjay
+
+ex:Mockingjay a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:ScienceFiction ;
+	ex:is_about ex:KatnissEverdeen ;
+	ex:written_by ex:SuzanneCollins ;
+	ex:part "3"^^xsd:integer ;
+	rdfs:label "Mockingjay"@en .
+# 
+# http://www.example.org/mfr570/assignment4/ScienceFiction
+
+ex:ScienceFiction a owl:NamedIndividual , ex:Genre ;
+	rdfs:label "Science Fiction"@en .
+# 
+# http://www.example.org/mfr570/assignment4/SuzanneCollins
+
+ex:SuzanneCollins a owl:NamedIndividual , ex:Person ;
+	rdfs:label "Suzanne Collins"^^xsd:Name .
+# 
+# http://www.example.org/mfr570/assignment4/TheDiaryOfAYoungGirl
+
+ex:TheDiaryOfAYoungGirl a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:Biography ;
+	ex:is_about ex:AnneFrank ;
+	ex:written_by ex:AnneFrank ;
+	rdfs:label "Het Achterhuis"@nl , "The diary of a young girl"@en .
+# 
+# http://www.example.org/mfr570/assignment4/TheHungerGames
+
+ex:TheHungerGames a owl:NamedIndividual , ex:Book ;
+	ex:has_Genre ex:ScienceFiction ;
+	ex:is_about ex:KatnissEverdeen ;
+	ex:written_by ex:SuzanneCollins ;
+	ex:part "1"^^xsd:integer ;
+	rdfs:label "The Hunger Games"@en .
+# 
+# http://www.example.org/mfr570/assignment4/mfr570.ttl#HarryPotterSeries
+
+:HarryPotterSeries a owl:NamedIndividual , ex:Series , _:genid35 .
+
+_:genid35 a owl:Restriction ;
+	owl:onProperty ex:consists_out_of ;
+	owl:allValuesFrom _:genid36 .
+
+_:genid36 a owl:Class ;
+	owl:oneOf _:genid43 .
+
+_:genid43 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheChamberOfSecrets ;
+	rdf:rest _:genid42 .
+
+_:genid42 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheDeathlyHallows ;
+	rdf:rest _:genid41 .
+
+_:genid41 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheGobletOfFire ;
+	rdf:rest _:genid40 .
+
+_:genid40 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheHalfBloodPrince ;
+	rdf:rest _:genid39 .
+
+_:genid39 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheOrderOfThePhoenix ;
+	rdf:rest _:genid38 .
+
+_:genid38 a rdf:List ;
+	rdf:first ex:HarryPotterAndThePhilosophersStone ;
+	rdf:rest _:genid37 .
+
+_:genid37 a rdf:List ;
+	rdf:first ex:HarryPotterAndThePrisonerOfAzkaban ;
+	rdf:rest rdf:nil .
+
+:HarryPotterSeries ex:consists_out_of ex:HarryPotterAndTheChamberOfSecrets , ex:HarryPotterAndTheDeathlyHallows , ex:HarryPotterAndTheGobletOfFire , ex:HarryPotterAndTheHalfBloodPrince , ex:HarryPotterAndTheOrderOfThePhoenix , ex:HarryPotterAndThePhilosophersStone , ex:HarryPotterAndThePrisonerOfAzkaban .
+# 
+# http://www.example.org/mfr570/assignment4/mfr570.ttl#HungerGamesSeries
+
+:HungerGamesSeries a owl:NamedIndividual , ex:Series , _:genid44 .
+
+_:genid44 a owl:Restriction ;
+	owl:onProperty ex:consists_out_of ;
+	owl:allValuesFrom _:genid45 .
+
+_:genid45 a owl:Class ;
+	owl:oneOf _:genid48 .
+
+_:genid48 a rdf:List ;
+	rdf:first ex:CatchingFire ;
+	rdf:rest _:genid47 .
+
+_:genid47 a rdf:List ;
+	rdf:first ex:Mockingjay ;
+	rdf:rest _:genid46 .
+
+_:genid46 a rdf:List ;
+	rdf:first ex:TheHungerGames ;
+	rdf:rest rdf:nil .
+
+:HungerGamesSeries ex:consists_out_of ex:CatchingFire , ex:Mockingjay , ex:TheHungerGames .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    General axioms
+# #
+# #################################################################
+# 
+# 
+
+_:genid49 a owl:AllDisjointClasses ;
+	owl:members _:genid54 .
+
+_:genid54 a rdf:List ;
+	rdf:first ex:Book ;
+	rdf:rest _:genid53 .
+
+_:genid53 a rdf:List ;
+	rdf:first ex:Character ;
+	rdf:rest _:genid52 .
+
+_:genid52 a rdf:List ;
+	rdf:first ex:Genre ;
+	rdf:rest _:genid51 .
+
+_:genid51 a rdf:List ;
+	rdf:first ex:Person ;
+	rdf:rest _:genid50 .
+
+_:genid50 a rdf:List ;
+	rdf:first ex:Series ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid55 a owl:AllDifferent ;
+	owl:distinctMembers _:genid58 .
+
+_:genid58 a rdf:List ;
+	rdf:first ex:AnneFrank ;
+	rdf:rest _:genid57 .
+
+_:genid57 a rdf:List ;
+	rdf:first ex:JKRowling ;
+	rdf:rest _:genid56 .
+
+_:genid56 a rdf:List ;
+	rdf:first ex:SuzanneCollins ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid59 a owl:AllDifferent ;
+	owl:distinctMembers _:genid63 .
+
+_:genid63 a rdf:List ;
+	rdf:first ex:Biography ;
+	rdf:rest _:genid62 .
+
+_:genid62 a rdf:List ;
+	rdf:first ex:Cooking ;
+	rdf:rest _:genid61 .
+
+_:genid61 a rdf:List ;
+	rdf:first ex:Fantasy ;
+	rdf:rest _:genid60 .
+
+_:genid60 a rdf:List ;
+	rdf:first ex:ScienceFiction ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid64 a owl:AllDifferent ;
+	owl:distinctMembers _:genid76 .
+
+_:genid76 a rdf:List ;
+	rdf:first ex:CatchingFire ;
+	rdf:rest _:genid75 .
+
+_:genid75 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheChamberOfSecrets ;
+	rdf:rest _:genid74 .
+
+_:genid74 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheDeathlyHallows ;
+	rdf:rest _:genid73 .
+
+_:genid73 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheGobletOfFire ;
+	rdf:rest _:genid72 .
+
+_:genid72 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheHalfBloodPrince ;
+	rdf:rest _:genid71 .
+
+_:genid71 a rdf:List ;
+	rdf:first ex:HarryPotterAndTheOrderOfThePhoenix ;
+	rdf:rest _:genid70 .
+
+_:genid70 a rdf:List ;
+	rdf:first ex:HarryPotterAndThePhilosophersStone ;
+	rdf:rest _:genid69 .
+
+_:genid69 a rdf:List ;
+	rdf:first ex:HarryPotterAndThePrisonerOfAzkaban ;
+	rdf:rest _:genid68 .
+
+_:genid68 a rdf:List ;
+	rdf:first ex:JKRowlingABiography ;
+	rdf:rest _:genid67 .
+
+_:genid67 a rdf:List ;
+	rdf:first ex:Mockingjay ;
+	rdf:rest _:genid66 .
+
+_:genid66 a rdf:List ;
+	rdf:first ex:TheDiaryOfAYoungGirl ;
+	rdf:rest _:genid65 .
+
+_:genid65 a rdf:List ;
+	rdf:first ex:TheHungerGames ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid77 a owl:AllDifferent ;
+	owl:distinctMembers _:genid79 .
+
+_:genid79 a rdf:List ;
+	rdf:first ex:HarryPotter ;
+	rdf:rest _:genid78 .
+
+_:genid78 a rdf:List ;
+	rdf:first ex:KatnissEverdeen ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid80 a owl:AllDifferent ;
+	owl:distinctMembers _:genid82 .
+
+_:genid82 a rdf:List ;
+	rdf:first :HarryPotterSeries ;
+	rdf:rest _:genid81 .
+
+_:genid81 a rdf:List ;
+	rdf:first :HungerGamesSeries ;
+	rdf:rest rdf:nil .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,303 @@
+@prefix : <http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#> .
+@prefix got: <http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones> .
+
+<http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#HasCity
+got:HasCity rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#IsSiblingOf
+got:IsSiblingOf rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#hasCapital
+got:hasCapital rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf got:HasCity ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty got:hasCapital ;
+                            owl:allValuesFrom got:Capital
+                          ] .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#hasHouseWords
+got:hasHouseWords rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#isBrotherOf
+got:isBrotherOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf got:IsSiblingOf ;
+                rdf:type owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#isRuledBy
+got:isRuledBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#isSisterOf
+got:isSisterOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf got:IsSiblingOf ;
+               rdf:type owl:IrreflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Capital
+got:Capital rdf:type owl:Class ;
+            rdfs:subClassOf got:City .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Character
+got:Character rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty got:IsSiblingOf ;
+                                owl:allValuesFrom got:Character
+                              ] ;
+              owl:disjointWith got:Kingdom .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#City
+got:City rdf:type owl:Class ;
+         owl:disjointWith got:Kingdom .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Female
+got:Female rdf:type owl:Class ;
+           rdfs:subClassOf got:Character .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Great_House
+got:Great_House rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty got:hasHouseWords ;
+                                      owl:someValuesFrom got:house_words
+                                    ] ;
+                rdfs:subClassOf got:House ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty got:hasHouseWords ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass got:house_words
+                                ] .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House
+got:House rdf:type owl:Class ;
+          owl:disjointWith got:Kingdom .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom
+got:Kingdom rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty got:hasCapital ;
+                                  owl:someValuesFrom got:Capital
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty got:isRuledBy ;
+                                  owl:someValuesFrom got:Great_House
+                                ] ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty got:HasCity ;
+                              owl:someValuesFrom got:City
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty got:isRuledBy ;
+                              owl:allValuesFrom got:Great_House
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty got:hasCapital ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass got:Capital
+                            ] ;
+            owl:disjointWith got:Quotes .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Male
+got:Male rdf:type owl:Class ;
+         rdfs:subClassOf got:Character .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Quotes
+got:Quotes rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#house_words
+got:house_words rdf:type owl:Class ;
+                rdfs:subClassOf got:Quotes .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Bran_Stark
+got:Bran_Stark rdf:type owl:NamedIndividual ,
+                        got:Male .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Casterly_Rock
+got:Casterly_Rock rdf:type owl:NamedIndividual ,
+                           got:Capital .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Harrenhal
+got:Harrenhal rdf:type owl:NamedIndividual ,
+                       got:Capital .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Highgarden
+got:Highgarden rdf:type owl:NamedIndividual ,
+                        got:Capital .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Arryn
+got:House_Arryn rdf:type owl:NamedIndividual ,
+                         got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Durrandon
+got:House_Durrandon rdf:type owl:NamedIndividual ,
+                             got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Frey
+got:House_Frey rdf:type owl:NamedIndividual ,
+                        got:House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Gardener
+got:House_Gardener rdf:type owl:NamedIndividual ,
+                            got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Hoare
+got:House_Hoare rdf:type owl:NamedIndividual ,
+                         got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Lannister
+got:House_Lannister rdf:type owl:NamedIndividual ,
+                             got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Martell
+got:House_Martell rdf:type owl:NamedIndividual ,
+                           got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#House_Stark
+got:House_Stark rdf:type owl:NamedIndividual ,
+                         got:Great_House .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Joffrey_Baratheon
+got:Joffrey_Baratheon rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom_of_the_Isles_and_Rivers
+got:Kingdom_of_the_Isles_and_Rivers rdf:type owl:NamedIndividual ,
+                                             got:Kingdom ;
+                                    got:hasCapital got:Harrenhal ;
+                                    got:isRuledBy got:House_Hoare .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom_of_the_Mountain_and_the_Vale
+got:Kingdom_of_the_Mountain_and_the_Vale rdf:type owl:NamedIndividual ,
+                                                  got:Kingdom ;
+                                         got:hasCapital got:The_Eyrie ;
+                                         got:isRuledBy got:House_Arryn .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom_of_the_North
+got:Kingdom_of_the_North rdf:type owl:NamedIndividual ,
+                                  got:Kingdom ;
+                         got:hasCapital got:Winterfell ;
+                         got:isRuledBy got:House_Stark .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom_of_the_Reach
+got:Kingdom_of_the_Reach rdf:type owl:NamedIndividual ,
+                                  got:Kingdom ;
+                         got:hasCapital got:Highgarden ;
+                         got:isRuledBy got:House_Gardener .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom_of_the_Rock
+got:Kingdom_of_the_Rock rdf:type owl:NamedIndividual ,
+                                 got:Kingdom ;
+                        got:hasCapital got:Casterly_Rock ;
+                        got:isRuledBy got:House_Lannister .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Kingdom_of_the_Stormlands
+got:Kingdom_of_the_Stormlands rdf:type owl:NamedIndividual ,
+                                       got:Kingdom ;
+                              got:hasCapital got:Storms_end ;
+                              got:isRuledBy got:House_Durrandon .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Principality_of_Dorne
+got:Principality_of_Dorne rdf:type owl:NamedIndividual ,
+                                   got:Kingdom ;
+                          got:hasCapital got:Sunspear ;
+                          got:isRuledBy got:House_Martell .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Robb_Stark
+got:Robb_Stark rdf:type owl:NamedIndividual ,
+                        got:Character .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Sansa_Stark
+got:Sansa_Stark rdf:type owl:NamedIndividual ,
+                         got:Female .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Storms_end
+got:Storms_end rdf:type owl:NamedIndividual ,
+                        got:Capital .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Sunspear
+got:Sunspear rdf:type owl:NamedIndividual ,
+                      got:Capital .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#The_Eyrie
+got:The_Eyrie rdf:type owl:NamedIndividual ,
+                       got:Capital .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#The_more_people_you_love_the_weaker_you_are
+got:The_more_people_you_love_the_weaker_you_are rdf:type owl:NamedIndividual ,
+                                                         got:Quotes .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Westeros
+got:Westeros rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Winter_is_coming
+got:Winter_is_coming rdf:type owl:NamedIndividual ,
+                              got:house_words .
+
+
+###  http://www.semanticweb.org/ceesk/ontologies/2017/8/GameOfThrones#Winterfell
+got:Winterfell rdf:type owl:NamedIndividual ,
+                        got:Capital ,
+                        got:City .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

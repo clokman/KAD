@@ -1,0 +1,244 @@
+@prefix : <http://ystouthart.nl/assignment/ontology/family/> .
+@prefix ys: <http://ystouthart.nl/assignment/ontology/family/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://ystouthart.nl/assignment/ontology/family/> .
+
+<http://ystouthart.nl/assignment/ontology/family/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://ystouthart.nl/assignment/ontology/family/hasChild
+ys:hasChild rdf:type owl:ObjectProperty ;
+            owl:inverseOf ys:hasParent .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/hasGrandchild
+ys:hasGrandchild rdf:type owl:ObjectProperty ;
+                 owl:inverseOf ys:hasGrandparent .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/hasGrandparent
+ys:hasGrandparent rdf:type owl:ObjectProperty .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/hasParent
+ys:hasParent rdf:type owl:ObjectProperty .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/hasSibling
+ys:hasSibling rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/isMarriedWith
+ys:isMarriedWith rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://ystouthart.nl/assignment/ontology/family/Gender
+ys:Gender rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ,
+                     [ rdf:type rdfs:Datatype ;
+                       owl:oneOf [ rdf:type rdf:List ;
+                                   rdf:first "Female" ;
+                                   rdf:rest [ rdf:type rdf:List ;
+                                              rdf:first "Male" ;
+                                              rdf:rest rdf:nil
+                                            ]
+                                 ]
+                     ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ystouthart.nl/assignment/ontology/family/Children
+ys:Children rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ys:hasGrandparent ;
+                                  owl:someValuesFrom ys:Person
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ys:hasParent ;
+                                  owl:someValuesFrom ys:Person
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ys:hasSibling ;
+                                  owl:someValuesFrom ys:Person
+                                ] ;
+            rdfs:subClassOf ys:Family .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Daughter
+ys:Daughter rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( ys:Children
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty ys:Gender ;
+                                                         owl:hasValue "Female"
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf ys:Children .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Family
+ys:Family rdf:type owl:Class ;
+          rdfs:subClassOf ys:Person .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Father
+ys:Father rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( ys:Parents
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ys:Gender ;
+                                                       owl:hasValue "Male"
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf ys:Parents .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Grandfather
+ys:Grandfather rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( ys:Grandparents
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty ys:Gender ;
+                                                            owl:hasValue "Male"
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf ys:Grandparents .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Grandmother
+ys:Grandmother rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( ys:Grandparents
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty ys:Gender ;
+                                                            owl:hasValue "Female"
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf ys:Grandparents .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Grandparents
+ys:Grandparents rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty ys:hasChild ;
+                                      owl:someValuesFrom ys:Parents
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ys:hasGrandchild ;
+                                      owl:someValuesFrom ys:Children
+                                    ] ;
+                rdfs:subClassOf ys:Family .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Mother
+ys:Mother rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( ys:Parents
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ys:Gender ;
+                                                       owl:hasValue "Female"
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf ys:Parents .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Parents
+ys:Parents rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ys:hasChild ;
+                                 owl:someValuesFrom ys:Person
+                               ] ;
+           rdfs:subClassOf ys:Family .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Person
+ys:Person rdf:type owl:Class .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Son
+ys:Son rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( ys:Children
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty ys:Gender ;
+                                                    owl:hasValue "Male"
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf ys:Children .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://ystouthart.nl/assignment/ontology/family/Gaston
+ys:Gaston rdf:type owl:NamedIndividual ,
+                   ys:Person ;
+          ys:hasChild ys:Lisa ;
+          ys:hasParent ys:Opa_Yannick ;
+          ys:Gender "Male" .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Lisa
+ys:Lisa rdf:type owl:NamedIndividual ,
+                 ys:Person ;
+        ys:hasParent ys:Susanna ;
+        ys:hasSibling ys:Yannick ;
+        ys:Gender "Female" .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Oma_Yannick
+ys:Oma_Yannick rdf:type owl:NamedIndividual ,
+                        ys:Person ;
+               ys:hasGrandchild ys:Lisa ;
+               ys:isMarriedWith ys:Opa_Yannick ;
+               ys:Gender "Female" .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Opa_Yannick
+ys:Opa_Yannick rdf:type owl:NamedIndividual ,
+                        ys:Person ;
+               ys:hasGrandchild ys:Lisa ,
+                                ys:Yannick ;
+               ys:Gender "Male" .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Susanna
+ys:Susanna rdf:type owl:NamedIndividual ,
+                    ys:Person ;
+           ys:hasChild ys:Yannick ;
+           ys:isMarriedWith ys:Gaston ;
+           ys:Gender "Female" .
+
+
+###  http://ystouthart.nl/assignment/ontology/family/Yannick
+ys:Yannick rdf:type owl:NamedIndividual ,
+                    ys:Person ;
+           ys:hasGrandparent ys:Oma_Yannick ;
+           ys:hasParent ys:Gaston ;
+           ys:Gender "Male" .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

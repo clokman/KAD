@@ -1,0 +1,370 @@
+@prefix : <http://www.semanticweb.org/nina/sports#> .
+@prefix sp: <http://www.semanticweb.org/nina/sports/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/nina/sports> .
+
+<http://www.semanticweb.org/nina/sports> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/nina/sports/ArePlaying
+sp:ArePlaying rdf:type owl:ObjectProperty ;
+              owl:inverseOf sp:IsPlayedBy .
+
+
+###  http://www.semanticweb.org/nina/sports/IsDoing
+sp:IsDoing rdf:type owl:ObjectProperty ;
+           owl:inverseOf sp:IsDoneBy ;
+           rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/nina/sports/IsDoingA
+sp:IsDoingA rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/nina/sports/IsDoneBy
+sp:IsDoneBy rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/nina/sports/IsPlayedBy
+sp:IsPlayedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nina/sports/IsWonBy
+sp:IsWonBy rdf:type owl:ObjectProperty ;
+           owl:inverseOf sp:Won ;
+           rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/nina/sports/Won
+sp:Won rdf:type owl:ObjectProperty ,
+                owl:AsymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/nina/sports/aredoing
+sp:aredoing rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/nina/sports/Cycling
+sp:Cycling rdf:type owl:Class ;
+           rdfs:subClassOf sp:Individualsport .
+
+
+###  http://www.semanticweb.org/nina/sports/Cyclists
+sp:Cyclists rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty sp:ArePlaying ;
+                                  owl:allValuesFrom sp:Cycling
+                                ] ;
+            rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Famoussporter
+sp:Famoussporter rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty sp:IsDoingA ;
+                                       owl:someValuesFrom sp:Sport
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty sp:Won ;
+                                       owl:someValuesFrom sp:Prize
+                                     ] ;
+                 rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Giro
+sp:Giro rdf:type owl:Class ;
+        rdfs:subClassOf sp:Prize .
+
+
+###  http://www.semanticweb.org/nina/sports/Gymnastick
+sp:Gymnastick rdf:type owl:Class ;
+              rdfs:subClassOf sp:Individualsport .
+
+
+###  http://www.semanticweb.org/nina/sports/Gymnasticks
+sp:Gymnasticks rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty sp:ArePlaying ;
+                                     owl:allValuesFrom sp:Gymnastick
+                                   ] ;
+               rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Hockey
+sp:Hockey rdf:type owl:Class ;
+          rdfs:subClassOf sp:Teamsport .
+
+
+###  http://www.semanticweb.org/nina/sports/Hockeyers
+sp:Hockeyers rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty sp:ArePlaying ;
+                                   owl:allValuesFrom sp:Hockey
+                                 ] ;
+             rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Individualsport
+sp:Individualsport rdf:type owl:Class ;
+                   rdfs:subClassOf sp:Sport .
+
+
+###  http://www.semanticweb.org/nina/sports/OlympicMediallePrize
+sp:OlympicMediallePrize rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty sp:IsWonBy ;
+                                              owl:someValuesFrom sp:OlympicMedialleWinners
+                                            ] ;
+                        rdfs:subClassOf sp:Prize .
+
+
+###  http://www.semanticweb.org/nina/sports/OlympicMedialleWinners
+sp:OlympicMedialleWinners rdf:type owl:Class ;
+                          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                owl:onProperty sp:Won ;
+                                                owl:someValuesFrom sp:OlympicMediallePrize
+                                              ] ;
+                          rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Person
+sp:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nina/sports/Prize
+sp:Prize rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty sp:IsWonBy ;
+                               owl:someValuesFrom sp:Famoussporter
+                             ] .
+
+
+###  http://www.semanticweb.org/nina/sports/Soccer
+sp:Soccer rdf:type owl:Class ;
+          rdfs:subClassOf sp:Teamsport .
+
+
+###  http://www.semanticweb.org/nina/sports/Soccerplayers
+sp:Soccerplayers rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty sp:ArePlaying ;
+                                       owl:allValuesFrom sp:Soccer
+                                     ] ;
+                 rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Sport
+sp:Sport rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nina/sports/Teamsport
+sp:Teamsport rdf:type owl:Class ;
+             rdfs:subClassOf sp:Sport .
+
+
+###  http://www.semanticweb.org/nina/sports/Tennis
+sp:Tennis rdf:type owl:Class ;
+          rdfs:subClassOf sp:Individualsport .
+
+
+###  http://www.semanticweb.org/nina/sports/Tennissers
+sp:Tennissers rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty sp:ArePlaying ;
+                                    owl:allValuesFrom sp:Tennis
+                                  ] ;
+              rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/TourDeFrancePrize
+sp:TourDeFrancePrize rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty sp:IsWonBy ;
+                                           owl:someValuesFrom sp:TourDeFranceWinners
+                                         ] ;
+                     rdfs:subClassOf sp:Prize .
+
+
+###  http://www.semanticweb.org/nina/sports/TourDeFranceWinners
+sp:TourDeFranceWinners rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty sp:Won ;
+                                             owl:someValuesFrom sp:TourDeFrancePrize
+                                           ] ;
+                       rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Volleybal
+sp:Volleybal rdf:type owl:Class ;
+             rdfs:subClassOf sp:Teamsport .
+
+
+###  http://www.semanticweb.org/nina/sports/Volleyballers
+sp:Volleyballers rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty sp:ArePlaying ;
+                                       owl:allValuesFrom sp:Volleybal
+                                     ] ;
+                 rdfs:subClassOf sp:Person .
+
+
+###  http://www.semanticweb.org/nina/sports/Wimbledon
+sp:Wimbledon rdf:type owl:Class ;
+             rdfs:subClassOf sp:Prize .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/nina/sports/Chris_Foome
+sp:Chris_Foome rdf:type owl:NamedIndividual ,
+                        sp:Cyclists ;
+               sp:IsDoing sp:Cycling_sport ;
+               sp:Won sp:TourDeFrance2017 .
+
+
+###  http://www.semanticweb.org/nina/sports/Cycling_sport
+sp:Cycling_sport rdf:type owl:NamedIndividual ,
+                          sp:Cycling .
+
+
+###  http://www.semanticweb.org/nina/sports/Ellen_Hoog
+sp:Ellen_Hoog rdf:type owl:NamedIndividual ,
+                       sp:Hockeyers ;
+              sp:IsDoing sp:FieldHockey ;
+              sp:Won sp:FemaleHockey .
+
+
+###  http://www.semanticweb.org/nina/sports/FemaleGymnastickBalk
+sp:FemaleGymnastickBalk rdf:type owl:NamedIndividual ,
+                                 sp:OlympicMediallePrize .
+
+
+###  http://www.semanticweb.org/nina/sports/FemaleHockey
+sp:FemaleHockey rdf:type owl:NamedIndividual ,
+                         sp:OlympicMediallePrize .
+
+
+###  http://www.semanticweb.org/nina/sports/FieldHockey
+sp:FieldHockey rdf:type owl:NamedIndividual ,
+                        sp:Hockey .
+
+
+###  http://www.semanticweb.org/nina/sports/Giro2017
+sp:Giro2017 rdf:type owl:NamedIndividual ,
+                     sp:Giro .
+
+
+###  http://www.semanticweb.org/nina/sports/Gymnastick_sport
+sp:Gymnastick_sport rdf:type owl:NamedIndividual ,
+                             sp:Gymnastick .
+
+
+###  http://www.semanticweb.org/nina/sports/Lionel_Messi
+sp:Lionel_Messi rdf:type owl:NamedIndividual ,
+                         sp:Soccerplayers ;
+                sp:IsDoing sp:Soccer_Sport .
+
+
+###  http://www.semanticweb.org/nina/sports/Lonneke_Sloetjes
+sp:Lonneke_Sloetjes rdf:type owl:NamedIndividual ,
+                             sp:Volleyballers ;
+                    sp:IsDoing sp:Volleybal_Sport .
+
+
+###  http://www.semanticweb.org/nina/sports/Naomi_van_As
+sp:Naomi_van_As rdf:type owl:NamedIndividual ,
+                         sp:Hockeyers ;
+                sp:IsDoing sp:FieldHockey ;
+                sp:Won sp:FemaleHockey .
+
+
+###  http://www.semanticweb.org/nina/sports/Roger_Federer
+sp:Roger_Federer rdf:type owl:NamedIndividual ,
+                          sp:Tennissers ;
+                 sp:IsDoing sp:Tennis_Sport ;
+                 sp:Won sp:Wimbledon_2003 ,
+                        sp:Wimbledon_2004 ,
+                        sp:Wimbledon_2005 ,
+                        sp:Wimbledon_2006 ,
+                        sp:Wimbledon_2007 .
+
+
+###  http://www.semanticweb.org/nina/sports/Sanne_Wevers
+sp:Sanne_Wevers rdf:type owl:NamedIndividual ,
+                         sp:Gymnasticks ;
+                sp:IsDoing sp:Gymnastick_sport ;
+                sp:Won sp:FemaleGymnastickBalk .
+
+
+###  http://www.semanticweb.org/nina/sports/Soccer_Sport
+sp:Soccer_Sport rdf:type owl:NamedIndividual ,
+                         sp:Soccer .
+
+
+###  http://www.semanticweb.org/nina/sports/Tennis_Sport
+sp:Tennis_Sport rdf:type owl:NamedIndividual ,
+                         sp:Tennis .
+
+
+###  http://www.semanticweb.org/nina/sports/Tom_Dumoulin
+sp:Tom_Dumoulin rdf:type owl:NamedIndividual ,
+                         sp:Cyclists ;
+                sp:IsDoing sp:Cycling_sport ;
+                sp:Won sp:Giro2017 .
+
+
+###  http://www.semanticweb.org/nina/sports/TourDeFrance2017
+sp:TourDeFrance2017 rdf:type owl:NamedIndividual ,
+                             sp:TourDeFrancePrize .
+
+
+###  http://www.semanticweb.org/nina/sports/Volleybal_Sport
+sp:Volleybal_Sport rdf:type owl:NamedIndividual ,
+                            sp:Volleybal .
+
+
+###  http://www.semanticweb.org/nina/sports/Wimbledon_2003
+sp:Wimbledon_2003 rdf:type owl:NamedIndividual ,
+                           sp:Wimbledon .
+
+
+###  http://www.semanticweb.org/nina/sports/Wimbledon_2004
+sp:Wimbledon_2004 rdf:type owl:NamedIndividual ,
+                           sp:Wimbledon .
+
+
+###  http://www.semanticweb.org/nina/sports/Wimbledon_2005
+sp:Wimbledon_2005 rdf:type owl:NamedIndividual ,
+                           sp:Wimbledon .
+
+
+###  http://www.semanticweb.org/nina/sports/Wimbledon_2006
+sp:Wimbledon_2006 rdf:type owl:NamedIndividual ,
+                           sp:Wimbledon .
+
+
+###  http://www.semanticweb.org/nina/sports/Wimbledon_2007
+sp:Wimbledon_2007 rdf:type owl:NamedIndividual ,
+                           sp:Wimbledon .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

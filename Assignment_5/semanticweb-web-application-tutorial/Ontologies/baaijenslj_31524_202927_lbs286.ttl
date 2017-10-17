@@ -1,0 +1,344 @@
+@prefix : <http://www.semanticweb.org/linde.baaijens/ontologies/2017/9/lbs286.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/linde.baaijens/ontologies/2017/9/lbs286.ttl> .
+
+<http://www.semanticweb.org/linde.baaijens/ontologies/2017/9/lbs286.ttl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Consists_Of
+<http://www.semanticweb.org/linde.baaijens/assignment4/Consists_Of> rdf:type owl:ObjectProperty ,
+                                                                             owl:AsymmetricProperty ,
+                                                                             owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/HasSong
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/InLanguage
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Is
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/IsA
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom
+<http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> rdf:type owl:ObjectProperty ,
+                                                                        owl:AsymmetricProperty ,
+                                                                        owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Makes
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/SingsIn
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/SingsTheSong
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Stars
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith
+<http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith> rdf:type owl:ObjectProperty ;
+                                                                  owl:inverseOf <http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith> ;
+                                                                  rdf:type owl:SymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/ClassicalMusic
+<http://www.semanticweb.org/linde.baaijens/assignment4/ClassicalMusic> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/CountryMusic
+<http://www.semanticweb.org/linde.baaijens/assignment4/CountryMusic> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Hits_2017
+<http://www.semanticweb.org/linde.baaijens/assignment4/Hits_2017> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Language
+<http://www.semanticweb.org/linde.baaijens/assignment4/Language> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Latino_2017
+<http://www.semanticweb.org/linde.baaijens/assignment4/Latino_2017> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Music
+<http://www.semanticweb.org/linde.baaijens/assignment4/Music> rdf:type owl:Class ;
+                                                              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/InLanguage> ;
+                                                                                    owl:someValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Language>
+                                                                                  ] ,
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/Stars> ;
+                                                                                    owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                                                                    owl:onClass <http://www.semanticweb.org/linde.baaijens/assignment4/SongRating>
+                                                                                  ] ;
+                                                              rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Person
+<http://www.semanticweb.org/linde.baaijens/assignment4/Person> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> ;
+                                                                                     owl:someValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Place>
+                                                                                   ] .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Place
+<http://www.semanticweb.org/linde.baaijens/assignment4/Place> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/PopMusic
+<http://www.semanticweb.org/linde.baaijens/assignment4/PopMusic> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/RockMusic
+<http://www.semanticweb.org/linde.baaijens/assignment4/RockMusic> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Singer
+<http://www.semanticweb.org/linde.baaijens/assignment4/Singer> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> ;
+                                                                                                            owl:someValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Place>
+                                                                                                          ]
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/Makes> ;
+                                                                                                            owl:someValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Music>
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/SingsIn> ;
+                                                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists>
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith> ;
+                                                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass <http://www.semanticweb.org/linde.baaijens/assignment4/Music>
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith> ;
+                                                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass <http://www.semanticweb.org/linde.baaijens/assignment4/Singer>
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith> ;
+                                                                                     owl:hasSelf "true"^^xsd:boolean
+                                                                                   ] ;
+                                                               rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Person> ,
+                                                                               <http://www.semanticweb.org/linde.baaijens/assignment4/Singer> ,
+                                                                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/Makes> ;
+                                                                                                        owl:someValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Music>
+                                                                                                      ]
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/SingsIn> ;
+                                                                                                        owl:someValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Language>
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ] .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/SongRating
+<http://www.semanticweb.org/linde.baaijens/assignment4/SongRating> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/SpanishMusic
+<http://www.semanticweb.org/linde.baaijens/assignment4/SpanishMusic> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists
+<http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> rdf:type owl:Class ;
+                                                                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/HasSong> ;
+                                                                                            owl:allValuesFrom <http://www.semanticweb.org/linde.baaijens/assignment4/Music>
+                                                                                          ] .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Top_3_artists
+<http://www.semanticweb.org/linde.baaijens/assignment4/Top_3_artists> rdf:type owl:Class ;
+                                                                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty <http://www.semanticweb.org/linde.baaijens/assignment4/Consists_Of> ;
+                                                                                            owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                                                            owl:onClass <http://www.semanticweb.org/linde.baaijens/assignment4/Singer>
+                                                                                          ] .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Workout_Rap
+<http://www.semanticweb.org/linde.baaijens/assignment4/Workout_Rap> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/SRI_LANKA!!_List
+<http://www.semanticweb.org/linde.baaijens/assignment4/SRI_LANKA!!_List> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/America
+<http://www.semanticweb.org/linde.baaijens/assignment4/America> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.semanticweb.org/linde.baaijens/assignment4/Place> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Ave_Maria
+<http://www.semanticweb.org/linde.baaijens/assignment4/Ave_Maria> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/ClassicalMusic> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Born_To_Be_Wild
+<http://www.semanticweb.org/linde.baaijens/assignment4/Born_To_Be_Wild> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/linde.baaijens/assignment4/Music> ,
+                                                                                 <http://www.semanticweb.org/linde.baaijens/assignment4/RockMusic> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Canada
+<http://www.semanticweb.org/linde.baaijens/assignment4/Canada> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.semanticweb.org/linde.baaijens/assignment4/Place> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/English
+<http://www.semanticweb.org/linde.baaijens/assignment4/English> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.semanticweb.org/linde.baaijens/assignment4/Language> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Hasta_el_Amanacer
+<http://www.semanticweb.org/linde.baaijens/assignment4/Hasta_el_Amanacer> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.semanticweb.org/linde.baaijens/assignment4/Music> ,
+                                                                                   <http://www.semanticweb.org/linde.baaijens/assignment4/SpanishMusic> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Hits_2017
+<http://www.semanticweb.org/linde.baaijens/assignment4/Hits_2017> rdf:type owl:NamedIndividual ,
+                                                                           owl:Class ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/Hits_2017> ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/John_Legend
+<http://www.semanticweb.org/linde.baaijens/assignment4/John_Legend> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Person> ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Singer> ;
+                                                                    <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> <http://www.semanticweb.org/linde.baaijens/assignment4/America> ;
+                                                                    <http://www.semanticweb.org/linde.baaijens/assignment4/SingsTheSong> <http://www.semanticweb.org/linde.baaijens/assignment4/Save_Room> ;
+                                                                    <http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear> 1978 .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Justin_Bieber
+<http://www.semanticweb.org/linde.baaijens/assignment4/Justin_Bieber> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/linde.baaijens/assignment4/Person> ,
+                                                                               <http://www.semanticweb.org/linde.baaijens/assignment4/Singer> ;
+                                                                      <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> <http://www.semanticweb.org/linde.baaijens/assignment4/Canada> ;
+                                                                      <http://www.semanticweb.org/linde.baaijens/assignment4/SingsTheSong> <http://www.semanticweb.org/linde.baaijens/assignment4/Love_Yourself> ;
+                                                                      <http://www.semanticweb.org/linde.baaijens/assignment4/WorksWith> <http://www.semanticweb.org/linde.baaijens/assignment4/Lil_Wayne> ;
+                                                                      <http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear> 1994 .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Latino_2017
+<http://www.semanticweb.org/linde.baaijens/assignment4/Latino_2017> rdf:type owl:NamedIndividual ,
+                                                                             owl:Class ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Latino_2017> ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Lil_Wayne
+<http://www.semanticweb.org/linde.baaijens/assignment4/Lil_Wayne> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/Person> ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/Singer> ;
+                                                                  <http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear> 1982 .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Linde__Baaijens
+<http://www.semanticweb.org/linde.baaijens/assignment4/Linde__Baaijens> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/linde.baaijens/assignment4/Person> ;
+                                                                        <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> <http://www.semanticweb.org/linde.baaijens/assignment4/The_Netherlands> ;
+                                                                        <http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear> 1997 .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Love_Yourself
+<http://www.semanticweb.org/linde.baaijens/assignment4/Love_Yourself> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/linde.baaijens/assignment4/Music> ,
+                                                                               <http://www.semanticweb.org/linde.baaijens/assignment4/PopMusic> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Malibu
+<http://www.semanticweb.org/linde.baaijens/assignment4/Malibu> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.semanticweb.org/linde.baaijens/assignment4/CountryMusic> ,
+                                                                        <http://www.semanticweb.org/linde.baaijens/assignment4/Music> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Miley_Cyrus
+<http://www.semanticweb.org/linde.baaijens/assignment4/Miley_Cyrus> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Person> ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Singer> ;
+                                                                    <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> <http://www.semanticweb.org/linde.baaijens/assignment4/Canada> ;
+                                                                    <http://www.semanticweb.org/linde.baaijens/assignment4/SingsTheSong> <http://www.semanticweb.org/linde.baaijens/assignment4/Malibu> ;
+                                                                    <http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear> 1992 .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Nicky_Jam
+<http://www.semanticweb.org/linde.baaijens/assignment4/Nicky_Jam> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/Singer> ;
+                                                                  <http://www.semanticweb.org/linde.baaijens/assignment4/IsFrom> <http://www.semanticweb.org/linde.baaijens/assignment4/America> ;
+                                                                  <http://www.semanticweb.org/linde.baaijens/assignment4/SingsTheSong> <http://www.semanticweb.org/linde.baaijens/assignment4/Hasta_el_Amanacer> ;
+                                                                  <http://www.semanticweb.org/linde.baaijens/assignment4/BirthYear> 1981 .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Save_Room
+<http://www.semanticweb.org/linde.baaijens/assignment4/Save_Room> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/Music> ,
+                                                                           <http://www.semanticweb.org/linde.baaijens/assignment4/PopMusic> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Spanish
+<http://www.semanticweb.org/linde.baaijens/assignment4/Spanish> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.semanticweb.org/linde.baaijens/assignment4/Language> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/The_Netherlands
+<http://www.semanticweb.org/linde.baaijens/assignment4/The_Netherlands> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/linde.baaijens/assignment4/Place> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/Workout_Rap
+<http://www.semanticweb.org/linde.baaijens/assignment4/Workout_Rap> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> ,
+                                                                             owl:Class ,
+                                                                             <http://www.semanticweb.org/linde.baaijens/assignment4/Workout_Rap> .
+
+
+###  http://www.semanticweb.org/linde.baaijens/assignment4/SRI_LANKA!!_List
+<http://www.semanticweb.org/linde.baaijens/assignment4/SRI_LANKA!!_List> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/linde.baaijens/assignment4/Spotify_Lists> ,
+                                                                                  owl:Class ,
+                                                                                  <http://www.semanticweb.org/linde.baaijens/assignment4/SRI_LANKA!!_List> .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,296 @@
+@prefix : <http://www.semanticweb.org/jesseblom/recipes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rec: <http://www.semanticweb.org/jesseblom/recipes/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/jesseblom/recipes/> .
+
+<http://www.semanticweb.org/jesseblom/recipes/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/jesseblom/recipes/Contains
+rec:Contains rdf:type owl:ObjectProperty ;
+             owl:inverseOf rec:IsUsedIn ;
+             rdf:type owl:InverseFunctionalProperty .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/GradeOfLevel
+rec:GradeOfLevel rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/HasGradeOf
+rec:HasGradeOf rdf:type owl:ObjectProperty ;
+               owl:inverseOf rec:HasSpicedRecipeFrom .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/HasSpicedRecipeFrom
+rec:HasSpicedRecipeFrom rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/IsUsedIn
+rec:IsUsedIn rdf:type owl:ObjectProperty ,
+                      owl:InverseFunctionalProperty .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Takes
+rec:Takes rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/jesseblom/recipes/Level
+rec:Level rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/NormalRecipes
+rec:NormalRecipes rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( rec:NormalRecipes
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty rec:Contains ;
+                                                               owl:someValuesFrom rec:Sources
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ,
+                                      [ owl:intersectionOf ( rec:NormalRecipes
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty rec:GradeOfLevel ;
+                                                               owl:someValuesFrom rec:Level
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ,
+                                      [ owl:intersectionOf ( rec:NormalRecipes
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty rec:HasGradeOf ;
+                                                               owl:someValuesFrom rec:Spiciness
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ,
+                                      [ owl:intersectionOf ( rec:NormalRecipes
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty rec:Takes ;
+                                                               owl:someValuesFrom rec:Time
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf rec:Recipes .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Recipes
+rec:Recipes rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Sources
+rec:Sources rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Spiciness
+rec:Spiciness rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Time
+rec:Time rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/VeganRecipes
+rec:VeganRecipes rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( rec:VeganRecipes
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty rec:Contains ;
+                                                              owl:someValuesFrom rec:Sources
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ owl:intersectionOf ( rec:VeganRecipes
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty rec:GradeOfLevel ;
+                                                              owl:someValuesFrom rec:Level
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ owl:intersectionOf ( rec:VeganRecipes
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty rec:HasGradeOf ;
+                                                              owl:someValuesFrom rec:Spiciness
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ owl:intersectionOf ( rec:VeganRecipes
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty rec:Takes ;
+                                                              owl:someValuesFrom rec:Time
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf rec:Recipes .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/VegetarianRecipes
+rec:VegetarianRecipes rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( rec:VegetarianRecipes
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty rec:Contains ;
+                                                                   owl:someValuesFrom rec:Sources
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ owl:intersectionOf ( rec:VegetarianRecipes
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty rec:GradeOfLevel ;
+                                                                   owl:someValuesFrom rec:Level
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ owl:intersectionOf ( rec:VegetarianRecipes
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty rec:HasGradeOf ;
+                                                                   owl:someValuesFrom rec:Spiciness
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ owl:intersectionOf ( rec:VegetarianRecipes
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty rec:Takes ;
+                                                                   owl:someValuesFrom rec:Time
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf rec:Recipes .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jesseblom/recipes/Average
+rec:Average rdf:type owl:NamedIndividual ,
+                     rec:Time .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Carbs
+rec:Carbs rdf:type owl:NamedIndividual ,
+                   rec:Sources .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/ChickenWraps
+rec:ChickenWraps rdf:type owl:NamedIndividual ,
+                          rec:NormalRecipes ;
+                 rec:Contains rec:Carbs ,
+                              rec:Fats ,
+                              rec:Protein ;
+                 rec:GradeOfLevel rec:Easy ;
+                 rec:HasGradeOf rec:Mild ;
+                 rec:Takes rec:Short .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Easy
+rec:Easy rdf:type owl:NamedIndividual ,
+                  rec:Level .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Fats
+rec:Fats rdf:type owl:NamedIndividual ,
+                  rec:Sources .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Hard
+rec:Hard rdf:type owl:NamedIndividual ,
+                  rec:Level .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Hot
+rec:Hot rdf:type owl:NamedIndividual ,
+                 rec:Spiciness .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Long
+rec:Long rdf:type owl:NamedIndividual ,
+                  rec:Time .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/MangoCurryChickpeas
+rec:MangoCurryChickpeas rdf:type owl:NamedIndividual ,
+                                 rec:VeganRecipes ;
+                        rec:Contains rec:Carbs ,
+                                     rec:Fats ,
+                                     rec:Protein ;
+                        rec:GradeOfLevel rec:Average ;
+                        rec:HasGradeOf rec:Easy ;
+                        rec:Takes rec:Long .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Medium
+rec:Medium rdf:type owl:NamedIndividual ,
+                    rec:Level .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Mild
+rec:Mild rdf:type owl:NamedIndividual ,
+                  rec:Spiciness .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/MushroomLasagna
+rec:MushroomLasagna rdf:type owl:NamedIndividual ,
+                             rec:VegetarianRecipes ;
+                    rec:Contains rec:Carbs ,
+                                 rec:Fats ,
+                                 rec:Protein ;
+                    rec:GradeOfLevel rec:Hard ;
+                    rec:HasGradeOf rec:Mild ;
+                    rec:Takes rec:Normal .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Normal
+rec:Normal rdf:type owl:NamedIndividual ,
+                    rec:Spiciness .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/OmeletteMushroomsCheese
+rec:OmeletteMushroomsCheese rdf:type owl:NamedIndividual ,
+                                     rec:VegetarianRecipes .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Protein
+rec:Protein rdf:type owl:NamedIndividual ,
+                     rec:Sources .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Short
+rec:Short rdf:type owl:NamedIndividual ,
+                   rec:Time .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/Spareribs
+rec:Spareribs rdf:type owl:NamedIndividual ,
+                       rec:NormalRecipes ;
+              rec:Contains rec:Fats ,
+                           rec:Protein ;
+              rec:GradeOfLevel rec:Easy ;
+              rec:HasGradeOf rec:Hot ;
+              rec:Takes rec:Normal .
+
+
+###  http://www.semanticweb.org/jesseblom/recipes/TempehChili
+rec:TempehChili rdf:type owl:NamedIndividual ,
+                         rec:VeganRecipes .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

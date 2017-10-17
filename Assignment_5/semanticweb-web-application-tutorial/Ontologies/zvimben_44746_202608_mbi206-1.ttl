@@ -1,0 +1,280 @@
+@prefix : <http://www.example.org/mbi206/ontologies/2017/9/animals#> .
+@prefix ani: <http://www.example.org/mbi206/ontologies/2017/9/animals/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/mbi206/ontologies/2017/9/animals> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#bites
+
+:bites a owl:ObjectProperty ;
+	rdfs:domain _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty :bites ;
+	owl:someValuesFrom :Tiger .
+
+:bites rdfs:range _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty :bites ;
+	owl:someValuesFrom :Animal .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#eats
+
+:eats a owl:ObjectProperty .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#hasMother
+
+:hasMother a owl:ObjectProperty .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#hasPet
+
+:hasPet a owl:ObjectProperty , owl:InverseFunctionalProperty , owl:AsymmetricProperty ;
+	rdfs:domain _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty :hasPet ;
+	owl:someValuesFrom :People .
+
+:hasPet rdfs:range _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty :hasPet ;
+	owl:someValuesFrom :Animal .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#isOriginalyFrom
+
+:isOriginalyFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	a owl:InverseFunctionalProperty , owl:AsymmetricProperty ;
+	rdfs:domain _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :isOriginalyFrom ;
+	owl:someValuesFrom :Animal .
+
+:isOriginalyFrom rdfs:range _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty :isOriginalyFrom ;
+	owl:someValuesFrom :Country .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#isOwnedBy
+
+:isOwnedBy a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	a owl:InverseFunctionalProperty , owl:AsymmetricProperty ;
+	rdfs:domain _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty :isOwnedBy ;
+	owl:someValuesFrom :Animal .
+
+:isOwnedBy rdfs:range _:genid8 .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty :isOwnedBy ;
+	owl:someValuesFrom :People .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#livesIn
+
+:livesIn a owl:ObjectProperty , owl:InverseFunctionalProperty , owl:AsymmetricProperty ;
+	rdfs:domain _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty :livesIn ;
+	owl:someValuesFrom :People .
+
+:livesIn rdfs:range _:genid10 .
+
+_:genid10 a owl:Restriction ;
+	owl:onProperty :isOriginalyFrom ;
+	owl:someValuesFrom :Country .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#neverEat
+
+:neverEat a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Animal
+
+:Animal a owl:Class ;
+	owl:equivalentClass _:genid11 .
+
+_:genid11 a owl:Restriction ;
+	owl:onProperty :isOwnedBy ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :People .
+
+:Animal owl:equivalentClass _:genid12 .
+
+_:genid12 a owl:Restriction ;
+	owl:onProperty :isOriginalyFrom ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Country .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Country
+
+:Country a owl:Class .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Female
+
+:Female a owl:Class ;
+	rdfs:subClassOf :People .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Kangaroo
+
+:Kangaroo a owl:Class ;
+	rdfs:subClassOf :Mammal .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Male
+
+:Male a owl:Class ;
+	rdfs:subClassOf :People .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Mammal
+
+:Mammal a owl:Class ;
+	rdfs:subClassOf :Animal .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#People
+
+:People a owl:Class ;
+	owl:equivalentClass _:genid13 .
+
+_:genid13 a owl:Restriction ;
+	owl:onProperty :hasMother ;
+	owl:someValuesFrom :Female .
+
+:People owl:equivalentClass _:genid14 .
+
+_:genid14 a owl:Restriction ;
+	owl:onProperty :hasPet ;
+	owl:someValuesFrom :Kangaroo .
+
+:People owl:equivalentClass _:genid15 .
+
+_:genid15 a owl:Restriction ;
+	owl:onProperty :hasPet ;
+	owl:someValuesFrom :Tiger .
+
+:People owl:equivalentClass _:genid16 .
+
+_:genid16 a owl:Restriction ;
+	owl:onProperty :neverEat ;
+	owl:allValuesFrom :People .
+
+:People owl:equivalentClass _:genid17 .
+
+_:genid17 a owl:Restriction ;
+	owl:onProperty :livesIn ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Country .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Striped
+
+:Striped a owl:Class ;
+	rdfs:subClassOf :Mammal .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Tiger
+
+:Tiger a owl:Class ;
+	owl:equivalentClass _:genid18 .
+
+_:genid18 a owl:Restriction ;
+	owl:onProperty :eats ;
+	owl:someValuesFrom :Animal .
+
+:Tiger rdfs:subClassOf :Striped .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Australia
+
+:Australia a owl:NamedIndividual , :Country .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Female1
+
+:Female1 a owl:NamedIndividual , :Female .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Female2
+
+:Female2 a owl:NamedIndividual , :Female .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#India
+
+:India a owl:NamedIndividual , :Country .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Kangaroo1
+
+:Kangaroo1 a owl:NamedIndividual , :Animal , :Kangaroo .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Kangaroo2
+
+:Kangaroo2 a owl:NamedIndividual , :Animal , :Kangaroo .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Male1
+
+:Male1 a owl:NamedIndividual , :Male .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Male2
+
+:Male2 a owl:NamedIndividual , :Male .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#Tiger1
+
+:Tiger1 a owl:NamedIndividual , :Animal , :Tiger .
+# 
+# http://www.example.org/mbi206/ontologies/2017/9/animals#United_States
+
+:United_States a owl:NamedIndividual , :Country .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    General axioms
+# #
+# #################################################################
+# 
+# 
+
+_:genid19 a owl:AllDifferent ;
+	owl:distinctMembers _:genid21 .
+
+_:genid21 a rdf:List ;
+	rdf:first :Kangaroo2 ;
+	rdf:rest _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first :Tiger1 ;
+	rdf:rest rdf:nil .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

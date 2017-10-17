@@ -1,0 +1,175 @@
+@prefix : <http://www.semanticweb.org/lucasberkvens/week4#> .
+@prefix w4: <http://www.semanticweb.org/lucasberkvens/week4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lucasberkvens/week4> .
+
+<http://www.semanticweb.org/lucasberkvens/week4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lucasberkvens/week4/contains
+w4:contains rdf:type owl:ObjectProperty ;
+            owl:inverseOf w4:playsIn .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/has
+w4:has rdf:type owl:ObjectProperty ;
+       owl:inverseOf w4:worksAt .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/hosts
+w4:hosts rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/playsIn
+w4:playsIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/practises
+w4:practises rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/worksAt
+w4:worksAt rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Band
+w4:Band rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty w4:contains ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass w4:Singer
+                            ] .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Company
+w4:Company rdf:type owl:Class ;
+           owl:disjointWith w4:Person .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Employee
+w4:Employee rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( w4:Person
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty w4:worksAt ;
+                                                         owl:someValuesFrom w4:Company
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf w4:Person .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Person
+w4:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Presenter
+w4:Presenter rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty w4:hosts ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass w4:TV_Show
+                                 ] ;
+             rdfs:subClassOf w4:Person .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Singer
+w4:Singer rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( w4:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty w4:playsIn ;
+                                                       owl:someValuesFrom w4:Band
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf w4:Person .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Sport
+w4:Sport rdf:type owl:Class ;
+         owl:disjointWith w4:TV_Show .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Sportsman
+w4:Sportsman rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( w4:Person
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty w4:practises ;
+                                                          owl:someValuesFrom w4:Sport
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+             rdfs:subClassOf w4:Person .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/TV_Show
+w4:TV_Show rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty w4:has ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass w4:Presenter
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Bill_Gates
+w4:Bill_Gates rdf:type owl:NamedIndividual ,
+                       w4:Person ;
+              w4:worksAt w4:Microsoft .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Chester_Bennington
+w4:Chester_Bennington rdf:type owl:NamedIndividual ,
+                               w4:Person ;
+                      w4:playsIn w4:Linkin_Park .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Golf
+w4:Golf rdf:type owl:NamedIndividual ,
+                 w4:Sport .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Ik_hou_van_Holland
+w4:Ik_hou_van_Holland rdf:type owl:NamedIndividual ,
+                               w4:TV_Show .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/John_de_Mol
+w4:John_de_Mol rdf:type owl:NamedIndividual ,
+                        w4:Person ;
+               w4:hosts w4:Ik_hou_van_Holland .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Linkin_Park
+w4:Linkin_Park rdf:type owl:NamedIndividual ,
+                        w4:Band .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Microsoft
+w4:Microsoft rdf:type owl:NamedIndividual ,
+                      w4:Company .
+
+
+###  http://www.semanticweb.org/lucasberkvens/week4/Tiger_Woods
+w4:Tiger_Woods rdf:type owl:NamedIndividual ,
+                        w4:Person ;
+               w4:practises w4:Golf .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

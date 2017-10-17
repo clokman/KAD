@@ -1,0 +1,277 @@
+@prefix : <http://www.example.com/Merel/Beer#> .
+@prefix br: <http://www.example.com/Merel/Beer/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.com/Merel/Beer> .
+
+<http://www.example.com/Merel/Beer> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.com/Merel/Beer/IsBrewedIn
+br:IsBrewedIn rdf:type owl:ObjectProperty ;
+              owl:inverseOf br:hasABreweryOf .
+
+
+###  http://www.example.com/Merel/Beer/Rates
+br:Rates rdf:type owl:ObjectProperty ;
+         owl:inverseOf br:isRated .
+
+
+###  http://www.example.com/Merel/Beer/contains
+br:contains rdf:type owl:ObjectProperty ;
+            owl:inverseOf br:isContainedIn .
+
+
+###  http://www.example.com/Merel/Beer/describesStrengthOf
+br:describesStrengthOf rdf:type owl:ObjectProperty ;
+                       owl:inverseOf br:hasPercentage .
+
+
+###  http://www.example.com/Merel/Beer/hasABreweryOf
+br:hasABreweryOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/Merel/Beer/hasBrand
+br:hasBrand rdf:type owl:ObjectProperty ;
+            owl:inverseOf br:produces .
+
+
+###  http://www.example.com/Merel/Beer/hasPercentage
+br:hasPercentage rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/Merel/Beer/isContainedIn
+br:isContainedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/Merel/Beer/isRated
+br:isRated rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/Merel/Beer/produces
+br:produces rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/Merel/Beer/tastes
+br:tastes rdf:type owl:ObjectProperty ,
+                   owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.com/Merel/Beer/Beer
+br:Beer rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty br:hasBrand ;
+                              owl:someValuesFrom br:Brand
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty br:isContainedIn ;
+                              owl:someValuesFrom br:Container
+                            ] .
+
+
+###  http://www.example.com/Merel/Beer/Brand
+br:Brand rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty br:IsBrewedIn ;
+                               owl:someValuesFrom br:Country
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty br:isRated ;
+                               owl:someValuesFrom br:Rating
+                             ] .
+
+
+###  http://www.example.com/Merel/Beer/Container
+br:Container rdf:type owl:Class .
+
+
+###  http://www.example.com/Merel/Beer/Country
+br:Country rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty br:hasABreweryOf ;
+                                 owl:someValuesFrom br:Brand
+                               ] .
+
+
+###  http://www.example.com/Merel/Beer/I.P.A.
+<http://www.example.com/Merel/Beer/I.P.A.> rdf:type owl:Class ;
+                                           owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty br:hasPercentage ;
+                                                                                        owl:hasValue br:High
+                                                                                      ]
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty br:tastes ;
+                                                                                        owl:hasValue br:Hoppy
+                                                                                      ]
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ] ;
+                                           rdfs:subClassOf br:Beer .
+
+
+###  http://www.example.com/Merel/Beer/Percentage
+br:Percentage rdf:type owl:Class .
+
+
+###  http://www.example.com/Merel/Beer/Pilsner
+br:Pilsner rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty br:hasPercentage ;
+                                 owl:hasValue br:Medium
+                               ] ;
+           rdfs:subClassOf br:Beer .
+
+
+###  http://www.example.com/Merel/Beer/Radler
+br:Radler rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty br:hasPercentage ;
+                                                       owl:hasValue br:Low
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty br:tastes ;
+                                                       owl:hasValue br:Fruity
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf br:Beer .
+
+
+###  http://www.example.com/Merel/Beer/Rating
+br:Rating rdf:type owl:Class .
+
+
+###  http://www.example.com/Merel/Beer/Taste
+br:Taste rdf:type owl:Class .
+
+
+###  http://www.example.com/Merel/Beer/Triple
+br:Triple rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty br:hasPercentage ;
+                                                       owl:hasValue br:High
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty br:isRated ;
+                                                       owl:hasValue br:Great
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf br:Beer .
+
+
+###  http://www.example.com/Merel/Beer/Weizen
+br:Weizen rdf:type owl:Class ;
+          rdfs:subClassOf br:Beer .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.com/Merel/Beer/Amstel
+br:Amstel rdf:type owl:NamedIndividual ,
+                   br:Brand .
+
+
+###  http://www.example.com/Merel/Beer/Amstel_Radler
+br:Amstel_Radler rdf:type owl:NamedIndividual ,
+                          br:Radler ;
+                 br:hasBrand br:Amstel .
+
+
+###  http://www.example.com/Merel/Beer/Amstel_pilsner
+br:Amstel_pilsner rdf:type owl:NamedIndividual ,
+                           br:Pilsner ;
+                  br:hasBrand br:Amstel .
+
+
+###  http://www.example.com/Merel/Beer/Bad
+br:Bad rdf:type owl:NamedIndividual ,
+                br:Rating .
+
+
+###  http://www.example.com/Merel/Beer/Bottle
+br:Bottle rdf:type owl:NamedIndividual ,
+                   br:Container .
+
+
+###  http://www.example.com/Merel/Beer/Brand_IPA
+br:Brand_IPA rdf:type owl:NamedIndividual ,
+                      <http://www.example.com/Merel/Beer/I.P.A.> .
+
+
+###  http://www.example.com/Merel/Beer/Can
+br:Can rdf:type owl:NamedIndividual ,
+                br:Container .
+
+
+###  http://www.example.com/Merel/Beer/Erdinger
+br:Erdinger rdf:type owl:NamedIndividual ,
+                     br:Brand .
+
+
+###  http://www.example.com/Merel/Beer/Fruity
+br:Fruity rdf:type owl:NamedIndividual ,
+                   br:Taste .
+
+
+###  http://www.example.com/Merel/Beer/Germany
+br:Germany rdf:type owl:NamedIndividual ,
+                    br:Country .
+
+
+###  http://www.example.com/Merel/Beer/Great
+br:Great rdf:type owl:NamedIndividual ,
+                  br:Rating .
+
+
+###  http://www.example.com/Merel/Beer/Heineken
+br:Heineken rdf:type owl:NamedIndividual ;
+            br:isRated br:Bad .
+
+
+###  http://www.example.com/Merel/Beer/High
+br:High rdf:type owl:NamedIndividual ,
+                 br:Percentage .
+
+
+###  http://www.example.com/Merel/Beer/Hoppy
+br:Hoppy rdf:type owl:NamedIndividual ,
+                  br:Taste .
+
+
+###  http://www.example.com/Merel/Beer/Low
+br:Low rdf:type owl:NamedIndividual ,
+                br:Percentage .
+
+
+###  http://www.example.com/Merel/Beer/Medium
+br:Medium rdf:type owl:NamedIndividual ,
+                   br:Percentage .
+
+
+###  http://www.example.com/Merel/Beer/Nederland
+br:Nederland rdf:type owl:NamedIndividual ;
+             br:hasABreweryOf br:Heineken .
+
+
+###  http://www.example.com/Merel/Beer/WestMalle_Triple
+br:WestMalle_Triple rdf:type owl:NamedIndividual ,
+                             br:Triple .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

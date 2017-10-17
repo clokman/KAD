@@ -1,0 +1,363 @@
+@prefix : <http://www.example.com/jorian/family#> .
+@prefix fam: <http://www.example.com/jorian/family/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.com/jorian/family> .
+
+<http://www.example.com/jorian/family> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.com/jorian/family/hasBrother
+fam:hasBrother rdf:type owl:ObjectProperty ;
+               owl:inverseOf fam:isBrotherOf .
+
+
+###  http://www.example.com/jorian/family/hasChild
+fam:hasChild rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty fam:isParentOf .
+
+
+###  http://www.example.com/jorian/family/hasFather
+fam:hasFather rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fam:hasParent ;
+              owl:inverseOf fam:isFatherOf .
+
+
+###  http://www.example.com/jorian/family/hasMother
+fam:hasMother rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fam:hasParent ;
+              owl:inverseOf fam:isMotherOf .
+
+
+###  http://www.example.com/jorian/family/hasParent
+fam:hasParent rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf fam:isParentOf .
+
+
+###  http://www.example.com/jorian/family/hasSex
+fam:hasSex rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.com/jorian/family/hasSibling
+fam:hasSibling rdf:type owl:ObjectProperty ;
+               owl:inverseOf fam:hasSibling .
+
+
+###  http://www.example.com/jorian/family/hasSister
+fam:hasSister rdf:type owl:ObjectProperty ;
+              owl:inverseOf fam:isSisterOf .
+
+
+###  http://www.example.com/jorian/family/isBrotherOf
+fam:isBrotherOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/jorian/family/isFatherOf
+fam:isFatherOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/jorian/family/isMotherOf
+fam:isMotherOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/jorian/family/isParentOf
+fam:isParentOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/jorian/family/isSisterOf
+fam:isSisterOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.com/jorian/family/Brother
+fam:Brother rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( fam:Man
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fam:isBrotherOf ;
+                                                         owl:someValuesFrom fam:Person
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fam:hasFather ;
+                                                         owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fam:hasMother ;
+                                                         owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.example.com/jorian/family/Daughter
+fam:Daughter rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( fam:Woman
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty fam:hasParent ;
+                                                          owl:someValuesFrom fam:Person
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty fam:hasFather ;
+                                                          owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty fam:hasMother ;
+                                                          owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+             rdfs:subClassOf [ owl:intersectionOf ( fam:Woman
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty fam:hasSex ;
+                                                      owl:someValuesFrom fam:Female
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.example.com/jorian/family/Father
+fam:Father rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Man
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:isFatherOf ;
+                                                        owl:someValuesFrom fam:Person
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.example.com/jorian/family/Female
+fam:Female rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:hasSex ;
+                                 owl:allValuesFrom fam:Female
+                               ] ;
+           rdfs:subClassOf fam:Sex .
+
+
+###  http://www.example.com/jorian/family/Grandfather
+fam:Grandfather rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( fam:Man
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty fam:isFatherOf ;
+                                                             owl:someValuesFrom [ owl:intersectionOf ( fam:Person
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty fam:isParentOf ;
+                                                                                                         owl:someValuesFrom fam:Person
+                                                                                                       ]
+                                                                                                     ) ;
+                                                                                  rdf:type owl:Class
+                                                                                ]
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] .
+
+
+###  http://www.example.com/jorian/family/Grandmother
+fam:Grandmother rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( fam:Woman
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty fam:isMotherOf ;
+                                                             owl:someValuesFrom [ owl:intersectionOf ( fam:Person
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty fam:isParentOf ;
+                                                                                                         owl:someValuesFrom fam:Person
+                                                                                                       ]
+                                                                                                     ) ;
+                                                                                  rdf:type owl:Class
+                                                                                ]
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf fam:Woman .
+
+
+###  http://www.example.com/jorian/family/Male
+fam:Male rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty fam:hasSex ;
+                               owl:allValuesFrom fam:Male
+                             ] ;
+         rdfs:subClassOf fam:Sex .
+
+
+###  http://www.example.com/jorian/family/Man
+fam:Man rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( fam:Person
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fam:hasSex ;
+                                                     owl:someValuesFrom fam:Male
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf fam:Person .
+
+
+###  http://www.example.com/jorian/family/Mother
+fam:Mother rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Woman
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:isMotherOf ;
+                                                        owl:someValuesFrom fam:Person
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.example.com/jorian/family/Person
+fam:Person rdf:type owl:Class .
+
+
+###  http://www.example.com/jorian/family/Sex
+fam:Sex rdf:type owl:Class .
+
+
+###  http://www.example.com/jorian/family/Sister
+fam:Sister rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Woman
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:isSisterOf ;
+                                                        owl:someValuesFrom fam:Person
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:hasFather ;
+                                                        owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:hasMother ;
+                                                        owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.example.com/jorian/family/Son
+fam:Son rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( fam:Man
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fam:hasParent ;
+                                                     owl:someValuesFrom fam:Person
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fam:hasFather ;
+                                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fam:hasMother ;
+                                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.example.com/jorian/family/Woman
+fam:Woman rdf:type owl:Class ;
+          rdfs:subClassOf fam:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.com/jorian/family/Ann
+fam:Ann rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( fam:Female
+                                        fam:Person
+                                        fam:Woman
+                                      ) ;
+                   rdf:type owl:Class
+                 ] ;
+        fam:isMotherOf fam:Bob ,
+                       fam:Herbert ,
+                       fam:Melanie .
+
+
+###  http://www.example.com/jorian/family/Bob
+fam:Bob rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( fam:Male
+                                        fam:Man
+                                        fam:Person
+                                      ) ;
+                   rdf:type owl:Class
+                 ] ;
+        fam:isBrotherOf fam:Melanie .
+
+
+###  http://www.example.com/jorian/family/Hank
+fam:Hank rdf:type owl:NamedIndividual ,
+                  [ owl:intersectionOf ( fam:Man
+                                         fam:Person
+                                       ) ;
+                    rdf:type owl:Class
+                  ] ;
+         fam:isFatherOf fam:Ann .
+
+
+###  http://www.example.com/jorian/family/Herbert
+fam:Herbert rdf:type owl:NamedIndividual ,
+                     [ owl:intersectionOf ( fam:Male
+                                            fam:Man
+                                            fam:Person
+                                          ) ;
+                       rdf:type owl:Class
+                     ] ;
+            fam:hasSister fam:Melanie ;
+            fam:isBrotherOf fam:Bob .
+
+
+###  http://www.example.com/jorian/family/Jacob
+fam:Jacob rdf:type owl:NamedIndividual ,
+                   [ owl:intersectionOf ( fam:Male
+                                          fam:Man
+                                          fam:Person
+                                        ) ;
+                     rdf:type owl:Class
+                   ] ;
+          fam:isFatherOf fam:Bob ,
+                         fam:Herbert ,
+                         fam:Melanie .
+
+
+###  http://www.example.com/jorian/family/Katie
+fam:Katie rdf:type owl:NamedIndividual ,
+                   [ owl:intersectionOf ( fam:Female
+                                          fam:Person
+                                          fam:Woman
+                                        ) ;
+                     rdf:type owl:Class
+                   ] ;
+          fam:isMotherOf fam:Jacob .
+
+
+###  http://www.example.com/jorian/family/Melanie
+fam:Melanie rdf:type owl:NamedIndividual ,
+                     [ owl:intersectionOf ( fam:Person
+                                            fam:Woman
+                                          ) ;
+                       rdf:type owl:Class
+                     ] ;
+            fam:hasSibling fam:Bob ;
+            fam:isSisterOf fam:Bob .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

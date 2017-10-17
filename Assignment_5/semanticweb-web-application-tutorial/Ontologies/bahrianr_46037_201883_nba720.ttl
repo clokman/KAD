@@ -1,0 +1,172 @@
+@prefix : <http://www.knowledgeanddata.com/example/assignment_4#> .
+@prefix as: <http://www.knowledgeanddata.com/example/assignment_4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.knowledgeanddata.com/example/assignment_4> .
+
+<http://www.knowledgeanddata.com/example/assignment_4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.knowledgeanddata.com/example/assignment_4/hasPlayer
+as:hasPlayer rdf:type owl:ObjectProperty ;
+             owl:inverseOf as:playsForTeam .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/isCoachOf
+as:isCoachOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/isLeagueIn
+as:isLeagueIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/locatedIn
+as:locatedIn rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain as:Club ;
+             rdfs:range as:Country .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/playForClub
+as:playForClub rdf:type owl:ObjectProperty .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/playsForTeam
+as:playsForTeam rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/playsInLeague
+as:playsInLeague rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Club
+as:Club rdf:type owl:Class .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Coach
+as:Coach rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty as:isCoachOf ;
+                               owl:someValuesFrom as:Team
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty as:isCoachOf ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass as:Club
+                             ] ;
+         rdfs:subClassOf as:Person .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Country
+as:Country rdf:type owl:Class .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/EuropeanTeam
+as:EuropeanTeam rdf:type owl:Class .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/League
+as:League rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty as:isLeagueIn ;
+                                owl:someValuesFrom as:Country
+                              ] .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Person
+as:Person rdf:type owl:Class .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Player
+as:Player rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty as:playsForTeam ;
+                                owl:someValuesFrom as:Team
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty as:playForClub ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass as:Club
+                              ] ;
+          rdfs:subClassOf as:Person .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Team
+as:Team rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty as:playsInLeague ;
+                              owl:someValuesFrom as:League
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty as:hasPlayer ;
+                              owl:maxQualifiedCardinality "24"^^xsd:nonNegativeInteger ;
+                              owl:onClass as:Player
+                            ] ;
+        rdfs:subClassOf as:EuropeanTeam .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Ajax_1
+as:Ajax_1 rdf:type owl:NamedIndividual ;
+          as:hasPlayer as:Dijks ,
+                       as:Huntelaar ;
+          as:playsInLeague as:Eredivisie .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Ajax_Amsterdam
+as:Ajax_Amsterdam rdf:type owl:NamedIndividual ;
+                  as:locatedIn as:Nederland .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Barcelona
+as:Barcelona rdf:type owl:NamedIndividual ;
+             as:locatedIn as:Spain ;
+             as:playsInLeague as:La_Liga .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Dijks
+as:Dijks rdf:type owl:NamedIndividual .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Eredivisie
+as:Eredivisie rdf:type owl:NamedIndividual ;
+              as:isLeagueIn as:Nederland .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Huntelaar
+as:Huntelaar rdf:type owl:NamedIndividual ;
+             as:playsForTeam as:Ajax_1 .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/La_Liga
+as:La_Liga rdf:type owl:NamedIndividual .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Marcel_Keijzer
+as:Marcel_Keijzer rdf:type owl:NamedIndividual ;
+                  as:isCoachOf as:Ajax_1 .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Nederland
+as:Nederland rdf:type owl:NamedIndividual .
+
+
+###  http://www.knowledgeanddata.com/example/assignment_4/Spain
+as:Spain rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

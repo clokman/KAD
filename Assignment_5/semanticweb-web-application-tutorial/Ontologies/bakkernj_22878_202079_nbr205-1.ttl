@@ -1,0 +1,311 @@
+@prefix : <http://www.semanticweb.org/nebak/world/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wld: <http://www.semanticweb.org/nebak/world/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/nebak/world/> .
+
+<http://www.semanticweb.org/nebak/world/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/nebak/world/ContinentContains
+wld:ContinentContains rdf:type owl:ObjectProperty ;
+                      owl:inverseOf wld:IsLocatedInContinent .
+
+
+###  http://www.semanticweb.org/nebak/world/CountryContains
+wld:CountryContains rdf:type owl:ObjectProperty ;
+                    owl:inverseOf wld:IsLocatedInCountry .
+
+
+###  http://www.semanticweb.org/nebak/world/HasCapital
+wld:HasCapital rdf:type owl:ObjectProperty ;
+               owl:inverseOf wld:IsCapitalOf .
+
+
+###  http://www.semanticweb.org/nebak/world/HasCharacteristic
+wld:HasCharacteristic rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nebak/world/HasClimate
+wld:HasClimate rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nebak/world/IsCapitalOf
+wld:IsCapitalOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nebak/world/IsLocatedInContinent
+wld:IsLocatedInContinent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nebak/world/IsLocatedInCountry
+wld:IsLocatedInCountry rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nebak/world/IsNeighbourCountryOf
+wld:IsNeighbourCountryOf rdf:type owl:ObjectProperty ,
+                                  owl:SymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/nebak/world/Animals
+wld:Animals rdf:type owl:Class ;
+            rdfs:subClassOf wld:Organisms .
+
+
+###  http://www.semanticweb.org/nebak/world/Capitals
+wld:Capitals rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty wld:IsCapitalOf ;
+                                   owl:someValuesFrom wld:Countries
+                                 ] ;
+             rdfs:subClassOf wld:Cities .
+
+
+###  http://www.semanticweb.org/nebak/world/Cities
+wld:Cities rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nebak/world/Climate
+wld:Climate rdf:type owl:Class ;
+            rdfs:subClassOf wld:Environment .
+
+
+###  http://www.semanticweb.org/nebak/world/Continents
+wld:Continents rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nebak/world/Countries
+wld:Countries rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty wld:HasCapital ;
+                                    owl:allValuesFrom wld:Cities
+                                  ] .
+
+
+###  http://www.semanticweb.org/nebak/world/Countries_With_Sea_Climate
+wld:Countries_With_Sea_Climate rdf:type owl:Class ;
+                               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                     owl:onProperty wld:HasClimate ;
+                                                     owl:hasValue wld:Sea_Climate
+                                                   ] ;
+                               rdfs:subClassOf wld:Climate .
+
+
+###  http://www.semanticweb.org/nebak/world/Dutch_Cities
+wld:Dutch_Cities rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( wld:Cities
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty wld:IsLocatedInCountry ;
+                                                              owl:hasValue wld:The_Netherlands
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf wld:Cities .
+
+
+###  http://www.semanticweb.org/nebak/world/Environment
+wld:Environment rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nebak/world/European_Countries
+wld:European_Countries rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty wld:IsLocatedInContinent ;
+                                             owl:hasValue wld:Europe
+                                           ] ;
+                       rdfs:subClassOf wld:Countries .
+
+
+###  http://www.semanticweb.org/nebak/world/European_Seas
+wld:European_Seas rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( wld:Seas
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty wld:IsLocatedInContinent ;
+                                                               owl:hasValue wld:Europe
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf wld:Seas .
+
+
+###  http://www.semanticweb.org/nebak/world/German_Cities
+wld:German_Cities rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( wld:Cities
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty wld:IsLocatedInCountry ;
+                                                               owl:hasValue wld:Germany
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf wld:Cities .
+
+
+###  http://www.semanticweb.org/nebak/world/Humans
+wld:Humans rdf:type owl:Class ;
+           rdfs:subClassOf wld:Organisms .
+
+
+###  http://www.semanticweb.org/nebak/world/International_Rivers
+wld:International_Rivers rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( wld:Rivers
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty wld:IsLocatedInCountry ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass wld:Countries
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf wld:Rivers .
+
+
+###  http://www.semanticweb.org/nebak/world/Lakes
+wld:Lakes rdf:type owl:Class ;
+          rdfs:subClassOf wld:Waters .
+
+
+###  http://www.semanticweb.org/nebak/world/Organisms
+wld:Organisms rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nebak/world/Rivers
+wld:Rivers rdf:type owl:Class ;
+           rdfs:subClassOf wld:Waters .
+
+
+###  http://www.semanticweb.org/nebak/world/Seas
+wld:Seas rdf:type owl:Class ;
+         rdfs:subClassOf wld:Waters .
+
+
+###  http://www.semanticweb.org/nebak/world/Water_Rich_Countries
+wld:Water_Rich_Countries rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty wld:CountryContains ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass wld:Lakes
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty wld:CountryContains ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass wld:Rivers
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf wld:Countries .
+
+
+###  http://www.semanticweb.org/nebak/world/Waters
+wld:Waters rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/nebak/world/Amsterdam
+wld:Amsterdam rdf:type owl:NamedIndividual ,
+                       wld:Cities ;
+              wld:IsCapitalOf wld:The_Netherlands ;
+              wld:IsLocatedInCountry wld:The_Netherlands .
+
+
+###  http://www.semanticweb.org/nebak/world/Belgium
+wld:Belgium rdf:type owl:NamedIndividual ,
+                     wld:Countries ;
+            wld:IsLocatedInContinent wld:Europe ;
+            wld:IsNeighbourCountryOf wld:The_Netherlands .
+
+
+###  http://www.semanticweb.org/nebak/world/Berlin
+wld:Berlin rdf:type owl:NamedIndividual ,
+                    wld:Cities ;
+           wld:IsCapitalOf wld:Germany ;
+           wld:IsLocatedInCountry wld:Germany .
+
+
+###  http://www.semanticweb.org/nebak/world/Dogs
+wld:Dogs rdf:type owl:NamedIndividual ,
+                  wld:Organisms .
+
+
+###  http://www.semanticweb.org/nebak/world/Europe
+wld:Europe rdf:type owl:NamedIndividual ,
+                    wld:Continents .
+
+
+###  http://www.semanticweb.org/nebak/world/France
+wld:France rdf:type owl:NamedIndividual ,
+                    wld:Countries ;
+           wld:IsLocatedInContinent wld:Europe ;
+           wld:IsNeighbourCountryOf wld:Belgium ,
+                                    wld:Germany .
+
+
+###  http://www.semanticweb.org/nebak/world/Germany
+wld:Germany rdf:type owl:NamedIndividual ,
+                     wld:Countries ;
+            wld:IsLocatedInContinent wld:Europe .
+
+
+###  http://www.semanticweb.org/nebak/world/IJsselmeer
+wld:IJsselmeer rdf:type owl:NamedIndividual ,
+                        wld:Lakes ;
+               wld:IsLocatedInCountry wld:The_Netherlands .
+
+
+###  http://www.semanticweb.org/nebak/world/Maas
+wld:Maas rdf:type owl:NamedIndividual ,
+                  wld:Rivers ;
+         wld:IsLocatedInCountry wld:Belgium ,
+                                wld:France ,
+                                wld:The_Netherlands .
+
+
+###  http://www.semanticweb.org/nebak/world/North_Sea
+wld:North_Sea rdf:type owl:NamedIndividual ,
+                       wld:Seas ;
+              wld:IsLocatedInContinent wld:Europe .
+
+
+###  http://www.semanticweb.org/nebak/world/Rotterdam
+wld:Rotterdam rdf:type owl:NamedIndividual ,
+                       wld:Cities ;
+              wld:IsLocatedInCountry wld:The_Netherlands .
+
+
+###  http://www.semanticweb.org/nebak/world/Sea_Climate
+wld:Sea_Climate rdf:type owl:NamedIndividual ,
+                         wld:Climate .
+
+
+###  http://www.semanticweb.org/nebak/world/The_Netherlands
+wld:The_Netherlands rdf:type owl:NamedIndividual ,
+                             wld:Countries ;
+                    wld:HasClimate wld:Sea_Climate ;
+                    wld:IsLocatedInContinent wld:Europe ;
+                    wld:IsNeighbourCountryOf wld:France ,
+                                             wld:Germany .
+
+
+###  http://www.semanticweb.org/nebak/world/Waal
+wld:Waal rdf:type owl:NamedIndividual ,
+                  wld:Rivers ;
+         wld:IsLocatedInCountry wld:The_Netherlands .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

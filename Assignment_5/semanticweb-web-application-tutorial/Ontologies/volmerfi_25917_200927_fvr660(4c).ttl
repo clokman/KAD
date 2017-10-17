@@ -1,0 +1,421 @@
+@prefix : <http://www.semanticweb.org/femkevolmer/family#> .
+@prefix fam: <http://www.semanticweb.org/femkevolmer/family/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/femkevolmer/family> .
+
+<http://www.semanticweb.org/femkevolmer/family> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/femkevolmer/family/isAuntOf
+fam:isAuntOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf fam:isFamilyOf ;
+             owl:inverseOf fam:isCousinOf ;
+             rdfs:domain fam:Aunt ;
+             rdfs:range fam:Cousin .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isBrotherOf
+fam:isBrotherOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fam:isSiblingOf ;
+                rdf:type owl:IrreflexiveProperty ;
+                rdfs:domain fam:Person ;
+                rdfs:range fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isChildOf
+fam:isChildOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fam:isFamilyOf ;
+              rdfs:domain fam:Child ;
+              rdfs:range fam:Parent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isCousinOf
+fam:isCousinOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isFamilyOf ;
+               rdfs:domain fam:Cousin ;
+               rdfs:range fam:Aunt .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isDaughterOf
+fam:isDaughterOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fam:isChildOf ;
+                 rdfs:domain fam:Daughter ;
+                 rdfs:range fam:Parent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isFamilyOf
+fam:isFamilyOf rdf:type owl:ObjectProperty ;
+               rdfs:domain fam:Person ;
+               rdfs:range fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isFatherOf
+fam:isFatherOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isParentOf ;
+               rdfs:domain fam:Father ;
+               rdfs:range fam:Child .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isGrandChildOf
+fam:isGrandChildOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf fam:isFamilyOf ;
+                   rdfs:domain fam:GrandChild ;
+                   rdfs:range fam:GrandParent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isGrandDaughterOf
+fam:isGrandDaughterOf rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf fam:isGrandChildOf ;
+                      rdfs:domain fam:GrandDaughter ;
+                      rdfs:range fam:GrandParent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isGrandFatherOf
+fam:isGrandFatherOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf fam:isGrandParentOf ;
+                    rdfs:domain fam:grandFather ;
+                    rdfs:range fam:GrandChild .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isGrandMotherOf
+fam:isGrandMotherOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf fam:isGrandParentOf ;
+                    rdfs:domain fam:grandMother ;
+                    rdfs:range fam:GrandChild .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isGrandParentOf
+fam:isGrandParentOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf fam:isFamilyOf ;
+                    rdfs:domain fam:GrandParent ;
+                    rdfs:range fam:GrandChild .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isGrandSonOf
+fam:isGrandSonOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fam:isGrandChildOf ;
+                 rdfs:domain fam:GrandSon ;
+                 rdfs:range fam:GrandParent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isHusbandOf
+fam:isHusbandOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fam:isPartnerOf ;
+                owl:inverseOf fam:isWifeOf .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isMotherOf
+fam:isMotherOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isParentOf ;
+               rdfs:domain fam:Mother ;
+               rdfs:range fam:Child .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isParentOf
+fam:isParentOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isFamilyOf ;
+               rdfs:domain fam:Parent ;
+               rdfs:range fam:Child .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isPartnerOf
+fam:isPartnerOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fam:isFamilyOf ;
+                rdf:type owl:SymmetricProperty ;
+                rdfs:domain fam:Person ;
+                rdfs:range fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isSiblingOf
+fam:isSiblingOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fam:isFamilyOf ;
+                rdf:type owl:SymmetricProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:domain fam:Person ;
+                rdfs:range fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isSisterOf
+fam:isSisterOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isSiblingOf ;
+               rdfs:domain fam:Person ;
+               rdfs:range fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isSonOf
+fam:isSonOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf fam:isChildOf ;
+            rdfs:domain fam:Son ;
+            rdfs:range fam:Parent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/isWifeOf
+fam:isWifeOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf fam:isPartnerOf .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/femkevolmer/family/Aunt
+fam:Aunt rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( fam:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty fam:isAuntOf ;
+                                                      owl:someValuesFrom fam:Cousin
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Child
+fam:Child rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( fam:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty fam:isChildOf ;
+                                                       owl:someValuesFrom fam:Parent
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Cousin
+fam:Cousin rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:isCousinOf ;
+                                                        owl:someValuesFrom fam:Aunt
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Daughter
+fam:Daughter rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( fam:Child
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty fam:isDaughterOf ;
+                                                          owl:someValuesFrom fam:Parent
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Father
+fam:Father rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isFatherOf ;
+                                 owl:someValuesFrom fam:Child
+                               ] ;
+           rdfs:subClassOf fam:Parent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/GrandChild
+fam:GrandChild rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( fam:Person
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty fam:isGrandChildOf ;
+                                                            owl:someValuesFrom fam:GrandParent
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/GrandDaughter
+fam:GrandDaughter rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty fam:isGrandDaughterOf ;
+                                        owl:someValuesFrom fam:GrandParent
+                                      ] ;
+                  rdfs:subClassOf fam:GrandChild .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/GrandParent
+fam:GrandParent rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:isGrandParentOf ;
+                                      owl:someValuesFrom fam:GrandChild
+                                    ] ;
+                rdfs:subClassOf fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/GrandSon
+fam:GrandSon rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:isGrandSonOf ;
+                                   owl:someValuesFrom fam:GrandParent
+                                 ] ;
+             rdfs:subClassOf fam:GrandChild .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Mother
+fam:Mother rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isMotherOf ;
+                                 owl:someValuesFrom fam:Child
+                               ] ;
+           rdfs:subClassOf fam:Parent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Parent
+fam:Parent rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isParentOf ;
+                                 owl:someValuesFrom fam:Child
+                               ] ;
+           rdfs:subClassOf fam:Person .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Person
+fam:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Son
+fam:Son rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( fam:Child
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fam:isSonOf ;
+                                                     owl:someValuesFrom fam:Parent
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/grandFather
+fam:grandFather rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:isGrandFatherOf ;
+                                      owl:someValuesFrom fam:GrandChild
+                                    ] ;
+                rdfs:subClassOf fam:GrandParent .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/grandMother
+fam:grandMother rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:isGrandMotherOf ;
+                                      owl:someValuesFrom fam:GrandChild
+                                    ] ;
+                rdfs:subClassOf fam:GrandParent .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/femkevolmer/family/Bart
+fam:Bart rdf:type owl:NamedIndividual ;
+         fam:isBrotherOf fam:Femke ,
+                         fam:Rosa ;
+         fam:isGrandSonOf fam:Bartus ,
+                          fam:Henk ,
+                          fam:Josta ,
+                          fam:Rita ;
+         fam:isSonOf fam:Debby ,
+                     fam:Frank .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Bartus
+fam:Bartus rdf:type owl:NamedIndividual ;
+           fam:isFatherOf fam:Bianca ,
+                          fam:Debby ;
+           fam:isGrandFatherOf fam:Bart ,
+                               fam:Femke ,
+                               fam:Rosa ;
+           fam:isHusbandOf fam:Josta .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Bianca
+fam:Bianca rdf:type owl:NamedIndividual ;
+           fam:isAuntOf fam:Bart ,
+                        fam:Femke ,
+                        fam:Rosa ;
+           fam:isDaughterOf fam:Bartus ,
+                            fam:Josta ;
+           fam:isSisterOf fam:Debby .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Debby
+fam:Debby rdf:type owl:NamedIndividual ;
+          fam:isDaughterOf fam:Bartus ,
+                           fam:Josta ;
+          fam:isMotherOf fam:Bart ,
+                         fam:Femke ,
+                         fam:Rosa ;
+          fam:isSisterOf fam:Bianca ;
+          fam:isWifeOf fam:Frank .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Femke
+fam:Femke rdf:type owl:NamedIndividual ;
+          fam:isDaughterOf fam:Debby ,
+                           fam:Frank ;
+          fam:isGrandDaughterOf fam:Bartus ,
+                                fam:Henk ,
+                                fam:Josta ,
+                                fam:Rita ;
+          fam:isSisterOf fam:Rosa .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Frank
+fam:Frank rdf:type owl:NamedIndividual ;
+          fam:isFatherOf fam:Bart ,
+                         fam:Femke ,
+                         fam:Rosa ;
+          fam:isSonOf fam:Henk ,
+                      fam:Rita .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Henk
+fam:Henk rdf:type owl:NamedIndividual ;
+         fam:isFatherOf fam:Frank ;
+         fam:isGrandFatherOf fam:Bart ,
+                             fam:Femke ,
+                             fam:Rosa .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Josta
+fam:Josta rdf:type owl:NamedIndividual ;
+          fam:isGrandMotherOf fam:Bart ,
+                              fam:Femke ,
+                              fam:Rosa ;
+          fam:isMotherOf fam:Bianca ,
+                         fam:Debby .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Rita
+fam:Rita rdf:type owl:NamedIndividual ;
+         fam:isGrandMotherOf fam:Bart ,
+                             fam:Femke ,
+                             fam:Rosa ;
+         fam:isMotherOf fam:Frank ;
+         fam:isWifeOf fam:Henk .
+
+
+###  http://www.semanticweb.org/femkevolmer/family/Rosa
+fam:Rosa rdf:type owl:NamedIndividual ;
+         fam:isDaughterOf fam:Debby ,
+                          fam:Frank ;
+         fam:isGrandDaughterOf fam:Bartus ,
+                               fam:Henk ,
+                               fam:Josta ,
+                               fam:Rita ;
+         fam:isSisterOf fam:Bart ,
+                        fam:Femke .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

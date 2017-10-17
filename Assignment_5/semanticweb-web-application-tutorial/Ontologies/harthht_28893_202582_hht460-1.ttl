@@ -1,0 +1,383 @@
+@prefix : <http://www.semanticweb.org/hannahart/books#> .
+@prefix bo: <http://www.semanticweb.org/hannahart/books/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/hannahart/books> .
+
+<http://www.semanticweb.org/hannahart/books> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/hannahart/books/Published
+bo:Published rdf:type owl:ObjectProperty ;
+             owl:inverseOf bo:isPublishedBy .
+
+
+###  http://www.semanticweb.org/hannahart/books/hasCharacter
+bo:hasCharacter rdf:type owl:ObjectProperty ;
+                owl:inverseOf bo:isCharacterOf .
+
+
+###  http://www.semanticweb.org/hannahart/books/hasGenre
+bo:hasGenre rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/hasLanguage
+bo:hasLanguage rdf:type owl:ObjectProperty ;
+               owl:inverseOf bo:isLanguageOf .
+
+
+###  http://www.semanticweb.org/hannahart/books/hasName
+bo:hasName rdf:type owl:ObjectProperty ,
+                    owl:SymmetricProperty ,
+                    owl:ReflexiveProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/isCharacterOf
+bo:isCharacterOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/isLanguageOf
+bo:isLanguageOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/isPublishedBy
+bo:isPublishedBy rdf:type owl:ObjectProperty ,
+                          owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/isWrittenBy
+bo:isWrittenBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf bo:wrote .
+
+
+###  http://www.semanticweb.org/hannahart/books/wrote
+bo:wrote rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/hannahart/books/hasGenre
+bo:hasGenre rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/isPublishedinYear
+bo:isPublishedinYear rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/isWrittenBy
+bo:isWrittenBy rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/hannahart/books/wrote
+bo:wrote rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/hannahart/books/Author
+bo:Author rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty bo:wrote ;
+                                owl:someValuesFrom bo:Book
+                              ] ;
+          rdfs:subClassOf bo:Person .
+
+
+###  http://www.semanticweb.org/hannahart/books/Book
+bo:Book rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty bo:hasGenre ;
+                              owl:someValuesFrom bo:Genre
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty bo:isPublishedBy ;
+                              owl:someValuesFrom bo:Publisher
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty bo:isWrittenBy ;
+                              owl:someValuesFrom bo:Author
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty bo:hasLanguage ;
+                              owl:allValuesFrom bo:Language
+                            ] .
+
+
+###  http://www.semanticweb.org/hannahart/books/Character
+bo:Character rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty bo:isCharacterOf ;
+                                   owl:someValuesFrom bo:Book
+                                 ] .
+
+
+###  http://www.semanticweb.org/hannahart/books/Genre
+bo:Genre rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/hannahart/books/Harry_Potter
+bo:Harry_Potter rdf:type owl:Class ;
+                rdfs:subClassOf bo:Book ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty bo:hasGenre ;
+                                  owl:hasValue bo:Fantasy
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty bo:hasLanguage ;
+                                  owl:hasValue bo:English
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty bo:isWrittenBy ;
+                                  owl:hasValue bo:JK_Rowling
+                                ] .
+
+
+###  http://www.semanticweb.org/hannahart/books/International_Successful_Book
+bo:International_Successful_Book rdf:type owl:Class ;
+                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                       owl:onProperty bo:hasLanguage ;
+                                                       owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass bo:Language
+                                                     ] ;
+                                 rdfs:subClassOf bo:Book .
+
+
+###  http://www.semanticweb.org/hannahart/books/Language
+bo:Language rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/hannahart/books/Person
+bo:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/hannahart/books/Publisher
+bo:Publisher rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty bo:Published ;
+                                   owl:someValuesFrom bo:Book
+                                 ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/hannahart/books/Alfred_Knopf_Inc
+bo:Alfred_Knopf_Inc rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/Bloomsbury
+bo:Bloomsbury rdf:type owl:NamedIndividual ;
+              bo:Published bo:Harry_Potter_and_the_Chamber_of_Secrets ,
+                           bo:Harry_Potter_and_the_Sorcerers_Stone .
+
+
+###  http://www.semanticweb.org/hannahart/books/Charlie_and_the_Chocolate_Factory
+bo:Charlie_and_the_Chocolate_Factory rdf:type owl:NamedIndividual ;
+                                     bo:hasGenre bo:Fantasy ;
+                                     bo:isPublishedBy bo:Alfred_Knopf_Inc ;
+                                     bo:isPublishedinYear 1964 .
+
+
+###  http://www.semanticweb.org/hannahart/books/Dutch
+bo:Dutch rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/English
+bo:English rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/Fantasy
+bo:Fantasy rdf:type owl:NamedIndividual ,
+                    bo:Genre .
+
+
+###  http://www.semanticweb.org/hannahart/books/French
+bo:French rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/German
+bo:German rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/Harry_Potter_and_the_Chamber_of_Secrets
+bo:Harry_Potter_and_the_Chamber_of_Secrets rdf:type owl:NamedIndividual ,
+                                                    bo:Harry_Potter ;
+                                           bo:hasCharacter bo:Hermione_Granger ;
+                                           bo:isPublishedinYear 1998 .
+
+
+###  http://www.semanticweb.org/hannahart/books/Harry_Potter_and_the_Sorcerers_Stone
+bo:Harry_Potter_and_the_Sorcerers_Stone rdf:type owl:NamedIndividual ,
+                                                 bo:Harry_Potter ;
+                                        bo:isPublishedinYear 1997 .
+
+
+###  http://www.semanticweb.org/hannahart/books/Hermione_Granger
+bo:Hermione_Granger rdf:type owl:NamedIndividual ;
+                    bo:isCharacterOf bo:Harry_Potter_and_the_Sorcerers_Stone .
+
+
+###  http://www.semanticweb.org/hannahart/books/Italian
+bo:Italian rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/JK_Rowling
+bo:JK_Rowling rdf:type owl:NamedIndividual ,
+                       bo:Person ;
+              bo:wrote "bo:Harry_Potter" .
+
+
+###  http://www.semanticweb.org/hannahart/books/Jonathan_Cape
+bo:Jonathan_Cape rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/Roald_Dahl
+bo:Roald_Dahl rdf:type owl:NamedIndividual ;
+              bo:wrote bo:Charlie_and_the_Chocolate_Factory ,
+                       bo:The_BFG .
+
+
+###  http://www.semanticweb.org/hannahart/books/Spanish
+bo:Spanish rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/hannahart/books/The_BFG
+bo:The_BFG rdf:type owl:NamedIndividual ,
+                    bo:Book ;
+           bo:hasGenre bo:Fantasy ;
+           bo:hasLanguage bo:Dutch ,
+                          bo:English ,
+                          bo:French ,
+                          bo:German ,
+                          bo:Italian ,
+                          bo:Spanish ;
+           bo:isPublishedBy bo:Jonathan_Cape ;
+           bo:isPublishedinYear 1982 .
+
+
+###  http://www.semanticweb.org/hannahart/books/Willy_Wonka
+bo:Willy_Wonka rdf:type owl:NamedIndividual ;
+               bo:isCharacterOf bo:Charlie_and_the_Chocolate_Factory .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:Dutch
+                        bo:English
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:Dutch
+                        bo:French
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:Dutch
+                        bo:German
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:Dutch
+                        bo:Italian
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:Dutch
+                        bo:Spanish
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:English
+                        bo:French
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:English
+                        bo:German
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:English
+                        bo:Italian
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:English
+                        bo:Spanish
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:French
+                        bo:German
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:French
+                        bo:Italian
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:French
+                        bo:Spanish
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:German
+                        bo:Italian
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:German
+                        bo:Spanish
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( bo:Italian
+                        bo:Spanish
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

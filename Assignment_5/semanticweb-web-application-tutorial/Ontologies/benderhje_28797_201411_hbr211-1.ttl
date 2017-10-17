@@ -1,0 +1,228 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix pau: <http://www.semanticweb.org/barri/ontologies/autos#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/barri/ontologies/autos> a :Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#hasColor
+
+pau:hasColor a :ObjectProperty .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#hasEngine
+
+pau:hasEngine a :ObjectProperty , :AsymmetricProperty .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#hasManufacturer
+
+pau:hasManufacturer a :ObjectProperty , :AsymmetricProperty .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#isUsedFor
+
+pau:isUsedFor a :ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#B205_Five_Cylinder
+
+pau:B205_Five_Cylinder a :Class ;
+	rdfs:subClassOf pau:Engine , _:genid1 .
+
+_:genid1 a :Restriction ;
+	:onProperty pau:hasManufacturer ;
+	:allValuesFrom pau:Saab .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Basic
+
+pau:Basic a :Class ;
+	rdfs:subClassOf pau:Color .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Brand
+
+pau:Brand a :Class ;
+	rdfs:subClassOf _:genid2 .
+
+_:genid2 a :Restriction ;
+	:onProperty pau:hasEngine ;
+	:someValuesFrom pau:Diesel .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Car
+
+pau:Car a :Class ;
+	rdfs:subClassOf _:genid3 .
+
+_:genid3 a :Restriction ;
+	:onProperty pau:hasColor ;
+	:someValuesFrom pau:Color .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Color
+
+pau:Color a :Class .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Combustion
+
+pau:Combustion a :Class .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Commuting
+
+pau:Commuting a :Class ;
+	rdfs:subClassOf pau:Usage .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Coupe
+
+pau:Coupe a :Class ;
+	rdfs:subClassOf pau:Car , _:genid4 .
+
+_:genid4 a :Restriction ;
+	:onProperty pau:hasManufacturer ;
+	:someValuesFrom pau:Brand .
+
+pau:Coupe rdfs:subClassOf _:genid5 .
+
+_:genid5 a :Restriction ;
+	:onProperty pau:hasEngine ;
+	:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+	:onClass pau:Diesel .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Diesel
+
+pau:Diesel a :Class ;
+	rdfs:subClassOf pau:Combustion .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Engine
+
+pau:Engine a :Class .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Long_Drives
+
+pau:Long_Drives a :Class ;
+	rdfs:subClassOf pau:Usage .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Metallic
+
+pau:Metallic a :Class ;
+	rdfs:subClassOf pau:Color .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Modular_Four_Cylinder
+
+pau:Modular_Four_Cylinder a :Class ;
+	rdfs:subClassOf pau:Engine .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Petrol
+
+pau:Petrol a :Class ;
+	rdfs:subClassOf pau:Combustion .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Saab
+
+pau:Saab a :Class ;
+	rdfs:subClassOf pau:Brand , _:genid6 .
+
+_:genid6 a :Restriction ;
+	:onProperty pau:hasEngine ;
+	:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	:onClass pau:B205_Five_Cylinder .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Stationwagon
+
+pau:Stationwagon a :Class ;
+	rdfs:subClassOf pau:Car , _:genid7 .
+
+_:genid7 a :Restriction ;
+	:onProperty pau:hasManufacturer ;
+	:someValuesFrom pau:Brand .
+
+pau:Stationwagon rdfs:subClassOf _:genid8 .
+
+_:genid8 a :Restriction ;
+	:onProperty pau:isUsedFor ;
+	:someValuesFrom pau:Long_Drives .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Usage
+
+pau:Usage a :Class .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Volvo
+
+pau:Volvo a :Class ;
+	rdfs:subClassOf pau:Brand , _:genid9 .
+
+_:genid9 a :Restriction ;
+	:onProperty pau:hasEngine ;
+	:someValuesFrom pau:Modular_Four_Cylinder .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Commuters
+
+pau:Commuters a :NamedIndividual , pau:Commuting .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Four_Door
+
+pau:Four_Door a :NamedIndividual , pau:Stationwagon .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Mahony_Brown
+
+pau:Mahony_Brown a :NamedIndividual , pau:Metallic .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Naturally_Aspirated
+
+pau:Naturally_Aspirated a :NamedIndividual , pau:Modular_Four_Cylinder .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Red
+
+pau:Red a :NamedIndividual , pau:Basic .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Three_Litre
+
+pau:Three_Litre a :NamedIndividual , pau:Petrol .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Turbocharged
+
+pau:Turbocharged a :NamedIndividual , pau:B205_Five_Cylinder .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Two_Door
+
+pau:Two_Door a :NamedIndividual , pau:Coupe .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Two_Litre
+
+pau:Two_Litre a :NamedIndividual , pau:Diesel .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#V40
+
+pau:V40 a :NamedIndividual , pau:Volvo .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos#Vacation
+
+pau:Vacation a :NamedIndividual , pau:Long_Drives .
+# 
+# http://www.semanticweb.org/barri/ontologies/autos/900
+
+<http://www.semanticweb.org/barri/ontologies/autos/900> a :NamedIndividual , pau:Saab .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

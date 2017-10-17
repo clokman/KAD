@@ -1,0 +1,1781 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.motorcycles.com.ontologies/motorcycles.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.motorcycles.com.ontologies/motorcycles.owl"
+     versionIRI="http://www.motorcycles.com.ontologies/motorcycles.owl/0.1">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The motorcycle ontology that describes motorcycle brands and their models</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#A"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#A1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#A2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Adventure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Africa_Twin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BMW"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bonneville_Bobber"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CB650F"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CBR1000RR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CBR500R"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CBR650F"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cruiser"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diavel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ducati"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#F800GT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FJ1300AS_Explorer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#G310R"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GSX-R1000"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GSX-R600"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GSX-S1000"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GSX-S100_Touring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hayabusa_1300A"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Honda"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hypermotard_SP"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Intruder_C1500"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Intruder_C800"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#K600GT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Kawasaki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LicenceClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MT-03"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MT-10"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monster_797"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monster_821"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MotorCycleModels"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MotorcycleBrands"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multistrada_1200"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multistrada_950"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Naked_Bike"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ninja_250R"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ninja_H2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ninja_ZX-10R"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Penigale_1299"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Penigale_959"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#R1200R"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#R1200RT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#S1000R"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#S1000RR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SV650A"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Scrambler"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shadow"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Street_Cup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Street_Twin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SuperSport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Suzuki"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Thunderbird"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tiger_800"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tiger_Explorer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Touring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tracer_900"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Triumph"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#V-Strom_250A"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#V-Strom_650A"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VFR800F"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Versys_650"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vulcan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#XV1900A"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YZF-R1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YZF-R3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YZF-R6"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Yamaha"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Z1000"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Z750"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ZZR1400"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#differentFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasABS"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFast"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isNoisy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#modelType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#CCs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#haskW"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#A"/>
+        <Class IRI="#LicenceClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#A"/>
+        <DataMinCardinality cardinality="1">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#A1"/>
+        <Class IRI="#LicenceClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#A1"/>
+        <DataMaxCardinality cardinality="11">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#A2"/>
+        <Class IRI="#LicenceClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#A2"/>
+        <DataMaxCardinality cardinality="35">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Adventure"/>
+        <Class IRI="#MotorCycleModels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Africa_Twin"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Africa_Twin"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasABS"/>
+            <Class IRI="#Africa_Twin"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Africa_Twin"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Africa_Twin"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Africa_Twin"/>
+        <DataExactCardinality cardinality="70">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BMW"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bonneville_Bobber"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bonneville_Bobber"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bonneville_Bobber"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CB650F"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CB650F"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CB650F"/>
+        <DataExactCardinality cardinality="650">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CB650F"/>
+        <DataExactCardinality cardinality="67">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR1000RR"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR1000RR"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR1000RR"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR1000RR"/>
+        <DataExactCardinality cardinality="141">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR500R"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR500R"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR500R"/>
+        <DataExactCardinality cardinality="500">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR500R"/>
+        <DataExactCardinality cardinality="35">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR650F"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR650F"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR650F"/>
+        <DataExactCardinality cardinality="650">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CBR650F"/>
+        <DataExactCardinality cardinality="64">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cruiser"/>
+        <Class IRI="#MotorCycleModels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cruiser"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isNoisy"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cruiser"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#differentFrom"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diavel"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diavel"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diavel"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diavel"/>
+        <DataExactCardinality cardinality="112">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ducati"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F800GT"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F800GT"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F800GT"/>
+        <DataExactCardinality cardinality="800">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#F800GT"/>
+        <DataExactCardinality cardinality="66">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FJ1300AS_Explorer"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FJ1300AS_Explorer"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FJ1300AS_Explorer"/>
+        <DataExactCardinality cardinality="1300">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#G310R"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#G310R"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#G310R"/>
+        <DataExactCardinality cardinality="310">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#G310R"/>
+        <DataExactCardinality cardinality="25">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-R1000"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-R1000"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-R1000"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-R600"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-R600"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-R600"/>
+        <DataExactCardinality cardinality="600">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-S1000"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-S1000"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-S1000"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-S100_Touring"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-S100_Touring"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GSX-S100_Touring"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hayabusa_1300A"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hayabusa_1300A"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hayabusa_1300A"/>
+        <DataExactCardinality cardinality="1300">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Honda"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypermotard_SP"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypermotard_SP"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypermotard_SP"/>
+        <DataExactCardinality cardinality="937">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hypermotard_SP"/>
+        <DataExactCardinality cardinality="81">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intruder_C1500"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intruder_C1500"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intruder_C1500"/>
+        <DataExactCardinality cardinality="1500">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intruder_C800"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intruder_C800"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Intruder_C800"/>
+        <DataExactCardinality cardinality="800">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#K600GT"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#K600GT"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#K600GT"/>
+        <DataExactCardinality cardinality="1600">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#K600GT"/>
+        <DataExactCardinality cardinality="118">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Kawasaki"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MT-03"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MT-03"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MT-03"/>
+        <DataExactCardinality cardinality="300">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MT-10"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MT-10"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MT-10"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_797"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_797"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_797"/>
+        <DataExactCardinality cardinality="797">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_797"/>
+        <DataExactCardinality cardinality="55">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_821"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_821"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_821"/>
+        <DataExactCardinality cardinality="821">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monster_821"/>
+        <DataExactCardinality cardinality="80">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_1200"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_1200"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_1200"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_1200"/>
+        <DataExactCardinality cardinality="110">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_950"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_950"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_950"/>
+        <DataExactCardinality cardinality="950">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multistrada_950"/>
+        <DataExactCardinality cardinality="83">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Naked_Bike"/>
+        <Class IRI="#MotorCycleModels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_250R"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_250R"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_250R"/>
+        <DataExactCardinality cardinality="250">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_250R"/>
+        <DataExactCardinality cardinality="24">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_H2"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_H2"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_H2"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_ZX-10R"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_ZX-10R"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ninja_ZX-10R"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_1299"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_1299"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_1299"/>
+        <DataExactCardinality cardinality="1300">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_1299"/>
+        <DataExactCardinality cardinality="145">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_959"/>
+        <Class IRI="#Ducati"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_959"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_959"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Penigale_959"/>
+        <DataExactCardinality cardinality="110">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200R"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200R"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200R"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200R"/>
+        <DataExactCardinality cardinality="92">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200RT"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200RT"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasABS"/>
+            <Class IRI="#R1200RT"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200RT"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200RT"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#R1200RT"/>
+        <DataExactCardinality cardinality="121">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000R"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000R"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000R"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000R"/>
+        <DataExactCardinality cardinality="92">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000RR"/>
+        <Class IRI="#BMW"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000RR"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000RR"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#S1000RR"/>
+        <DataExactCardinality cardinality="146">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SV650A"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SV650A"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SV650A"/>
+        <DataExactCardinality cardinality="650">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Scrambler"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Scrambler"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Scrambler"/>
+        <DataExactCardinality cardinality="900">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shadow"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shadow"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shadow"/>
+        <DataExactCardinality cardinality="850">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shadow"/>
+        <DataExactCardinality cardinality="35">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street_Cup"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street_Cup"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street_Cup"/>
+        <DataExactCardinality cardinality="900">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street_Twin"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street_Twin"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street_Twin"/>
+        <DataExactCardinality cardinality="900">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SuperSport"/>
+        <Class IRI="#MotorCycleModels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SuperSport"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isFast"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SuperSport"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#differentFrom"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Suzuki"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thunderbird"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thunderbird"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Thunderbird"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tiger_800"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tiger_800"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tiger_800"/>
+        <DataExactCardinality cardinality="800">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tiger_Explorer"/>
+        <Class IRI="#Triumph"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tiger_Explorer"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tiger_Explorer"/>
+        <DataExactCardinality cardinality="1200">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Touring"/>
+        <Class IRI="#MotorCycleModels"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tracer_900"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tracer_900"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tracer_900"/>
+        <DataExactCardinality cardinality="900">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Triumph"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#V-Strom_250A"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#V-Strom_250A"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#V-Strom_250A"/>
+        <DataExactCardinality cardinality="250">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#V-Strom_650A"/>
+        <Class IRI="#Suzuki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#V-Strom_650A"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#V-Strom_650A"/>
+        <DataExactCardinality cardinality="650">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VFR800F"/>
+        <Class IRI="#Honda"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VFR800F"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VFR800F"/>
+        <DataExactCardinality cardinality="800">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VFR800F"/>
+        <DataExactCardinality cardinality="78">
+            <DataProperty IRI="#haskW"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Versys_650"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Versys_650"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Adventure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Versys_650"/>
+        <DataExactCardinality cardinality="650">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vulcan"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vulcan"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vulcan"/>
+        <DataExactCardinality cardinality="800">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#XV1900A"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#XV1900A"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Cruiser"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#XV1900A"/>
+        <DataExactCardinality cardinality="1900">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R1"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R1"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R1"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R3"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R3"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R3"/>
+        <DataExactCardinality cardinality="300">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R6"/>
+        <Class IRI="#Yamaha"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R6"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#SuperSport"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YZF-R6"/>
+        <DataExactCardinality cardinality="600">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Yamaha"/>
+        <Class IRI="#MotorcycleBrands"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Z1000"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Z1000"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Z1000"/>
+        <DataExactCardinality cardinality="1000">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Z750"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Z750"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Naked_Bike"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Z750"/>
+        <DataExactCardinality cardinality="750">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ZZR1400"/>
+        <Class IRI="#Kawasaki"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ZZR1400"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#modelType"/>
+            <Class IRI="#Touring"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ZZR1400"/>
+        <DataExactCardinality cardinality="1400">
+            <DataProperty IRI="#CCs"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#differentFrom"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#modelType"/>
+    </SymmetricObjectProperty>
+    <ReflexiveObjectProperty>
+        <ObjectProperty IRI="#hasABS"/>
+    </ReflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#MotorCycleModels"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Africa_Twin"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Bonneville_Bobber"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#CB650F"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#CBR1000RR"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#CBR500R"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#CBR650F"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Diavel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#F800GT"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#FJ1300AS_Explorer"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#G310R"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#GSX-R1000"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#GSX-R600"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#GSX-S1000"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#GSX-S100_Touring"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Hayabusa_1300A"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Hypermotard_SP"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Intruder_C1500"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Intruder_C800"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#K600GT"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#MT-03"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#MT-10"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Monster_797"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Monster_821"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Multistrada_1200"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Multistrada_950"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Ninja_250R"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Ninja_H2"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Ninja_ZX-10R"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Penigale_1299"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Penigale_959"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#R1200R"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#R1200RT"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#S1000R"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#S1000RR"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#SV650A"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Scrambler"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Shadow"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Street_Cup"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Street_Twin"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Thunderbird"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Tiger_800"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Tiger_Explorer"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Tracer_900"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#V-Strom_250A"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#V-Strom_650A"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#VFR800F"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Versys_650"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Vulcan"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#XV1900A"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#YZF-R1"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#YZF-R3"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#YZF-R6"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Z1000"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#Z750"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#modelType"/>
+        <Class IRI="#ZZR1400"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

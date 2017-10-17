@@ -1,0 +1,289 @@
+@prefix : <http://example.com/kad2017/bianca#> .
+@prefix st: <http://example.com/kad2017/bianca/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.com/kad2017/bianca> .
+
+<http://example.com/kad2017/bianca> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.com/kad2017/bianca#givenTo
+:givenTo rdf:type owl:ObjectProperty ;
+         owl:inverseOf st:needs .
+
+
+###  http://example.com/kad2017/bianca/CleanedBy
+st:CleanedBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf st:Cleanes .
+
+
+###  http://example.com/kad2017/bianca/Cleanes
+st:Cleanes rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/EarnedBy
+st:EarnedBy rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/TakesPartIn
+st:TakesPartIn rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/Teaches
+st:Teaches rdf:type owl:ObjectProperty ;
+           owl:inverseOf st:isTaughtBy .
+
+
+###  http://example.com/kad2017/bianca/hasEarned
+st:hasEarned rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/hasStudiedAt
+st:hasStudiedAt rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/hasToHave
+st:hasToHave rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/hasValue
+st:hasValue rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/helps
+st:helps rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/isTaughtBy
+st:isTaughtBy rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/needs
+st:needs rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/taughtAt
+st:taughtAt rdf:type owl:ObjectProperty ;
+            rdfs:domain st:Course ;
+            rdfs:range st:University .
+
+
+###  http://example.com/kad2017/bianca/st:ServesAt
+st:ServesAt rdf:type owl:ObjectProperty .
+
+
+###  http://example.com/kad2017/bianca/st:repairsAt
+st:repairsAt rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.com/kad2017/bianca#st:CleaningStuff
+:CleaningStuff rdf:type owl:Class .
+
+
+###  http://example.com/kad2017/bianca/AcademicStaffMember
+st:AcademicStaffMember rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty st:Teaches ;
+                                             owl:someValuesFrom st:Course
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty st:hasEarned ;
+                                             owl:someValuesFrom st:Degree
+                                           ] ;
+                       rdfs:subClassOf st:StaffMember ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty st:needs ;
+                                         owl:someValuesFrom st:Degree
+                                       ] .
+
+
+###  http://example.com/kad2017/bianca/AssistantProfessor
+st:AssistantProfessor rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty st:hasStudiedAt ;
+                                            owl:someValuesFrom st:University
+                                          ] ;
+                      rdfs:subClassOf st:AcademicStaffMember ;
+                      owl:disjointWith st:StudentAssistent .
+
+
+###  http://example.com/kad2017/bianca/Cleaner
+st:Cleaner rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty st:Cleanes ;
+                                 owl:someValuesFrom st:University
+                               ] ;
+           rdfs:subClassOf st:StaffMember ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty st:hasToHave ;
+                             owl:someValuesFrom :CleaningStuff
+                           ] .
+
+
+###  http://example.com/kad2017/bianca/Computers
+st:Computers rdf:type owl:Class .
+
+
+###  http://example.com/kad2017/bianca/Course
+st:Course rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty st:isTaughtBy ;
+                                owl:someValuesFrom st:AcademicStaffMember
+                              ] .
+
+
+###  http://example.com/kad2017/bianca/Degree
+st:Degree rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :givenTo ;
+                                owl:someValuesFrom st:AcademicStaffMember
+                              ] .
+
+
+###  http://example.com/kad2017/bianca/Grade
+st:Grade rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty st:hasValue ;
+                               owl:minQualifiedCardinality "8"^^xsd:nonNegativeInteger ;
+                               owl:onClass st:Grade8orHigher
+                             ] .
+
+
+###  http://example.com/kad2017/bianca/Grade8orHigher
+st:Grade8orHigher rdf:type owl:Class ;
+                  rdfs:subClassOf st:Grade .
+
+
+###  http://example.com/kad2017/bianca/ITservice
+st:ITservice rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty st:repairsAt ;
+                                   owl:someValuesFrom st:University
+                                 ] ;
+             rdfs:subClassOf st:StaffMember .
+
+
+###  http://example.com/kad2017/bianca/LunchLady
+st:LunchLady rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty st:ServesAt ;
+                                   owl:someValuesFrom st:University
+                                 ] ;
+             rdfs:subClassOf st:StaffMember .
+
+
+###  http://example.com/kad2017/bianca/PeopleAtUni
+st:PeopleAtUni rdf:type owl:Class .
+
+
+###  http://example.com/kad2017/bianca/Professor
+st:Professor rdf:type owl:Class ;
+             rdfs:subClassOf st:AcademicStaffMember ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty st:needs ;
+                               owl:someValuesFrom st:Degree
+                             ] .
+
+
+###  http://example.com/kad2017/bianca/StaffMember
+st:StaffMember rdf:type owl:Class ;
+               rdfs:subClassOf st:PeopleAtUni .
+
+
+###  http://example.com/kad2017/bianca/Student
+st:Student rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty st:TakesPartIn ;
+                                 owl:someValuesFrom st:Course
+                               ] ;
+           rdfs:subClassOf st:PeopleAtUni .
+
+
+###  http://example.com/kad2017/bianca/StudentAssistent
+st:StudentAssistent rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty st:helps ;
+                                          owl:someValuesFrom st:AcademicStaffMember
+                                        ] ;
+                    rdfs:subClassOf st:AcademicStaffMember ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty st:hasToHave ;
+                                      owl:someValuesFrom st:Grade8orHigher
+                                    ] .
+
+
+###  http://example.com/kad2017/bianca/University
+st:University rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty st:CleanedBy ;
+                                    owl:someValuesFrom st:Cleaner
+                                  ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.com/kad2017/bianca#SjaakITMan
+:SjaakITMan rdf:type owl:NamedIndividual ;
+            st:repairsAt st:VU .
+
+
+###  http://example.com/kad2017/bianca/Anjaschoonmaak
+st:Anjaschoonmaak rdf:type owl:NamedIndividual ;
+                  st:Cleanes st:VU .
+
+
+###  http://example.com/kad2017/bianca/BachelorsDegree
+st:BachelorsDegree rdf:type owl:NamedIndividual ,
+                            st:Degree .
+
+
+###  http://example.com/kad2017/bianca/BettyLunch
+st:BettyLunch rdf:type owl:NamedIndividual ;
+              st:ServesAt st:VU .
+
+
+###  http://example.com/kad2017/bianca/Bianca
+st:Bianca rdf:type owl:NamedIndividual ;
+          owl:sameAs st:Lotte ;
+          st:TakesPartIn st:Knowledge_and_Data .
+
+
+###  http://example.com/kad2017/bianca/Knowledge_and_Data
+st:Knowledge_and_Data rdf:type owl:NamedIndividual ;
+                      st:isTaughtBy st:Stefan_S ;
+                      st:taughtAt st:VU .
+
+
+###  http://example.com/kad2017/bianca/Lotte
+st:Lotte rdf:type owl:NamedIndividual .
+
+
+###  http://example.com/kad2017/bianca/Stefan_S
+st:Stefan_S rdf:type owl:NamedIndividual .
+
+
+###  http://example.com/kad2017/bianca/VU
+st:VU rdf:type owl:NamedIndividual ;
+      st:CleanedBy st:Anjaschoonmaak ;
+      st:EarnedBy st:Stefan_S .
+
+
+###  http://example.com/kad2017/bianca/st:MisterCurls
+st:MisterCurls rdf:type owl:NamedIndividual ;
+               st:helps st:Stefan_S .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

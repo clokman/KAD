@@ -1,0 +1,31 @@
+@prefix fb: <https://graph.facebook.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fb:user-594486635 a fb:User ;
+    fb:likes fb:movie-105638652803531,
+        fb:movie-109327925759703,
+        fb:movie-289482145973,
+        fb:movie-32985985640,
+        fb:movie-688257014589959,
+        fb:movie-8305524854 .
+
+fb:movie-105638652803531 a fb:Movie ;
+    fb:name "Fear and Loathing in Las Vegas"@en .
+
+fb:movie-109327925759703 a fb:Movie ;
+    fb:name "Waking Life"@en .
+
+fb:movie-289482145973 a fb:Movie ;
+    fb:name "Human Flight 3D The Movie"@en .
+
+fb:movie-32985985640 a fb:Community ;
+    fb:name "Zeitgeist"@en .
+
+fb:movie-688257014589959 a fb:Movie ;
+    fb:name "Strawman - The Nature Of The Cage"@en .
+
+fb:movie-8305524854 a fb:Movie ;
+    fb:name "The Fountain"@en .

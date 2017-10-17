@@ -1,0 +1,231 @@
+@prefix : <http://www.example.org/louise/family#> .
+@prefix fam: <http://www.example.org/louise/family/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/louise/family> .
+
+<http://www.example.org/louise/family> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/louise/family/isBrotherOf
+fam:isBrotherOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/louise/family/isChildOf
+fam:isChildOf rdf:type owl:ObjectProperty ;
+              owl:inverseOf fam:isParentOf ;
+              rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isDaughterOf
+fam:isDaughterOf rdf:type owl:ObjectProperty ,
+                          owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isFatherOf
+fam:isFatherOf rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isHusbandOf
+fam:isHusbandOf rdf:type owl:ObjectProperty ;
+                owl:inverseOf fam:isWifeOf ;
+                rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isInFamily
+fam:isInFamily rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isMarriedTo
+fam:isMarriedTo rdf:type owl:ObjectProperty ;
+                owl:inverseOf fam:isMarriedTo ;
+                rdf:type owl:SymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isMotherOf
+fam:isMotherOf rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isParentOf
+fam:isParentOf rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty .
+
+
+###  http://www.example.org/louise/family/isSisterOf
+fam:isSisterOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/louise/family/isWifeOf
+fam:isWifeOf rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/louise/family/Daughter
+fam:Daughter rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:isDaughterOf ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass [ rdf:type owl:Class ;
+                                                 owl:unionOf ( fam:Father
+                                                               fam:Mother
+                                                             )
+                                               ]
+                                 ] ;
+             rdfs:subClassOf fam:Female .
+
+
+###  http://www.example.org/louise/family/Family
+fam:Family rdf:type owl:Class .
+
+
+###  http://www.example.org/louise/family/Father
+fam:Father rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isMarriedTo ;
+                                 owl:someValuesFrom fam:Mother
+                               ] ;
+           rdfs:subClassOf fam:Male .
+
+
+###  http://www.example.org/louise/family/Female
+fam:Female rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isMarriedTo ;
+                                 owl:allValuesFrom fam:Male
+                               ] ;
+           rdfs:subClassOf fam:Human ;
+           owl:disjointWith fam:Male .
+
+
+###  http://www.example.org/louise/family/Human
+fam:Human rdf:type owl:Class .
+
+
+###  http://www.example.org/louise/family/Male
+fam:Male rdf:type owl:Class ;
+         rdfs:subClassOf fam:Human .
+
+
+###  http://www.example.org/louise/family/Mother
+fam:Mother rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isMotherOf ;
+                                 owl:someValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( fam:Daughter
+                                                                    fam:Son
+                                                                  )
+                                                    ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isWifeOf ;
+                                 owl:someValuesFrom fam:Father
+                               ] ;
+           rdfs:subClassOf fam:Female .
+
+
+###  http://www.example.org/louise/family/Parent
+fam:Parent rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isParentOf ;
+                                 owl:someValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( fam:Daughter
+                                                                    fam:Son
+                                                                  )
+                                                    ]
+                               ] ;
+           rdfs:subClassOf fam:Human ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty fam:isParentOf ;
+                             owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                             owl:onClass fam:child
+                           ] .
+
+
+###  http://www.example.org/louise/family/Sister
+fam:Sister rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Female
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:isSisterOf ;
+                                                        owl:someValuesFrom fam:child
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isSisterOf ;
+                                 owl:someValuesFrom fam:Human
+                               ] .
+
+
+###  http://www.example.org/louise/family/Son
+fam:Son rdf:type owl:Class ;
+        rdfs:subClassOf fam:Male .
+
+
+###  http://www.example.org/louise/family/child
+fam:child rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty fam:isChildOf ;
+                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                     owl:unionOf ( fam:Father
+                                                                   fam:Mother
+                                                                 )
+                                                   ]
+                              ] ;
+          rdfs:subClassOf fam:Human .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/louise/family/John
+fam:John rdf:type owl:NamedIndividual ,
+                  fam:Human ;
+         fam:isInFamily fam:Smith ;
+         fam:isMarriedTo fam:Mary .
+
+
+###  http://www.example.org/louise/family/Lisa
+fam:Lisa rdf:type owl:NamedIndividual ,
+                  fam:Daughter ,
+                  fam:Human ,
+                  owl:Thing ;
+         fam:isChildOf fam:John ;
+         fam:isSisterOf fam:Mike .
+
+
+###  http://www.example.org/louise/family/Mary
+fam:Mary rdf:type owl:NamedIndividual ,
+                  fam:Human ;
+         fam:isMotherOf fam:Lisa ;
+         fam:isWifeOf fam:John .
+
+
+###  http://www.example.org/louise/family/Mike
+fam:Mike rdf:type owl:NamedIndividual ,
+                  fam:Human ;
+         fam:isBrotherOf fam:Lisa ;
+         fam:isChildOf fam:Mary .
+
+
+###  http://www.example.org/louise/family/Smith
+fam:Smith rdf:type owl:NamedIndividual ,
+                   fam:Family .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

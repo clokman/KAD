@@ -1,0 +1,44 @@
+# endpoint: http://bnb.data.bl.uk/sparql
+
+# Unused prefixes: 
+# PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+# PREFIX dc: <http://purl.org/dc/elements/1.1/>
+# PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+# PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+# PREFIX bibo: <http://purl.org/ontology/bibo/>
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX blt: <http://www.bl.uk/schemas/bibliographic/blterms#>
+PREFIX : <http://clokman.com/ontologies/scientific-research#>
+
+
+CONSTRUCT {
+   # Properties in the ORIGINAL dataset 
+   ?contributor :workedOnProject ?project .
+   ?resource :hasAuthor ?author .
+
+   # Define instances
+   ?contributor rdf:type owl:NamedIndividual .
+   ?project rdf:type owl:NamedIndividual .
+   ?author rdf:type owl:NamedIndividual .
+   ?resource rdf:type owl:NamedIndividual .
+   ?institution rdf:type owl:NamedIndividual .
+
+   # Define properties
+   :workedOnProject rdf:type owl:ObjectProperty .
+   :hasAuthor rdf:type owl:ObjectProperty .
+
+   # Define classes
+   :Institution rdf:type owl:Class .
+   ?institution rdf:type :Institution .
+} 
+WHERE {
+   # Properties in the NEW dataset
+   OPTIONAL {?project dct:contributor ?contributor .}
+   OPTIONAL {?resource dct:creator ?author .}
+   OPTIONAL {?resource1 blt:publication ?institution .}
+}
+LIMIT 2000

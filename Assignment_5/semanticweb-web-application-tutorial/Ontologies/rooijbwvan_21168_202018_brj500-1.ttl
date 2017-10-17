@@ -1,0 +1,193 @@
+@prefix : <http://www.example.org/barend/university#> .
+@prefix un: <http://www.example.org/barend/university/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/barend/university> .
+
+<http://www.example.org/barend/university> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/barend/university/CourseLanguageIs
+un:CourseLanguageIs rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/barend/university/Follows
+un:Follows rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/barend/university/HasRoom
+un:HasRoom rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/barend/university/PartOf
+un:PartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/barend/university/PartOfFacultie
+un:PartOfFacultie rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/barend/university/PartOfStudy
+un:PartOfStudy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/barend/university/RoomIn
+un:RoomIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/barend/university/TaughtIn
+un:TaughtIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/barend/university/Teaches
+un:Teaches rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/barend/university/Building
+un:Building rdf:type owl:Class .
+
+
+###  http://www.example.org/barend/university/Courses
+un:Courses rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty un:CourseLanguageIs ;
+                                 owl:someValuesFrom un:Language
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty un:TaughtIn ;
+                                 owl:someValuesFrom un:Room
+                               ] .
+
+
+###  http://www.example.org/barend/university/Employee
+un:Employee rdf:type owl:Class ;
+            rdfs:subClassOf un:Person .
+
+
+###  http://www.example.org/barend/university/Facultie
+un:Facultie rdf:type owl:Class .
+
+
+###  http://www.example.org/barend/university/Language
+un:Language rdf:type owl:Class .
+
+
+###  http://www.example.org/barend/university/Lecturer
+un:Lecturer rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty un:Teaches ;
+                                  owl:someValuesFrom un:Courses
+                                ] ;
+            rdfs:subClassOf un:Person .
+
+
+###  http://www.example.org/barend/university/Person
+un:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/barend/university/Room
+un:Room rdf:type owl:Class ;
+        rdfs:subClassOf un:Building .
+
+
+###  http://www.example.org/barend/university/Student
+un:Student rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty un:Follows ;
+                                 owl:someValuesFrom un:Courses
+                               ] ;
+           rdfs:subClassOf un:Person .
+
+
+###  http://www.example.org/barend/university/Study
+un:Study rdf:type owl:Class .
+
+
+###  http://www.example.org/barend/university/University
+un:University rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/barend/university/Computer_Science
+un:Computer_Science rdf:type owl:NamedIndividual ,
+                             un:Facultie ;
+                    un:PartOf un:Vrije_universteit .
+
+
+###  http://www.example.org/barend/university/D.111
+un:D.111 rdf:type owl:NamedIndividual ,
+                  un:Room ;
+         un:RoomIn un:Science_park .
+
+
+###  http://www.example.org/barend/university/Data_and_Knowledge
+un:Data_and_Knowledge rdf:type owl:NamedIndividual ,
+                               un:Courses ;
+                      un:PartOfFacultie un:Computer_Science ;
+                      un:PartOfStudy un:Information_science .
+
+
+###  http://www.example.org/barend/university/Dutch
+un:Dutch rdf:type owl:NamedIndividual ,
+                  un:Language .
+
+
+###  http://www.example.org/barend/university/English
+un:English rdf:type owl:NamedIndividual ,
+                    un:Language .
+
+
+###  http://www.example.org/barend/university/English_language
+un:English_language rdf:type owl:NamedIndividual ,
+                             un:Courses ;
+                    un:CourseLanguageIs un:English .
+
+
+###  http://www.example.org/barend/university/Freek_Snel
+un:Freek_Snel rdf:type owl:NamedIndividual ,
+                       un:Person ;
+              un:Teaches un:English_language .
+
+
+###  http://www.example.org/barend/university/Information_science
+un:Information_science rdf:type owl:NamedIndividual ,
+                                un:Study .
+
+
+###  http://www.example.org/barend/university/Jan_KLaassen
+un:Jan_KLaassen rdf:type owl:NamedIndividual ,
+                         un:Person ;
+                un:Follows un:English_language .
+
+
+###  http://www.example.org/barend/university/Science_park
+un:Science_park rdf:type owl:NamedIndividual ,
+                         un:Building .
+
+
+###  http://www.example.org/barend/university/Universiteit_van_Amsterdam
+un:Universiteit_van_Amsterdam rdf:type owl:NamedIndividual ,
+                                       un:University .
+
+
+###  http://www.example.org/barend/university/Vrije_universteit
+un:Vrije_universteit rdf:type owl:NamedIndividual ,
+                              un:University .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

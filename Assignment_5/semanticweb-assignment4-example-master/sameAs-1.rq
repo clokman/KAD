@@ -1,0 +1,10 @@
+PREFIX fb: <https://graph.facebook.com/> 
+PREFIX imdb: <http://www.imdb.com/>
+
+SELECT ?actor WHERE {
+	fb:user-594486635 fb:likes ?movie .
+	?movie imdb:actor ?actor .
+}
+
+
+

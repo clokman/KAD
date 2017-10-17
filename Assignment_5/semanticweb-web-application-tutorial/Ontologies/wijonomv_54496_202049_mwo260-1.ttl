@@ -1,0 +1,1908 @@
+@prefix : <http://www.example.org/eastasianculture#> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix eac: <http://www.example.org/eastasianculture/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/eastasianculture> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/eastasianculture/belongsToCategory
+
+eac:belongsToCategory a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:containsSport ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/belongsToGenre
+
+eac:belongsToGenre a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:containsSong .
+# 
+# http://www.example.org/eastasianculture/consistsOf
+
+eac:consistsOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:contains ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/contains
+
+eac:contains a owl:ObjectProperty .
+# 
+# http://www.example.org/eastasianculture/containsSong
+
+eac:containsSong a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:contains .
+# 
+# http://www.example.org/eastasianculture/containsSport
+
+eac:containsSport a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:contains ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasAncestor
+
+eac:hasAncestor a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	a owl:TransitiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasAthlete
+
+eac:hasAthlete a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isAPractitionerIn ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasBeverage
+
+eac:hasBeverage a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isABeverageFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasCapital
+
+eac:hasCapital a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isCapitalFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasCompose
+
+eac:hasCompose a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isComposedBy .
+# 
+# http://www.example.org/eastasianculture/hasCurrency
+
+eac:hasCurrency a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isCurrencyFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasDaughter
+
+eac:hasDaughter a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:hasDescendant ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	owl:propertyDisjointWith eac:hasSon .
+# 
+# http://www.example.org/eastasianculture/hasDescendant
+
+eac:hasDescendant a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	a owl:TransitiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasDish
+
+eac:hasDish a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isADishFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasFather
+
+eac:hasFather a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:hasAncestor , eac:hasParent ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	owl:propertyDisjointWith eac:hasMother .
+# 
+# http://www.example.org/eastasianculture/hasMedalist
+
+eac:hasMedalist a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:hasWonChampionship ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasMother
+
+eac:hasMother a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:hasAncestor , eac:hasParent ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasNationalAnthem
+
+eac:hasNationalAnthem a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isNationalAnthemFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasOfficialLanguage
+
+eac:hasOfficialLanguage a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isOfficialLanguageFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasOriginalName
+
+eac:hasOriginalName a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isOriginalNameFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasParent
+
+eac:hasParent a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo .
+# 
+# http://www.example.org/eastasianculture/hasSon
+
+eac:hasSon a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:hasDescendant ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasSong
+
+eac:hasSong a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isASongFrom .
+# 
+# http://www.example.org/eastasianculture/hasSport
+
+eac:hasSport a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isASportOriginatedIn ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/hasSung
+
+eac:hasSung a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	owl:inverseOf eac:isSungBy .
+# 
+# http://www.example.org/eastasianculture/hasWonChampionship
+
+eac:hasWonChampionship a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isABeverageFrom
+
+eac:isABeverageFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isADishFrom
+
+eac:isADishFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isAPractitionerIn
+
+eac:isAPractitionerIn a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isASongFrom
+
+eac:isASongFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom .
+# 
+# http://www.example.org/eastasianculture/isASportOriginatedIn
+
+eac:isASportOriginatedIn a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isCapitalFrom
+
+eac:isCapitalFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isClassifiedAs
+
+eac:isClassifiedAs a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# http://www.example.org/eastasianculture/isComposedBy
+
+eac:isComposedBy a owl:ObjectProperty .
+# 
+# http://www.example.org/eastasianculture/isCurrencyFrom
+
+eac:isCurrencyFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isFrom
+
+eac:isFrom a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# http://www.example.org/eastasianculture/isMarriedTo
+
+eac:isMarriedTo a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isRelatedTo ;
+	a owl:SymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isNationalAnthemFrom
+
+eac:isNationalAnthemFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isOfficialLanguageFrom
+
+eac:isOfficialLanguageFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isOriginalNameFrom
+
+eac:isOriginalNameFrom a owl:ObjectProperty ;
+	rdfs:subPropertyOf eac:isFrom ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/isProudOf
+
+eac:isProudOf a owl:ObjectProperty .
+# 
+# http://www.example.org/eastasianculture/isRelatedTo
+
+eac:isRelatedTo a owl:ObjectProperty .
+# 
+# http://www.example.org/eastasianculture/isSungBy
+
+eac:isSungBy a owl:ObjectProperty .
+# 
+# http://www.example.org/eastasianculture/useEquipment
+
+eac:useEquipment a owl:ObjectProperty ;
+	owl:inverseOf eac:useInSport ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/eastasianculture/useInSport
+
+eac:useInSport a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/eastasianculture/Athlete
+
+eac:Athlete a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 owl:intersectionOf _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first eac:Person ;
+	rdf:rest _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty eac:isAPractitionerIn ;
+	owl:someValuesFrom eac:Sport .
+
+_:genid2 rdf:rest rdf:nil .
+
+_:genid1 a owl:Class .
+
+eac:Athlete rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/Beverage
+
+eac:Beverage a owl:Class ;
+	owl:equivalentClass _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty eac:isABeverageFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:Beverage rdfs:subClassOf eac:Cuisine , _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty eac:isClassifiedAs ;
+	owl:hasValue eac:Asian_Beverage .
+# 
+# http://www.example.org/eastasianculture/Capital
+
+eac:Capital a owl:Class ;
+	owl:equivalentClass _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty eac:isCapitalFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:Capital rdfs:subClassOf eac:Country .
+# 
+# http://www.example.org/eastasianculture/Championships
+
+eac:Championships a owl:Class .
+# 
+# http://www.example.org/eastasianculture/Child
+
+eac:Child a owl:Class ;
+	owl:equivalentClass _:genid8 .
+
+_:genid8 a owl:Class ;
+	owl:unionOf _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first _:genid12 .
+
+_:genid12 a owl:Restriction ;
+	owl:onProperty eac:hasFather ;
+	owl:someValuesFrom eac:Male .
+
+_:genid11 rdf:rest _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first _:genid10 .
+
+_:genid10 a owl:Restriction ;
+	owl:onProperty eac:hasMother ;
+	owl:someValuesFrom eac:Female .
+
+_:genid9 rdf:rest rdf:nil .
+
+eac:Child rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/Clothing
+
+eac:Clothing a owl:Class ;
+	rdfs:subClassOf eac:SportEquipment .
+# 
+# http://www.example.org/eastasianculture/Composer
+
+eac:Composer a owl:Class ;
+	rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/Country
+
+eac:Country a owl:Class ;
+	owl:equivalentClass _:genid13 .
+
+_:genid13 owl:intersectionOf _:genid16 .
+
+_:genid16 a rdf:List ;
+	rdf:first _:genid17 .
+
+_:genid17 a owl:Restriction ;
+	owl:onProperty eac:hasOfficialLanguage ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass eac:OfficialLanguage .
+
+_:genid16 rdf:rest _:genid14 .
+
+_:genid14 a rdf:List ;
+	rdf:first _:genid15 .
+
+_:genid15 a owl:Restriction ;
+	owl:onProperty eac:hasCapital ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass eac:Capital .
+
+_:genid14 rdf:rest rdf:nil .
+
+_:genid13 a owl:Class .
+# 
+# http://www.example.org/eastasianculture/Cuisine
+
+eac:Cuisine a owl:Class ;
+	owl:disjointUnionOf _:genid19 .
+
+_:genid19 a rdf:List ;
+	rdf:first eac:Beverage ;
+	rdf:rest _:genid18 .
+
+_:genid18 a rdf:List ;
+	rdf:first eac:Food ;
+	rdf:rest rdf:nil .
+# 
+# http://www.example.org/eastasianculture/Currency
+
+eac:Currency a owl:Class ;
+	owl:equivalentClass _:genid20 .
+
+_:genid20 a owl:Restriction ;
+	owl:onProperty eac:isCurrencyFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:Currency rdfs:subClassOf eac:Country .
+# 
+# http://www.example.org/eastasianculture/DifferentClassification
+
+eac:DifferentClassification a owl:Class ;
+	rdfs:subClassOf eac:SportCategory .
+# 
+# http://www.example.org/eastasianculture/Female
+
+eac:Female a owl:Class ;
+	rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/Food
+
+eac:Food a owl:Class ;
+	owl:equivalentClass _:genid21 .
+
+_:genid21 a owl:Restriction ;
+	owl:onProperty eac:isADishFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:Food rdfs:subClassOf eac:Cuisine , _:genid22 .
+
+_:genid22 a owl:Restriction ;
+	owl:onProperty eac:isClassifiedAs ;
+	owl:hasValue eac:Asian_Food .
+
+eac:Food owl:disjointUnionOf _:genid25 .
+
+_:genid25 a rdf:List ;
+	rdf:first eac:Noodles ;
+	rdf:rest _:genid24 .
+
+_:genid24 a rdf:List ;
+	rdf:first eac:Rice ;
+	rdf:rest _:genid23 .
+
+_:genid23 a rdf:List ;
+	rdf:first eac:Sweets ;
+	rdf:rest rdf:nil .
+# 
+# http://www.example.org/eastasianculture/Genre
+
+eac:Genre a owl:Class ;
+	owl:equivalentClass _:genid26 .
+
+_:genid26 a owl:Restriction ;
+	owl:onProperty eac:containsSong ;
+	owl:someValuesFrom eac:Song .
+
+eac:Genre rdfs:subClassOf eac:Music .
+# 
+# http://www.example.org/eastasianculture/GoldMedalist
+
+eac:GoldMedalist a owl:Class ;
+	owl:equivalentClass _:genid27 .
+
+_:genid27 owl:intersectionOf _:genid30 .
+
+_:genid30 a rdf:List ;
+	rdf:first _:genid31 .
+
+_:genid31 a owl:Restriction ;
+	owl:onProperty eac:hasWonChampionship ;
+	owl:allValuesFrom eac:Championships .
+
+_:genid30 rdf:rest _:genid28 .
+
+_:genid28 a rdf:List ;
+	rdf:first _:genid29 .
+
+_:genid29 a owl:Restriction ;
+	owl:onProperty eac:hasWonChampionship ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass eac:Championships .
+
+_:genid28 rdf:rest rdf:nil .
+
+_:genid27 a owl:Class .
+
+eac:GoldMedalist rdfs:subClassOf eac:Athlete , _:genid32 .
+
+_:genid32 a owl:Restriction ;
+	owl:onProperty eac:isProudOf ;
+	owl:hasSelf "true"^^xsd:boolean .
+# 
+# http://www.example.org/eastasianculture/Group_Band
+
+eac:Group_Band a owl:Class ;
+	rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/Male
+
+eac:Male a owl:Class ;
+	rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/MindSports
+
+eac:MindSports a owl:Class ;
+	rdfs:subClassOf eac:SportCategory .
+# 
+# http://www.example.org/eastasianculture/Music
+
+eac:Music a owl:Class .
+# 
+# http://www.example.org/eastasianculture/NationalAnthem
+
+eac:NationalAnthem a owl:Class ;
+	owl:equivalentClass _:genid33 .
+
+_:genid33 a owl:Restriction ;
+	owl:onProperty eac:isNationalAnthemFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:NationalAnthem rdfs:subClassOf eac:Country .
+# 
+# http://www.example.org/eastasianculture/Noodles
+
+eac:Noodles a owl:Class ;
+	rdfs:subClassOf eac:Food .
+# 
+# http://www.example.org/eastasianculture/OfficialLanguage
+
+eac:OfficialLanguage a owl:Class ;
+	owl:equivalentClass _:genid34 .
+
+_:genid34 a owl:Restriction ;
+	owl:onProperty eac:isOfficialLanguageFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:OfficialLanguage rdfs:subClassOf eac:Country .
+# 
+# http://www.example.org/eastasianculture/OlympicSport
+
+eac:OlympicSport a owl:Class ;
+	owl:equivalentClass _:genid35 .
+
+_:genid35 a owl:Restriction ;
+	owl:onProperty eac:consistsOf ;
+	owl:someValuesFrom eac:Sport .
+# 
+# http://www.example.org/eastasianculture/OriginalName
+
+eac:OriginalName a owl:Class ;
+	owl:equivalentClass _:genid36 .
+
+_:genid36 a owl:Restriction ;
+	owl:onProperty eac:isOriginalNameFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:OriginalName rdfs:subClassOf eac:Country .
+# 
+# http://www.example.org/eastasianculture/Parent
+
+eac:Parent a owl:Class ;
+	owl:equivalentClass _:genid37 .
+
+_:genid37 a owl:Class ;
+	owl:unionOf _:genid40 .
+
+_:genid40 a rdf:List ;
+	rdf:first _:genid41 .
+
+_:genid41 a owl:Restriction ;
+	owl:onProperty eac:hasDaughter ;
+	owl:someValuesFrom eac:Female .
+
+_:genid40 rdf:rest _:genid38 .
+
+_:genid38 a rdf:List ;
+	rdf:first _:genid39 .
+
+_:genid39 a owl:Restriction ;
+	owl:onProperty eac:hasSon ;
+	owl:someValuesFrom eac:Male .
+
+_:genid38 rdf:rest rdf:nil .
+
+eac:Parent rdfs:subClassOf eac:Person .
+# 
+# http://www.example.org/eastasianculture/Person
+
+eac:Person a owl:Class ;
+	owl:disjointUnionOf _:genid43 .
+
+_:genid43 a rdf:List ;
+	rdf:first eac:Female ;
+	rdf:rest _:genid42 .
+
+_:genid42 a rdf:List ;
+	rdf:first eac:Male ;
+	rdf:rest rdf:nil .
+# 
+# http://www.example.org/eastasianculture/PhysicalSports
+
+eac:PhysicalSports a owl:Class ;
+	rdfs:subClassOf eac:SportCategory .
+# 
+# http://www.example.org/eastasianculture/Rice
+
+eac:Rice a owl:Class ;
+	rdfs:subClassOf eac:Food .
+# 
+# http://www.example.org/eastasianculture/Singer
+
+eac:Singer a owl:Class ;
+	rdfs:subClassOf eac:Group_Band .
+# 
+# http://www.example.org/eastasianculture/Song
+
+eac:Song a owl:Class ;
+	owl:equivalentClass _:genid44 .
+
+_:genid44 a owl:Class ;
+	owl:unionOf _:genid47 .
+
+_:genid47 a rdf:List ;
+	rdf:first _:genid48 .
+
+_:genid48 a owl:Restriction ;
+	owl:onProperty eac:isSungBy ;
+	owl:someValuesFrom eac:Group_Band .
+
+_:genid47 rdf:rest _:genid45 .
+
+_:genid45 a rdf:List ;
+	rdf:first _:genid46 .
+
+_:genid46 a owl:Restriction ;
+	owl:onProperty eac:isSungBy ;
+	owl:someValuesFrom eac:Singer .
+
+_:genid45 rdf:rest rdf:nil .
+
+eac:Song owl:equivalentClass _:genid49 .
+
+_:genid49 a owl:Restriction ;
+	owl:onProperty eac:isASongFrom ;
+	owl:someValuesFrom eac:Country .
+
+eac:Song owl:equivalentClass _:genid50 .
+
+_:genid50 a owl:Restriction ;
+	owl:onProperty eac:isComposedBy ;
+	owl:someValuesFrom eac:Composer .
+
+eac:Song rdfs:subClassOf eac:Music .
+# 
+# http://www.example.org/eastasianculture/Sport
+
+eac:Sport a owl:Class ;
+	owl:equivalentClass _:genid51 .
+
+_:genid51 a owl:Restriction ;
+	owl:onProperty eac:belongsToCategory ;
+	owl:someValuesFrom eac:SportCategory .
+
+eac:Sport owl:equivalentClass _:genid52 .
+
+_:genid52 a owl:Restriction ;
+	owl:onProperty eac:isASportOriginatedIn ;
+	owl:allValuesFrom eac:Country .
+# 
+# http://www.example.org/eastasianculture/SportCategory
+
+eac:SportCategory a owl:Class ;
+	owl:disjointUnionOf _:genid55 .
+
+_:genid55 a rdf:List ;
+	rdf:first eac:DifferentClassification ;
+	rdf:rest _:genid54 .
+
+_:genid54 a rdf:List ;
+	rdf:first eac:MindSports ;
+	rdf:rest _:genid53 .
+
+_:genid53 a rdf:List ;
+	rdf:first eac:PhysicalSports ;
+	rdf:rest rdf:nil .
+# 
+# http://www.example.org/eastasianculture/SportEquipment
+
+eac:SportEquipment a owl:Class ;
+	owl:equivalentClass _:genid56 .
+
+_:genid56 a owl:Restriction ;
+	owl:onProperty eac:useInSport ;
+	owl:someValuesFrom eac:Sport .
+
+eac:SportEquipment owl:disjointUnionOf _:genid58 .
+
+_:genid58 a rdf:List ;
+	rdf:first eac:Clothing ;
+	rdf:rest _:genid57 .
+
+_:genid57 a rdf:List ;
+	rdf:first eac:Weapon ;
+	rdf:rest rdf:nil .
+# 
+# http://www.example.org/eastasianculture/Sweets
+
+eac:Sweets a owl:Class ;
+	rdfs:subClassOf eac:Food .
+# 
+# http://www.example.org/eastasianculture/Weapon
+
+eac:Weapon a owl:Class ;
+	rdfs:subClassOf eac:SportEquipment .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://dbpedia.org/resource/China
+
+dbr:China a owl:NamedIndividual , eac:Country .
+# 
+# http://dbpedia.org/resource/Japan
+
+dbr:Japan a owl:NamedIndividual , eac:Country .
+# 
+# http://dbpedia.org/resource/Mongolia
+
+dbr:Mongolia a owl:NamedIndividual , eac:Country .
+# 
+# http://dbpedia.org/resource/North_Korea
+
+dbr:North_Korea a owl:NamedIndividual , eac:Country .
+# 
+# http://dbpedia.org/resource/South_Korea
+
+dbr:South_Korea a owl:NamedIndividual , eac:Country .
+# 
+# http://dbpedia.org/resource/Taiwan
+
+dbr:Taiwan a owl:NamedIndividual , eac:Country .
+# 
+# http://www.example.org/eastasianculture/AKB48
+
+eac:AKB48 a owl:NamedIndividual , eac:Group_Band ;
+	eac:hasSung eac:Aitakatta , eac:Kimi_wa_melody .
+# 
+# http://www.example.org/eastasianculture/A_Fairy_Tale
+
+eac:A_Fairy_Tale a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Aegukga
+
+eac:Aegukga a owl:NamedIndividual ;
+	eac:isNationalAnthemFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Aegukka
+
+eac:Aegukka a owl:NamedIndividual ;
+	eac:isNationalAnthemFrom dbr:North_Korea .
+# 
+# http://www.example.org/eastasianculture/Aikido
+
+eac:Aikido a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Aitakatta
+
+eac:Aitakatta a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Aki_No_Tsuki
+
+eac:Aki_No_Tsuki a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Archery
+
+eac:Archery a owl:NamedIndividual , eac:PhysicalSports .
+# 
+# http://www.example.org/eastasianculture/Arthur_Smith
+
+eac:Arthur_Smith a owl:NamedIndividual , eac:Male ;
+	eac:hasSon eac:James_Smith .
+# 
+# http://www.example.org/eastasianculture/Asian_Beverage
+
+eac:Asian_Beverage a owl:NamedIndividual .
+# 
+# http://www.example.org/eastasianculture/Asian_Food
+
+eac:Asian_Food a owl:NamedIndividual .
+# 
+# http://www.example.org/eastasianculture/Ba_Wan
+
+eac:Ba_Wan a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/BallOverNetGames
+
+eac:BallOverNetGames a owl:NamedIndividual , eac:PhysicalSports .
+# 
+# http://www.example.org/eastasianculture/Bansh
+
+eac:Bansh a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Beijing
+
+eac:Beijing a owl:NamedIndividual ;
+	eac:isCapitalFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Bibimbap
+
+eac:Bibimbap a owl:NamedIndividual ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Blossoms
+
+eac:Blossoms a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Bokken
+
+eac:Bokken a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Aikido .
+# 
+# http://www.example.org/eastasianculture/Bokuto
+
+eac:Bokuto a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Bubble_tea
+
+eac:Bubble_tea a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Bulgogi
+
+eac:Bulgogi a owl:NamedIndividual ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Buuz
+
+eac:Buuz a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Carsick_Cars
+
+eac:Carsick_Cars a owl:NamedIndividual , eac:Group_Band ;
+	eac:hasSung eac:Guang_Chang , eac:Zhong_Nan_Hai .
+# 
+# http://www.example.org/eastasianculture/Chinggis_vodka
+
+eac:Chinggis_vodka a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Chiyomaru_Kazuki
+
+eac:Chiyomaru_Kazuki a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Sumo .
+# 
+# http://www.example.org/eastasianculture/Cho_Hyangmi
+
+eac:Cho_Hyangmi a owl:NamedIndividual , eac:Female , eac:GoldMedalist ;
+	eac:hasWonChampionship eac:World_Taekwondo_Championships ;
+	eac:isAPractitionerIn eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Choi_Hong_Hi
+
+eac:Choi_Hong_Hi a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Choi_Yeonho
+
+eac:Choi_Yeonho a owl:NamedIndividual , eac:GoldMedalist , eac:Male ;
+	eac:hasWonChampionship eac:World_Taekwondo_Championships ;
+	eac:isAPractitionerIn eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Chokpal
+
+eac:Chokpal a owl:NamedIndividual ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Chosŏn_Minjujuŭi_Inmin_Konghwaguk
+
+eac:Chosŏn_Minjujuŭi_Inmin_Konghwaguk a owl:NamedIndividual ;
+	eac:isOriginalNameFrom dbr:North_Korea .
+# 
+# http://www.example.org/eastasianculture/CombatSports
+
+eac:CombatSports a owl:NamedIndividual , eac:PhysicalSports .
+# 
+# http://www.example.org/eastasianculture/Counters
+
+eac:Counters a owl:NamedIndividual ;
+	eac:useInSport eac:Mahjong .
+# 
+# http://www.example.org/eastasianculture/DIA
+
+eac:DIA a owl:NamedIndividual , eac:Group_Band ;
+	eac:hasSung eac:Highway_Romance , eac:Will_You_Go_Out_With_Me .
+# 
+# http://www.example.org/eastasianculture/Daehan_Minguk
+
+eac:Daehan_Minguk a owl:NamedIndividual ;
+	eac:isOriginalNameFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Danbong
+
+eac:Danbong a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Hapkido .
+# 
+# http://www.example.org/eastasianculture/Dice
+
+eac:Dice a owl:NamedIndividual ;
+	eac:useInSport eac:Mahjong .
+# 
+# http://www.example.org/eastasianculture/Dobok
+
+eac:Dobok a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Dorayaki
+
+eac:Dorayaki a owl:NamedIndividual , eac:Sweets ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Dumplings
+
+eac:Dumplings a owl:NamedIndividual ;
+	eac:isADishFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Electronic
+
+eac:Electronic a owl:NamedIndividual ;
+	eac:containsSong eac:A_Fairy_Tale , eac:Love_Train , eac:The_Red_Shoes .
+# 
+# http://www.example.org/eastasianculture/Eternal_Blaze
+
+eac:Eternal_Blaze a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Flow
+
+eac:Flow a owl:NamedIndividual , eac:Group_Band ;
+	eac:hasSung eac:GO , eac:Remember .
+# 
+# http://www.example.org/eastasianculture/Folk_music
+
+eac:Folk_music a owl:NamedIndividual ;
+	eac:containsSong eac:Aki_No_Tsuki , eac:Blossoms , eac:Garden_Rain , eac:Kojo_No_Tsuki , eac:November_Steps , eac:The_Moon_Over_a_Ruined_Castle , eac:Toward_the_Sea , eac:Valeria .
+# 
+# http://www.example.org/eastasianculture/Football
+
+eac:Football a owl:NamedIndividual , eac:PhysicalSports .
+# 
+# http://www.example.org/eastasianculture/Formosan_languages
+
+eac:Formosan_languages a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/GO
+
+eac:GO a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Gakgung
+
+eac:Gakgung a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Gungdo .
+# 
+# http://www.example.org/eastasianculture/Garden_Rain
+
+eac:Garden_Rain a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Gateball
+
+eac:Gateball a owl:NamedIndividual ;
+	eac:belongsToCategory eac:TeamSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Gichin_Funakoshi
+
+eac:Gichin_Funakoshi a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Karate .
+# 
+# http://www.example.org/eastasianculture/Gimbap
+
+eac:Gimbap a owl:NamedIndividual , eac:Rice ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Ginger_tea
+
+eac:Ginger_tea a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Giriko
+
+eac:Giriko a owl:NamedIndividual ;
+	eac:useInSport eac:Kyudo .
+# 
+# http://www.example.org/eastasianculture/Gote
+
+eac:Gote a owl:NamedIndividual ;
+	eac:useInSport eac:Shogi .
+# 
+# http://www.example.org/eastasianculture/Gua_Bao
+
+eac:Gua_Bao a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Guang_Chang
+
+eac:Guang_Chang a owl:NamedIndividual ;
+	eac:isASongFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Gungdo
+
+eac:Gungdo a owl:NamedIndividual ;
+	eac:belongsToCategory eac:Archery ;
+	eac:isASportOriginatedIn dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Hakama
+
+eac:Hakama a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Hana_Ichi_Monme
+
+eac:Hana_Ichi_Monme a owl:NamedIndividual ;
+	eac:belongsToCategory eac:TagGames ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Hanabi
+
+eac:Hanabi a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Hapkido
+
+eac:Hapkido a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Hideichi_Nagaoka
+
+eac:Hideichi_Nagaoka a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Judo .
+# 
+# http://www.example.org/eastasianculture/Highway_Romance
+
+eac:Highway_Romance a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Hip_Hop
+
+eac:Hip_Hop a owl:NamedIndividual ;
+	eac:containsSong eac:A_Fairy_Tale , eac:Love_Train .
+# 
+# http://www.example.org/eastasianculture/Hiroyuki_Miura
+
+eac:Hiroyuki_Miura a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Shogi .
+# 
+# http://www.example.org/eastasianculture/HotPot
+
+eac:HotPot a owl:NamedIndividual ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Ikimono_gakari
+
+eac:Ikimono_gakari a owl:NamedIndividual , eac:Group_Band ;
+	eac:hasSung eac:Hanabi , eac:Kaeritakunatta_yo .
+# 
+# http://www.example.org/eastasianculture/James_Smith
+
+eac:James_Smith a owl:NamedIndividual , eac:Male ;
+	eac:hasDaughter eac:Rose_Smith ;
+	eac:hasFather eac:Arthur_Smith ;
+	eac:hasMother eac:Martha_Dean .
+# 
+# http://www.example.org/eastasianculture/Jangbong
+
+eac:Jangbong a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Hapkido .
+# 
+# http://www.example.org/eastasianculture/Japanese
+
+eac:Japanese a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Jazz
+
+eac:Jazz a owl:NamedIndividual ;
+	eac:containsSong eac:Modern_Times , eac:My_Star , eac:The_Red_Shoes .
+# 
+# http://www.example.org/eastasianculture/Jeon_Somi
+
+eac:Jeon_Somi a owl:NamedIndividual , eac:Female ;
+	eac:hasFather eac:Matthew_Douma ;
+	eac:hasMother eac:Jeon_Sunhee ;
+	eac:isAPractitionerIn eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Jeon_Sunhee
+
+eac:Jeon_Sunhee a owl:NamedIndividual , eac:Female ;
+	eac:hasDaughter eac:Jeon_Somi .
+# 
+# http://www.example.org/eastasianculture/Jianzi
+
+eac:Jianzi a owl:NamedIndividual ;
+	eac:belongsToCategory eac:BallOverNetGames ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Jo
+
+eac:Jo a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Aikido .
+# 
+# http://www.example.org/eastasianculture/Jokgu
+
+eac:Jokgu a owl:NamedIndividual ;
+	eac:belongsToCategory eac:Football ;
+	eac:isASportOriginatedIn dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Judo
+
+eac:Judo a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Jung_Bong
+
+eac:Jung_Bong a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Hapkido .
+# 
+# http://www.example.org/eastasianculture/Kaeritakunatta_yo
+
+eac:Kaeritakunatta_yo a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Kal
+
+eac:Kal a owl:NamedIndividual ;
+	eac:useInSport eac:Hapkido .
+# 
+# http://www.example.org/eastasianculture/Karate
+
+eac:Karate a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Keiko_Fukuda
+
+eac:Keiko_Fukuda a owl:NamedIndividual , eac:Female ;
+	eac:isAPractitionerIn eac:Judo .
+# 
+# http://www.example.org/eastasianculture/Kendo
+
+eac:Kendo a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Kenji_Tomiki
+
+eac:Kenji_Tomiki a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Aikido .
+# 
+# http://www.example.org/eastasianculture/Kento_Kawanari
+
+eac:Kento_Kawanari a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Sumo .
+# 
+# http://www.example.org/eastasianculture/Khuushuur
+
+eac:Khuushuur a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Kim_Yun_Sik
+
+eac:Kim_Yun_Sik a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Hapkido .
+# 
+# http://www.example.org/eastasianculture/Kimchi
+
+eac:Kimchi a owl:NamedIndividual ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Kimi_wa_melody
+
+eac:Kimi_wa_melody a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Kimigayo
+
+eac:Kimigayo a owl:NamedIndividual ;
+	eac:isNationalAnthemFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Kinja
+
+eac:Kinja a owl:NamedIndividual ;
+	eac:useInSport eac:Jianzi .
+# 
+# http://www.example.org/eastasianculture/Kite
+
+eac:Kite a owl:NamedIndividual ;
+	eac:belongsToCategory eac:Windsports ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Kojo_No_Tsuki
+
+eac:Kojo_No_Tsuki a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Korean
+
+eac:Korean a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Kote
+
+eac:Kote a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Kristy_Moriarty
+
+eac:Kristy_Moriarty a owl:NamedIndividual , eac:Female ;
+	eac:hasDaughter eac:Rose_Smith ;
+	eac:isMarriedTo eac:James_Smith .
+# 
+# http://www.example.org/eastasianculture/Kungfu
+
+eac:Kungfu a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Kwang_Jo_Choi
+
+eac:Kwang_Jo_Choi a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Kyudo
+
+eac:Kyudo a owl:NamedIndividual ;
+	eac:belongsToCategory eac:Archery ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Kyūzo_Mifune
+
+eac:Kyūzo_Mifune a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Judo .
+# 
+# http://www.example.org/eastasianculture/Laura_Curtis
+
+eac:Laura_Curtis a owl:NamedIndividual , eac:Female ;
+	eac:hasSon eac:Mark_Brown ;
+	eac:isMarriedTo eac:Thomas_Brown .
+# 
+# http://www.example.org/eastasianculture/Lee_Chong_Min
+
+eac:Lee_Chong_Min a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Hapkido .
+# 
+# http://www.example.org/eastasianculture/Lee_Hi
+
+eac:Lee_Hi a owl:NamedIndividual , eac:Singer ;
+	eac:hasSung eac:My_Star .
+# 
+# http://www.example.org/eastasianculture/Lee_Jieun
+
+eac:Lee_Jieun a owl:NamedIndividual , eac:Singer ;
+	eac:hasSung eac:Modern_Times , eac:Nagging , eac:The_Red_Shoes , eac:Through_The_Night .
+# 
+# http://www.example.org/eastasianculture/Lee_Minsoo
+
+eac:Lee_Minsoo a owl:NamedIndividual , eac:Composer ;
+	eac:hasCompose eac:Nagging .
+# 
+# http://www.example.org/eastasianculture/Lim_Seulong
+
+eac:Lim_Seulong a owl:NamedIndividual , eac:Singer ;
+	eac:hasSung eac:Nagging .
+# 
+# http://www.example.org/eastasianculture/Love_Train
+
+eac:Love_Train a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Mahjong
+
+eac:Mahjong a owl:NamedIndividual ;
+	eac:belongsToCategory eac:TableSports ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Mahjong_Tiles
+
+eac:Mahjong_Tiles a owl:NamedIndividual ;
+	eac:useInSport eac:Mahjong .
+# 
+# http://www.example.org/eastasianculture/Mai_Shiina
+
+eac:Mai_Shiina a owl:NamedIndividual , eac:Female ;
+	eac:isAPractitionerIn eac:Karate .
+# 
+# http://www.example.org/eastasianculture/Makgeolli
+
+eac:Makgeolli a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Mallet
+
+eac:Mallet a owl:NamedIndividual ;
+	eac:useInSport eac:Gateball .
+# 
+# http://www.example.org/eastasianculture/Mandarin_Chinese
+
+eac:Mandarin_Chinese a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Mantou
+
+eac:Mantou a owl:NamedIndividual ;
+	eac:isADishFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/March_of_the_Volunteers
+
+eac:March_of_the_Volunteers a owl:NamedIndividual ;
+	eac:isNationalAnthemFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Mark_Brown
+
+eac:Mark_Brown a owl:NamedIndividual , eac:Male ;
+	eac:hasFather eac:Thomas_Brown ;
+	eac:hasMother eac:Laura_Curtis ;
+	eac:hasSon eac:William_Brown .
+# 
+# http://www.example.org/eastasianculture/Martha_Dean
+
+eac:Martha_Dean a owl:NamedIndividual , eac:Female ;
+	eac:hasSon eac:James_Smith ;
+	eac:isMarriedTo eac:Arthur_Smith .
+# 
+# http://www.example.org/eastasianculture/Matcha
+
+eac:Matcha a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Matsumura_Sokon
+
+eac:Matsumura_Sokon a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Karate .
+# 
+# http://www.example.org/eastasianculture/Matthew_Douma
+
+eac:Matthew_Douma a owl:NamedIndividual , eac:Male ;
+	eac:hasDaughter eac:Jeon_Somi .
+# 
+# http://www.example.org/eastasianculture/Mei_You_Ni_Pei_Ban_Zhen_De_Hao_Gu_Dan
+
+eac:Mei_You_Ni_Pei_Ban_Zhen_De_Hao_Gu_Dan a owl:NamedIndividual ;
+	eac:isASongFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Men
+
+eac:Men a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Meng_Ran
+
+eac:Meng_Ran a owl:NamedIndividual , eac:Singer ;
+	eac:hasSung eac:Mei_You_Ni_Pei_Ban_Zhen_De_Hao_Gu_Dan .
+# 
+# http://www.example.org/eastasianculture/Mizuki_Matsumoto
+
+eac:Mizuki_Matsumoto a owl:NamedIndividual , eac:Female ;
+	eac:isAPractitionerIn eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Mochi
+
+eac:Mochi a owl:NamedIndividual , eac:Sweets ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Modern_Times
+
+eac:Modern_Times a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Mongol_uls
+
+eac:Mongol_uls a owl:NamedIndividual ;
+	eac:isOriginalNameFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Mongol_ulsyn_töriin_duulal
+
+eac:Mongol_ulsyn_töriin_duulal a owl:NamedIndividual ;
+	eac:isNationalAnthemFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Mongolian
+
+eac:Mongolian a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Morogake
+
+eac:Morogake a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Kyudo .
+# 
+# http://www.example.org/eastasianculture/My_Star
+
+eac:My_Star a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Mystic_Puzzle
+
+eac:Mystic_Puzzle a owl:NamedIndividual , eac:Group_Band ;
+	eac:hasSung eac:A_Fairy_Tale , eac:Love_Train .
+# 
+# http://www.example.org/eastasianculture/Nagging
+
+eac:Nagging a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Nana_Mizuki
+
+eac:Nana_Mizuki a owl:NamedIndividual , eac:Singer ;
+	eac:hasSung eac:Eternal_Blaze , eac:Wild_Eyes .
+# 
+# http://www.example.org/eastasianculture/Naoya_Ogawa
+
+eac:Naoya_Ogawa a owl:NamedIndividual , eac:Female , eac:GoldMedalist ;
+	eac:hasWonChampionship eac:World_Judo_Championships ;
+	eac:isAPractitionerIn eac:Judo .
+# 
+# http://www.example.org/eastasianculture/National_Anthem_of_the_Republic_of_China
+
+eac:National_Anthem_of_the_Republic_of_China a owl:NamedIndividual ;
+	eac:isNationalAnthemFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/New_Taiwan_dollar
+
+eac:New_Taiwan_dollar a owl:NamedIndividual ;
+	eac:isCurrencyFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Nippon-koku
+
+eac:Nippon-koku a owl:NamedIndividual ;
+	eac:isOriginalNameFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/North_Korean_won
+
+eac:North_Korean_won a owl:NamedIndividual ;
+	eac:isCurrencyFrom dbr:North_Korea .
+# 
+# http://www.example.org/eastasianculture/November_Steps
+
+eac:November_Steps a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Ogawa_Kinnosuke
+
+eac:Ogawa_Kinnosuke a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Pop
+
+eac:Pop a owl:NamedIndividual ;
+	eac:containsSong eac:Aitakatta , eac:Eternal_Blaze , eac:Hanabi , eac:Highway_Romance , eac:Kaeritakunatta_yo , eac:Kimi_wa_melody , eac:Nagging , eac:The_Moon_Represents_My_Heart , eac:The_Red_Shoes , eac:Through_The_Night , eac:Wild_Eyes , eac:Will_You_Go_Out_With_Me .
+# 
+# http://www.example.org/eastasianculture/Pyongyang
+
+eac:Pyongyang a owl:NamedIndividual ;
+	eac:isCapitalFrom dbr:North_Korea .
+# 
+# http://www.example.org/eastasianculture/Qianball
+
+eac:Qianball a owl:NamedIndividual ;
+	eac:belongsToCategory eac:RacquetSport ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Qigong
+
+eac:Qigong a owl:NamedIndividual ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/RacquetSport
+
+eac:RacquetSport a owl:NamedIndividual , eac:PhysicalSports .
+# 
+# http://www.example.org/eastasianculture/Raengmyeon
+
+eac:Raengmyeon a owl:NamedIndividual , eac:Noodles ;
+	eac:isADishFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Ramen
+
+eac:Ramen a owl:NamedIndividual , eac:Noodles ;
+	eac:isADishFrom dbr:Japan , dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Remember
+
+eac:Remember a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Rentarō_Taki
+
+eac:Rentarō_Taki a owl:NamedIndividual , eac:Composer , eac:Male ;
+	eac:hasCompose eac:Aki_No_Tsuki , eac:Blossoms , eac:Kojo_No_Tsuki , eac:The_Moon_Over_a_Ruined_Castle .
+# 
+# http://www.example.org/eastasianculture/Rina_Takeda
+
+eac:Rina_Takeda a owl:NamedIndividual , eac:Female ;
+	eac:isAPractitionerIn eac:Karate .
+# 
+# http://www.example.org/eastasianculture/Rock
+
+eac:Rock a owl:NamedIndividual ;
+	eac:containsSong eac:GO , eac:Guang_Chang , eac:Remember , eac:Zhong_Nan_Hai .
+# 
+# http://www.example.org/eastasianculture/Rose_Smith
+
+eac:Rose_Smith a owl:NamedIndividual , eac:Female ;
+	eac:hasFather eac:James_Smith ;
+	eac:hasMother eac:Kristy_Moriarty ;
+	eac:hasSon eac:William_Brown ;
+	eac:isMarriedTo eac:Mark_Brown .
+# 
+# http://www.example.org/eastasianculture/Saimura_Gorou
+
+eac:Saimura_Gorou a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Sake
+
+eac:Sake a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Sente
+
+eac:Sente a owl:NamedIndividual ;
+	eac:useInSport eac:Shogi .
+# 
+# http://www.example.org/eastasianculture/Seoul
+
+eac:Seoul a owl:NamedIndividual ;
+	eac:isCapitalFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Shinai
+
+eac:Shinai a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/Shochu
+
+eac:Shochu a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Shogi
+
+eac:Shogi a owl:NamedIndividual ;
+	eac:belongsToCategory eac:TableSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Shōzō_Fujii
+
+eac:Shōzō_Fujii a owl:NamedIndividual , eac:GoldMedalist , eac:Male ;
+	eac:hasWonChampionship eac:World_Judo_Championships ;
+	eac:isAPractitionerIn eac:Judo .
+# 
+# http://www.example.org/eastasianculture/Soba
+
+eac:Soba a owl:NamedIndividual , eac:Noodles ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Soju
+
+eac:Soju a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/South_Korean_won
+
+eac:South_Korean_won a owl:NamedIndividual ;
+	eac:isCurrencyFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Standard_Chinese
+
+eac:Standard_Chinese a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/StrategyBoardGames
+
+eac:StrategyBoardGames a owl:NamedIndividual , eac:MindSports .
+# 
+# http://www.example.org/eastasianculture/Sudoku
+
+eac:Sudoku a owl:NamedIndividual ;
+	eac:belongsToCategory eac:StrategyBoardGames ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/SummerSport
+
+eac:SummerSport a owl:NamedIndividual ;
+	eac:consistsOf eac:Judo , eac:Taekwondo .
+# 
+# http://www.example.org/eastasianculture/Sumo
+
+eac:Sumo a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Sushi
+
+eac:Sushi a owl:NamedIndividual , eac:Rice ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Suutei_tsai
+
+eac:Suutei_tsai a owl:NamedIndividual ;
+	eac:isABeverageFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/TableSports
+
+eac:TableSports a owl:NamedIndividual , eac:DifferentClassification .
+# 
+# http://www.example.org/eastasianculture/Taekwondo
+
+eac:Taekwondo a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/TagGames
+
+eac:TagGames a owl:NamedIndividual , eac:PhysicalSports .
+# 
+# http://www.example.org/eastasianculture/TaiChi
+
+eac:TaiChi a owl:NamedIndividual ;
+	eac:isASportOriginatedIn dbr:China , dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Taipei
+
+eac:Taipei a owl:NamedIndividual ;
+	eac:isCapitalFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Taiwanese_Hokkien_Hakka
+
+eac:Taiwanese_Hokkien_Hakka a owl:NamedIndividual ;
+	eac:isOfficialLanguageFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Tanto
+
+eac:Tanto a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Aikido .
+# 
+# http://www.example.org/eastasianculture/Tare
+
+eac:Tare a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Kendo .
+# 
+# http://www.example.org/eastasianculture/TeamSports
+
+eac:TeamSports a owl:NamedIndividual , eac:DifferentClassification .
+# 
+# http://www.example.org/eastasianculture/Tempura
+
+eac:Tempura a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Teresa_Teng
+
+eac:Teresa_Teng a owl:NamedIndividual , eac:Singer ;
+	eac:hasSung eac:The_Moon_Represents_My_Heart .
+# 
+# http://www.example.org/eastasianculture/The_Moon_Over_a_Ruined_Castle
+
+eac:The_Moon_Over_a_Ruined_Castle a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/The_Moon_Represents_My_Heart
+
+eac:The_Moon_Represents_My_Heart a owl:NamedIndividual ;
+	eac:isASongFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/The_Red_Shoes
+
+eac:The_Red_Shoes a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Thomas_Brown
+
+eac:Thomas_Brown a owl:NamedIndividual , eac:Male ;
+	eac:hasSon eac:Mark_Brown .
+# 
+# http://www.example.org/eastasianculture/Through_The_Night
+
+eac:Through_The_Night a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Tofu
+
+eac:Tofu a owl:NamedIndividual ;
+	eac:isADishFrom dbr:China , dbr:North_Korea , dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Tokyo
+
+eac:Tokyo a owl:NamedIndividual ;
+	eac:isCapitalFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Toru_Takemitsu
+
+eac:Toru_Takemitsu a owl:NamedIndividual , eac:Composer ;
+	eac:hasCompose eac:Garden_Rain , eac:November_Steps , eac:Toward_the_Sea , eac:Valeria .
+# 
+# http://www.example.org/eastasianculture/Toward_the_Sea
+
+eac:Toward_the_Sea a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Tteokbokki
+
+eac:Tteokbokki a owl:NamedIndividual , eac:Rice ;
+	eac:isADishFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/Tögrög
+
+eac:Tögrög a owl:NamedIndividual ;
+	eac:isCurrencyFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Udon
+
+eac:Udon a owl:NamedIndividual , eac:Noodles ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Ueshiba_Morihei
+
+eac:Ueshiba_Morihei a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Aikido .
+# 
+# http://www.example.org/eastasianculture/Ulaanbaatar
+
+eac:Ulaanbaatar a owl:NamedIndividual ;
+	eac:isCapitalFrom dbr:Mongolia .
+# 
+# http://www.example.org/eastasianculture/Valeria
+
+eac:Valeria a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Wagashi
+
+eac:Wagashi a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Wild_Eyes
+
+eac:Wild_Eyes a owl:NamedIndividual ;
+	eac:isASongFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Will_You_Go_Out_With_Me
+
+eac:Will_You_Go_Out_With_Me a owl:NamedIndividual ;
+	eac:isASongFrom dbr:South_Korea .
+# 
+# http://www.example.org/eastasianculture/William_Brown
+
+eac:William_Brown a owl:NamedIndividual , eac:Male ;
+	eac:hasFather eac:Mark_Brown ;
+	eac:hasMother eac:Rose_Smith ;
+	eac:isAPractitionerIn eac:Aikido .
+# 
+# http://www.example.org/eastasianculture/Windsports
+
+eac:Windsports a owl:NamedIndividual , eac:DifferentClassification .
+# 
+# http://www.example.org/eastasianculture/WinterSport
+
+eac:WinterSport a owl:NamedIndividual .
+# 
+# http://www.example.org/eastasianculture/World_Judo_Championships
+
+eac:World_Judo_Championships a owl:NamedIndividual .
+# 
+# http://www.example.org/eastasianculture/World_Taekwondo_Championships
+
+eac:World_Taekwondo_Championships a owl:NamedIndividual .
+# 
+# http://www.example.org/eastasianculture/Wushu
+
+eac:Wushu a owl:NamedIndividual ;
+	eac:belongsToCategory eac:CombatSports ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Xian_Dongmei
+
+eac:Xian_Dongmei a owl:NamedIndividual , eac:Female ;
+	eac:isAPractitionerIn eac:Judo .
+# 
+# http://www.example.org/eastasianculture/Xiangqi
+
+eac:Xiangqi a owl:NamedIndividual ;
+	eac:belongsToCategory eac:TableSports ;
+	eac:isASportOriginatedIn dbr:China .
+# 
+# http://www.example.org/eastasianculture/Yazutsu
+
+eac:Yazutsu a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Kyudo .
+# 
+# http://www.example.org/eastasianculture/Yen
+
+eac:Yen a owl:NamedIndividual ;
+	eac:isCurrencyFrom dbr:Japan .
+# 
+# http://www.example.org/eastasianculture/Yoshiharu_Habu
+
+eac:Yoshiharu_Habu a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Shogi .
+# 
+# http://www.example.org/eastasianculture/Yoshikaze_Masatsugu
+
+eac:Yoshikaze_Masatsugu a owl:NamedIndividual , eac:Male ;
+	eac:isAPractitionerIn eac:Sumo .
+# 
+# http://www.example.org/eastasianculture/Yuan
+
+eac:Yuan a owl:NamedIndividual ;
+	eac:isCurrencyFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Yugake
+
+eac:Yugake a owl:NamedIndividual , eac:Clothing ;
+	eac:useInSport eac:Kyudo .
+# 
+# http://www.example.org/eastasianculture/Yuko_Hirayama
+
+eac:Yuko_Hirayama a owl:NamedIndividual , eac:Female ;
+	eac:isAPractitionerIn eac:Karate .
+# 
+# http://www.example.org/eastasianculture/Yumi
+
+eac:Yumi a owl:NamedIndividual , eac:Weapon ;
+	eac:useInSport eac:Kyudo .
+# 
+# http://www.example.org/eastasianculture/Zhong_Nan_Hai
+
+eac:Zhong_Nan_Hai a owl:NamedIndividual ;
+	eac:isASongFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Zhōnghuá_Mínguó
+
+eac:Zhōnghuá_Mínguó a owl:NamedIndividual ;
+	eac:isOriginalNameFrom dbr:Taiwan .
+# 
+# http://www.example.org/eastasianculture/Zhōnghuá_Rénmín_Gònghéguó
+
+eac:Zhōnghuá_Rénmín_Gònghéguó a owl:NamedIndividual ;
+	eac:isOriginalNameFrom dbr:China .
+# 
+# http://www.example.org/eastasianculture/Zukak_kway
+
+eac:Zukak_kway a owl:NamedIndividual ;
+	eac:isADishFrom dbr:Taiwan .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

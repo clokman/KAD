@@ -1,0 +1,242 @@
+@prefix : <http://example.org/drr610/music#> .
+@prefix ms: <http://example.org/drr610/music/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/drr610/music> .
+
+<http://example.org/drr610/music> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/drr610/music/AlbumMadeBy
+ms:AlbumMadeBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf ms:MadeAlbum .
+
+
+###  http://example.org/drr610/music/ContainsSong
+ms:ContainsSong rdf:type owl:ObjectProperty ;
+                owl:inverseOf ms:InAlbum .
+
+
+###  http://example.org/drr610/music/HasArtist
+ms:HasArtist rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/drr610/music/InAlbum
+ms:InAlbum rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/drr610/music/IsGenre
+ms:IsGenre rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty .
+
+
+###  http://example.org/drr610/music/IsLikedBy
+ms:IsLikedBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf ms:Likes .
+
+
+###  http://example.org/drr610/music/IsSubGenreOf
+ms:IsSubGenreOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf ms:IsGenre .
+
+
+###  http://example.org/drr610/music/Likes
+ms:Likes rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/drr610/music/MadeAlbum
+ms:MadeAlbum rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/drr610/music/MadeSong
+ms:MadeSong rdf:type owl:ObjectProperty ;
+            owl:inverseOf ms:SongMadeBy .
+
+
+###  http://example.org/drr610/music/SongMadeBy
+ms:SongMadeBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/drr610/music/album
+ms:album rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ms:AlbumMadeBy ;
+                               owl:someValuesFrom owl:Thing
+                             ] .
+
+
+###  http://example.org/drr610/music/genre
+ms:genre rdf:type owl:Class .
+
+
+###  http://example.org/drr610/music/label
+ms:label rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ms:HasArtist ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass ms:musician
+                             ] .
+
+
+###  http://example.org/drr610/music/musician
+ms:musician rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                  owl:onProperty ms:MadeAlbum ;
+                                                  owl:someValuesFrom owl:Thing
+                                                ]
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty ms:MadeSong ;
+                                                  owl:someValuesFrom owl:Thing
+                                                ]
+                                              )
+                                ] ;
+            rdfs:subClassOf ms:person .
+
+
+###  http://example.org/drr610/music/person
+ms:person rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty ms:Likes ;
+                                owl:someValuesFrom ms:genre
+                              ] .
+
+
+###  http://example.org/drr610/music/song
+ms:song rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty ms:InAlbum ;
+                              owl:someValuesFrom ms:album
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ms:SongMadeBy ;
+                              owl:someValuesFrom ms:musician
+                            ] .
+
+
+###  http://example.org/drr610/music/subGenre
+ms:subGenre rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ms:IsSubGenreOf ;
+                                  owl:someValuesFrom ms:genre
+                                ] ;
+            rdfs:subClassOf ms:genre .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/drr610/music/Battery
+ms:Battery rdf:type owl:NamedIndividual ;
+           ms:InAlbum ms:Master_Of_Puppets .
+
+
+###  http://example.org/drr610/music/Daan_de_Ruijter
+ms:Daan_de_Ruijter rdf:type owl:NamedIndividual ,
+                            ms:person ;
+                   ms:Likes ms:Drum_And_Bass ,
+                            ms:Hardstyle .
+
+
+###  http://example.org/drr610/music/Dirty_Workz
+ms:Dirty_Workz rdf:type owl:NamedIndividual ,
+                        ms:label ;
+               ms:HasArtist ms:Phuture_Noize ;
+               ms:IsGenre ms:Hardstyle .
+
+
+###  http://example.org/drr610/music/Drum_And_Bass
+ms:Drum_And_Bass rdf:type owl:NamedIndividual ,
+                          ms:genre .
+
+
+###  http://example.org/drr610/music/Euphoric
+ms:Euphoric rdf:type owl:NamedIndividual ,
+                     ms:subGenre .
+
+
+###  http://example.org/drr610/music/Fire
+ms:Fire rdf:type owl:NamedIndividual ;
+        ms:InAlbum ms:Pursuit_of_Thunder .
+
+
+###  http://example.org/drr610/music/Frame_Of_Mind
+ms:Frame_Of_Mind rdf:type owl:NamedIndividual ;
+                 ms:IsGenre ms:Drum_And_Bass .
+
+
+###  http://example.org/drr610/music/Hardstyle
+ms:Hardstyle rdf:type owl:NamedIndividual ,
+                      ms:genre .
+
+
+###  http://example.org/drr610/music/John_Doe
+ms:John_Doe rdf:type owl:NamedIndividual ;
+            ms:Likes ms:Rawstyle .
+
+
+###  http://example.org/drr610/music/Jungle
+ms:Jungle rdf:type owl:NamedIndividual ;
+          ms:IsSubGenreOf ms:Drum_And_Bass .
+
+
+###  http://example.org/drr610/music/King_Of_The_Jungle
+ms:King_Of_The_Jungle rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/drr610/music/Master_Of_Puppets
+ms:Master_Of_Puppets rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/drr610/music/Metallica
+ms:Metallica rdf:type owl:NamedIndividual ;
+             ms:MadeAlbum ms:Master_Of_Puppets ;
+             ms:MadeSong ms:Orion .
+
+
+###  http://example.org/drr610/music/Orion
+ms:Orion rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/drr610/music/Phuture_Noize
+ms:Phuture_Noize rdf:type owl:NamedIndividual ,
+                          ms:person ;
+                 ms:MadeAlbum ms:Pursuit_of_Thunder ;
+                 ms:MadeSong ms:King_Of_The_Jungle ,
+                             ms:The_Temple .
+
+
+###  http://example.org/drr610/music/Pursuit_of_Thunder
+ms:Pursuit_of_Thunder rdf:type owl:NamedIndividual ,
+                               ms:album .
+
+
+###  http://example.org/drr610/music/Rawstyle
+ms:Rawstyle rdf:type owl:NamedIndividual ,
+                     ms:subGenre .
+
+
+###  http://example.org/drr610/music/The_Temple
+ms:The_Temple rdf:type owl:NamedIndividual ,
+                       ms:song ;
+              ms:InAlbum ms:Pursuit_of_Thunder .
+
+
+###  http://example.org/drr610/music/Tristam_And_Braken
+ms:Tristam_And_Braken rdf:type owl:NamedIndividual ,
+                               ms:person ;
+                      ms:MadeSong ms:Frame_Of_Mind .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -1,0 +1,338 @@
+@prefix : <http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#> .
+@prefix ex: <http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4> .
+
+<http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Made_by
+ex:Made_by rdf:type owl:ObjectProperty ;
+           rdfs:domain ex:Company ;
+           rdfs:range ex:Drinks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#contains
+ex:contains rdf:type owl:ObjectProperty ;
+            rdfs:domain ex:Drinks ;
+            rdfs:range ex:Ingredients .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#has_employed
+ex:has_employed rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain ex:Company ;
+                rdfs:range ex:Person .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#produces
+ex:produces rdf:type owl:ObjectProperty ,
+                     owl:TransitiveProperty ;
+            rdfs:domain ex:Company ;
+            rdfs:range ex:Drinks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#works_at
+ex:works_at rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdf:type owl:AsymmetricProperty ;
+            rdfs:domain ex:Person ;
+            rdfs:range ex:Company .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Bacardi
+ex:Bacardi rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ex:produces ;
+                                 owl:someValuesFrom ex:Gin
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ex:produces ;
+                                 owl:someValuesFrom ex:Vodka
+                               ] ;
+           rdfs:subClassOf ex:Company .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Beer
+ex:Beer rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty ex:contains ;
+                              owl:someValuesFrom ex:Ingredients
+                            ] ;
+        rdfs:subClassOf ex:Drinks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Brewer
+ex:Brewer rdf:type owl:Class ;
+          rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Company
+ex:Company rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Drinks
+ex:Drinks rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Gin
+ex:Gin rdf:type owl:Class ;
+       rdfs:subClassOf ex:Drinks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Heineken
+ex:Heineken rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ex:produces ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass ex:Beer
+                                ] ;
+            rdfs:subClassOf ex:Company .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Ingredients
+ex:Ingredients rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Interbrew
+ex:Interbrew rdf:type owl:Class ;
+             rdfs:subClassOf ex:Company ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:produces ;
+                               owl:allValuesFrom ex:Beer
+                             ] .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Non_alcoholic_beer
+ex:Non_alcoholic_beer rdf:type owl:Class ;
+                      rdfs:subClassOf ex:Beer .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Pernod_ricard
+ex:Pernod_ricard rdf:type owl:Class ;
+                 rdfs:subClassOf ex:Company ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ex:produces ;
+                                   owl:allValuesFrom ex:Whiskey
+                                 ] .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Person
+ex:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Salesmen
+ex:Salesmen rdf:type owl:Class ;
+            rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Vodka
+ex:Vodka rdf:type owl:Class ;
+         rdfs:subClassOf ex:Drinks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Whiskey
+ex:Whiskey rdf:type owl:Class ;
+           rdfs:subClassOf ex:Drinks .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Affligem
+ex:Affligem rdf:type owl:NamedIndividual ,
+                     ex:Heineken ;
+            ex:produces ex:Affligem_tripel .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Affligem_tripel
+ex:Affligem_tripel rdf:type owl:NamedIndividual ,
+                            ex:Beer ;
+                   ex:Made_by ex:Affligem .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Amstel
+ex:Amstel rdf:type owl:NamedIndividual ,
+                   ex:Heineken ;
+          ex:produces ex:Amstel_pils ,
+                      ex:Radler_0.0 .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Amstel_pils
+ex:Amstel_pils rdf:type owl:NamedIndividual ,
+                        ex:Beer ;
+               ex:Made_by ex:Amstel .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Becks
+ex:Becks rdf:type owl:NamedIndividual ,
+                  ex:Beer ;
+         ex:Made_by ex:Becks_brewery .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Becks_brewery
+ex:Becks_brewery rdf:type owl:NamedIndividual ,
+                          ex:Interbrew ;
+                 ex:produces ex:Becks ,
+                             ex:Becks_lager .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Becks_lager
+ex:Becks_lager rdf:type owl:NamedIndividual ,
+                        owl:Thing ;
+               ex:Made_by ex:Becks_brewery .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Bombay
+ex:Bombay rdf:type owl:NamedIndividual ,
+                   ex:Bacardi ;
+          ex:produces ex:Bombay_sapphire .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Bombay_sapphire
+ex:Bombay_sapphire rdf:type owl:NamedIndividual ,
+                            ex:Gin ;
+                   ex:Made_by ex:Bombay .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Brand
+ex:Brand rdf:type owl:NamedIndividual ,
+                  ex:Heineken ;
+         ex:produces ex:Oud_bruin .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Brewer1
+ex:Brewer1 rdf:type owl:NamedIndividual ,
+                    ex:Brewer ;
+           ex:works_at ex:Brand .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Brewer2
+ex:Brewer2 rdf:type owl:NamedIndividual ,
+                    ex:Brewer ;
+           ex:works_at ex:Affligem .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Cruzcampo
+ex:Cruzcampo rdf:type owl:NamedIndividual ,
+                      ex:Heineken ;
+             ex:produces ex:Cruzcampo_pilsen .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Cruzcampo_pilsen
+ex:Cruzcampo_pilsen rdf:type owl:NamedIndividual ,
+                             ex:Beer ;
+                    ex:Made_by ex:Cruzcampo .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Eristoff
+ex:Eristoff rdf:type owl:NamedIndividual ,
+                     ex:Bacardi ;
+            ex:produces ex:Eristoff_gold ,
+                        ex:Eristoff_red .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Eristoff_gold
+ex:Eristoff_gold rdf:type owl:NamedIndividual ,
+                          owl:Thing ;
+                 ex:Made_by ex:Eristoff .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Eristoff_red
+ex:Eristoff_red rdf:type owl:NamedIndividual ,
+                         ex:Vodka ;
+                ex:Made_by ex:Eristoff .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Jameson
+ex:Jameson rdf:type owl:NamedIndividual ,
+                    ex:Pernod_ricard ;
+           ex:produces ex:Jameson_black_barrel ,
+                       ex:Jameson_whiskey .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Jameson_black_barrel
+ex:Jameson_black_barrel rdf:type owl:NamedIndividual ,
+                                 owl:Thing ;
+                        ex:Made_by ex:Jameson .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Jameson_whiskey
+ex:Jameson_whiskey rdf:type owl:NamedIndividual ,
+                            ex:Whiskey ;
+                   ex:Made_by ex:Jameson .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Oud_bruin
+ex:Oud_bruin rdf:type owl:NamedIndividual ,
+                      ex:Beer ;
+             ex:Made_by ex:Brand .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Radler_0.0
+ex:Radler_0.0 rdf:type owl:NamedIndividual ,
+                       ex:Non_alcoholic_beer ;
+              ex:Made_by ex:Amstel .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Salesman1
+ex:Salesman1 rdf:type owl:NamedIndividual ,
+                      ex:Salesmen ;
+             ex:works_at ex:Amstel .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#Salesman2
+ex:Salesman2 rdf:type owl:NamedIndividual ,
+                      ex:Salesmen ;
+             ex:works_at ex:Eristoff .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#becks_non_alcoholic
+ex:becks_non_alcoholic rdf:type owl:NamedIndividual ,
+                                ex:Non_alcoholic_beer ;
+                       ex:Made_by ex:Becks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#hop
+ex:hop rdf:type owl:NamedIndividual ,
+                ex:Ingredients .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#maize
+ex:maize rdf:type owl:NamedIndividual ,
+                  ex:Ingredients .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#rice
+ex:rice rdf:type owl:NamedIndividual ,
+                 ex:Ingredients .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#test
+ex:test rdf:type owl:NamedIndividual ;
+        ex:Made_by ex:Becks .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#water
+ex:water rdf:type owl:NamedIndividual ,
+                  ex:Ingredients .
+
+
+###  http://www.semanticweb.org/frenck/ontologies/2017/8/untitled-ontology-4#wheat
+ex:wheat rdf:type owl:NamedIndividual ,
+                  ex:Ingredients .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

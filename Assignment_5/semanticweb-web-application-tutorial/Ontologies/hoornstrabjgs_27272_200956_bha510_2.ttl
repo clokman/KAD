@@ -1,0 +1,351 @@
+@prefix : <https://nyxs.nl/kd2017/chemicals/ont/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix chem: <https://nyxs.nl/kd2017/chemicals/ont/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://nyxs.nl/kd2017/chemicals/ont/> .
+
+<https://nyxs.nl/kd2017/chemicals/ont/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://nyxs.nl/kd2017/chemicals/ont/hasPeriodicGroupMember
+chem:hasPeriodicGroupMember rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf owl:topObjectProperty ;
+                            owl:inverseOf chem:isMemberOfPeriodicGroup ;
+                            rdf:type owl:InverseFunctionalProperty .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/hasStateOfMatter
+chem:hasStateOfMatter rdf:type owl:ObjectProperty ;
+                      owl:inverseOf chem:isStateOfMatterOf ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain chem:chemicalElement ;
+                      rdfs:range chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/isIsotopeOf
+chem:isIsotopeOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdf:type owl:SymmetricProperty ,
+                          owl:TransitiveProperty ;
+                 rdfs:domain chem:chemicalElement ;
+                 rdfs:range chem:chemicalElement .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/isMemberOfPeriodicGroup
+chem:isMemberOfPeriodicGroup rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdf:type owl:FunctionalProperty ;
+                             rdfs:range chem:PeriodicGroup .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/isStateOfMatterOf
+chem:isStateOfMatterOf rdf:type owl:ObjectProperty ,
+                                owl:InverseFunctionalProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://nyxs.nl/kd2017/chemicals/ont/hasAtomicNumber
+chem:hasAtomicNumber rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain chem:chemicalElement ;
+                     rdfs:range xsd:nonNegativeInteger .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/hasNeutronCount
+chem:hasNeutronCount rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain chem:chemicalElement ;
+                     rdfs:range xsd:nonNegativeInteger .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/hasNumberOfElectronsInOuterShell
+chem:hasNumberOfElectronsInOuterShell rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      rdfs:domain chem:chemicalElement ;
+                                      rdfs:range xsd:nonNegativeInteger .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Gas
+chem:Gas rdf:type owl:Class ;
+         rdfs:subClassOf chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group1
+chem:Group1 rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( chem:chemicalElement
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty chem:isMemberOfPeriodicGroup ;
+                                                         owl:hasValue chem:Group1
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group18
+chem:Group18 rdf:type owl:Class ;
+             owl:equivalentClass chem:nobleGas ,
+                                 [ owl:intersectionOf ( chem:chemicalElement
+                                                        [ owl:intersectionOf ( chem:Nonmetal
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty chem:hasStateOfMatter ;
+                                                                                 owl:hasValue chem:Gas
+                                                                               ]
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty chem:hasNumberOfElectronsInOuterShell ;
+                                                                                 owl:hasValue "2"^^xsd:nonNegativeInteger
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ owl:intersectionOf ( chem:chemicalElement
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty chem:isMemberOfPeriodicGroup ;
+                                                          owl:hasValue chem:Group18
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group2
+chem:Group2 rdf:type owl:Class ;
+            owl:equivalentClass chem:alkalineEarthMetal ,
+                                [ owl:intersectionOf ( chem:chemicalElement
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty chem:isMemberOfPeriodicGroup ;
+                                                         owl:hasValue chem:Group2
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf chem:chemicalElement .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group8
+chem:Group8 rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( chem:chemicalElement
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty chem:isMemberOfPeriodicGroup ;
+                                                         owl:hasValue chem:Group8
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Liquid
+chem:Liquid rdf:type owl:Class ;
+            rdfs:subClassOf chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Metal
+chem:Metal rdf:type owl:Class ;
+           rdfs:subClassOf chem:chemicalElement ;
+           owl:disjointWith chem:Nonmetal .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Nonmetal
+chem:Nonmetal rdf:type owl:Class ;
+              rdfs:subClassOf [ owl:intersectionOf ( chem:Nonmetal
+                                                     chem:chemicalElement
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/PeriodicGroup
+chem:PeriodicGroup rdf:type owl:Class .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Plasma
+chem:Plasma rdf:type owl:Class ;
+            rdfs:subClassOf chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Solid
+chem:Solid rdf:type owl:Class ;
+           rdfs:subClassOf chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/alkalineEarthMetal
+chem:alkalineEarthMetal rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( chem:chemicalElement
+                                                                   [ owl:intersectionOf ( chem:Metal
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty chem:hasNumberOfElectronsInOuterShell ;
+                                                                                            owl:hasValue "2"^^xsd:nonNegativeInteger
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf [ owl:intersectionOf ( chem:Metal
+                                                               chem:chemicalElement
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                        owl:disjointWith chem:transitionMetal .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/chemicalElement
+chem:chemicalElement rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty chem:hasStateOfMatter ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass chem:stateOfMatter
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty chem:isMemberOfPeriodicGroup ;
+                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass chem:PeriodicGroup
+                                         ] ;
+                     owl:disjointUnionOf ( chem:Group1
+                                           chem:Group18
+                                           chem:Group2
+                                           chem:Group8
+                                         ) ,
+                                         ( chem:Metal
+                                           chem:Nonmetal
+                                         ) .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/nobleGas
+chem:nobleGas rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( chem:chemicalElement
+                                                         [ owl:intersectionOf ( chem:Nonmetal
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty chem:hasStateOfMatter ;
+                                                                                  owl:hasValue chem:Gas
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/stateOfMatter
+chem:stateOfMatter rdf:type owl:Class ;
+                   owl:disjointUnionOf ( chem:Gas
+                                         chem:Liquid
+                                         chem:Plasma
+                                         chem:Solid
+                                       ) .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/transitionMetal
+chem:transitionMetal rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( chem:chemicalElement
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty chem:isMemberOfPeriodicGroup ;
+                                                                  owl:hasValue chem:Group8
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf [ owl:intersectionOf ( chem:Metal
+                                                            chem:chemicalElement
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Be4
+chem:Be4 rdf:type owl:NamedIndividual ,
+                  chem:Metal ;
+         chem:hasStateOfMatter chem:Solid ;
+         chem:isMemberOfPeriodicGroup chem:Group2 ;
+         chem:hasAtomicNumber "4"^^xsd:nonNegativeInteger ;
+         chem:hasNumberOfElectronsInOuterShell "2"^^xsd:nonNegativeInteger .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Fe26
+chem:Fe26 rdf:type owl:NamedIndividual ;
+          chem:isMemberOfPeriodicGroup chem:Group8 ;
+          chem:hasAtomicNumber "26"^^xsd:nonNegativeInteger .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Gas
+chem:Gas rdf:type owl:NamedIndividual ,
+                  chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group1
+chem:Group1 rdf:type owl:NamedIndividual .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group18
+chem:Group18 rdf:type owl:NamedIndividual .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group2
+chem:Group2 rdf:type owl:NamedIndividual .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Group8
+chem:Group8 rdf:type owl:NamedIndividual .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/H1
+chem:H1 rdf:type owl:NamedIndividual ;
+        chem:hasStateOfMatter chem:Gas ;
+        chem:isIsotopeOf chem:H2 ;
+        chem:isMemberOfPeriodicGroup chem:Group1 .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/H2
+chem:H2 rdf:type owl:NamedIndividual ;
+        chem:hasStateOfMatter chem:Gas .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/H3
+chem:H3 rdf:type owl:NamedIndividual ;
+        chem:isIsotopeOf chem:H2 .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/He2
+chem:He2 rdf:type owl:NamedIndividual ,
+                  chem:Nonmetal ;
+         chem:hasStateOfMatter chem:Gas .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Liquid
+chem:Liquid rdf:type owl:NamedIndividual ,
+                     chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Plasma
+chem:Plasma rdf:type owl:NamedIndividual ,
+                     chem:stateOfMatter .
+
+
+###  https://nyxs.nl/kd2017/chemicals/ont/Solid
+chem:Solid rdf:type owl:NamedIndividual ,
+                    chem:stateOfMatter .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

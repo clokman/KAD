@@ -1,0 +1,294 @@
+@prefix : <http://www.semanticweb.org/jimiduiveman/assignmentweek3#> .
+@prefix ex: <http://www.semanticweb.org/jimiduiveman/assignmentweek3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/jimiduiveman/assignmentweek3> .
+
+<http://www.semanticweb.org/jimiduiveman/assignmentweek3> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/bornIn
+ex:bornIn rdf:type owl:ObjectProperty ,
+                   owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/hasFavoriteMovie
+ex:hasFavoriteMovie rdf:type owl:ObjectProperty ,
+                             owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/hasFavoriteSport
+ex:hasFavoriteSport rdf:type owl:ObjectProperty ,
+                             owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/playsIn
+ex:playsIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/practices
+ex:practices rdf:type owl:ObjectProperty ,
+                      owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/sharesShoes
+ex:sharesShoes rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/studies
+ex:studies rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Actor
+ex:Actor rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:playsIn ;
+                               owl:someValuesFrom ex:Movie
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:playsIn ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass ex:Movie
+                             ] ;
+         rdfs:subClassOf ex:Human .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Friend
+ex:Friend rdf:type owl:Class ;
+          rdfs:subClassOf ex:Human .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Human
+ex:Human rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:bornIn ;
+                               owl:someValuesFrom ex:Place
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:bornIn ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass ex:Place
+                             ] .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Movie
+ex:Movie rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Place
+ex:Place rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Sport
+ex:Sport rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Student
+ex:Student rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ex:studies ;
+                                 owl:someValuesFrom ex:Study
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ex:studies ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass ex:Study
+                               ] ;
+           rdfs:subClassOf ex:Human .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Study
+ex:Study rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/familyMember
+ex:familyMember rdf:type owl:Class ;
+                rdfs:subClassOf ex:Human .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/indoorSport
+ex:indoorSport rdf:type owl:Class ;
+               rdfs:subClassOf ex:Sport ;
+               owl:disjointWith ex:outdoorSport .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/outdoorSport
+ex:outdoorSport rdf:type owl:Class ;
+                rdfs:subClassOf ex:Sport .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Badminton
+ex:Badminton rdf:type owl:NamedIndividual ,
+                      ex:indoorSport .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Blake_Lively
+ex:Blake_Lively rdf:type owl:NamedIndividual ,
+                         ex:Actor ;
+                ex:playsIn ex:Age_of_Adaline .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Callantsoog
+ex:Callantsoog rdf:type owl:NamedIndividual ,
+                        ex:Place .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Den_Helder
+ex:Den_Helder rdf:type owl:NamedIndividual ,
+                       ex:Place .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Fifty_shades
+ex:Fifty_shades rdf:type owl:NamedIndividual ,
+                         ex:Movie .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Green_Hornet
+ex:Green_Hornet rdf:type owl:NamedIndividual ,
+                         ex:Movie .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Handball
+ex:Handball rdf:type owl:NamedIndividual ,
+                     ex:indoorSport .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Hilda
+ex:Hilda rdf:type owl:NamedIndividual ,
+                  ex:familyMember ;
+         ex:bornIn ex:Wieringerwaard ;
+         ex:hasFavoriteMovie ex:Fifty_shades ;
+         ex:sharesShoes ex:Meie .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Informatiekunde
+ex:Informatiekunde rdf:type owl:NamedIndividual ,
+                            ex:Study .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Jimi
+ex:Jimi rdf:type owl:NamedIndividual ,
+                 ex:Friend ;
+        ex:bornIn ex:Callantsoog ;
+        ex:hasFavoriteSport ex:Handball ;
+        ex:studies ex:Informatiekunde .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Jon
+ex:Jon rdf:type owl:NamedIndividual ,
+                ex:familyMember ;
+       ex:bornIn ex:Oude_Sluis ;
+       ex:hasFavoriteMovie ex:Green_Hornet ;
+       ex:hasFavoriteSport ex:Soccer .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Meie
+ex:Meie rdf:type owl:NamedIndividual ,
+                 ex:familyMember ;
+        ex:bornIn ex:Wieringerwaard ;
+        ex:hasFavoriteMovie ex:The_Help ;
+        ex:hasFavoriteSport ex:Handball ;
+        ex:practices ex:Handball ,
+                     ex:outdoorHandball .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Oude_Sluis
+ex:Oude_Sluis rdf:type owl:NamedIndividual ,
+                       ex:Place .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Rugby
+ex:Rugby rdf:type owl:NamedIndividual ,
+                  ex:outdoorSport .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Ryan_Reynolds
+ex:Ryan_Reynolds rdf:type owl:NamedIndividual ,
+                          ex:Actor ;
+                 ex:playsIn ex:Green_Hornet .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Sanne
+ex:Sanne rdf:type owl:NamedIndividual ,
+                  ex:Friend ;
+         ex:bornIn ex:Den_Helder ;
+         ex:hasFavoriteSport ex:Badminton ;
+         ex:studies ex:VWO .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Soccer
+ex:Soccer rdf:type owl:NamedIndividual ,
+                   ex:indoorSport .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Sterre
+ex:Sterre rdf:type owl:NamedIndividual ,
+                   ex:familyMember ;
+          ex:bornIn ex:Den_Helder ;
+          ex:hasFavoriteMovie ex:Age_of_Adaline ;
+          ex:hasFavoriteSport ex:Handball ;
+          ex:practices ex:Handball ,
+                       ex:outdoorHandball ;
+          ex:studies ex:Informatiekunde .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/The_Help
+ex:The_Help rdf:type owl:NamedIndividual ,
+                     ex:Movie .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/VWO
+ex:VWO rdf:type owl:NamedIndividual ,
+                ex:Study .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Verpleegkunde
+ex:Verpleegkunde rdf:type owl:NamedIndividual ,
+                          ex:Study .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/Wieringerwaard
+ex:Wieringerwaard rdf:type owl:NamedIndividual ,
+                           ex:Place .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/outdoorHandball
+ex:outdoorHandball rdf:type owl:NamedIndividual ,
+                            ex:outdoorSport .
+
+
+###  http://www.semanticweb.org/jimiduiveman/assignmentweek3/7Age_of_Adaline
+ex:Age_of_Adaline rdf:type owl:NamedIndividual ,
+                           ex:Movie .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ex:Human
+                ex:Movie
+                ex:Place
+                ex:Sport
+                ex:Study
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

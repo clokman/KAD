@@ -1,0 +1,228 @@
+@prefix : <http://www.example.org/martijn/kd/> .
+@prefix kd: <http://www.example.org/martijn/kd/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/martijn/kd/> .
+
+<http://www.example.org/martijn/kd/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/martijn/kd/hasPopulation
+kd:hasPopulation rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/martijn/kd/hasReligion
+kd:hasReligion rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/martijn/kd/isCapitalOf
+kd:isCapitalOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/martijn/kd/isLeaderOf
+kd:isLeaderOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/martijn/kd/isSpokenIn
+kd:isSpokenIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/martijn/kd/livesIn
+kd:livesIn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/martijn/kd/Atheistic
+kd:Atheistic rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:complementOf [ rdf:type owl:Restriction ;
+                                                      owl:onProperty kd:hasReligion ;
+                                                      owl:someValuesFrom kd:Religion
+                                                    ]
+                                 ] ;
+             rdfs:subClassOf kd:Person .
+
+
+###  http://www.example.org/martijn/kd/Capital
+kd:Capital rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty kd:isCapitalOf ;
+                                 owl:someValuesFrom kd:Country
+                               ] ;
+           rdfs:subClassOf kd:City .
+
+
+###  http://www.example.org/martijn/kd/Citizen
+kd:Citizen rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty kd:livesIn ;
+                                 owl:someValuesFrom kd:Country
+                               ] ;
+           rdfs:subClassOf kd:Person .
+
+
+###  http://www.example.org/martijn/kd/City
+kd:City rdf:type owl:Class .
+
+
+###  http://www.example.org/martijn/kd/Country
+kd:Country rdf:type owl:Class .
+
+
+###  http://www.example.org/martijn/kd/Cultural
+kd:Cultural rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty kd:hasPopulation ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass kd:EthnicGroup
+                                ] ;
+            rdfs:subClassOf kd:Country .
+
+
+###  http://www.example.org/martijn/kd/EthnicGroup
+kd:EthnicGroup rdf:type owl:Class .
+
+
+###  http://www.example.org/martijn/kd/European
+kd:European rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty kd:isSpokenIn ;
+                                  owl:someValuesFrom kd:Country
+                                ] ;
+            rdfs:subClassOf kd:Language .
+
+
+###  http://www.example.org/martijn/kd/Language
+kd:Language rdf:type owl:Class .
+
+
+###  http://www.example.org/martijn/kd/Person
+kd:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/martijn/kd/PoliticalLeader
+kd:PoliticalLeader rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty kd:isLeaderOf ;
+                                         owl:someValuesFrom kd:Country
+                                       ] ;
+                   rdfs:subClassOf kd:Person .
+
+
+###  http://www.example.org/martijn/kd/Religion
+kd:Religion rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/martijn/kd/Amsterdam
+kd:Amsterdam rdf:type owl:NamedIndividual ,
+                      kd:City ;
+             kd:isCapitalOf kd:The_Netherlands .
+
+
+###  http://www.example.org/martijn/kd/Angela_Merkel
+kd:Angela_Merkel rdf:type owl:NamedIndividual ,
+                          kd:Person ;
+                 kd:hasReligion kd:Catholic ;
+                 kd:isLeaderOf kd:Germany ;
+                 kd:livesIn kd:Germany .
+
+
+###  http://www.example.org/martijn/kd/Atheistic
+kd:Atheistic rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/martijn/kd/Berlin
+kd:Berlin rdf:type owl:NamedIndividual ,
+                   kd:City ;
+          kd:isCapitalOf kd:Germany .
+
+
+###  http://www.example.org/martijn/kd/Catholic
+kd:Catholic rdf:type owl:NamedIndividual ,
+                     kd:Religion .
+
+
+###  http://www.example.org/martijn/kd/Dutch
+kd:Dutch rdf:type owl:NamedIndividual ,
+                  kd:Language ;
+         kd:isSpokenIn kd:The_Netherlands .
+
+
+###  http://www.example.org/martijn/kd/Dutchies
+kd:Dutchies rdf:type owl:NamedIndividual ,
+                     kd:EthnicGroup .
+
+
+###  http://www.example.org/martijn/kd/Frankfurt
+kd:Frankfurt rdf:type owl:NamedIndividual ,
+                      kd:City .
+
+
+###  http://www.example.org/martijn/kd/Frysians
+kd:Frysians rdf:type owl:NamedIndividual ,
+                     kd:EthnicGroup .
+
+
+###  http://www.example.org/martijn/kd/German
+kd:German rdf:type owl:NamedIndividual ,
+                   kd:Language ;
+          kd:isSpokenIn kd:Germany .
+
+
+###  http://www.example.org/martijn/kd/Germans
+kd:Germans rdf:type owl:NamedIndividual ,
+                    kd:EthnicGroup .
+
+
+###  http://www.example.org/martijn/kd/Germany
+kd:Germany rdf:type owl:NamedIndividual ,
+                    kd:Country ;
+           kd:hasPopulation kd:Germans .
+
+
+###  http://www.example.org/martijn/kd/Mark_Rutte
+kd:Mark_Rutte rdf:type owl:NamedIndividual ,
+                       kd:Person ;
+              kd:isLeaderOf kd:The_Netherlands ;
+              kd:livesIn kd:The_Netherlands .
+
+
+###  http://www.example.org/martijn/kd/Martijn_Schouten
+kd:Martijn_Schouten rdf:type owl:NamedIndividual ,
+                             kd:Person ;
+                    kd:livesIn kd:The_Netherlands .
+
+
+###  http://www.example.org/martijn/kd/Orthodox
+kd:Orthodox rdf:type owl:NamedIndividual ,
+                     kd:Religion .
+
+
+###  http://www.example.org/martijn/kd/Protestant
+kd:Protestant rdf:type owl:NamedIndividual ,
+                       kd:Religion .
+
+
+###  http://www.example.org/martijn/kd/The_Netherlands
+kd:The_Netherlands rdf:type owl:NamedIndividual ,
+                            kd:Country ;
+                   kd:hasPopulation kd:Dutchies ,
+                                    kd:Frysians .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,506 @@
+@prefix : <http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#> .
+@prefix mc: <file:/C:/Users/brendan/Documents/www.example.org/Mythical_Creatures#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/ontologies/2017/10/Mythical_Creatures> .
+
+<http://www.example.org/ontologies/2017/10/Mythical_Creatures> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  file:/C:/Users/brendan/Documents/www.example.org/Mythical_Creatures#Species
+mc:Species rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Eats
+:Eats rdf:type owl:ObjectProperty ;
+      owl:inverseOf :Is_Eaten_By .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Has_Creatures
+:Has_Creatures rdf:type owl:ObjectProperty ;
+               owl:inverseOf :Is_Species .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Has_Power_Over
+:Has_Power_Over rdf:type owl:ObjectProperty ,
+                         owl:IrreflexiveProperty .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Is
+:Is rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Is_Eaten_By
+:Is_Eaten_By rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Is_Related_To
+:Is_Related_To rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Is_Species
+:Is_Species rdf:type owl:ObjectProperty ,
+                     owl:IrreflexiveProperty .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Seduces
+:Seduces rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Brother_Of
+:Brother_Of rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :Is_Related_To ;
+            rdf:type owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Daughter_Off
+:Daughter_Off rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :Is_Related_To ;
+              owl:inverseOf :Mother_Of ;
+              rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Father_Of
+:Father_Of rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :Is_Related_To ;
+           owl:inverseOf :Son_Of ;
+           rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Mother_Of
+:Mother_Of rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :Is_Related_To ;
+           rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Sister_Of
+:Sister_Of rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :Is_Related_To ;
+           rdf:type owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Son_Of
+:Son_Of rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :Is_Related_To ;
+        rdf:type owl:AsymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Seducers
+:Seducers rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :Seduces ;
+                                owl:someValuesFrom owl:Thing
+                              ] ;
+          rdfs:subClassOf :Demon .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Animal
+:Animal rdf:type owl:Class ;
+        rdfs:subClassOf :Mythical_Creatures .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#AnimalHybrid
+:AnimalHybrid rdf:type owl:Class ;
+              rdfs:subClassOf :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Demon
+:Demon rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :Is ;
+                             owl:someValuesFrom :Demon
+                           ] ;
+       rdfs:subClassOf :Mythical_Creatures .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Ghosts
+:Ghosts rdf:type owl:Class ;
+        rdfs:subClassOf :Mythical_Creatures .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#God
+:God rdf:type owl:Class ;
+     owl:equivalentClass [ rdf:type owl:Restriction ;
+                           owl:onProperty :Has_Power_Over ;
+                           owl:someValuesFrom :Animal
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Has_Power_Over ;
+                           owl:someValuesFrom :AnimalHybrid
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Has_Power_Over ;
+                           owl:someValuesFrom :Demon
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Has_Power_Over ;
+                           owl:someValuesFrom :Ghosts
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Has_Power_Over ;
+                           owl:someValuesFrom :PartHuman
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :Has_Power_Over ;
+                           owl:someValuesFrom :Sprites
+                         ] ;
+     rdfs:subClassOf :Mythical_Creatures .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Mythical_Creatures
+:Mythical_Creatures rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#PartHuman
+:PartHuman rdf:type owl:Class ;
+           rdfs:subClassOf :Mythical_Creatures .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Sprites
+:Sprites rdf:type owl:Class ;
+         rdfs:subClassOf :Mythical_Creatures .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Female
+:Female rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Human
+:Human rdf:type owl:NamedIndividual ;
+       :Is_Eaten_By :Dragons ,
+                    :Werewolf .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Human_Blood
+:Human_Blood rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/ontologies/2017/10/Mythical_Creatures#Human_Brain
+:Human_Brain rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Ammut
+:Ammut rdf:type owl:NamedIndividual ,
+                :AnimalHybrid ,
+                :God ,
+                :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Anubis
+:Anubis rdf:type owl:NamedIndividual ,
+                 :AnimalHybrid ,
+                 :God ,
+                 :PartHuman ;
+        :Has_Power_Over :Human .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Banshee
+:Banshee rdf:type owl:NamedIndividual ,
+                  :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Basilisk
+:Basilisk rdf:type owl:NamedIndividual ,
+                   :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Behemoth
+:Behemoth rdf:type owl:NamedIndividual ,
+                   :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Centaur
+:Centaur rdf:type owl:NamedIndividual ,
+                  :AnimalHybrid ,
+                  :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Cerberus
+:Cerberus rdf:type owl:NamedIndividual ,
+                   :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Cthulhu
+:Cthulhu rdf:type owl:NamedIndividual ,
+                  :AnimalHybrid ,
+                  :God ,
+                  :PartHuman ;
+         mc:Species :AnimalHybrid ,
+                    :God ,
+                    :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Devil
+:Devil rdf:type owl:NamedIndividual ;
+       owl:sameAs :Lucifer ,
+                  :Satan .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Dragons
+:Dragons rdf:type owl:NamedIndividual ,
+                  :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Drake
+:Drake rdf:type owl:NamedIndividual ,
+                :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Dullahan
+:Dullahan rdf:type owl:NamedIndividual ,
+                   :Ghosts .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Euryale
+:Euryale rdf:type owl:NamedIndividual ,
+                  :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Fairy
+:Fairy rdf:type owl:NamedIndividual ,
+                :Sprites .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Gorgon
+:Gorgon rdf:type owl:NamedIndividual ,
+                 :AnimalHybrid ;
+        :Has_Creatures :Euryale ,
+                       :Medusa ,
+                       :Stheno ;
+        :Is :Female .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Horus
+:Horus rdf:type owl:NamedIndividual ,
+                :God .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Hydra
+:Hydra rdf:type owl:NamedIndividual ,
+                :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Incubus
+:Incubus rdf:type owl:NamedIndividual ,
+                  :Seducers ,
+                  :Demon ;
+         :Eats :Human ;
+         :Seduces :Human .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Kumiho
+:Kumiho rdf:type owl:NamedIndividual ,
+                 :Ghosts .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Lamia
+:Lamia rdf:type owl:NamedIndividual ,
+                :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Loch_Ness
+:Loch_Ness rdf:type owl:NamedIndividual ,
+                    :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Loki
+:Loki rdf:type owl:NamedIndividual ,
+               :God ;
+      :Son_Of :Odin .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Lucifer
+:Lucifer rdf:type owl:NamedIndividual ;
+         owl:sameAs :Satan .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Manticore
+:Manticore rdf:type owl:NamedIndividual ,
+                    :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Medusa
+:Medusa rdf:type owl:NamedIndividual ,
+                 :AnimalHybrid ,
+                 :PartHuman ;
+        :Sister_Of :Euryale ,
+                   :Stheno ;
+        mc:Species :AnimalHybrid ,
+                   :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Mermaids
+:Mermaids rdf:type owl:NamedIndividual ,
+                   :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Minotaur
+:Minotaur rdf:type owl:NamedIndividual ,
+                   :AnimalHybrid .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Moon_Rabbit
+:Moon_Rabbit rdf:type owl:NamedIndividual ,
+                      :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Muses
+:Muses rdf:type owl:NamedIndividual ,
+                :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Naga
+:Naga rdf:type owl:NamedIndividual ,
+               :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Nymph
+:Nymph rdf:type owl:NamedIndividual ,
+                :Sprites ;
+       :Is :Female .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Odin
+:Odin rdf:type owl:NamedIndividual ,
+               :God .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Pegasus
+:Pegasus rdf:type owl:NamedIndividual ,
+                  :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Phoenix
+:Phoenix rdf:type owl:NamedIndividual ,
+                  :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Pixie
+:Pixie rdf:type owl:NamedIndividual ,
+                :Sprites .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Satan
+:Satan rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Sekhmet
+:Sekhmet rdf:type owl:NamedIndividual ,
+                  :God .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Sirens
+:Sirens rdf:type owl:NamedIndividual ,
+                 :PartHuman ;
+        :Is :Female .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#SpaghettiMonster
+:SpaghettiMonster rdf:type owl:NamedIndividual ,
+                           :God .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Sphinx
+:Sphinx rdf:type owl:NamedIndividual ,
+                 :AnimalHybrid ,
+                 :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Stheno
+:Stheno rdf:type owl:NamedIndividual ,
+                 :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Succubus
+:Succubus rdf:type owl:NamedIndividual ,
+                   :Seducers ,
+                   :Demon ;
+          :Eats :Human ;
+          :Seduces :Human .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Tanuki
+:Tanuki rdf:type owl:NamedIndividual ,
+                 :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Tengu
+:Tengu rdf:type owl:NamedIndividual ,
+                :God .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Thor
+:Thor rdf:type owl:NamedIndividual ,
+               :God ;
+      :Brother_Of :Loki ;
+      :Son_Of :Odin .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Totoro
+:Totoro rdf:type owl:NamedIndividual ,
+                 :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Undine
+:Undine rdf:type owl:NamedIndividual ,
+                 :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Unicorn
+:Unicorn rdf:type owl:NamedIndividual ,
+                  :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Valkyrie
+:Valkyrie rdf:type owl:NamedIndividual ,
+                   :PartHuman .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Vampire
+:Vampire rdf:type owl:NamedIndividual ,
+                  :PartHuman ;
+         :Eats :Human_Blood .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Werewolf
+:Werewolf rdf:type owl:NamedIndividual ,
+                   :PartHuman ;
+          :Eats :Human .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Wyvern
+:Wyvern rdf:type owl:NamedIndividual ,
+                 :Animal .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Yamato_No_Orochi
+:Yamato_No_Orochi rdf:type owl:NamedIndividual ,
+                           :God .
+
+
+###  http://www.semanticweb.org/brendan/ontologies/2017/10/Mythical_Creatures#Zombie
+:Zombie rdf:type owl:NamedIndividual ,
+                 :PartHuman ;
+        :Eats :Human_Brain .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

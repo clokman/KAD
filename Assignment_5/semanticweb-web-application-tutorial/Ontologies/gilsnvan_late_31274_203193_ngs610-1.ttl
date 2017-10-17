@@ -1,0 +1,296 @@
+@prefix : <http://www.example.org/nicolevangils/ontologies/animals#> .
+@prefix an: <http://www.example.org/nicolevangils/ontologies/animals/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/nicolevangils/ontologies/animals> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Eet
+
+an:Eet a owl:ObjectProperty ;
+	owl:inverseOf an:wordtGegetenDoor .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/HeeftAlsHuid
+
+an:HeeftAlsHuid a owl:ObjectProperty .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/heeftAlsGebit
+
+an:heeftAlsGebit a owl:ObjectProperty .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/leeft
+
+an:leeft a owl:ObjectProperty .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/wordtGegetenDoor
+
+an:wordtGegetenDoor a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Carnivoor
+
+an:Carnivoor a owl:Class ;
+	owl:equivalentClass an:roofdier , _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty an:Eet ;
+	owl:someValuesFrom an:Dier .
+
+an:Carnivoor rdfs:subClassOf an:Dier .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Dier
+
+an:Dier a owl:Class .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Gebieden
+
+an:Gebieden a owl:Class .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Gewerveld
+
+an:Gewerveld a owl:Class ;
+	rdfs:subClassOf an:Dier .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Herbivoor
+
+an:Herbivoor a owl:Class ;
+	owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty an:Eet ;
+	owl:someValuesFrom an:Plant .
+
+an:Herbivoor rdfs:subClassOf an:Dier .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Huidtype
+
+an:Huidtype a owl:Class .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Knuffelbaar
+
+an:Knuffelbaar a owl:Class ;
+	owl:equivalentClass _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty an:HeeftAlsHuid ;
+	owl:someValuesFrom an:zachtehuid .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Landdier
+
+an:Landdier a owl:Class ;
+	owl:equivalentClass _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty an:leeft ;
+	owl:someValuesFrom an:Gebieden .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Omnivoor
+
+an:Omnivoor a owl:Class ;
+	owl:equivalentClass _:genid5 .
+
+_:genid5 owl:intersectionOf _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty an:Eet ;
+	owl:someValuesFrom an:Dier .
+
+_:genid8 rdf:rest _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty an:Eet ;
+	owl:someValuesFrom an:Plant .
+
+_:genid6 rdf:rest rdf:nil .
+
+_:genid5 a owl:Class .
+
+an:Omnivoor rdfs:subClassOf an:Dier .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Plant
+
+an:Plant a owl:Class .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Vis
+
+an:Vis a owl:Class ;
+	owl:equivalentClass _:genid10 .
+
+_:genid10 a owl:Restriction ;
+	owl:onProperty an:leeft ;
+	owl:someValuesFrom an:Waterdier .
+
+an:Vis rdfs:subClassOf an:Gewerveld .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Water
+
+an:Water a owl:Class .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Waterdier
+
+an:Waterdier a owl:Class ;
+	owl:equivalentClass _:genid11 .
+
+_:genid11 a owl:Restriction ;
+	owl:onProperty an:leeft ;
+	owl:someValuesFrom an:Water .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Zoogdier
+
+an:Zoogdier a owl:Class ;
+	rdfs:subClassOf an:Gewerveld .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/roofdier
+
+an:roofdier a owl:Class .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/ruwehuid
+
+an:ruwehuid a owl:Class ;
+	rdfs:subClassOf an:Huidtype .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/zachtehuid
+
+an:zachtehuid a owl:Class ;
+	rdfs:subClassOf an:Huidtype .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Aardappel
+
+an:Aardappel a owl:NamedIndividual , an:Plant .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Alg
+
+an:Alg a owl:NamedIndividual , an:Plant .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Bos
+
+an:Bos a owl:NamedIndividual , an:Gebieden .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Dolfijn
+
+an:Dolfijn a owl:NamedIndividual , an:Zoogdier ;
+	an:Eet an:Sardien ;
+	an:HeeftAlsHuid an:glad ;
+	an:leeft an:Zoutwater .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Giraf
+
+an:Giraf a owl:NamedIndividual , an:Zoogdier ;
+	an:Eet an:Gras ;
+	an:HeeftAlsHuid an:haren ;
+	an:leeft an:savanne .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Goudvis
+
+an:Goudvis a owl:NamedIndividual , an:Vis ;
+	an:Eet an:Alg ;
+	an:HeeftAlsHuid an:schubben ;
+	an:leeft an:Zoetwater .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Gras
+
+an:Gras a owl:NamedIndividual , an:Plant .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Hert
+
+an:Hert a owl:NamedIndividual , an:Zoogdier ;
+	an:Eet an:Gras ;
+	an:HeeftAlsHuid an:haren ;
+	an:leeft an:Bos , an:savanne .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Koe
+
+an:Koe a owl:NamedIndividual .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Leeuw
+
+an:Leeuw a owl:NamedIndividual , an:Zoogdier ;
+	an:Eet an:Hert ;
+	an:HeeftAlsHuid an:haren ;
+	an:heeftAlsGebit an:Scherpetanden ;
+	an:leeft an:savanne .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Mens
+
+an:Mens a owl:NamedIndividual , an:Zoogdier ;
+	an:Eet an:Aardappel , an:Sardien ;
+	an:HeeftAlsHuid an:glad , an:haren .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Sardien
+
+an:Sardien a owl:NamedIndividual , an:Vis ;
+	an:Eet an:Alg ;
+	an:HeeftAlsHuid an:schubben ;
+	an:leeft an:Zoutwater .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Savanne
+
+an:Savanne a owl:NamedIndividual .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Scherpetanden
+
+an:Scherpetanden a owl:NamedIndividual .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Sneeuw
+
+an:Sneeuw a owl:NamedIndividual , an:Gebieden .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Zoetwater
+
+an:Zoetwater a owl:NamedIndividual , an:Water .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/Zoutwater
+
+an:Zoutwater a owl:NamedIndividual , an:Water .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/glad
+
+an:glad a owl:NamedIndividual , an:zachtehuid .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/haren
+
+an:haren a owl:NamedIndividual , an:zachtehuid .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/savanne
+
+an:savanne a owl:NamedIndividual , an:Gebieden .
+# 
+# http://www.example.org/nicolevangils/ontologies/animals/schubben
+
+an:schubben a owl:NamedIndividual , an:ruwehuid .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

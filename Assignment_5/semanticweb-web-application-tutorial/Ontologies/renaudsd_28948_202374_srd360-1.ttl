@@ -1,0 +1,296 @@
+@prefix : <http://www.example.org/stasz/footballset#> .
+@prefix fb: <http://www.example.org/stasz/footballset/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/stasz/footballset> .
+
+<http://www.example.org/stasz/footballset> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/stasz/footballset/coachesFor
+fb:coachesFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/leagueOf
+fb:leagueOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/livesIn
+fb:livesIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/locatedIn
+fb:locatedIn rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty .
+
+
+###  http://www.example.org/stasz/footballset/playedIn
+fb:playedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/playsFor
+fb:playsFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/playsInDutchLeague
+fb:playsInDutchLeague rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/playsInUSLeague
+fb:playsInUSLeague rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/playsMatchIn
+fb:playsMatchIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/treatsPlayersFor
+fb:treatsPlayersFor rdf:type owl:ObjectProperty ,
+                             owl:ReflexiveProperty .
+
+
+###  http://www.example.org/stasz/footballset/worksFor
+fb:worksFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/stasz/footballset/worksIn
+fb:worksIn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/stasz/footballset/Club
+fb:Club rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty fb:playsMatchIn ;
+                              owl:someValuesFrom fb:Stadium
+                            ] ;
+        rdfs:subClassOf [ rdf:type owl:Class ;
+                          owl:unionOf ( [ rdf:type owl:Restriction ;
+                                          owl:onProperty fb:locatedIn ;
+                                          owl:someValuesFrom fb:Country
+                                        ]
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty fb:playsMatchIn ;
+                                          owl:someValuesFrom fb:Country
+                                        ]
+                                      )
+                        ] .
+
+
+###  http://www.example.org/stasz/footballset/Coach
+fb:Coach rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty fb:coachesFor ;
+                               owl:someValuesFrom fb:Club
+                             ] ;
+         rdfs:subClassOf fb:Employee .
+
+
+###  http://www.example.org/stasz/footballset/Country
+fb:Country rdf:type owl:Class .
+
+
+###  http://www.example.org/stasz/footballset/Dutch_Club
+fb:Dutch_Club rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty fb:locatedIn ;
+                                                           owl:someValuesFrom fb:Country
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty fb:playsInDutchLeague ;
+                                                           owl:someValuesFrom fb:League
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf fb:Club .
+
+
+###  http://www.example.org/stasz/footballset/Dutch_Stadium
+fb:Dutch_Stadium rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty fb:locatedIn ;
+                                                              owl:someValuesFrom fb:Country
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty fb:locatedIn ;
+                                                              owl:someValuesFrom fb:European_Country
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf fb:Stadium .
+
+
+###  http://www.example.org/stasz/footballset/Een
+fb:Een rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty fb:leagueOf ;
+                             owl:someValuesFrom fb:Country
+                           ] ;
+       rdfs:subClassOf fb:League .
+
+
+###  http://www.example.org/stasz/footballset/Employee
+fb:Employee rdf:type owl:Class ;
+            rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fb:livesIn ;
+                                                     owl:someValuesFrom fb:Country
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fb:worksIn ;
+                                                     owl:someValuesFrom fb:League
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.example.org/stasz/footballset/European_Country
+fb:European_Country rdf:type owl:Class ;
+                    rdfs:subClassOf fb:Country .
+
+
+###  http://www.example.org/stasz/footballset/League
+fb:League rdf:type owl:Class .
+
+
+###  http://www.example.org/stasz/footballset/North_American_Country
+fb:North_American_Country rdf:type owl:Class ;
+                          rdfs:subClassOf fb:Country .
+
+
+###  http://www.example.org/stasz/footballset/One
+fb:One rdf:type owl:Class ;
+       rdfs:subClassOf fb:League .
+
+
+###  http://www.example.org/stasz/footballset/Physio
+fb:Physio rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty fb:treatsPlayersFor ;
+                                owl:someValuesFrom fb:Club
+                              ] ;
+          rdfs:subClassOf fb:Employee .
+
+
+###  http://www.example.org/stasz/footballset/Player
+fb:Player rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty fb:playsFor ;
+                                owl:someValuesFrom fb:Club
+                              ] ;
+          rdfs:subClassOf fb:Employee ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty fb:worksIn ;
+                            owl:someValuesFrom fb:League
+                          ] .
+
+
+###  http://www.example.org/stasz/footballset/Stadium
+fb:Stadium rdf:type owl:Class .
+
+
+###  http://www.example.org/stasz/footballset/USA_Club
+fb:USA_Club rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fb:locatedIn ;
+                                                         owl:someValuesFrom fb:Country
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fb:playsInUSLeague ;
+                                                         owl:someValuesFrom fb:League
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf fb:Club .
+
+
+###  http://www.example.org/stasz/footballset/USA_Stadium
+fb:USA_Stadium rdf:type owl:Class ;
+               rdfs:subClassOf fb:Stadium .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/stasz/footballset/Ajax
+fb:Ajax rdf:type owl:NamedIndividual ,
+                 fb:Club ;
+        fb:playsInDutchLeague fb:Eredivisie ;
+        fb:playsMatchIn fb:Amsterdam_ArenA .
+
+
+###  http://www.example.org/stasz/footballset/Amsterdam_ArenA
+fb:Amsterdam_ArenA rdf:type owl:NamedIndividual ,
+                            fb:Stadium ;
+                   fb:locatedIn fb:The_Netherlands .
+
+
+###  http://www.example.org/stasz/footballset/Donny_van_de_Beek
+fb:Donny_van_de_Beek rdf:type owl:NamedIndividual ,
+                              fb:Employee ;
+                     fb:livesIn fb:The_Netherlands ;
+                     fb:playsFor fb:Ajax .
+
+
+###  http://www.example.org/stasz/footballset/Eredivisie
+fb:Eredivisie rdf:type owl:NamedIndividual ,
+                       fb:League ;
+              fb:leagueOf fb:The_Netherlands .
+
+
+###  http://www.example.org/stasz/footballset/LA_Galaxy
+fb:LA_Galaxy rdf:type owl:NamedIndividual ,
+                      fb:Club ;
+             fb:playsInUSLeague fb:MLS ;
+             fb:playsMatchIn fb:StubHub_Center .
+
+
+###  http://www.example.org/stasz/footballset/MLS
+fb:MLS rdf:type owl:NamedIndividual ,
+                fb:League .
+
+
+###  http://www.example.org/stasz/footballset/Marcel_Keizer
+fb:Marcel_Keizer rdf:type owl:NamedIndividual ,
+                          fb:Employee ;
+                 fb:coachesFor fb:Ajax ;
+                 fb:livesIn fb:The_Netherlands .
+
+
+###  http://www.example.org/stasz/footballset/Ralph_van_der_Horst
+fb:Ralph_van_der_Horst rdf:type owl:NamedIndividual ,
+                                fb:Employee ;
+                       fb:livesIn fb:The_Netherlands ;
+                       fb:treatsPlayersFor fb:Ajax .
+
+
+###  http://www.example.org/stasz/footballset/StubHub_Center
+fb:StubHub_Center rdf:type owl:NamedIndividual ,
+                           fb:Stadium .
+
+
+###  http://www.example.org/stasz/footballset/The_Netherlands
+fb:The_Netherlands rdf:type owl:NamedIndividual ,
+                            fb:Country .
+
+
+###  http://www.example.org/stasz/footballset/USA
+fb:USA rdf:type owl:NamedIndividual ,
+                fb:Country .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

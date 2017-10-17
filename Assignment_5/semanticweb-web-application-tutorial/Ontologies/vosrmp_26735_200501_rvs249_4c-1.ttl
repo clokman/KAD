@@ -1,0 +1,235 @@
+@prefix : <http://www.semanticweb.org/romyv/harrypotter#> .
+@prefix hp: <http://www.semanticweb.org/romyv/harrypotter/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/romyv/harrypotter> .
+
+<http://www.semanticweb.org/romyv/harrypotter> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/romyv/harrypotter/has_ability_to
+hp:has_ability_to rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/is_founder_of
+hp:is_founder_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/is_made_possible_by
+hp:is_made_possible_by rdf:type owl:ObjectProperty ;
+                       owl:inverseOf hp:makes_possible .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/is_of_type
+hp:is_of_type rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/is_placed_into_house
+hp:is_placed_into_house rdf:type owl:ObjectProperty ;
+                        owl:equivalentProperty hp:is_student_at_house .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/is_student_at_house
+hp:is_student_at_house rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/makes_possible
+hp:makes_possible rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/romyv/harrypotter/GryffindorStudent
+hp:GryffindorStudent rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty hp:is_placed_into_house ;
+                                           owl:hasValue hp:Gryffindor
+                                         ] ;
+                     rdfs:subClassOf hp:HogwartsStudent .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/HogwartsHouse
+hp:HogwartsHouse rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty hp:is_founder_of ;
+                                       owl:hasValue hp:Hogwarts
+                                     ] .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/HogwartsStudent
+hp:HogwartsStudent rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty hp:is_student_at_house ;
+                                         owl:someValuesFrom hp:HogwartsHouse
+                                       ] ;
+                   rdfs:subClassOf hp:Wizard .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/HufflepufStudent
+hp:HufflepufStudent rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty hp:is_placed_into_house ;
+                                          owl:hasValue hp:Hufflepuf
+                                        ] ;
+                    rdfs:subClassOf hp:HogwartsStudent .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/MagicAttribute
+hp:MagicAttribute rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty hp:makes_possible ;
+                                        owl:someValuesFrom hp:MagicSkill
+                                      ] .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/MagicSkill
+hp:MagicSkill rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty hp:is_made_possible_by ;
+                                    owl:hasValue hp:MagicalObject
+                                  ] .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/RavenclawStudent
+hp:RavenclawStudent rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty hp:is_placed_into_house ;
+                                          owl:hasValue hp:Ravenclaw
+                                        ] ;
+                    rdfs:subClassOf hp:HogwartsStudent .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/SlytherinStudent
+hp:SlytherinStudent rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty hp:is_placed_into_house ;
+                                          owl:hasValue hp:Slytherin
+                                        ] ;
+                    rdfs:subClassOf hp:HogwartsStudent .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Wizard
+hp:Wizard rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty hp:has_ability_to ;
+                                owl:someValuesFrom hp:MagicSkill
+                              ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/romyv/harrypotter/Broomstick
+hp:Broomstick rdf:type owl:NamedIndividual ;
+              hp:makes_possible hp:Flying .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Cedric_Diggory
+hp:Cedric_Diggory rdf:type owl:NamedIndividual ;
+                  hp:has_ability_to hp:Flying ;
+                  hp:is_placed_into_house hp:Hufflepuf .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Draco_Malfoy
+hp:Draco_Malfoy rdf:type owl:NamedIndividual ;
+                hp:has_ability_to hp:Flying ;
+                hp:is_placed_into_house hp:Slytherin .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Fleur_Delacour
+hp:Fleur_Delacour rdf:type owl:NamedIndividual ;
+                  hp:has_ability_to hp:Spell .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Flying
+hp:Flying rdf:type owl:NamedIndividual ;
+          hp:is_made_possible_by hp:MagicalObject .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Gryffindor
+hp:Gryffindor rdf:type owl:NamedIndividual ;
+              hp:is_founder_of hp:Hogwarts .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Harry_Potter
+hp:Harry_Potter rdf:type owl:NamedIndividual ;
+                hp:has_ability_to hp:Flying ;
+                hp:is_placed_into_house hp:Gryffindor .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Hermione_Granger
+hp:Hermione_Granger rdf:type owl:NamedIndividual ;
+                    hp:has_ability_to hp:Spell ;
+                    hp:is_placed_into_house hp:Gryffindor .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Hogwarts
+hp:Hogwarts rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Hufflepuf
+hp:Hufflepuf rdf:type owl:NamedIndividual ;
+             hp:is_founder_of hp:Hogwarts .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Kettle
+hp:Kettle rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Luna_Lovegood
+hp:Luna_Lovegood rdf:type owl:NamedIndividual ;
+                 hp:has_ability_to hp:Spell ;
+                 hp:is_placed_into_house hp:Ravenclaw .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/MagicalObject
+hp:MagicalObject rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Making_Magic_Potion
+hp:Making_Magic_Potion rdf:type owl:NamedIndividual ;
+                       hp:is_made_possible_by hp:Kettle ,
+                                              hp:MagicalObject .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Playing_Quidditch
+hp:Playing_Quidditch rdf:type owl:NamedIndividual ;
+                     hp:is_made_possible_by hp:Broomstick ,
+                                            hp:MagicalObject .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Ravenclaw
+hp:Ravenclaw rdf:type owl:NamedIndividual ;
+             hp:is_founder_of hp:Hogwarts .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Ron_Weasley
+hp:Ron_Weasley rdf:type owl:NamedIndividual ;
+               hp:is_student_at_house hp:Gryffindor .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Slytherin
+hp:Slytherin rdf:type owl:NamedIndividual ;
+             hp:is_founder_of hp:Hogwarts .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Spell
+hp:Spell rdf:type owl:NamedIndividual ;
+         hp:is_made_possible_by hp:MagicalObject .
+
+
+###  http://www.semanticweb.org/romyv/harrypotter/Wand
+hp:Wand rdf:type owl:NamedIndividual ;
+        hp:makes_possible hp:Spell .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

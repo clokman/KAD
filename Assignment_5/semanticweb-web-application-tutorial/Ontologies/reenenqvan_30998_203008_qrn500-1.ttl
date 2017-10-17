@@ -1,0 +1,284 @@
+@prefix : <http://www.semanticweb.org/quentinvanreenen/Family#> .
+@prefix fam: <http://www.semanticweb.org/quentinvanreenen/Family/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/quentinvanreenen/Family> .
+
+<http://www.semanticweb.org/quentinvanreenen/Family> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/HasChild
+fam:HasChild rdf:type owl:ObjectProperty ;
+             owl:inverseOf fam:HasParent .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/HasGrandChild
+fam:HasGrandChild rdf:type owl:ObjectProperty ;
+                  owl:inverseOf fam:HasGrandParent .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/HasGrandParent
+fam:HasGrandParent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/HasParent
+fam:HasParent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/HasSibling
+fam:HasSibling rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/MarriedTo
+fam:MarriedTo rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Gender
+fam:Gender rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string ,
+                      [ rdf:type rdfs:Datatype ;
+                        owl:oneOf [ rdf:type rdf:List ;
+                                    rdf:first "Female" ;
+                                    rdf:rest [ rdf:type rdf:List ;
+                                               rdf:first "Male" ;
+                                               rdf:rest rdf:nil
+                                             ]
+                                  ]
+                      ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Children
+fam:Children rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:HasGrandParent ;
+                                   owl:someValuesFrom fam:Person
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:HasParent ;
+                                   owl:someValuesFrom fam:Person
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:HasSibling ;
+                                   owl:someValuesFrom fam:Person
+                                 ] ;
+             rdfs:subClassOf fam:Family .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Daughter
+fam:Daughter rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( fam:Children
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty fam:Gender ;
+                                                          owl:hasValue "Female"
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+             rdfs:subClassOf fam:Children .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Family
+fam:Family rdf:type owl:Class ;
+           rdfs:subClassOf fam:Person .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Father
+fam:Father rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Parent
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:Gender ;
+                                                        owl:hasValue "Male"
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf fam:Parent .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/GrandParent
+fam:GrandParent rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:HasChild ;
+                                      owl:someValuesFrom fam:Parent
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:HasGrandChild ;
+                                      owl:someValuesFrom fam:Person
+                                    ] ;
+                rdfs:subClassOf fam:Family .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Grandma
+fam:Grandma rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( fam:GrandParent
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fam:Gender ;
+                                                         owl:hasValue "Female"
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf fam:GrandParent .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Grandpa
+fam:Grandpa rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( fam:GrandParent
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fam:Gender ;
+                                                         owl:hasValue "Male"
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf fam:GrandParent .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Mother
+fam:Mother rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fam:Parent
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fam:Gender ;
+                                                        owl:hasValue "Female"
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf fam:Parent .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Parent
+fam:Parent rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:HasChild ;
+                                 owl:someValuesFrom fam:Person
+                               ] ;
+           rdfs:subClassOf fam:Family .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Person
+fam:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Son
+fam:Son rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( fam:Children
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fam:Gender ;
+                                                     owl:hasValue "Male"
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf fam:Children .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Connor_van_Reenen
+fam:Connor_van_Reenen rdf:type owl:NamedIndividual ,
+                               fam:Person ;
+                      fam:HasGrandParent fam:Oma_Dingelhoff ;
+                      fam:HasParent fam:Nanda_Dingelhoff ;
+                      fam:HasSibling fam:Lisa_van_Reenen ,
+                                     fam:Quentin_van_Reenen ;
+                      fam:Gender "Male" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Female
+fam:Female rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Lisa_van_Reenen
+fam:Lisa_van_Reenen rdf:type owl:NamedIndividual ,
+                             fam:Person ;
+                    fam:HasGrandParent fam:Oma_van_Reenen ;
+                    fam:HasParent fam:Nanda_Dingelhoff ;
+                    fam:HasSibling fam:Quentin_van_Reenen ;
+                    fam:Gender "Female" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Male
+fam:Male rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Michel_van_Reenen
+fam:Michel_van_Reenen rdf:type owl:NamedIndividual ,
+                               fam:Person ;
+                      fam:HasChild fam:Connor_van_Reenen ,
+                                   fam:Lisa_van_Reenen ,
+                                   fam:Quentin_van_Reenen ;
+                      fam:HasParent fam:Opa_van_Reenen ;
+                      fam:Gender "Male" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Nanda_Dingelhoff
+fam:Nanda_Dingelhoff rdf:type owl:NamedIndividual ,
+                              fam:Person ;
+                     fam:HasChild fam:Connor_van_Reenen ,
+                                  fam:Lisa_van_Reenen ,
+                                  fam:Quentin_van_Reenen ;
+                     fam:Gender "Female" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Oma_Dingelhoff
+fam:Oma_Dingelhoff rdf:type owl:NamedIndividual ,
+                            fam:Person ;
+                   fam:HasChild fam:Nanda_Dingelhoff ;
+                   fam:HasGrandChild fam:Quentin_van_Reenen ;
+                   fam:MarriedTo fam:Opa_Dingelhoff ;
+                   fam:Gender "Female" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Oma_van_Reenen
+fam:Oma_van_Reenen rdf:type owl:NamedIndividual ,
+                            fam:Person ;
+                   fam:HasChild fam:Michel_van_Reenen ;
+                   fam:HasGrandChild fam:Connor_van_Reenen ,
+                                     fam:Quentin_van_Reenen ;
+                   fam:Gender "Female" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Opa_Dingelhoff
+fam:Opa_Dingelhoff rdf:type owl:NamedIndividual ,
+                            fam:Person ;
+                   fam:HasChild fam:Nanda_Dingelhoff ;
+                   fam:HasGrandChild fam:Connor_van_Reenen ,
+                                     fam:Quentin_van_Reenen ;
+                   fam:Gender "Male" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Opa_van_Reenen
+fam:Opa_van_Reenen rdf:type owl:NamedIndividual ,
+                            fam:Person ;
+                   fam:HasGrandChild fam:Lisa_van_Reenen ,
+                                     fam:Quentin_van_Reenen ;
+                   fam:MarriedTo fam:Oma_van_Reenen ;
+                   fam:Gender "Male" .
+
+
+###  http://www.semanticweb.org/quentinvanreenen/Family/Quentin_van_Reenen
+fam:Quentin_van_Reenen rdf:type owl:NamedIndividual ,
+                                fam:Person ;
+                       fam:Gender "Male" .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

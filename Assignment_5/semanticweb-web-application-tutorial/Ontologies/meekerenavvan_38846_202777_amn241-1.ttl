@@ -1,0 +1,557 @@
+@prefix : <http://example.org/kad2017/animals#> .
+@prefix ani: <http://example.org/kad2017/animals#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/kad2017/animals> .
+
+<http://example.org/kad2017/animals> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/kad2017/animals#BodyHairAmount
+ani:BodyHairAmount rdf:type owl:ObjectProperty ;
+                   rdfs:domain ani:Animalia ;
+                   rdfs:range ani:BodyHair .
+
+
+###  http://example.org/kad2017/animals#LivesIn
+ani:LivesIn rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/kad2017/animals#eats
+ani:eats rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ,
+                  owl:IrreflexiveProperty .
+
+
+###  http://example.org/kad2017/animals#hasDiet
+ani:hasDiet rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/kad2017/animals#hasLimbs
+ani:hasLimbs rdf:type owl:ObjectProperty ;
+             rdfs:domain ani:Animalia ;
+             rdfs:range ani:Limbs .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/kad2017/animals#Amphibian
+ani:Amphibian rdf:type owl:Class ;
+              rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#Animalia
+ani:Animalia rdf:type owl:Class ;
+             rdfs:subClassOf ani:Eukarya .
+
+
+###  http://example.org/kad2017/animals#Arachae
+ani:Arachae rdf:type owl:Class ;
+            rdfs:subClassOf ani:Organism .
+
+
+###  http://example.org/kad2017/animals#Arachnid
+ani:Arachnid rdf:type owl:Class ;
+             rdfs:subClassOf ani:Invertebrates .
+
+
+###  http://example.org/kad2017/animals#Arms
+ani:Arms rdf:type owl:Class ;
+         rdfs:subClassOf ani:Limbs .
+
+
+###  http://example.org/kad2017/animals#Bacteria
+ani:Bacteria rdf:type owl:Class ;
+             rdfs:subClassOf ani:Organism .
+
+
+###  http://example.org/kad2017/animals#Bird
+ani:Bird rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ani:hasLimbs ;
+                               owl:someValuesFrom ani:Wings
+                             ] ;
+         rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#BodyHair
+ani:BodyHair rdf:type owl:Class ;
+             rdfs:subClassOf ani:ValuePartition .
+
+
+###  http://example.org/kad2017/animals#Carnivore
+ani:Carnivore rdf:type owl:Class ;
+              rdfs:subClassOf ani:Diets .
+
+
+###  http://example.org/kad2017/animals#Cave
+ani:Cave rdf:type owl:Class ;
+         rdfs:subClassOf ani:LivingArea .
+
+
+###  http://example.org/kad2017/animals#Diets
+ani:Diets rdf:type owl:Class ;
+          rdfs:subClassOf ani:ValuePartition .
+
+
+###  http://example.org/kad2017/animals#Eukarya
+ani:Eukarya rdf:type owl:Class ;
+            rdfs:subClassOf ani:Organism .
+
+
+###  http://example.org/kad2017/animals#Fish
+ani:Fish rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ani:LivesIn ;
+                               owl:allValuesFrom ani:Water
+                             ] ;
+         rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#Fishes
+ani:Fishes rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ani:LivesIn ;
+                                 owl:allValuesFrom ani:Water
+                               ] ;
+           rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#Fungi
+ani:Fungi rdf:type owl:Class ;
+          rdfs:subClassOf ani:Eukarya .
+
+
+###  http://example.org/kad2017/animals#Herbivore
+ani:Herbivore rdf:type owl:Class ;
+              rdfs:subClassOf ani:Diets .
+
+
+###  http://example.org/kad2017/animals#High
+ani:High rdf:type owl:Class ;
+         rdfs:subClassOf ani:BodyHair .
+
+
+###  http://example.org/kad2017/animals#House
+ani:House rdf:type owl:Class ;
+          rdfs:subClassOf ani:LivingArea .
+
+
+###  http://example.org/kad2017/animals#Insect
+ani:Insect rdf:type owl:Class ;
+           rdfs:subClassOf ani:Invertebrates .
+
+
+###  http://example.org/kad2017/animals#Invertebrates
+ani:Invertebrates rdf:type owl:Class ;
+                  rdfs:subClassOf ani:Animalia ;
+                  owl:disjointWith ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#LandAnimals
+ani:LandAnimals rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty ani:hasLimbs ;
+                                      owl:someValuesFrom ani:Limbs
+                                    ] ;
+                rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#Legs
+ani:Legs rdf:type owl:Class ;
+         rdfs:subClassOf ani:Limbs .
+
+
+###  http://example.org/kad2017/animals#Limbs
+ani:Limbs rdf:type owl:Class ;
+          rdfs:subClassOf ani:ValuePartition .
+
+
+###  http://example.org/kad2017/animals#LivingArea
+ani:LivingArea rdf:type owl:Class ;
+               rdfs:subClassOf ani:ValuePartition .
+
+
+###  http://example.org/kad2017/animals#Low
+ani:Low rdf:type owl:Class ;
+        rdfs:subClassOf ani:BodyHair .
+
+
+###  http://example.org/kad2017/animals#Mammal
+ani:Mammal rdf:type owl:Class ;
+           rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#Medium
+ani:Medium rdf:type owl:Class ;
+           rdfs:subClassOf ani:BodyHair .
+
+
+###  http://example.org/kad2017/animals#Nest
+ani:Nest rdf:type owl:Class ;
+         rdfs:subClassOf ani:LivingArea .
+
+
+###  http://example.org/kad2017/animals#None
+ani:None rdf:type owl:Class ;
+         rdfs:subClassOf ani:BodyHair .
+
+
+###  http://example.org/kad2017/animals#Omnivore
+ani:Omnivore rdf:type owl:Class ;
+             rdfs:subClassOf ani:Diets .
+
+
+###  http://example.org/kad2017/animals#Organism
+ani:Organism rdf:type owl:Class .
+
+
+###  http://example.org/kad2017/animals#Plantae
+ani:Plantae rdf:type owl:Class ;
+            rdfs:subClassOf ani:Eukarya .
+
+
+###  http://example.org/kad2017/animals#Protista
+ani:Protista rdf:type owl:Class ;
+             rdfs:subClassOf ani:Eukarya .
+
+
+###  http://example.org/kad2017/animals#Reptile
+ani:Reptile rdf:type owl:Class ;
+            rdfs:subClassOf ani:Vertebrates .
+
+
+###  http://example.org/kad2017/animals#Tree
+ani:Tree rdf:type owl:Class ;
+         rdfs:subClassOf ani:LivingArea .
+
+
+###  http://example.org/kad2017/animals#ValuePartition
+ani:ValuePartition rdf:type owl:Class .
+
+
+###  http://example.org/kad2017/animals#Vertebrates
+ani:Vertebrates rdf:type owl:Class ;
+                rdfs:subClassOf ani:Animalia .
+
+
+###  http://example.org/kad2017/animals#Water
+ani:Water rdf:type owl:Class ;
+          rdfs:subClassOf ani:LivingArea .
+
+
+###  http://example.org/kad2017/animals#Wings
+ani:Wings rdf:type owl:Class ;
+          rdfs:subClassOf ani:Limbs .
+
+
+###  http://example.org/kad2017/animals#Worm
+ani:Worm rdf:type owl:Class ;
+         rdfs:subClassOf ani:Invertebrates .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/kad2017/animals#Alligator
+ani:Alligator rdf:type owl:NamedIndividual ,
+                       ani:Reptile ;
+              ani:BodyHairAmount ani:None ;
+              ani:LivesIn ani:Nest ;
+              ani:hasDiet ani:Carnivore ;
+              ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Arms
+ani:Arms rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Bear
+ani:Bear rdf:type owl:NamedIndividual ,
+                  ani:Mammal ;
+         ani:BodyHairAmount ani:High ;
+         ani:LivesIn ani:Cave ;
+         ani:hasDiet ani:Carnivore ;
+         ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Carnivore
+ani:Carnivore rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Cave
+ani:Cave rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Chicken
+ani:Chicken rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Chimpanzee
+ani:Chimpanzee rdf:type owl:NamedIndividual ,
+                        ani:Mammal ;
+               ani:BodyHairAmount ani:Medium ;
+               ani:LivesIn ani:Tree ;
+               ani:hasDiet ani:Omnivore ;
+               ani:hasLimbs ani:Arms ,
+                            ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Crocodile
+ani:Crocodile rdf:type owl:NamedIndividual ,
+                       ani:Reptile ;
+              ani:BodyHairAmount ani:None ;
+              ani:LivesIn ani:Nest ;
+              ani:hasDiet ani:Carnivore ;
+              ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Dog
+ani:Dog rdf:type owl:NamedIndividual ,
+                 ani:Mammal ;
+        ani:BodyHairAmount ani:Medium ;
+        ani:LivesIn ani:House ;
+        ani:hasDiet ani:Carnivore ;
+        ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Eagle
+ani:Eagle rdf:type owl:NamedIndividual ,
+                   ani:Bird ;
+          ani:BodyHairAmount ani:Medium ;
+          ani:LivesIn ani:Tree ;
+          ani:hasDiet ani:Carnivore ;
+          ani:hasLimbs ani:Legs ,
+                       ani:Wings .
+
+
+###  http://example.org/kad2017/animals#Eel
+ani:Eel rdf:type owl:NamedIndividual ;
+        ani:LivesIn ani:Water .
+
+
+###  http://example.org/kad2017/animals#Elephant
+ani:Elephant rdf:type owl:NamedIndividual ,
+                      ani:Mammal ;
+             ani:BodyHairAmount ani:None ;
+             ani:LivesIn ani:Nest ;
+             ani:hasDiet ani:Herbivore ;
+             ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Frog
+ani:Frog rdf:type owl:NamedIndividual ,
+                  ani:Amphibian ;
+         ani:BodyHairAmount ani:None ;
+         ani:LivesIn ani:Nest ;
+         ani:hasDiet ani:Carnivore ;
+         ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Herbivore
+ani:Herbivore rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Herring
+ani:Herring rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#High
+ani:High rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#House
+ani:House rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Human
+ani:Human rdf:type owl:NamedIndividual ,
+                   ani:Mammal ;
+          ani:BodyHairAmount ani:Low ;
+          ani:LivesIn ani:House ;
+          ani:eats ani:Salmon ;
+          ani:hasDiet ani:Omnivore ;
+          ani:hasLimbs ani:Arms ,
+                       ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Legs
+ani:Legs rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Low
+ani:Low rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Medium
+ani:Medium rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Nest
+ani:Nest rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Newt
+ani:Newt rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#None
+ani:None rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Omnivore
+ani:Omnivore rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Owl
+ani:Owl rdf:type owl:NamedIndividual ,
+                 ani:Bird ;
+        ani:BodyHairAmount ani:Medium ;
+        ani:LivesIn ani:Tree ;
+        ani:hasDiet ani:Carnivore ;
+        ani:hasLimbs ani:Legs ,
+                     ani:Wings .
+
+
+###  http://example.org/kad2017/animals#Penguin
+ani:Penguin rdf:type owl:NamedIndividual ,
+                     ani:Bird ;
+            ani:BodyHairAmount ani:None ;
+            ani:LivesIn ani:Nest ;
+            ani:hasDiet ani:Carnivore ;
+            ani:hasLimbs ani:Legs ,
+                         ani:Wings .
+
+
+###  http://example.org/kad2017/animals#Pigeon
+ani:Pigeon rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Salamander
+ani:Salamander rdf:type owl:NamedIndividual ,
+                        ani:Amphibian ;
+               ani:BodyHairAmount ani:None ;
+               ani:LivesIn ani:Nest ;
+               ani:hasDiet ani:Carnivore ;
+               ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Salmon
+ani:Salmon rdf:type owl:NamedIndividual ,
+                    ani:Fish ;
+           ani:BodyHairAmount ani:None ;
+           ani:LivesIn ani:Water ;
+           ani:hasDiet ani:Carnivore .
+
+
+###  http://example.org/kad2017/animals#Shark
+ani:Shark rdf:type owl:NamedIndividual ,
+                   ani:Fish ;
+          ani:BodyHairAmount ani:None ;
+          ani:LivesIn ani:Water ;
+          ani:hasDiet ani:Carnivore .
+
+
+###  http://example.org/kad2017/animals#Snake
+ani:Snake rdf:type owl:NamedIndividual ;
+          ani:BodyHairAmount ani:None ;
+          ani:LivesIn ani:Nest ;
+          ani:hasDiet ani:Carnivore .
+
+
+###  http://example.org/kad2017/animals#Tiger
+ani:Tiger rdf:type owl:NamedIndividual ,
+                   ani:Mammal ;
+          ani:BodyHairAmount ani:Medium ;
+          ani:LivesIn ani:Nest ;
+          ani:hasDiet ani:Carnivore ;
+          ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Toad
+ani:Toad rdf:type owl:NamedIndividual ,
+                  ani:Amphibian ;
+         ani:BodyHairAmount ani:None ;
+         ani:LivesIn ani:Nest ;
+         ani:hasDiet ani:Carnivore ;
+         ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Tree
+ani:Tree rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Tuna
+ani:Tuna rdf:type owl:NamedIndividual ,
+                  ani:Fish ;
+         ani:BodyHairAmount ani:None ;
+         ani:LivesIn ani:Water ;
+         ani:hasDiet ani:Herbivore .
+
+
+###  http://example.org/kad2017/animals#Turtle
+ani:Turtle rdf:type owl:NamedIndividual ,
+                    ani:Reptile ;
+           ani:BodyHairAmount ani:None ;
+           ani:LivesIn ani:Nest ;
+           ani:hasDiet ani:Omnivore ;
+           ani:hasLimbs ani:Legs .
+
+
+###  http://example.org/kad2017/animals#Vins
+ani:Vins rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Water
+ani:Water rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kad2017/animals#Whale
+ani:Whale rdf:type owl:NamedIndividual ,
+                   ani:Mammal ;
+          ani:BodyHairAmount ani:None ;
+          ani:hasDiet ani:Herbivore .
+
+
+###  http://example.org/kad2017/animals#Wings
+ani:Wings rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ani:Carnivore
+                ani:Herbivore
+                ani:Omnivore
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ani:High
+                ani:Low
+                ani:Medium
+                ani:None
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( ani:Carnivore
+                        ani:Herbivore
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

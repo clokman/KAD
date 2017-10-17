@@ -1,0 +1,275 @@
+@prefix : <http://www.semanticweb.org/nour_/ontologies/assignment4/> .
+@prefix as: <http://www.semanticweb.org/nour_/ontologies/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/nour_/ontologies/assignment4/> .
+
+<http://www.semanticweb.org/nour_/ontologies/assignment4/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasChild
+as:hasChild rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf as:hasParent .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasGrandChild
+as:hasGrandChild rdf:type owl:ObjectProperty ;
+                 owl:inverseOf as:hasGrandParent .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasGrandParent
+as:hasGrandParent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasNeighbour
+as:hasNeighbour rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasOwner
+as:hasOwner rdf:type owl:ObjectProperty ;
+            owl:inverseOf as:hasPet .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasParent
+as:hasParent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasPet
+as:hasPet rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/hasSibling
+as:hasSibling rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Animal
+as:Animal rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Child
+as:Child rdf:type owl:Class ;
+         rdfs:subClassOf as:Person ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty as:hasGrandParent ;
+                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                           owl:onClass as:Grandparent
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty as:hasParent ;
+                           owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                           owl:onClass as:Parent
+                         ] .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Father
+as:Father rdf:type owl:Class ;
+          rdfs:subClassOf as:Parent .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/GrandFather
+as:GrandFather rdf:type owl:Class ;
+               rdfs:subClassOf as:Grandparent .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/GrandMother
+as:GrandMother rdf:type owl:Class ;
+               rdfs:subClassOf as:Grandparent .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Grandparent
+as:Grandparent rdf:type owl:Class ;
+               rdfs:subClassOf as:Person ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty as:hasGrandChild ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass as:Child
+                               ] .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Mother
+as:Mother rdf:type owl:Class ;
+          rdfs:subClassOf as:Parent .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Neighbour
+as:Neighbour rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty as:hasNeighbour ;
+                                   owl:someValuesFrom as:Person
+                                 ] ;
+             rdfs:subClassOf as:Person ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty as:hasNeighbour ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass as:Person
+                             ] .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Parent
+as:Parent rdf:type owl:Class ;
+          rdfs:subClassOf as:Person ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty as:hasChild ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass as:Child
+                          ] .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Person
+as:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Pet
+as:Pet rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty as:hasOwner ;
+                             owl:someValuesFrom as:Person
+                           ] ;
+       rdfs:subClassOf as:Animal ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty as:hasOwner ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass as:Person
+                       ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Amy
+as:Amy rdf:type owl:NamedIndividual ,
+                as:GrandMother ,
+                as:Grandparent ,
+                as:Person ;
+       as:hasGrandChild as:Franky ,
+                        as:Gabriel ,
+                        as:Jason .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Bobby
+as:Bobby rdf:type owl:NamedIndividual ,
+                  as:Animal ,
+                  as:Pet ;
+         as:hasOwner as:Joey .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Franky
+as:Franky rdf:type owl:NamedIndividual ,
+                   as:Child ,
+                   as:Person ;
+          as:hasParent as:Joey ,
+                       as:Lisa .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Gabriel
+as:Gabriel rdf:type owl:NamedIndividual ,
+                    as:Child ,
+                    as:Person ;
+           as:hasParent as:Joey ,
+                        as:Lisa ;
+           as:hasSibling as:Franky .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Jason
+as:Jason rdf:type owl:NamedIndividual ,
+                  as:Child ,
+                  as:Person ;
+         as:hasParent as:Joey ,
+                      as:Lisa ;
+         as:hasSibling as:Franky ,
+                       as:Gabriel .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Joey
+as:Joey rdf:type owl:NamedIndividual ,
+                 as:Father ,
+                 as:Parent ,
+                 as:Person ;
+        as:hasNeighbour as:Jose ,
+                        as:Martin ;
+        as:hasParent as:Juan ,
+                     as:Maria .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Jose
+as:Jose rdf:type owl:NamedIndividual ,
+                 as:Neighbour ,
+                 as:Person ;
+        as:hasNeighbour as:Martin .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Joseph
+as:Joseph rdf:type owl:NamedIndividual ,
+                   as:GrandFather ,
+                   as:Grandparent ,
+                   as:Person ;
+          as:hasGrandChild as:Franky ,
+                           as:Gabriel ,
+                           as:Jason .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Juan
+as:Juan rdf:type owl:NamedIndividual ,
+                 as:GrandFather ,
+                 as:Grandparent ,
+                 as:Person ;
+        as:hasGrandChild as:Franky ,
+                         as:Gabriel ,
+                         as:Jason .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Lisa
+as:Lisa rdf:type owl:NamedIndividual ,
+                 as:Mother ,
+                 as:Parent ,
+                 as:Person ;
+        as:hasNeighbour as:Jose ,
+                        as:Martin ;
+        as:hasParent as:Amy ,
+                     as:Joseph .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Maria
+as:Maria rdf:type owl:NamedIndividual ,
+                  as:GrandMother ,
+                  as:Grandparent ,
+                  as:Person ;
+         as:hasGrandChild as:Franky ,
+                          as:Gabriel ,
+                          as:Jason .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Martin
+as:Martin rdf:type owl:NamedIndividual ,
+                   as:Neighbour ,
+                   as:Person .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Oscar
+as:Oscar rdf:type owl:NamedIndividual ,
+                  as:Person ;
+         as:hasNeighbour as:Martin .
+
+
+###  http://www.semanticweb.org/nour_/ontologies/assignment4/Shad
+as:Shad rdf:type owl:NamedIndividual ,
+                 as:Animal ,
+                 as:Pet ;
+        as:hasOwner as:Jason .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

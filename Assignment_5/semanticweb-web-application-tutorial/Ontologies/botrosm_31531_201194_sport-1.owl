@@ -1,0 +1,226 @@
+@prefix : <http://www.example.org/mbs558/assignment4/mbs558.ttl#> .
+@prefix ex: <http://www.example.org/mbs558/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/mbs558/assignment4/mbs558.ttl> .
+
+<http://www.example.org/mbs558/assignment4/mbs558.ttl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Does
+ex:mbs558.ttl/Does rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/IsA
+ex:mbs558.ttl/IsA rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/IsDoneBy
+ex:mbs558.ttl/IsDoneBy rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/IsDoneByA
+ex:mbs558.ttl/IsDoneByA rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/IsDoneOn
+ex:mbs558.ttl/IsDoneOn rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/IsNeededFor
+ex:mbs558.ttl/IsNeededFor rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/IsPlayedWith
+ex:mbs558.ttl/IsPlayedWith rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Does
+ex:mbs558.ttl/Does rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/mbs558/assignment4/Kleding
+ex:Kleding rdf:type owl:Class .
+
+
+###  http://www.example.org/mbs558/assignment4/Team
+ex:Team rdf:type owl:Class .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Ballen
+ex:mbs558.ttl/Ballen rdf:type owl:Class ;
+                     rdfs:subClassOf ex:mbs558.ttl/Spullen .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Gewichten
+ex:mbs558.ttl/Gewichten rdf:type owl:Class ;
+                        rdfs:subClassOf ex:mbs558.ttl/Spullen .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Gras
+ex:mbs558.ttl/Gras rdf:type owl:Class ;
+                   rdfs:subClassOf ex:mbs558.ttl/Ondergrond .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Hockey
+ex:mbs558.ttl/Hockey rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ex:mbs558.ttl/Hockeyball
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ex:mbs558.ttl/IsPlayedWith ;
+                                                                  owl:someValuesFrom ex:mbs558.ttl/Hockeystick
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf ex:mbs558.ttl/Sport .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Hockeyball
+ex:mbs558.ttl/Hockeyball rdf:type owl:Class ;
+                         rdfs:subClassOf ex:mbs558.ttl/Ballen ;
+                         owl:disjointWith ex:mbs558.ttl/Tennisball .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Hockeystick
+ex:mbs558.ttl/Hockeystick rdf:type owl:Class ;
+                          rdfs:subClassOf ex:mbs558.ttl/Spullen .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Ondergrond
+ex:mbs558.ttl/Ondergrond rdf:type owl:Class .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Person
+ex:mbs558.ttl/Person rdf:type owl:Class .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Sport
+ex:mbs558.ttl/Sport rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty ex:mbs558.ttl/IsDoneByA ;
+                                          owl:someValuesFrom ex:mbs558.ttl/Person
+                                        ] .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Spullen
+ex:mbs558.ttl/Spullen rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty ex:mbs558.ttl/IsNeededFor ;
+                                            owl:someValuesFrom ex:mbs558.ttl/Sport
+                                          ] .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Tennis
+ex:mbs558.ttl/Tennis rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ex:mbs558.ttl/Tennisball
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ex:mbs558.ttl/IsPlayedWith ;
+                                                                  owl:someValuesFrom ex:mbs558.ttl/Tennisracket
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf ex:mbs558.ttl/Sport .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Tennisball
+ex:mbs558.ttl/Tennisball rdf:type owl:Class ;
+                         rdfs:subClassOf ex:mbs558.ttl/Ballen .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Tennisracket
+ex:mbs558.ttl/Tennisracket rdf:type owl:Class ;
+                           rdfs:subClassOf ex:mbs558.ttl/Spullen .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Voetballer
+ex:mbs558.ttl/Voetballer rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Restriction ;
+                                               owl:onProperty ex:mbs558.ttl/IsDoneOn ;
+                                               owl:someValuesFrom ex:mbs558.ttl/Gras
+                                             ] ;
+                         rdfs:subClassOf ex:mbs558.ttl/Sport .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/fitness
+ex:mbs558.ttl/fitness rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty ex:mbs558.ttl/IsDoneOn ;
+                                            owl:someValuesFrom ex:mbs558.ttl/Gewichten
+                                          ] ;
+                      rdfs:subClassOf ex:mbs558.ttl/Sport .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/mbs558/assignment4/Arnold_schwarzenegger
+ex:Arnold_schwarzenegger rdf:type owl:NamedIndividual ,
+                                  ex:mbs558.ttl/fitness .
+
+
+###  http://www.example.org/mbs558/assignment4/Messi
+ex:Messi rdf:type owl:NamedIndividual ,
+                  ex:mbs558.ttl/Voetballer .
+
+
+###  http://www.example.org/mbs558/assignment4/Roger_Federer
+ex:Roger_Federer rdf:type owl:NamedIndividual ,
+                          ex:mbs558.ttl/Tennis .
+
+
+###  http://www.example.org/mbs558/assignment4/Voetballer
+ex:Voetballer rdf:type owl:NamedIndividual ,
+                       ex:mbs558.ttl/Person .
+
+
+###  http://www.example.org/mbs558/assignment4/Voetbalshirt
+ex:Voetbalshirt rdf:type owl:NamedIndividual ,
+                         ex:Kleding .
+
+
+###  http://www.example.org/mbs558/assignment4/Voetbalteam
+ex:Voetbalteam rdf:type owl:NamedIndividual ,
+                        ex:Team .
+
+
+###  http://www.example.org/mbs558/assignment4/ballen
+ex:ballen rdf:type owl:NamedIndividual ,
+                   ex:mbs558.ttl/Spullen .
+
+
+###  http://www.example.org/mbs558/assignment4/gras
+ex:gras rdf:type owl:NamedIndividual ,
+                 ex:mbs558.ttl/Ondergrond .
+
+
+###  http://www.example.org/mbs558/assignment4/voetbal
+ex:voetbal rdf:type owl:NamedIndividual ,
+                    ex:mbs558.ttl/Sport .
+
+
+###  http://www.example.org/mbs558/assignment4/mbs558.ttl/Naomie_van_As
+ex:mbs558.ttl/Naomie_van_As rdf:type owl:NamedIndividual ,
+                                     ex:mbs558.ttl/Hockey .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,374 @@
+@prefix : <http://www.semanticweb.org/kennet/ontologies/showtime#> .
+@prefix st: <http://www.semanticweb.org/kennet/ontologies/showtime/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/kennet/ontologies/showtime> .
+
+<http://www.semanticweb.org/kennet/ontologies/showtime> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/hasBrand
+st:hasBrand rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/hasClub
+st:hasClub rdf:type owl:ObjectProperty ;
+           owl:inverseOf st:playsIn .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/hasCoach
+st:hasCoach rdf:type owl:ObjectProperty ;
+            owl:inverseOf st:isCoachOf .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/hasPlayer
+st:hasPlayer rdf:type owl:ObjectProperty ;
+             owl:inverseOf st:isPartOfA ;
+             rdf:type owl:InverseFunctionalProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/isCoachOf
+st:isCoachOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/isPartOfA
+st:isPartOfA rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/isSponsoredBy
+st:isSponsoredBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/isTrainerOf
+st:isTrainerOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/playsIn
+st:playsIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/usedToPlayFor
+st:usedToPlayFor rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/hasAge
+st:hasAge rdf:type owl:DatatypeProperty ;
+          rdfs:domain st:Person ;
+          rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Coach
+st:Coach rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( st:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty st:isCoachOf ;
+                                                      owl:someValuesFrom st:Team
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/League
+st:League rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Person
+st:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Player
+st:Player rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( st:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty st:isPartOfA ;
+                                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass st:Team
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ owl:intersectionOf ( st:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty st:hasAge ;
+                                                       owl:minQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
+                                                       owl:onDataRange xsd:integer
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty st:isSponsoredBy ;
+                                owl:someValuesFrom st:Sponser
+                              ] ;
+          rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Sponser
+st:Sponser rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Team
+st:Team rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Trainer
+st:Trainer rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( st:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty st:isTrainerOf ;
+                                                        owl:someValuesFrom st:Team
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf st:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Adidas
+st:Adidas rdf:type owl:NamedIndividual ,
+                   st:Sponser .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Ajax
+st:Ajax rdf:type owl:NamedIndividual ,
+                 st:Team ;
+        st:hasBrand st:Adidas ;
+        st:playsIn st:Eredivisie .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Alexis_Sanchez
+st:Alexis_Sanchez rdf:type owl:NamedIndividual ,
+                           st:Person ;
+                  st:isPartOfA st:Arsenal ;
+                  st:isSponsoredBy st:Nike ;
+                  st:usedToPlayFor st:Barcelona ;
+                  st:hasAge 29 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Arsenal
+st:Arsenal rdf:type owl:NamedIndividual ,
+                    st:Team ;
+           st:hasBrand st:Puma ;
+           st:playsIn st:Premier_League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Arsene_Wenger
+st:Arsene_Wenger rdf:type owl:NamedIndividual ,
+                          st:Person ;
+                 st:isCoachOf st:Arsenal ;
+                 st:hasAge 70 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Atletico_Madrid
+st:Atletico_Madrid rdf:type owl:NamedIndividual ,
+                            st:Team ;
+                   st:hasBrand st:Nike ;
+                   st:playsIn st:Primera_Division .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Barcelona
+st:Barcelona rdf:type owl:NamedIndividual ,
+                      st:Team ;
+             st:hasBrand st:Nike ;
+             st:playsIn st:Primera_Division .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Chelsea
+st:Chelsea rdf:type owl:NamedIndividual ,
+                    st:Team ;
+           st:hasBrand st:Adidas ;
+           st:playsIn st:Premier_League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Christian_Eriksen
+st:Christian_Eriksen rdf:type owl:NamedIndividual ,
+                              st:Person ;
+                     st:isPartOfA st:Tottenham_Hotspur ;
+                     st:isSponsoredBy st:Adidas ;
+                     st:usedToPlayFor st:Ajax ;
+                     st:hasAge 24 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Diego_Costa
+st:Diego_Costa rdf:type owl:NamedIndividual ,
+                        st:Person ;
+               st:isPartOfA st:Chelsea ;
+               st:isSponsoredBy st:Adidas ;
+               st:usedToPlayFor st:Atletico_Madrid ;
+               st:hasAge 30 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Eredivisie
+st:Eredivisie rdf:type owl:NamedIndividual ,
+                       st:League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Feyenoord
+st:Feyenoord rdf:type owl:NamedIndividual ,
+                      st:Team ;
+             st:hasBrand st:Adidas ;
+             st:playsIn st:Eredivisie .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Harry_Kane
+st:Harry_Kane rdf:type owl:NamedIndividual ,
+                       st:Person ;
+              st:isPartOfA st:Tottenham_Hotspur ;
+              st:isSponsoredBy st:Adidas ;
+              st:hasAge 24 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Luiz_Suarez
+st:Luiz_Suarez rdf:type owl:NamedIndividual ,
+                        st:Person ;
+               st:hasBrand st:Adidas ;
+               st:isPartOfA st:Barcelona ;
+               st:usedToPlayFor st:Ajax ;
+               st:hasAge 31 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Manchester_City
+st:Manchester_City rdf:type owl:NamedIndividual ,
+                            st:Team ;
+                   st:hasBrand st:Nike ;
+                   st:playsIn st:Premier_League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Mesut_Ozil
+st:Mesut_Ozil rdf:type owl:NamedIndividual ,
+                       st:Person ;
+              st:isPartOfA st:Arsenal ;
+              st:isSponsoredBy st:Adidas ;
+              st:usedToPlayFor st:Real_Madrid ;
+              st:hasAge 27 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Nike
+st:Nike rdf:type owl:NamedIndividual ,
+                 st:Sponser .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/PSV
+st:PSV rdf:type owl:NamedIndividual ,
+                st:Team ;
+       st:hasBrand st:Umbro ;
+       st:playsIn st:Eredivisie .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Pep_Guardiola
+st:Pep_Guardiola rdf:type owl:NamedIndividual ,
+                          st:Person ;
+                 st:isCoachOf st:Manchester_City ;
+                 st:hasAge 42 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Premier_League
+st:Premier_League rdf:type owl:NamedIndividual ,
+                           st:League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Primera_Division
+st:Primera_Division rdf:type owl:NamedIndividual ,
+                             st:League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Puma
+st:Puma rdf:type owl:NamedIndividual ,
+                 st:Sponser .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Real_Madrid
+st:Real_Madrid rdf:type owl:NamedIndividual ,
+                        st:Team ;
+               st:hasBrand st:Adidas ;
+               st:playsIn st:Primera_Division .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Tottenham_Hotspur
+st:Tottenham_Hotspur rdf:type owl:NamedIndividual ,
+                              st:Team ;
+                     st:hasBrand st:Under_Armor ;
+                     st:playsIn st:Premier_League .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerA
+st:TrainerA rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:Arsenal ;
+            st:hasAge 29 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerB
+st:TrainerB rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:Chelsea ;
+            st:hasAge 53 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerC
+st:TrainerC rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:Manchester_City ;
+            st:hasAge 42 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerD
+st:TrainerD rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:Ajax ;
+            st:hasAge 35 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerE
+st:TrainerE rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:PSV ;
+            st:hasAge 22 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerF
+st:TrainerF rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:Feyenoord ;
+            st:hasAge 28 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/TrainerG
+st:TrainerG rdf:type owl:NamedIndividual ,
+                     st:Person ;
+            st:isTrainerOf st:Tottenham_Hotspur ;
+            st:hasAge 42 .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Umbro
+st:Umbro rdf:type owl:NamedIndividual ,
+                  st:Sponser .
+
+
+###  http://www.semanticweb.org/kennet/ontologies/showtime/Under_Armor
+st:Under_Armor rdf:type owl:NamedIndividual ,
+                        st:Sponser .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

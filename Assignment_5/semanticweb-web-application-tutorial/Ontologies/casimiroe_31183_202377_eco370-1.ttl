@@ -1,0 +1,263 @@
+@prefix : <http://www.semanticweb.org/ellac/drugs#> .
+@prefix dr: <http://www.semanticweb.org/ellac/drugs/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ellac/drugs> .
+
+<http://www.semanticweb.org/ellac/drugs> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ellac/drugs/AddictedTo
+dr:AddictedTo rdf:type owl:ObjectProperty ;
+              owl:equivalentProperty dr:Uses .
+
+
+###  http://www.semanticweb.org/ellac/drugs/BodyTemperature
+dr:BodyTemperature rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Intake
+dr:Intake rdf:type owl:ObjectProperty ,
+                   owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/ellac/drugs/PupilSizeWhenUsed
+dr:PupilSizeWhenUsed rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ellac/drugs/RuinsBody
+dr:RuinsBody rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ellac/drugs/StoppedUsing
+dr:StoppedUsing rdf:type owl:ObjectProperty ;
+                owl:propertyDisjointWith dr:Uses .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Uses
+dr:Uses rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ellac/drugs/hasMainEffect
+dr:hasMainEffect rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ,
+                            [ rdf:type rdfs:Datatype ;
+                              owl:oneOf [ rdf:type rdf:List ;
+                                          rdf:first "Hallucination" ;
+                                          rdf:rest [ rdf:type rdf:List ;
+                                                     rdf:first "Rapid High" ;
+                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                rdf:first "Stimulates Central Nervous System" ;
+                                                                rdf:rest rdf:nil
+                                                              ]
+                                                   ]
+                                        ]
+                            ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ellac/drugs/CNS_Stimulants
+dr:CNS_Stimulants rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty dr:hasMainEffect ;
+                                        owl:hasValue "Stimulates Central Nervous System"
+                                      ] ;
+                  rdfs:subClassOf dr:Drugs ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dr:BodyTemperature ;
+                                    owl:hasValue dr:Up
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dr:PupilSizeWhenUsed ;
+                                    owl:hasValue dr:Dilated
+                                  ] .
+
+
+###  http://www.semanticweb.org/ellac/drugs/DrugUser
+dr:DrugUser rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty dr:Uses ;
+                                  owl:someValuesFrom dr:Drugs
+                                ] ;
+            rdfs:subClassOf dr:Person ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty dr:RuinsBody ;
+                              owl:hasSelf "true"^^xsd:boolean
+                            ] .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Drugs
+dr:Drugs rdf:type owl:Class ;
+         owl:disjointUnionOf ( dr:CNS_Stimulants
+                               dr:Hallucinogens
+                               dr:Inhalants
+                             ) .
+
+
+###  http://www.semanticweb.org/ellac/drugs/FormerDrugUser
+dr:FormerDrugUser rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty dr:StoppedUsing ;
+                                        owl:someValuesFrom dr:Drugs
+                                      ] ;
+                  rdfs:subClassOf dr:Person .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Hallucinogens
+dr:Hallucinogens rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty dr:hasMainEffect ;
+                                       owl:hasValue "Hallucination"
+                                     ] ;
+                 rdfs:subClassOf dr:Drugs ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty dr:BodyTemperature ;
+                                   owl:hasValue dr:Up
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty dr:PupilSizeWhenUsed ;
+                                   owl:hasValue dr:Dilated
+                                 ] .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Inhalants
+dr:Inhalants rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty dr:Intake ;
+                                   owl:hasValue dr:Inhaling
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty dr:hasMainEffect ;
+                                   owl:hasValue "Rapid High"
+                                 ] ;
+             rdfs:subClassOf dr:Drugs ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dr:PupilSizeWhenUsed ;
+                               owl:hasValue dr:Normal
+                             ] .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Person
+dr:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ellac/drugs/Charlie_Sheen
+dr:Charlie_Sheen rdf:type owl:NamedIndividual ;
+                 dr:Uses dr:Cocaine .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Cocaine
+dr:Cocaine rdf:type owl:NamedIndividual ;
+           dr:hasMainEffect "Stimulates Central Nervous System" .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Dilated
+dr:Dilated rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Ecstasy
+dr:Ecstasy rdf:type owl:NamedIndividual ;
+           dr:Intake dr:Oral ;
+           dr:hasMainEffect "Hallucination" .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Inhaling
+dr:Inhaling rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Keith_Richards
+dr:Keith_Richards rdf:type owl:NamedIndividual ;
+                  dr:StoppedUsing dr:Cocaine .
+
+
+###  http://www.semanticweb.org/ellac/drugs/LSD
+dr:LSD rdf:type owl:NamedIndividual ;
+       dr:hasMainEffect "Hallucination" .
+
+
+###  http://www.semanticweb.org/ellac/drugs/LaughingGas
+dr:LaughingGas rdf:type owl:NamedIndividual ;
+               dr:hasMainEffect "Rapid High" .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Normal
+dr:Normal rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Oral
+dr:Oral rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Snorting
+dr:Snorting rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/ellac/drugs/Up
+dr:Up rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( dr:Charlie_Sheen
+                        dr:Cocaine
+                        dr:Dilated
+                        dr:Ecstasy
+                        dr:Inhaling
+                        dr:Keith_Richards
+                        dr:LSD
+                        dr:LaughingGas
+                        dr:Normal
+                        dr:Oral
+                        dr:Snorting
+                        dr:Up
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( dr:Charlie_Sheen
+                        dr:Cocaine
+                        dr:Dilated
+                        dr:Ecstasy
+                        dr:Inhaling
+                        dr:Keith_Richards
+                        dr:LaughingGas
+                        dr:Normal
+                        dr:Oral
+                        dr:Snorting
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( dr:Cocaine
+                        dr:Ecstasy
+                        dr:Inhaling
+                        dr:LaughingGas
+                        dr:Oral
+                        dr:Snorting
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

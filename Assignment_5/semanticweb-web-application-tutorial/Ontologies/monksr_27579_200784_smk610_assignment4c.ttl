@@ -1,0 +1,363 @@
+@prefix : <http://www.semanticweb.org/shart/ontologies/food#> .
+@prefix fo: <http://www.semanticweb.org/shart/ontologies/food#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/shart/ontologies/food> .
+
+<http://www.semanticweb.org/shart/ontologies/food> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/shart/ontologies/food#dishTemperature
+fo:dishTemperature rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#hasIngredient
+fo:hasIngredient rdf:type owl:ObjectProperty ;
+                 owl:inverseOf fo:ingredientOf ;
+                 rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#hasProperty
+fo:hasProperty rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#ingredientOf
+fo:ingredientOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#originsFrom
+fo:originsFrom rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:AsymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/shart/ontologies/food#Asia
+fo:Asia rdf:type owl:Class ;
+        rdfs:subClassOf fo:Origin .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Cheese
+fo:Cheese rdf:type owl:Class ;
+          rdfs:subClassOf fo:Ingredient .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Dairy
+fo:Dairy rdf:type owl:Class ;
+         rdfs:subClassOf fo:Ingredient .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Dessert
+fo:Dessert rdf:type owl:Class ;
+           rdfs:subClassOf fo:Meal ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty fo:hasProperty ;
+                             owl:allValuesFrom fo:Unhealthy
+                           ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Europe
+fo:Europe rdf:type owl:Class ;
+          rdfs:subClassOf fo:Origin .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Fish
+fo:Fish rdf:type owl:Class ;
+        rdfs:subClassOf fo:Ingredient .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Fruit
+fo:Fruit rdf:type owl:Class ;
+         rdfs:subClassOf fo:Ingredient ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty fo:hasProperty ;
+                           owl:allValuesFrom fo:Healthy
+                         ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Health
+fo:Health rdf:type owl:Class ;
+          rdfs:subClassOf fo:Property .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Healthy
+fo:Healthy rdf:type owl:Class ;
+           rdfs:subClassOf fo:Health .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Ingredient
+fo:Ingredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Meal
+fo:Meal rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty fo:hasIngredient ;
+                          owl:someValuesFrom fo:Ingredient
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty fo:hasProperty ;
+                          owl:someValuesFrom fo:Temperature
+                        ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Meat
+fo:Meat rdf:type owl:Class ;
+        rdfs:subClassOf fo:Ingredient .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#MeatDish
+fo:MeatDish rdf:type owl:Class ;
+            rdfs:subClassOf fo:Meal ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty fo:hasIngredient ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass fo:Meat
+                            ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Origin
+fo:Origin rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Property
+fo:Property rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Rice
+fo:Rice rdf:type owl:Class ;
+        rdfs:subClassOf fo:Ingredient .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Salad
+fo:Salad rdf:type owl:Class ;
+         rdfs:subClassOf fo:Meal ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty fo:hasIngredient ;
+                           owl:someValuesFrom fo:Vegetable
+                         ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Sushi
+fo:Sushi rdf:type owl:Class ;
+         rdfs:subClassOf fo:Meal ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty fo:hasIngredient ;
+                           owl:someValuesFrom fo:Fish
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty fo:hasIngredient ;
+                           owl:someValuesFrom fo:Rice
+                         ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Sweet
+fo:Sweet rdf:type owl:Class ;
+         rdfs:subClassOf fo:Ingredient ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty fo:hasProperty ;
+                           owl:allValuesFrom fo:Unhealthy
+                         ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Temperature
+fo:Temperature rdf:type owl:Class ;
+               rdfs:subClassOf fo:Property .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Unhealthy
+fo:Unhealthy rdf:type owl:Class ;
+             rdfs:subClassOf fo:Health .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#VegatarianMeal
+fo:VegatarianMeal rdf:type owl:Class ;
+                  rdfs:subClassOf fo:Meal ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty fo:hasIngredient ;
+                                    owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onClass fo:Meat
+                                  ] .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Vegetable
+fo:Vegetable rdf:type owl:Class ;
+             rdfs:subClassOf fo:Ingredient ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty fo:hasProperty ;
+                               owl:allValuesFrom fo:Healthy
+                             ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/shart/ontologies/food#Beef
+fo:Beef rdf:type owl:NamedIndividual ,
+                 fo:Meat .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#CaesarSalad
+fo:CaesarSalad rdf:type owl:NamedIndividual ,
+                        fo:Salad ;
+               fo:hasIngredient fo:Chicken ,
+                                fo:Egg ,
+                                fo:Garlic ,
+                                fo:Lemon ,
+                                fo:Lettuce ,
+                                fo:ParmezanCheese .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Chicken
+fo:Chicken rdf:type owl:NamedIndividual ,
+                    fo:Meat .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Cold
+fo:Cold rdf:type owl:NamedIndividual ,
+                 fo:Temperature .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#CremeBrulee
+fo:CremeBrulee rdf:type owl:NamedIndividual ,
+                        fo:Dessert ;
+               fo:dishTemperature fo:Cold ;
+               fo:hasIngredient fo:Custard ,
+                                fo:Sugar ;
+               fo:originsFrom fo:France .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Custard
+fo:Custard rdf:type owl:NamedIndividual ,
+                    fo:Dairy .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Egg
+fo:Egg rdf:type owl:NamedIndividual ,
+                fo:Dairy .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#France
+fo:France rdf:type owl:NamedIndividual ,
+                   fo:Europe .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Garlic
+fo:Garlic rdf:type owl:NamedIndividual ,
+                   fo:Vegetable .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Hot
+fo:Hot rdf:type owl:NamedIndividual ,
+                fo:Temperature .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Japan
+fo:Japan rdf:type owl:NamedIndividual ,
+                  fo:Asia .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Lemon
+fo:Lemon rdf:type owl:NamedIndividual ,
+                  fo:Fruit .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Lettuce
+fo:Lettuce rdf:type owl:NamedIndividual ,
+                    fo:Vegetable .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#ParmezanCheese
+fo:ParmezanCheese rdf:type owl:NamedIndividual ,
+                           fo:Cheese .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Pork
+fo:Pork rdf:type owl:NamedIndividual ,
+                 fo:Meat .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Salmon
+fo:Salmon rdf:type owl:NamedIndividual ,
+                   fo:Fish .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#SalmonSushi
+fo:SalmonSushi rdf:type owl:NamedIndividual ,
+                        fo:Sushi ;
+               fo:hasIngredient fo:Salmon ;
+               fo:originsFrom fo:Japan .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Spain
+fo:Spain rdf:type owl:NamedIndividual ,
+                  fo:Europe .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Sugar
+fo:Sugar rdf:type owl:NamedIndividual ,
+                  fo:Sweet .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Tomato
+fo:Tomato rdf:type owl:NamedIndividual ,
+                   fo:Vegetable .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#TomatoSalad
+fo:TomatoSalad rdf:type owl:NamedIndividual ,
+                        fo:Salad ;
+               fo:dishTemperature fo:Cold ;
+               fo:hasIngredient fo:Lettuce ,
+                                fo:Tomato .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Tuna
+fo:Tuna rdf:type owl:NamedIndividual ,
+                 fo:Fish .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#TunaSushi
+fo:TunaSushi rdf:type owl:NamedIndividual ,
+                      fo:Sushi ;
+             fo:hasIngredient fo:Tuna ;
+             fo:originsFrom fo:Japan .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#Unhealthy
+fo:Unhealthy rdf:type owl:NamedIndividual ,
+                      fo:Health .
+
+
+###  http://www.semanticweb.org/shart/ontologies/food#WhiteRice
+fo:WhiteRice rdf:type owl:NamedIndividual ,
+                      fo:Rice .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf ( fo:Salad
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty fo:hasIngredient ;
+                         owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                         owl:onClass fo:Meat
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf fo:VegatarianMeal
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

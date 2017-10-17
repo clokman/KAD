@@ -1,0 +1,396 @@
+@prefix : <http://www.few.vu.nl/~lkt580/karregat/ontologies/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.few.vu.nl/~lkt580/karregat/ontologies/> .
+
+<http://www.few.vu.nl/~lkt580/karregat/ontologies/> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#OnlyServes
+
+:OnlyServes rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Prepares
+
+:Prepares rdf:type owl:AsymmetricProperty ,
+                   owl:ObjectProperty .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Sells
+
+:Sells rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Serves
+
+:Serves rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#has
+
+:has rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#is_a
+
+:is_a rdf:type owl:ObjectProperty ;
+      
+      rdfs:domain :Restaurant ;
+      
+      rdfs:range :Restaurant_Type .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#is_being_served_by
+
+:is_being_served_by rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:domain :Customer ;
+                    
+                    rdfs:range :Employee .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#visits
+
+:visits rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :Customer ;
+        
+        rdfs:range :Store .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#works_as
+
+:works_as rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:domain :Employee ;
+          
+          rdfs:range :Job .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#works_in
+
+:works_in rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Employee ;
+          
+          rdfs:range :Store .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Assortment
+
+:Assortment rdf:type owl:Class .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Chef
+
+:Chef rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Job ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :Prepares ;
+                        owl:allValuesFrom :Dishes
+                      ] .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Clothes
+
+:Clothes rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Assortment .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Clothes_Store
+
+:Clothes_Store rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Store ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :Sells ;
+                                 owl:allValuesFrom :Clothes
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :has ;
+                                 owl:onClass :Salesman ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Customer
+
+:Customer rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Person ;
+          
+          owl:disjointWith :Employee .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Dishes
+
+:Dishes rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Assortment .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Employee
+
+:Employee rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Person ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :has ;
+                            owl:allValuesFrom :Job
+                          ] .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Fastfood_Restaurant
+
+:Fastfood_Restaurant rdf:type owl:Class ;
+                     
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty :Serves ;
+                                           owl:someValuesFrom :Meat
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :Serves ;
+                                           owl:someValuesFrom :Salads
+                                         ] ;
+                     
+                     rdfs:subClassOf :Restaurant_Type .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Fries
+
+:Fries rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Dishes .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Job
+
+:Job rdf:type owl:Class .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Meat
+
+:Meat rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Dishes .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Meat_Restaurant
+
+:Meat_Restaurant rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Restaurant_Type ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :Serves ;
+                                   owl:allValuesFrom :Meat
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :has ;
+                                   owl:onClass :Chef ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 
+                 owl:disjointWith :Vegetarian_Restaurant .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Person
+
+:Person rdf:type owl:Class .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Restaurant
+
+:Restaurant rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Store .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Restaurant_Type
+
+:Restaurant_Type rdf:type owl:Class .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Salads
+
+:Salads rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Dishes .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Salesman
+
+:Salesman rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Job .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Souvenir_Store
+
+:Souvenir_Store rdf:type owl:Class ;
+                
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :Sells ;
+                                      owl:someValuesFrom :Souvenirs
+                                    ] ;
+                
+                rdfs:subClassOf :Store .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Souvenirs
+
+:Souvenirs rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Assortment .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Store
+
+:Store rdf:type owl:Class .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Vegetarian_Restaurant
+
+:Vegetarian_Restaurant rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Restaurant_Type ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :has ;
+                                         owl:onClass :Waiter ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :Serves ;
+                                         owl:allValuesFrom :Salads
+                                       ] .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Waiter
+
+:Waiter rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Job .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/Golden_Temple_(Vega)
+
+<http://www.few.vu.nl/~lkt580/karregat/ontologies/Golden_Temple_(Vega)> rdf:type :Vegetarian_Restaurant ,
+                                                                                 owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Bart_Maatje
+
+:Bart_Maatje rdf:type :Chef ,
+                      owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Jolanda_de_Zanger
+
+:Jolanda_de_Zanger rdf:type :Salesman ,
+                            owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Kentucky_Fried_Chicken
+
+:Kentucky_Fried_Chicken rdf:type :Fastfood_Restaurant ,
+                                 owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Kruithof_Souvenirs
+
+:Kruithof_Souvenirs rdf:type :Souvenir_Store ,
+                             owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Pompadour
+
+:Pompadour rdf:type :Meat_Restaurant ,
+                    owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Tim_Tinkel
+
+:Tim_Tinkel rdf:type :Waiter ,
+                     owl:NamedIndividual .
+
+
+
+###  http://www.few.vu.nl/~lkt580/karregat/ontologies/#Tip_de_Bruin
+
+:Tip_de_Bruin rdf:type :Clothes_Store ,
+                       owl:NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -1,0 +1,283 @@
+@prefix : <http://www.student.uva.nl/user/ontologies#> .
+@prefix st: <http://www.student.uva.nl/mehmet/assignment/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.student.uva.nl/mehmet/assignment> .
+
+<http://www.student.uva.nl/mehmet/assignment> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.student.uva.nl/mehmet/assignment#Familyof
+:Familyof rdf:type owl:ObjectProperty ,
+                   owl:SymmetricProperty ,
+                   owl:TransitiveProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#amemberof
+:amemberof rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#hastopping
+:hastopping rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#isaingredientinacakejustlike
+:isaingredientinacakejustlike rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#isaingredientinapizzajustlike
+:isaingredientinapizzajustlike rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#isaingredientinfruitdrinksjustlike
+:isaingredientinfruitdrinksjustlike rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#isaingredientinsoftdrinksjustlike
+:isaingredientinsoftdrinksjustlike rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#musthave
+:musthave rdf:type owl:ObjectProperty .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#musthaveingredient
+:musthaveingredient rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.student.uva.nl/mehmet/assignment#Bicycle
+:Bicycle rdf:type owl:Class ;
+         rdfs:subClassOf :Vehicles ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :musthave ;
+                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Tires
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :musthave ;
+                           owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Tires
+                         ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Cake
+:Cake rdf:type owl:Class ;
+      owl:equivalentClass [ rdf:type owl:Restriction ;
+                            owl:onProperty :isaingredientinacakejustlike ;
+                            owl:someValuesFrom owl:Thing
+                          ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf :Vehicles ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :musthave ;
+                       owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                       owl:onClass :Tires
+                     ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Chocolate
+:Chocolate rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Components
+:Components rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Country
+:Country rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Europeancountryispartof
+:Europeancountryispartof rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Fish
+:Fish rdf:type owl:Class ;
+      rdfs:subClassOf :ingredients .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Flesh
+:Flesh rdf:type owl:Class ;
+       rdfs:subClassOf :Food ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :musthaveingredient ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Meat
+                       ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Food
+:Food rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Fruit_drinks
+:Fruit_drinks rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :isaingredientinfruitdrinksjustlike ;
+                                    owl:someValuesFrom owl:Thing
+                                  ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Hawaipizza
+:Hawaipizza rdf:type owl:Class ;
+            rdfs:subClassOf :Pizza ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hastopping ;
+                              owl:allValuesFrom :Hawaitopping
+                            ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Hawaitopping
+:Hawaitopping rdf:type owl:Class ;
+              rdfs:subClassOf :Topping .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Meat
+:Meat rdf:type owl:Class ;
+      rdfs:subClassOf :ingredients .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Netherlands
+:Netherlands rdf:type owl:Class ;
+             rdfs:subClassOf :Country ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :amemberof ;
+                               owl:hasValue :Europe
+                             ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Pasta
+:Pasta rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Persons
+:Persons rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Pizza
+:Pizza rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :isaingredientinapizzajustlike ;
+                             owl:someValuesFrom owl:Thing
+                           ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Soft_drinks
+:Soft_drinks rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isaingredientinsoftdrinksjustlike ;
+                                   owl:someValuesFrom owl:Thing
+                                 ] .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Tires
+:Tires rdf:type owl:Class ;
+       rdfs:subClassOf :Components .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Topping
+:Topping rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Vegetables
+:Vegetables rdf:type owl:Class ;
+            rdfs:subClassOf :ingredients .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Vehicles
+:Vehicles rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#ingredients
+:ingredients rdf:type owl:Class .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#vegeterian
+:vegeterian rdf:type owl:Class ;
+            rdfs:subClassOf :Food ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :musthaveingredient ;
+                              owl:allValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :Fish
+                                                                :Vegetables
+                                                              )
+                                                ]
+                            ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.student.uva.nl/mehmet/assignment#Bart
+:Bart rdf:type owl:NamedIndividual ,
+               :Persons ;
+      :Familyof :Jan .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Europe
+:Europe rdf:type owl:NamedIndividual ,
+                 :Europeancountryispartof .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Jan
+:Jan rdf:type owl:NamedIndividual ,
+              :Persons ;
+     :Familyof :Piet .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#Piet
+:Piet rdf:type owl:NamedIndividual ,
+               :Persons .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#eggs
+:eggs rdf:type owl:NamedIndividual ;
+      :isaingredientinacakejustlike :sugar ;
+      :isaingredientinapizzajustlike :tomatoes .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#specialsugar
+:specialsugar rdf:type owl:NamedIndividual ;
+              :isaingredientinfruitdrinksjustlike :sugar ;
+              :isaingredientinsoftdrinksjustlike :sugar .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#specialwater
+:specialwater rdf:type owl:NamedIndividual ;
+              :isaingredientinfruitdrinksjustlike :water ;
+              :isaingredientinsoftdrinksjustlike :water .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#sugar
+:sugar rdf:type owl:NamedIndividual ;
+       :isaingredientinacakejustlike :eggs ;
+       :isaingredientinfruitdrinksjustlike :water ;
+       :isaingredientinsoftdrinksjustlike :water .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#tomatoes
+:tomatoes rdf:type owl:NamedIndividual ;
+          :isaingredientinapizzajustlike :eggs .
+
+
+###  http://www.student.uva.nl/mehmet/assignment#water
+:water rdf:type owl:NamedIndividual ;
+       :isaingredientinfruitdrinksjustlike :sugar ;
+       :isaingredientinsoftdrinksjustlike :sugar .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

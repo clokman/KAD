@@ -1,0 +1,168 @@
+@prefix : <http://www.example.com/pronk/restaurant/> .
+@prefix ex: <http://www.example.com/pronk/restaurant/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.com/pronk/restaurant> .
+
+<http://www.example.com/pronk/restaurant> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.com/pronk/restaurant/HasInStaff
+ex:HasInStaff rdf:type owl:ObjectProperty ;
+              rdfs:domain ex:Restaurant ;
+              rdfs:range ex:Restaurant_Staff .
+
+
+###  http://www.example.com/pronk/restaurant/HasTool
+ex:HasTool rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.com/pronk/restaurant/IsServedAt
+ex:IsServedAt rdf:type owl:ObjectProperty ;
+              rdfs:domain ex:Dish ;
+              rdfs:range ex:Restaurant .
+
+
+###  http://www.example.com/pronk/restaurant/contains_ingredients
+ex:contains_ingredients rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/pronk/restaurant/worksat
+ex:worksat rdf:type owl:ObjectProperty ;
+           rdfs:domain ex:Restaurant_Staff ;
+           rdfs:range ex:Restaurant .
+
+
+###  http://www.example.com/pronk/restaurant/worksunder
+ex:worksunder rdf:type owl:ObjectProperty ;
+              rdfs:domain ex:Restaurant_Staff ;
+              rdfs:range ex:Restaurant_Staff .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.com/pronk/restaurant/Dish
+ex:Dish rdf:type owl:Class .
+
+
+###  http://www.example.com/pronk/restaurant/Greek_Dish
+ex:Greek_Dish rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:IsServedAt ;
+                                    owl:someValuesFrom ex:greek_restaurant
+                                  ] ;
+              rdfs:subClassOf ex:Dish .
+
+
+###  http://www.example.com/pronk/restaurant/Italian_Dish
+ex:Italian_Dish rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty ex:IsServedAt ;
+                                      owl:someValuesFrom ex:italian_restaurant
+                                    ] ;
+                rdfs:subClassOf ex:Dish .
+
+
+###  http://www.example.com/pronk/restaurant/Knife
+ex:Knife rdf:type owl:Class ;
+         rdfs:subClassOf ex:Tools .
+
+
+###  http://www.example.com/pronk/restaurant/Restaurant
+ex:Restaurant rdf:type owl:Class .
+
+
+###  http://www.example.com/pronk/restaurant/Restaurant_Staff
+ex:Restaurant_Staff rdf:type owl:Class .
+
+
+###  http://www.example.com/pronk/restaurant/Tools
+ex:Tools rdf:type owl:Class .
+
+
+###  http://www.example.com/pronk/restaurant/bartender
+ex:bartender rdf:type owl:Class ;
+             rdfs:subClassOf ex:Restaurant_Staff .
+
+
+###  http://www.example.com/pronk/restaurant/cheff
+ex:cheff rdf:type owl:Class ;
+         rdfs:subClassOf ex:Restaurant_Staff .
+
+
+###  http://www.example.com/pronk/restaurant/four_ingredient_dish
+ex:four_ingredient_dish rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty ex:contains_ingredients ;
+                                              owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                              owl:onClass ex:ingredients
+                                            ] ;
+                        rdfs:subClassOf ex:Dish .
+
+
+###  http://www.example.com/pronk/restaurant/greek_restaurant
+ex:greek_restaurant rdf:type owl:Class ;
+                    rdfs:subClassOf ex:Restaurant .
+
+
+###  http://www.example.com/pronk/restaurant/ingredients
+ex:ingredients rdf:type owl:Class .
+
+
+###  http://www.example.com/pronk/restaurant/italian_restaurant
+ex:italian_restaurant rdf:type owl:Class ;
+                      rdfs:subClassOf ex:Restaurant .
+
+
+###  http://www.example.com/pronk/restaurant/sous_cheff
+ex:sous_cheff rdf:type owl:Class ;
+              rdfs:subClassOf ex:Restaurant_Staff ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ex:worksunder ;
+                                owl:someValuesFrom ex:cheff
+                              ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.com/pronk/restaurant/Massimo
+ex:Massimo rdf:type owl:NamedIndividual ;
+           ex:worksat ex:osteria_francescana .
+
+
+###  http://www.example.com/pronk/restaurant/de_griekse_taverna
+ex:de_griekse_taverna rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.com/pronk/restaurant/osteria_francescana
+ex:osteria_francescana rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.com/pronk/restaurant/pasta
+ex:pasta rdf:type owl:NamedIndividual ;
+         ex:IsServedAt ex:osteria_francescana .
+
+
+###  http://www.example.com/pronk/restaurant/takaico_kondo
+ex:takaico_kondo rdf:type owl:NamedIndividual ;
+                 ex:worksat ex:osteria_francescana ;
+                 ex:worksunder ex:Massimo .
+
+
+###  http://www.example.com/pronk/restaurant/tzatziki
+ex:tzatziki rdf:type owl:NamedIndividual ;
+            ex:IsServedAt ex:de_griekse_taverna .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -1,0 +1,390 @@
+@prefix : <http://www.semanticweb.org/heo200/ontologies/pocketmonsters#> .
+@prefix pk: <http://www.semanticweb.org/heo200/ontologies/pocketmonsters#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/heo200/ontologies/pocketmonsters> .
+
+<http://www.semanticweb.org/heo200/ontologies/pocketmonsters> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Evolution_of
+pk:Evolution_of rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#cannot_be_trained_by
+pk:cannot_be_trained_by rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#gym_leader_of
+pk:gym_leader_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#has_gym_leader
+pk:has_gym_leader rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#hometown_of
+pk:hometown_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#is_pokemon_of
+pk:is_pokemon_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#is_rival_of
+pk:is_rival_of rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#is_student_of
+pk:is_student_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#is_trainer_of
+pk:is_trainer_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#teaches
+pk:teaches rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#ChosenTrainers
+pk:ChosenTrainers rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( pk:Trainer
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty pk:is_student_of ;
+                                                               owl:someValuesFrom pk:Professors
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty pk:is_trainer_of ;
+                                                               owl:someValuesFrom pk:Starter
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#CityGym
+pk:CityGym rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty pk:has_gym_leader ;
+                                 owl:someValuesFrom pk:GymTrainers
+                               ] ;
+           rdfs:subClassOf pk:Towns .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Commons
+pk:Commons rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( pk:Pokemon
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty pk:is_pokemon_of ;
+                                                        owl:someValuesFrom pk:RandomTrainers
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#FirstEvolution
+pk:FirstEvolution rdf:type owl:Class ;
+                  rdfs:subClassOf pk:Pokemon .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#GymTrainers
+pk:GymTrainers rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( pk:Trainer
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty pk:gym_leader_of ;
+                                                            owl:someValuesFrom pk:Towns
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Human
+pk:Human rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Legendary
+pk:Legendary rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( pk:Pokemon
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty pk:cannot_be_trained_by ;
+                                                          owl:someValuesFrom pk:Trainer
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Pokemon
+pk:Pokemon rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Professors
+pk:Professors rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( pk:Human
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty pk:teaches ;
+                                                           owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass pk:Trainer
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#RandomTrainers
+pk:RandomTrainers rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( pk:Trainer
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty pk:is_trainer_of ;
+                                                               owl:someValuesFrom pk:Commons
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Randoms
+pk:Randoms rdf:type owl:Class ;
+           rdfs:subClassOf pk:Human .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Rival
+pk:Rival rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( pk:ChosenTrainers
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty pk:is_rival_of ;
+                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                      owl:onClass pk:ChosenTrainers
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#SecondEvolution
+pk:SecondEvolution rdf:type owl:Class ;
+                   rdfs:subClassOf pk:Pokemon .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Starter
+pk:Starter rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( pk:Pokemon
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty pk:is_pokemon_of ;
+                                                        owl:allValuesFrom pk:ChosenTrainers
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#StarterTown
+pk:StarterTown rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( pk:Towns
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty pk:hometown_of ;
+                                                            owl:someValuesFrom pk:ChosenTrainers
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Towns
+pk:Towns rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Trainer
+pk:Trainer rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( pk:Human
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty pk:is_trainer_of ;
+                                                        owl:allValuesFrom pk:Pokemon
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Articuno
+pk:Articuno rdf:type owl:NamedIndividual ,
+                     pk:Legendary .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Ash
+pk:Ash rdf:type owl:NamedIndividual ,
+                pk:Trainer ;
+       pk:is_student_of pk:ProfessorOak ;
+       pk:is_trainer_of pk:Charmander .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Bill
+pk:Bill rdf:type owl:NamedIndividual ,
+                 pk:Randoms ;
+        pk:is_student_of pk:ProfessorOak .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Blastoise
+pk:Blastoise rdf:type owl:NamedIndividual ,
+                      pk:SecondEvolution ;
+             pk:Evolution_of pk:Wartortle .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Brock
+pk:Brock rdf:type owl:NamedIndividual ,
+                  pk:Trainer ;
+         pk:gym_leader_of pk:PewterCity .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Bulbasaur
+pk:Bulbasaur rdf:type owl:NamedIndividual ,
+                      pk:Starter .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#CeladonCity
+pk:CeladonCity rdf:type owl:NamedIndividual ,
+                        pk:Towns .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Charizard
+pk:Charizard rdf:type owl:NamedIndividual ,
+                      pk:SecondEvolution ;
+             pk:Evolution_of pk:Charmeleon .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Charmander
+pk:Charmander rdf:type owl:NamedIndividual ,
+                       pk:Starter .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Charmeleon
+pk:Charmeleon rdf:type owl:NamedIndividual ,
+                       pk:FirstEvolution ;
+              pk:Evolution_of pk:Charmander .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Ekans
+pk:Ekans rdf:type owl:NamedIndividual ,
+                  pk:Commons .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Gary
+pk:Gary rdf:type owl:NamedIndividual ,
+                 pk:Trainer ;
+        pk:is_rival_of pk:Ash ;
+        pk:is_student_of pk:ProfessorOak ;
+        pk:is_trainer_of pk:Squirtle .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Giovanni
+pk:Giovanni rdf:type owl:NamedIndividual ,
+                     pk:Trainer ;
+            pk:gym_leader_of pk:ViridianCity .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Ivysaur
+pk:Ivysaur rdf:type owl:NamedIndividual ,
+                    pk:FirstEvolution ;
+           pk:Evolution_of pk:Bulbasaur .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Moltres
+pk:Moltres rdf:type owl:NamedIndividual ,
+                    pk:Legendary .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#PalletTown
+pk:PalletTown rdf:type owl:NamedIndividual ,
+                       pk:Towns ;
+              pk:hometown_of pk:Ash ,
+                             pk:Gary .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#PewterCity
+pk:PewterCity rdf:type owl:NamedIndividual ,
+                       pk:Towns ;
+              pk:has_gym_leader pk:Brock .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Pidgeot
+pk:Pidgeot rdf:type owl:NamedIndividual ,
+                    pk:SecondEvolution ;
+           pk:Evolution_of pk:Pidgeotto .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Pidgeotto
+pk:Pidgeotto rdf:type owl:NamedIndividual ,
+                      pk:FirstEvolution ;
+             pk:Evolution_of pk:Pidgey .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Pidgey
+pk:Pidgey rdf:type owl:NamedIndividual ,
+                   pk:Commons .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#ProfessorOak
+pk:ProfessorOak rdf:type owl:NamedIndividual ,
+                         pk:Professors .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#SaffronCity
+pk:SaffronCity rdf:type owl:NamedIndividual ,
+                        pk:Towns .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Squirtle
+pk:Squirtle rdf:type owl:NamedIndividual ,
+                     pk:Starter .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Trainer2
+pk:Trainer2 rdf:type owl:NamedIndividual ,
+                     pk:Trainer ;
+            pk:is_trainer_of pk:Ekans ,
+                             pk:Pidgey .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Venusaur
+pk:Venusaur rdf:type owl:NamedIndividual ,
+                     pk:SecondEvolution ;
+            pk:Evolution_of pk:Ivysaur .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#ViridianCity
+pk:ViridianCity rdf:type owl:NamedIndividual ,
+                         pk:Towns ;
+                pk:has_gym_leader pk:Giovanni .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Wartortle
+pk:Wartortle rdf:type owl:NamedIndividual ,
+                      pk:FirstEvolution ;
+             pk:Evolution_of pk:Squirtle .
+
+
+###  http://www.semanticweb.org/heo200/ontologies/pocketmonsters#Zapdos
+pk:Zapdos rdf:type owl:NamedIndividual ,
+                   pk:Legendary .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

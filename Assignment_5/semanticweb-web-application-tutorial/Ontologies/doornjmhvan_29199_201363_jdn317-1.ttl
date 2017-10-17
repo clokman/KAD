@@ -1,0 +1,325 @@
+@prefix : <http://www.example.org/jasper/sports#> .
+@prefix sp: <http://www.example.org/jasper/sports/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/jasper/sports> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/jasper/sports/analyses
+
+sp:analyses a owl:ObjectProperty .
+# 
+# http://www.example.org/jasper/sports/coachedBy
+
+sp:coachedBy a owl:ObjectProperty ;
+	owl:inverseOf sp:coaches .
+# 
+# http://www.example.org/jasper/sports/coaches
+
+sp:coaches a owl:ObjectProperty .
+# 
+# http://www.example.org/jasper/sports/commentates
+
+sp:commentates a owl:ObjectProperty .
+# 
+# http://www.example.org/jasper/sports/hasCaptain
+
+sp:hasCaptain a owl:ObjectProperty ;
+	owl:inverseOf sp:teamcaptainOf .
+# 
+# http://www.example.org/jasper/sports/inTeam
+
+sp:inTeam a owl:ObjectProperty .
+# 
+# http://www.example.org/jasper/sports/playedBy
+
+sp:playedBy a owl:ObjectProperty ;
+	owl:inverseOf sp:plays .
+# 
+# http://www.example.org/jasper/sports/plays
+
+sp:plays a owl:ObjectProperty .
+# 
+# http://www.example.org/jasper/sports/teamcaptainOf
+
+sp:teamcaptainOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf sp:inTeam .
+# 
+# http://www.example.org/jasper/sports/teammateOf
+
+sp:teammateOf a owl:ObjectProperty , owl:SymmetricProperty , owl:TransitiveProperty .
+# 
+# http://www.example.org/jasper/sports/worksFor
+
+sp:worksFor a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/jasper/sports/Analist
+
+sp:Analist a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 owl:intersectionOf _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first sp:Person ;
+	rdf:rest _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty sp:analyses ;
+	owl:someValuesFrom sp:Sport .
+
+_:genid2 rdf:rest rdf:nil .
+
+_:genid1 a owl:Class .
+
+sp:Analist rdfs:subClassOf sp:Person , _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty sp:worksFor ;
+	owl:someValuesFrom sp:Broadcaster .
+# 
+# http://www.example.org/jasper/sports/Broadcaster
+
+sp:Broadcaster a owl:Class .
+# 
+# http://www.example.org/jasper/sports/Coach
+
+sp:Coach a owl:Class ;
+	owl:equivalentClass _:genid6 .
+
+_:genid6 owl:intersectionOf _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first sp:Person ;
+	rdf:rest _:genid7 .
+
+_:genid7 a rdf:List ;
+	rdf:first _:genid8 .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty sp:coaches ;
+	owl:someValuesFrom sp:Sporter .
+
+_:genid7 rdf:rest rdf:nil .
+
+_:genid6 a owl:Class .
+
+sp:Coach owl:equivalentClass _:genid10 .
+
+_:genid10 owl:intersectionOf _:genid13 .
+
+_:genid13 a rdf:List ;
+	rdf:first sp:Person ;
+	rdf:rest _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first _:genid12 .
+
+_:genid12 a owl:Restriction ;
+	owl:onProperty sp:coaches ;
+	owl:someValuesFrom sp:Team .
+
+_:genid11 rdf:rest rdf:nil .
+
+_:genid10 a owl:Class .
+
+sp:Coach rdfs:subClassOf sp:Person .
+# 
+# http://www.example.org/jasper/sports/Commentator
+
+sp:Commentator a owl:Class ;
+	owl:equivalentClass _:genid14 .
+
+_:genid14 owl:intersectionOf _:genid17 .
+
+_:genid17 a rdf:List ;
+	rdf:first sp:Person ;
+	rdf:rest _:genid15 .
+
+_:genid15 a rdf:List ;
+	rdf:first _:genid16 .
+
+_:genid16 a owl:Restriction ;
+	owl:onProperty sp:commentates ;
+	owl:someValuesFrom sp:Sport .
+
+_:genid15 rdf:rest rdf:nil .
+
+_:genid14 a owl:Class .
+
+sp:Commentator rdfs:subClassOf sp:Person .
+# 
+# http://www.example.org/jasper/sports/Person
+
+sp:Person a owl:Class .
+# 
+# http://www.example.org/jasper/sports/Sport
+
+sp:Sport a owl:Class .
+# 
+# http://www.example.org/jasper/sports/Sporter
+
+sp:Sporter a owl:Class ;
+	owl:equivalentClass _:genid18 .
+
+_:genid18 owl:intersectionOf _:genid21 .
+
+_:genid21 a rdf:List ;
+	rdf:first sp:Person ;
+	rdf:rest _:genid19 .
+
+_:genid19 a rdf:List ;
+	rdf:first _:genid20 .
+
+_:genid20 a owl:Restriction ;
+	owl:onProperty sp:plays ;
+	owl:someValuesFrom sp:Sport .
+
+_:genid19 rdf:rest rdf:nil .
+
+_:genid18 a owl:Class .
+
+sp:Sporter owl:equivalentClass _:genid22 .
+
+_:genid22 a owl:Restriction ;
+	owl:onProperty sp:plays ;
+	owl:allValuesFrom sp:Sport .
+
+sp:Sporter rdfs:subClassOf sp:Person .
+# 
+# http://www.example.org/jasper/sports/Team
+
+sp:Team a owl:Class ;
+	owl:equivalentClass _:genid23 .
+
+_:genid23 a owl:Restriction ;
+	owl:onProperty sp:plays ;
+	owl:someValuesFrom sp:Sport .
+
+sp:Team owl:equivalentClass _:genid24 .
+
+_:genid24 a owl:Restriction ;
+	owl:onProperty sp:coachedBy ;
+	owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass sp:Coach .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/jasper/sports/Arjen_Robben
+
+sp:Arjen_Robben a owl:NamedIndividual , sp:Sporter ;
+	sp:inTeam sp:Bayern_Munchen ;
+	sp:teammateOf sp:Frank_Ribery .
+# 
+# http://www.example.org/jasper/sports/Bayern_Munchen
+
+sp:Bayern_Munchen a owl:NamedIndividual , sp:Team ;
+	sp:plays sp:Soccer .
+# 
+# http://www.example.org/jasper/sports/Daphne_Schippers
+
+sp:Daphne_Schippers a owl:NamedIndividual , sp:Person .
+# 
+# http://www.example.org/jasper/sports/Feyenoord
+
+sp:Feyenoord a owl:NamedIndividual ;
+	sp:plays sp:Soccer .
+# 
+# http://www.example.org/jasper/sports/FoxSports
+
+sp:FoxSports a owl:NamedIndividual , sp:Broadcaster .
+# 
+# http://www.example.org/jasper/sports/Frank_Ribery
+
+sp:Frank_Ribery a owl:NamedIndividual , sp:Person ;
+	sp:plays sp:Soccer .
+# 
+# http://www.example.org/jasper/sports/Frank_Snoeks
+
+sp:Frank_Snoeks a owl:NamedIndividual , sp:Person ;
+	sp:commentates sp:Soccer ;
+	sp:worksFor sp:Nos .
+# 
+# http://www.example.org/jasper/sports/Gertjan_Verbeek
+
+sp:Gertjan_Verbeek a owl:NamedIndividual , sp:Person ;
+	sp:analyses sp:Soccer ;
+	sp:worksFor sp:Nos .
+# 
+# http://www.example.org/jasper/sports/Giovanni_van_Bronckhorst
+
+sp:Giovanni_van_Bronckhorst a owl:NamedIndividual , sp:Coach ;
+	sp:coaches sp:Feyenoord .
+# 
+# http://www.example.org/jasper/sports/Gregory_Sedoc
+
+sp:Gregory_Sedoc a owl:NamedIndividual , sp:Person ;
+	sp:analyses sp:athletics ;
+	sp:worksFor sp:Nos .
+# 
+# http://www.example.org/jasper/sports/Manuel_Neuer
+
+sp:Manuel_Neuer a owl:NamedIndividual , sp:Person ;
+	sp:teamcaptainOf sp:Bayern_Munchen ;
+	sp:teammateOf sp:Arjen_Robben .
+# 
+# http://www.example.org/jasper/sports/Nos
+
+sp:Nos a owl:NamedIndividual , sp:Broadcaster .
+# 
+# http://www.example.org/jasper/sports/Rana_Reider
+
+sp:Rana_Reider a owl:NamedIndividual , sp:Person ;
+	sp:coaches sp:Daphne_Schippers .
+# 
+# http://www.example.org/jasper/sports/Soccer
+
+sp:Soccer a owl:NamedIndividual , sp:Sport .
+# 
+# http://www.example.org/jasper/sports/Usain_Bolt
+
+sp:Usain_Bolt a owl:NamedIndividual , sp:Person ;
+	sp:plays sp:athletics .
+# 
+# http://www.example.org/jasper/sports/VfL_Bochum
+
+sp:VfL_Bochum a owl:NamedIndividual , sp:Team ;
+	sp:coachedBy sp:Gertjan_Verbeek ;
+	sp:plays sp:Soccer .
+# 
+# http://www.example.org/jasper/sports/athletics
+
+sp:athletics a owl:NamedIndividual , sp:Sport ;
+	sp:playedBy sp:Daphne_Schippers .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

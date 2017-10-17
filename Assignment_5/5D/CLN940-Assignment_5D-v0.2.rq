@@ -1,0 +1,50 @@
+# endpoint: http://bnb.data.bl.uk/sparql
+
+# Unused prefixes: 
+# PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+# PREFIX dc: <http://purl.org/dc/elements/1.1/>
+# PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+# PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+# PREFIX bibo: <http://purl.org/ontology/bibo/>
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX blt: <http://www.bl.uk/schemas/bibliographic/blterms#>
+PREFIX : <http://clokman.com/ontologies/scientific-research#>
+
+# These class, property, and individual/instance specifiers must be used for importing to Protege.
+# ?x rdf:type owl:Class .           # for classes
+# ?x rdf:type owl:ObjectProperty .  # for properties
+# ?x rdf:type owl:NamedIndividual . # for instances/individuals
+
+CONSTRUCT {
+   # Classes 
+   blt:PublicationEvent rdf:type owl:Class .
+   
+   # Properties and instances
+
+   ?project dct:contributor ?contributor .
+   dct:contributor rdf:type owl:ObjectProperty .
+   ?project rdf:type owl:NamedIndividual .
+   ?contributor rdf:type owl:NamedIndividual .
+      
+   ?thing0 dct:creator ?creator .
+   dct:creator rdf:type owl:ObjectProperty .
+   ?thing0 rdf:type owl:NamedIndividual .
+   ?creator rdf:type owl:NamedIndividual .
+   
+   ?thing1 blt:publication ?PublicationEvent .
+   blt:publication rdf:type owl:ObjectProperty .
+   ?thing1 rdf:type owl:NamedIndividual .
+   ?PublicationEvent rdf:type owl:NamedIndividual .
+   ?PublicationEvent rdf:type blt:PublicationEvent .
+
+}
+WHERE {
+   OPTIONAL {?project dct:contributor ?contributor .}
+   OPTIONAL {?thing0 dct:creator ?creator .}
+   OPTIONAL {?thing1 blt:publication ?PublicationEvent .}
+}
+LIMIT 2000

@@ -1,0 +1,335 @@
+@prefix : <http://www.example.com/dominique/gameplay/> .
+@prefix gg: <none> .
+@prefix gp: <http://www.example.com/dominique/gameplay/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.com/dominique/gameplay/> .
+
+<http://www.example.com/dominique/gameplay/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.com/dominique/gameplay/coachedBy
+gp:coachedBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf gp:coaches .
+
+
+###  http://www.example.com/dominique/gameplay/coaches
+gp:coaches rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/dominique/gameplay/exPlayerOf
+gp:exPlayerOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/dominique/gameplay/hasPlayer
+gp:hasPlayer rdf:type owl:ObjectProperty ;
+             owl:inverseOf gp:playsIn ;
+             rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.com/dominique/gameplay/isBestPlayerOf
+gp:isBestPlayerOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.com/dominique/gameplay/playsIn
+gp:playsIn rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.com/dominique/gameplay/BasketballCoach
+gp:BasketballCoach rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( gp:Person
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty gp:coaches ;
+                                                                owl:someValuesFrom gp:DutchBasketballTeam
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ,
+                                       [ owl:intersectionOf ( gp:Person
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty gp:coaches ;
+                                                                owl:someValuesFrom gp:DutchNationalTeam
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf gp:Person .
+
+
+###  http://www.example.com/dominique/gameplay/BestBasketballPlayerOfTeam
+gp:BestBasketballPlayerOfTeam rdf:type owl:Class ;
+                              owl:equivalentClass [ owl:intersectionOf ( gp:Person
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty gp:isBestPlayerOf ;
+                                                                           owl:someValuesFrom gp:DutchBasketballTeam
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ] ,
+                                                  [ owl:intersectionOf ( gp:Person
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty gp:isBestPlayerOf ;
+                                                                           owl:someValuesFrom gp:DutchNationalTeam
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ] ;
+                              rdfs:subClassOf gp:Person .
+
+
+###  http://www.example.com/dominique/gameplay/DutchBasketballTeam
+gp:DutchBasketballTeam rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty gp:hasPlayer ;
+                                             owl:hasValue gp:five
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty gp:hasPlayer ;
+                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass gp:Person
+                                           ] .
+
+
+###  http://www.example.com/dominique/gameplay/DutchNationalTeam
+gp:DutchNationalTeam rdf:type owl:Class .
+
+
+###  http://www.example.com/dominique/gameplay/NationalBasketballPlayer
+gp:NationalBasketballPlayer rdf:type owl:Class ;
+                            owl:equivalentClass [ owl:intersectionOf ( gp:Person
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty gp:playsIn ;
+                                                                         owl:someValuesFrom gp:DutchNationalTeam
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ] ;
+                            rdfs:subClassOf gp:Person .
+
+
+###  http://www.example.com/dominique/gameplay/Person
+gp:Person rdf:type owl:Class .
+
+
+###  http://www.example.com/dominique/gameplay/RegularBasketballPlayer
+gp:RegularBasketballPlayer rdf:type owl:Class ;
+                           owl:equivalentClass [ owl:intersectionOf ( gp:Person
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty gp:playsIn ;
+                                                                        owl:someValuesFrom gp:DutchBasketballTeam
+                                                                      ]
+                                                                    ) ;
+                                                 rdf:type owl:Class
+                                               ] ;
+                           rdfs:subClassOf gp:Person .
+
+
+###  http://www.example.com/dominique/gameplay/exPlayerOfZZLeiden
+gp:exPlayerOfZZLeiden rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( gp:Person
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty gp:exPlayerOf ;
+                                                                   owl:someValuesFrom gp:DutchBasketballTeam
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf gp:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.com/dominique/gameplay/Armand_Salomon
+gp:Armand_Salomon rdf:type owl:NamedIndividual ,
+                           gp:Person ;
+                  gp:coaches gp:Forward_Lease_Rotterdam .
+
+
+###  http://www.example.com/dominique/gameplay/Brandyn_Curry
+gp:Brandyn_Curry rdf:type owl:NamedIndividual ,
+                          gp:Person ;
+                 gp:playsIn gp:Donar_Groningen .
+
+
+###  http://www.example.com/dominique/gameplay/Donar_Groningen
+gp:Donar_Groningen rdf:type owl:NamedIndividual ,
+                            gp:DutchBasketballTeam .
+
+
+###  http://www.example.com/dominique/gameplay/Erik_Braal
+gp:Erik_Braal rdf:type owl:NamedIndividual ,
+                       gp:Person ;
+              gp:coaches gp:Donar_Groningen .
+
+
+###  http://www.example.com/dominique/gameplay/Floris_Versteeg
+gp:Floris_Versteeg rdf:type owl:NamedIndividual ,
+                            gp:Person ;
+                   gp:playsIn gp:ZZLeiden .
+
+
+###  http://www.example.com/dominique/gameplay/Forward_Lease_Rotterdam
+gp:Forward_Lease_Rotterdam rdf:type owl:NamedIndividual ,
+                                    gp:DutchBasketballTeam .
+
+
+###  http://www.example.com/dominique/gameplay/Freek_Vos
+gp:Freek_Vos rdf:type owl:NamedIndividual ,
+                      gp:Person ;
+             gp:isBestPlayerOf gp:Landstede_Basketbal_Zwolle ;
+             gp:playsIn gp:Landstede_Basketbal_Zwolle .
+
+
+###  http://www.example.com/dominique/gameplay/Herman_van_den_Belt
+gp:Herman_van_den_Belt rdf:type owl:NamedIndividual ,
+                                gp:Person ;
+                       gp:coaches gp:Landstede_Basketbal_Zwolle .
+
+
+###  http://www.example.com/dominique/gameplay/Jessey_Voorn
+gp:Jessey_Voorn rdf:type owl:NamedIndividual ,
+                         gp:Person ;
+                gp:playsIn gp:Orange_Lions ,
+                           gp:ZZLeiden .
+
+
+###  http://www.example.com/dominique/gameplay/Kasper_Averink
+gp:Kasper_Averink rdf:type owl:NamedIndividual ,
+                           gp:Person ;
+                  gp:exPlayerOf gp:ZZLeiden ;
+                  gp:playsIn gp:Forward_Lease_Rotterdam .
+
+
+###  http://www.example.com/dominique/gameplay/Landstede_Basketbal_Zwolle
+gp:Landstede_Basketbal_Zwolle rdf:type owl:NamedIndividual ,
+                                       gp:DutchBasketballTeam .
+
+
+###  http://www.example.com/dominique/gameplay/Michael_Kok
+gp:Michael_Kok rdf:type owl:NamedIndividual ,
+                        gp:Person ;
+               gp:isBestPlayerOf gp:Forward_Lease_Rotterdam ;
+               gp:playsIn gp:Forward_Lease_Rotterdam .
+
+
+###  http://www.example.com/dominique/gameplay/Mohamed_Kherrazi
+gp:Mohamed_Kherrazi rdf:type owl:NamedIndividual ,
+                             gp:Person ;
+                    gp:playsIn gp:ZZLeiden .
+
+
+###  http://www.example.com/dominique/gameplay/Nick_Oudendag
+gp:Nick_Oudendag rdf:type owl:NamedIndividual ,
+                          gp:Person ;
+                 gp:isBestPlayerOf gp:Orange_Lions ;
+                 gp:playsIn gp:Orange_Lions .
+
+
+###  http://www.example.com/dominique/gameplay/Olaf_Schaftenaar
+gp:Olaf_Schaftenaar rdf:type owl:NamedIndividual ,
+                             gp:Person ;
+                    gp:playsIn gp:Landstede_Basketbal_Zwolle .
+
+
+###  http://www.example.com/dominique/gameplay/Orange_Lions
+gp:Orange_Lions rdf:type owl:NamedIndividual ,
+                         gp:DutchNationalTeam .
+
+
+###  http://www.example.com/dominique/gameplay/Ordane_Kanda
+gp:Ordane_Kanda rdf:type owl:NamedIndividual ,
+                         gp:Person ;
+                gp:playsIn gp:Forward_Lease_Rotterdam .
+
+
+###  http://www.example.com/dominique/gameplay/Paul_Vervaeck
+gp:Paul_Vervaeck rdf:type owl:NamedIndividual ,
+                          gp:Person ;
+                 gp:coaches gp:ZZLeiden .
+
+
+###  http://www.example.com/dominique/gameplay/Ralf_de_Pagter
+gp:Ralf_de_Pagter rdf:type owl:NamedIndividual ,
+                           gp:Person ;
+                  gp:playsIn gp:Landstede_Basketbal_Zwolle .
+
+
+###  http://www.example.com/dominique/gameplay/Sander_van_der_Holst
+gp:Sander_van_der_Holst rdf:type owl:NamedIndividual ,
+                                 gp:Person ;
+                        gp:coaches gp:Orange_Lions .
+
+
+###  http://www.example.com/dominique/gameplay/Sean_Cunningham
+gp:Sean_Cunningham rdf:type owl:NamedIndividual ,
+                            gp:Person ;
+                   gp:isBestPlayerOf gp:Donar_Groningen ;
+                   gp:playsIn gp:Donar_Groningen .
+
+
+###  http://www.example.com/dominique/gameplay/Thomas_Koenis
+gp:Thomas_Koenis rdf:type owl:NamedIndividual ,
+                          gp:Person ;
+                 gp:exPlayerOf gp:ZZLeiden ;
+                 gp:playsIn gp:Donar_Groningen .
+
+
+###  http://www.example.com/dominique/gameplay/Toon_van_Helfteren
+gp:Toon_van_Helfteren rdf:type owl:NamedIndividual ,
+                               gp:Person ;
+                      gp:coaches gp:Orange_Lions .
+
+
+###  http://www.example.com/dominique/gameplay/Worthy_de_Jong
+gp:Worthy_de_Jong rdf:type owl:NamedIndividual ,
+                           gp:Person ;
+                  gp:isBestPlayerOf gp:Orange_Lions ,
+                                    gp:ZZLeiden ;
+                  gp:playsIn gp:Orange_Lions ,
+                             gp:ZZLeiden .
+
+
+###  http://www.example.com/dominique/gameplay/ZZLeiden
+gp:ZZLeiden rdf:type owl:NamedIndividual ,
+                     gp:DutchBasketballTeam ;
+            gp:coachedBy gp:Paul_Vervaeck ;
+            gp:hasPlayer gp:Worthy_de_Jong .
+
+
+###  http://www.example.com/dominique/gameplay/five
+gp:five rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gp:Paul_Vervaeck
+                        gp:ZZLeiden
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gp:Worthy_de_Jong
+                        gp:ZZLeiden
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

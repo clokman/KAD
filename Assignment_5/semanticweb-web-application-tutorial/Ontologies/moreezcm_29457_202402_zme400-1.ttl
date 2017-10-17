@@ -1,0 +1,339 @@
+@prefix : <http://www.semanticweb.org/zita/ontologies/royalty#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix roy: <http://www.semanticweb.org/zita/ontologies/royalty/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/zita/ontologies/royalty> .
+
+<http://www.semanticweb.org/zita/ontologies/royalty> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Birthday_of
+roy:Birthday_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Born_in
+roy:Born_in rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Oldest_Child
+roy:Oldest_Child rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Predecessor
+roy:Predecessor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Religion_of
+roy:Religion_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Ruled_by
+roy:Ruled_by rdf:type owl:ObjectProperty ;
+             owl:propertyDisjointWith roy:Ruler_of .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Ruler_of
+roy:Ruler_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/has_Religion
+roy:has_Religion rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/is_Family_of
+roy:is_Family_of rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Anglican_Country
+roy:Anglican_Country rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty roy:Ruled_by ;
+                                           owl:someValuesFrom roy:Anglican_Royalty
+                                         ] ;
+                     rdfs:subClassOf roy:Country .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Anglican_Royalty
+roy:Anglican_Royalty rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty roy:has_Religion ;
+                                           owl:hasValue roy:Anglicanism
+                                         ] ;
+                     rdfs:subClassOf roy:Royalty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Catholic_Country
+roy:Catholic_Country rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty roy:Ruled_by ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass roy:Catholic_Royalty
+                                         ] ;
+                     rdfs:subClassOf roy:Country .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Catholic_Royalty
+roy:Catholic_Royalty rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty roy:has_Religion ;
+                                           owl:hasValue roy:Catholic
+                                         ] ;
+                     rdfs:subClassOf roy:Royalty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Country
+roy:Country rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Date_of_Birth
+roy:Date_of_Birth rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Grand_Duke_Henri
+roy:Grand_Duke_Henri rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty roy:Birthday_of ;
+                                           owl:hasValue roy:Grand_Duke_Henri
+                                         ] ;
+                     rdfs:subClassOf roy:Date_of_Birth .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Heir_to_Throne
+roy:Heir_to_Throne rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/King_Philippe
+roy:King_Philippe rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty roy:Birthday_of ;
+                                        owl:hasValue roy:King_Philippe
+                                      ] ;
+                  rdfs:subClassOf roy:Date_of_Birth .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/King_Willem-Alexander
+roy:King_Willem-Alexander rdf:type owl:Class ;
+                          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                owl:onProperty roy:Birthday_of ;
+                                                owl:someValuesFrom roy:Protestant_Royalty
+                                              ] ;
+                          rdfs:subClassOf roy:Date_of_Birth .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Name
+roy:Name rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Prince_Charles_Religion
+roy:Prince_Charles_Religion rdf:type owl:Class ;
+                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                  owl:onProperty roy:Religion_of ;
+                                                  owl:hasValue roy:Queen_Elizabeth_II
+                                                ] ;
+                            rdfs:subClassOf roy:Heir_to_Throne .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Prince_Guillaume_Religion
+roy:Prince_Guillaume_Religion rdf:type owl:Class ;
+                              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                    owl:onProperty roy:Religion_of ;
+                                                    owl:hasValue roy:King_Philippe
+                                                  ] ;
+                              rdfs:subClassOf roy:Heir_to_Throne .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Princess_Catharina-Amalia_Religion
+roy:Princess_Catharina-Amalia_Religion rdf:type owl:Class ;
+                                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                             owl:onProperty roy:Religion_of ;
+                                                             owl:hasValue roy:King_Willem-Alexander
+                                                           ] ;
+                                       rdfs:subClassOf roy:Heir_to_Throne .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Princess_Elisabeth_Religion
+roy:Princess_Elisabeth_Religion rdf:type owl:Class ;
+                                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                      owl:onProperty roy:Religion_of ;
+                                                      owl:hasValue roy:Grand_Duke_Henri
+                                                    ] ;
+                                rdfs:subClassOf roy:Heir_to_Throne .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Protestant_Country
+roy:Protestant_Country rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty roy:Ruled_by ;
+                                             owl:someValuesFrom roy:Protestant_Royalty
+                                           ] ;
+                       rdfs:subClassOf roy:Country .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Protestant_Royalty
+roy:Protestant_Royalty rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty roy:has_Religion ;
+                                             owl:hasValue roy:Protestant
+                                           ] ;
+                       rdfs:subClassOf roy:Royalty .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Queen_Elizabeth_II
+roy:Queen_Elizabeth_II rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty roy:Birthday_of ;
+                                             owl:someValuesFrom roy:Anglican_Royalty
+                                           ] ;
+                       rdfs:subClassOf roy:Date_of_Birth .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Religion
+roy:Religion rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Royalty
+roy:Royalty rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Anglicanism
+roy:Anglicanism rdf:type owl:NamedIndividual ,
+                         roy:Religion ;
+                roy:Religion_of roy:Queen_Elizabeth_II .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Belgium
+roy:Belgium rdf:type owl:NamedIndividual ,
+                     roy:Country ;
+            roy:Ruled_by roy:King_Philippe .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Catholic
+roy:Catholic rdf:type owl:NamedIndividual ,
+                      roy:Religion ;
+             roy:Religion_of roy:Grand_Duke_Henri ,
+                             roy:King_Philippe .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Grand_Duke_Henri
+roy:Grand_Duke_Henri rdf:type owl:NamedIndividual ,
+                              roy:Name ;
+                     roy:Born_in roy:_16-April-1955 ;
+                     roy:Oldest_Child roy:Princess_Elisabeth ;
+                     roy:Ruler_of roy:Luxembourg ;
+                     roy:has_Religion roy:Catholic ;
+                     roy:is_Family_of roy:Princess_Elisabeth .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/King_Philippe
+roy:King_Philippe rdf:type owl:NamedIndividual ,
+                           roy:Name ;
+                  roy:Born_in roy:_15-April-1960 ;
+                  roy:Oldest_Child roy:Prince_Guillaume ;
+                  roy:Ruler_of roy:Belgium ;
+                  roy:has_Religion roy:Catholic ;
+                  roy:is_Family_of roy:Prince_Guillaume .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/King_Willem-Alexander
+roy:King_Willem-Alexander rdf:type owl:NamedIndividual ,
+                                   roy:Name ;
+                          roy:Born_in roy:_27-April-1967 ;
+                          roy:Oldest_Child roy:Princess_Catharina-Amalia_Religion ;
+                          roy:Ruler_of roy:the_Netherlands ;
+                          roy:has_Religion roy:Protestant ;
+                          roy:is_Family_of roy:Princess_Catharina-Amalia_Religion .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Luxembourg
+roy:Luxembourg rdf:type owl:NamedIndividual ,
+                        roy:Country ;
+               roy:Ruled_by roy:Grand_Duke_Henri .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Prince_Guillaume
+roy:Prince_Guillaume rdf:type owl:NamedIndividual ,
+                              roy:Heir_to_Throne ;
+                     roy:Predecessor roy:King_Philippe ;
+                     roy:is_Family_of roy:King_Philippe .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Princess_Catharina-Amalia_Religion
+roy:Princess_Catharina-Amalia_Religion rdf:type owl:NamedIndividual ,
+                                                roy:Heir_to_Throne ;
+                                       roy:Predecessor roy:King_Willem-Alexander ;
+                                       roy:is_Family_of roy:King_Willem-Alexander .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Princess_Elisabeth
+roy:Princess_Elisabeth rdf:type owl:NamedIndividual ,
+                                roy:Heir_to_Throne ;
+                       roy:Predecessor roy:Grand_Duke_Henri ;
+                       roy:is_Family_of roy:Grand_Duke_Henri .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Protestant
+roy:Protestant rdf:type owl:NamedIndividual ,
+                        roy:Religion ;
+               roy:Religion_of roy:King_Willem-Alexander .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/Queen_Elizabeth_II
+roy:Queen_Elizabeth_II rdf:type owl:NamedIndividual ,
+                                roy:Name ;
+                       roy:Born_in roy:_21-April-1926 ;
+                       roy:Ruler_of roy:UK ;
+                       roy:has_Religion roy:Anglicanism .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/UK
+roy:UK rdf:type owl:NamedIndividual ,
+                roy:Country ;
+       roy:Ruled_by roy:Queen_Elizabeth_II .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/_15-April-1960
+roy:_15-April-1960 rdf:type owl:NamedIndividual ,
+                            roy:Date_of_Birth ;
+                   roy:Birthday_of roy:King_Philippe .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/_16-April-1955
+roy:_16-April-1955 rdf:type owl:NamedIndividual ,
+                            roy:Date_of_Birth ;
+                   roy:Birthday_of roy:Grand_Duke_Henri .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/_21-April-1926
+roy:_21-April-1926 rdf:type owl:NamedIndividual ,
+                            roy:Date_of_Birth ;
+                   roy:Birthday_of roy:Queen_Elizabeth_II .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/_27-April-1967
+roy:_27-April-1967 rdf:type owl:NamedIndividual ,
+                            roy:Date_of_Birth ;
+                   roy:Birthday_of roy:King_Willem-Alexander .
+
+
+###  http://www.semanticweb.org/zita/ontologies/royalty/the_Netherlands
+roy:the_Netherlands rdf:type owl:NamedIndividual ,
+                             roy:Country ;
+                    roy:Ruled_by roy:King_Willem-Alexander .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

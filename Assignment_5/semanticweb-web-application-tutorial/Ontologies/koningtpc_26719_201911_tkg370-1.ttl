@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY ex "http://www.few.vu.nl/~tkg370/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.few.vu.nl/~tkg370/"
+     xml:base="http://www.few.vu.nl/~tkg370/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ex="http://www.few.vu.nl/~tkg370/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.few.vu.nl/~tkg370/"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Is_served_by -->
+
+    <owl:ObjectProperty rdf:about="&ex;Is_served_by">
+        <rdfs:domain rdf:resource="&ex;Customer"/>
+        <rdfs:range rdf:resource="&ex;Waiter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/contains -->
+
+    <owl:ObjectProperty rdf:about="&ex;contains"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/eats_at -->
+
+    <owl:ObjectProperty rdf:about="&ex;eats_at">
+        <rdfs:domain rdf:resource="&ex;Customer"/>
+        <rdfs:range rdf:resource="&ex;Restaurant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/has_employed -->
+
+    <owl:ObjectProperty rdf:about="&ex;has_employed"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/neverContains -->
+
+    <owl:ObjectProperty rdf:about="&ex;neverContains"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/neverServes -->
+
+    <owl:ObjectProperty rdf:about="&ex;neverServes"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/prepares -->
+
+    <owl:ObjectProperty rdf:about="&ex;prepares">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/serves -->
+
+    <owl:ObjectProperty rdf:about="&ex;serves"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/works_as -->
+
+    <owl:ObjectProperty rdf:about="&ex;works_as">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&ex;Employee"/>
+        <rdfs:range rdf:resource="&ex;Jobs"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/works_at -->
+
+    <owl:ObjectProperty rdf:about="&ex;works_at">
+        <rdfs:domain rdf:resource="&ex;Employee"/>
+        <rdfs:range rdf:resource="&ex;Restaurant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Cook -->
+
+    <owl:Class rdf:about="&ex;Cook">
+        <rdfs:subClassOf rdf:resource="&ex;Jobs"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;prepares"/>
+                <owl:allValuesFrom rdf:resource="&ex;Dishes"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Customer -->
+
+    <owl:Class rdf:about="&ex;Customer">
+        <rdfs:subClassOf rdf:resource="&ex;People"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Dishes -->
+
+    <owl:Class rdf:about="&ex;Dishes"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Employee -->
+
+    <owl:Class rdf:about="&ex;Employee">
+        <rdfs:subClassOf rdf:resource="&ex;People"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Fast_Food_Restaurant -->
+
+    <owl:Class rdf:about="&ex;Fast_Food_Restaurant">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;serves"/>
+                <owl:someValuesFrom rdf:resource="&ex;Fast_food"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ex;Restaurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Fast_food -->
+
+    <owl:Class rdf:about="&ex;Fast_food">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;contains"/>
+                <owl:someValuesFrom rdf:resource="&ex;Meat"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ex;Dishes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Jobs -->
+
+    <owl:Class rdf:about="&ex;Jobs"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Meat -->
+
+    <owl:Class rdf:about="&ex;Meat">
+        <rdfs:subClassOf rdf:resource="&ex;Dishes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Meat_Restaurant -->
+
+    <owl:Class rdf:about="&ex;Meat_Restaurant">
+        <rdfs:subClassOf rdf:resource="&ex;Restaurant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;serves"/>
+                <owl:allValuesFrom rdf:resource="&ex;Meat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&ex;Vegetarian_Restaurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/People -->
+
+    <owl:Class rdf:about="&ex;People"/>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Restaurant -->
+
+    <owl:Class rdf:about="&ex;Restaurant">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;has_employed"/>
+                <owl:onClass rdf:resource="&ex;Waiter"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;has_employed"/>
+                <owl:onClass rdf:resource="&ex;Salesman"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Salesman -->
+
+    <owl:Class rdf:about="&ex;Salesman">
+        <rdfs:subClassOf rdf:resource="&ex;Jobs"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Vegetarian_Dish -->
+
+    <owl:Class rdf:about="&ex;Vegetarian_Dish">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;neverContains"/>
+                <owl:someValuesFrom rdf:resource="&ex;Meat"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ex;Dishes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Vegetarian_Restaurant -->
+
+    <owl:Class rdf:about="&ex;Vegetarian_Restaurant">
+        <rdfs:subClassOf rdf:resource="&ex;Restaurant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ex;prepares"/>
+                <owl:allValuesFrom rdf:resource="&ex;Vegetarian_Dish"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Waiter -->
+
+    <owl:Class rdf:about="&ex;Waiter">
+        <rdfs:subClassOf rdf:resource="&ex;Jobs"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Anna_Bril -->
+
+    <owl:NamedIndividual rdf:about="&ex;Anna_Bril">
+        <rdf:type rdf:resource="&ex;Cook"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Froek_Fox -->
+
+    <owl:NamedIndividual rdf:about="&ex;Froek_Fox">
+        <rdf:type rdf:resource="&ex;Salesman"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Golden_Temple_Vegetarisch_Restaurant -->
+
+    <owl:NamedIndividual rdf:about="&ex;Golden_Temple_Vegetarisch_Restaurant">
+        <rdf:type rdf:resource="&ex;Vegetarian_Restaurant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/KFC -->
+
+    <owl:NamedIndividual rdf:about="&ex;KFC">
+        <rdf:type rdf:resource="&ex;Fast_Food_Restaurant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Lucas_Maatjes -->
+
+    <owl:NamedIndividual rdf:about="&ex;Lucas_Maatjes">
+        <rdf:type rdf:resource="&ex;Waiter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/McDonalds -->
+
+    <owl:NamedIndividual rdf:about="&ex;McDonalds">
+        <rdf:type rdf:resource="&ex;Fast_Food_Restaurant"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.few.vu.nl/~tkg370/Steakhouse -->
+
+    <owl:NamedIndividual rdf:about="&ex;Steakhouse">
+        <rdf:type rdf:resource="&ex;Meat_Restaurant"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

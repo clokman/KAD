@@ -1,0 +1,208 @@
+@prefix : <http://www.semanticweb.org/beheer/ontologies/Footballclub#> .
+@prefix ex: <http://www.semanticweb.org/beheer/ontologies/Footballclub/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/beheer/ontologies/Footballclub> .
+
+<http://www.semanticweb.org/beheer/ontologies/Footballclub> rdf:type owl:Ontology ;
+                                                             owl:backwardCompatibleWith "" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/beheer/ontologies/2017/9/Assignment_4#Person
+<http://www.semanticweb.org/beheer/ontologies/2017/9/Assignment_4#Person> rdf:type owl:AnnotationProperty ;
+                                                                          rdfs:subPropertyOf owl:backwardCompatibleWith .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/has_player
+ex:has_player rdf:type owl:ObjectProperty ;
+              owl:inverseOf ex:is_player_for .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/has_stadium
+ex:has_stadium rdf:type owl:ObjectProperty ;
+               owl:inverseOf ex:stadium_from .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/has_trainer
+ex:has_trainer rdf:type owl:ObjectProperty ;
+               owl:inverseOf ex:trainer_from .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/in_league
+ex:in_league rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty ;
+             rdfs:range ex:League .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/is_player_for
+ex:is_player_for rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/located_in
+ex:located_in rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty ;
+              rdfs:range ex:City .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/stadium_from
+ex:stadium_from rdf:type owl:ObjectProperty ;
+                rdfs:domain ex:Stadium .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/trainer_from
+ex:trainer_from rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/City
+ex:City rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Football_Player
+ex:Football_Player rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty ex:is_player_for ;
+                                         owl:someValuesFrom ex:Footballclub
+                                       ] ;
+                   rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Football_Stadium
+ex:Football_Stadium rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty ex:stadium_from ;
+                                          owl:someValuesFrom ex:Footballclub
+                                        ] ;
+                    rdfs:subClassOf ex:Stadium .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Football_Trainer
+ex:Football_Trainer rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty ex:trainer_from ;
+                                          owl:someValuesFrom ex:Footballclub
+                                        ] ;
+                    rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Footballclub
+ex:Footballclub rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty ex:has_player ;
+                                      owl:someValuesFrom ex:Football_Player
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ex:has_stadium ;
+                                      owl:someValuesFrom ex:Football_Stadium
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ex:has_trainer ;
+                                      owl:someValuesFrom ex:Football_Trainer
+                                    ] .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/League
+ex:League rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Person
+ex:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Stadium
+ex:Stadium rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Ajax
+ex:Ajax rdf:type owl:NamedIndividual ,
+                 ex:Footballclub ;
+        ex:has_stadium ex:Johan_Cruijff_Arena ;
+        ex:in_league ex:Eredivisie ;
+        ex:located_in ex:Amsterdam .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Amsterdam
+ex:Amsterdam rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Barclays_Premier_League
+ex:Barclays_Premier_League rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Eredivisie
+ex:Eredivisie rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Etihad_Stadium
+ex:Etihad_Stadium rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Frenke_de_Jong
+ex:Frenke_de_Jong rdf:type owl:NamedIndividual ;
+                  ex:is_player_for ex:Ajax .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Johan_Cruijff_Arena
+ex:Johan_Cruijff_Arena rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Josep_Guardiola
+ex:Josep_Guardiola rdf:type owl:NamedIndividual ;
+                   ex:trainer_from ex:Manchester_City .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Jurgen_Klopp
+ex:Jurgen_Klopp rdf:type owl:NamedIndividual ,
+                         ex:Football_Trainer .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Kevin_de_Bruyne
+ex:Kevin_de_Bruyne rdf:type owl:NamedIndividual ,
+                            ex:Football_Player ;
+                   ex:is_player_for ex:Manchester_City .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Liverpool
+ex:Liverpool rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Liverpool_FC
+ex:Liverpool_FC rdf:type owl:NamedIndividual ;
+                ex:has_trainer ex:Jurgen_Klopp ;
+                ex:located_in ex:Liverpool .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Manchester_City
+ex:Manchester_City rdf:type owl:NamedIndividual ;
+                   ex:has_stadium ex:Etihad_Stadium ;
+                   ex:in_league ex:Barclays_Premier_League .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Marcel_Keizer
+ex:Marcel_Keizer rdf:type owl:NamedIndividual ;
+                 ex:trainer_from ex:Ajax .
+
+
+###  http://www.semanticweb.org/beheer/ontologies/Footballclub/Sadio_Mané
+ex:Sadio_Mané rdf:type owl:NamedIndividual ;
+              ex:is_player_for ex:Liverpool_FC .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

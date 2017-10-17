@@ -1,0 +1,231 @@
+@prefix : <http://www.semanticweb.org/ashwi_000/Assignment4#> .
+@prefix ajb: <http://www.semanticweb.org/ashwi_000/Assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ashwi_000/Assignment4> .
+
+<http://www.semanticweb.org/ashwi_000/Assignment4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Plays_a_Bass
+ajb:Plays_a_Bass rdf:type owl:ObjectProperty ,
+                          owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Plays_a_Guitar
+ajb:Plays_a_Guitar rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/UsedBy
+ajb:UsedBy rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/UsesAmp
+ajb:UsesAmp rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/BassAmp
+ajb:BassAmp rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ajb:UsedBy ;
+                                  owl:allValuesFrom ajb:BassGuitarist
+                                ] .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/BassGuitar
+ajb:BassGuitar rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/BassGuitarist
+ajb:BassGuitarist rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty ajb:Plays_a_Bass ;
+                                        owl:someValuesFrom ajb:BassGuitar
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ajb:UsesAmp ;
+                                        owl:someValuesFrom ajb:BassAmp
+                                      ] ;
+                  rdfs:subClassOf ajb:Person .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Guitar
+ajb:Guitar rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/GuitarAmp
+ajb:GuitarAmp rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ajb:UsedBy ;
+                                    owl:allValuesFrom ajb:Guitarist
+                                  ] .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Guitarist
+ajb:Guitarist rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ajb:Plays_a_Guitar ;
+                                    owl:someValuesFrom ajb:Guitar
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ajb:UsesAmp ;
+                                    owl:someValuesFrom ajb:GuitarAmp
+                                  ] ;
+              rdfs:subClassOf ajb:Person .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Person
+ajb:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Acoustic_360
+ajb:Acoustic_360 rdf:type owl:NamedIndividual ,
+                          ajb:BassAmp .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Acoustic_USA
+ajb:Acoustic_USA rdf:type owl:NamedIndividual ,
+                          ajb:BassAmp ;
+                 ajb:UsedBy ajb:Flea .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Alembic_Deluxe
+ajb:Alembic_Deluxe rdf:type owl:NamedIndividual ,
+                            ajb:BassGuitar .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Angus_Young
+ajb:Angus_Young rdf:type owl:NamedIndividual ,
+                         ajb:Guitarist ,
+                         ajb:Person ;
+                ajb:Plays_a_Guitar ajb:Gibson_SG ;
+                ajb:UsesAmp ajb:Marshall_JTM45_2245 .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Blacksmith
+ajb:Blacksmith rdf:type owl:NamedIndividual ,
+                        ajb:BassAmp ;
+               ajb:UsedBy ajb:Mark_King .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Fender_Jazz_Bass
+ajb:Fender_Jazz_Bass rdf:type owl:NamedIndividual ,
+                              ajb:BassGuitar .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Fender_Stratocaster
+ajb:Fender_Stratocaster rdf:type owl:NamedIndividual ,
+                                 ajb:Guitar .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Flea
+ajb:Flea rdf:type owl:NamedIndividual ,
+                  ajb:BassGuitarist ,
+                  ajb:Person ;
+         ajb:Plays_a_Bass ajb:FleaBass ;
+         ajb:UsesAmp ajb:Acoustic_USA .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/FleaBass
+ajb:FleaBass rdf:type owl:NamedIndividual ,
+                      ajb:BassGuitar ;
+             ajb:UsedBy ajb:Flea .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Gibson_Les_Paul
+ajb:Gibson_Les_Paul rdf:type owl:NamedIndividual ,
+                             ajb:Guitar ;
+                    ajb:UsedBy ajb:Slash .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Gibson_SG
+ajb:Gibson_SG rdf:type owl:NamedIndividual ,
+                       ajb:Guitar ;
+              ajb:UsedBy ajb:Angus_Young .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Jaco_Pastorius
+ajb:Jaco_Pastorius rdf:type owl:NamedIndividual ,
+                            ajb:Person ;
+                   ajb:Plays_a_Bass ajb:Fender_Jazz_Bass ;
+                   ajb:UsesAmp ajb:Acoustic_360 .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Jimi_Hendrix
+ajb:Jimi_Hendrix rdf:type owl:NamedIndividual ,
+                          ajb:Person ;
+                 ajb:Plays_a_Guitar ajb:Fender_Stratocaster ;
+                 ajb:UsesAmp ajb:Marshall_Superlead .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Mark_King
+ajb:Mark_King rdf:type owl:NamedIndividual ,
+                       ajb:Person ;
+              ajb:Plays_a_Bass ajb:Status_Graphite ;
+              ajb:UsesAmp ajb:Blacksmith .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Marshall_JMP_1959T_Super_Lead
+ajb:Marshall_JMP_1959T_Super_Lead rdf:type owl:NamedIndividual ,
+                                           ajb:GuitarAmp ;
+                                  ajb:UsedBy ajb:Slash .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Marshall_JTM45_2245
+ajb:Marshall_JTM45_2245 rdf:type owl:NamedIndividual ,
+                                 ajb:GuitarAmp ;
+                        ajb:UsedBy ajb:Angus_Young .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Marshall_Superlead
+ajb:Marshall_Superlead rdf:type owl:NamedIndividual ,
+                                ajb:GuitarAmp .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/SW_Spellbinder
+ajb:SW_Spellbinder rdf:type owl:NamedIndividual ,
+                            ajb:BassAmp .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Slash
+ajb:Slash rdf:type owl:NamedIndividual ,
+                   ajb:Person ;
+          ajb:Plays_a_Guitar ajb:Gibson_Les_Paul ;
+          ajb:UsesAmp ajb:Marshall_JMP_1959T_Super_Lead .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Stanley_Clarke
+ajb:Stanley_Clarke rdf:type owl:NamedIndividual ,
+                            ajb:Person ;
+                   ajb:Plays_a_Bass ajb:Alembic_Deluxe ;
+                   ajb:UsesAmp ajb:SW_Spellbinder .
+
+
+###  http://www.semanticweb.org/ashwi_000/Assignment4/Status_Graphite
+ajb:Status_Graphite rdf:type owl:NamedIndividual ,
+                             ajb:BassGuitar ;
+                    ajb:UsedBy ajb:Mark_King .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

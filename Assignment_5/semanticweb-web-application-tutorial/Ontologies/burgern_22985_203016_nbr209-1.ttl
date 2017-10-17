@@ -1,0 +1,207 @@
+@prefix : <http://www.example.org/nina/studiekeuzegids#> .
+@prefix sk: <http://www.example.org/nina/studiekeuzegids/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/nina/studiekeuzegids> .
+
+<http://www.example.org/nina/studiekeuzegids> rdf:type owl:Ontology ;
+                                               rdfs:comment "Een studie ontologie die studies beschrijft zoals een studiegids dat doet." .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/nina/studiekeuzegids/biedtAan
+sk:biedtAan rdf:type owl:ObjectProperty ;
+            owl:inverseOf sk:wordtAangebodenDoor ;
+            rdfs:domain sk:Universiteit ;
+            rdfs:range sk:Studie .
+
+
+###  http://www.example.org/nina/studiekeuzegids/heeftStudievorm
+sk:heeftStudievorm rdf:type owl:ObjectProperty ;
+                   owl:inverseOf sk:isMogelijkeStudievormBij .
+
+
+###  http://www.example.org/nina/studiekeuzegids/isMogelijkeStudievormBij
+sk:isMogelijkeStudievormBij rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/nina/studiekeuzegids/isVoertaalVan
+sk:isVoertaalVan rdf:type owl:ObjectProperty ;
+                 owl:inverseOf sk:wordtGegevenInHet ;
+                 rdf:type owl:FunctionalProperty .
+
+
+###  http://www.example.org/nina/studiekeuzegids/verleentAcademischeGraad
+sk:verleentAcademischeGraad rdf:type owl:ObjectProperty ;
+                            owl:inverseOf sk:wordtVerleendNa .
+
+
+###  http://www.example.org/nina/studiekeuzegids/werktSamenMet
+sk:werktSamenMet rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty .
+
+
+###  http://www.example.org/nina/studiekeuzegids/wordtAangebodenDoor
+sk:wordtAangebodenDoor rdf:type owl:ObjectProperty ;
+                       rdfs:domain sk:Studie ;
+                       rdfs:range sk:Universiteit .
+
+
+###  http://www.example.org/nina/studiekeuzegids/wordtGegevenInHet
+sk:wordtGegevenInHet rdf:type owl:ObjectProperty ,
+                              owl:FunctionalProperty .
+
+
+###  http://www.example.org/nina/studiekeuzegids/wordtVerleendNa
+sk:wordtVerleendNa rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/nina/studiekeuzegids/EngelseMaster
+sk:EngelseMaster rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty sk:verleentAcademischeGraad ;
+                                       owl:hasValue sk:Master
+                                     ] ;
+                 rdfs:subClassOf sk:EngelseStudie ;
+                 owl:disjointWith sk:NederlandseBachelor .
+
+
+###  http://www.example.org/nina/studiekeuzegids/EngelseStudie
+sk:EngelseStudie rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty sk:wordtGegevenInHet ;
+                                       owl:hasValue sk:Engels
+                                     ] ;
+                 rdfs:subClassOf sk:Studie .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Graad
+sk:Graad rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty sk:wordtVerleendNa ;
+                               owl:someValuesFrom sk:Studie
+                             ] .
+
+
+###  http://www.example.org/nina/studiekeuzegids/NederlandseBachelor
+sk:NederlandseBachelor rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty sk:verleentAcademischeGraad ;
+                                                                    owl:hasValue sk:Bachelor
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty sk:wordtGegevenInHet ;
+                                                                    owl:hasValue sk:Nederlands
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf sk:NederlandseStudie .
+
+
+###  http://www.example.org/nina/studiekeuzegids/NederlandseStudie
+sk:NederlandseStudie rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty sk:wordtGegevenInHet ;
+                                           owl:hasValue sk:Nederlands
+                                         ] ;
+                     rdfs:subClassOf sk:Studie .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Studie
+sk:Studie rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sk:wordtAangebodenDoor ;
+                                owl:someValuesFrom sk:Universiteit
+                              ] .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Studievorm
+sk:Studievorm rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty sk:isMogelijkeStudievormBij ;
+                                    owl:someValuesFrom sk:Studie
+                                  ] .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Universiteit
+sk:Universiteit rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty sk:biedtAan ;
+                                      owl:someValuesFrom sk:Studie
+                                    ] .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Voertaal
+sk:Voertaal rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty sk:isVoertaalVan ;
+                                  owl:someValuesFrom sk:Studie
+                                ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/nina/studiekeuzegids/Bachelor
+sk:Bachelor rdf:type owl:NamedIndividual ,
+                     sk:Graad .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Deeltijd
+sk:Deeltijd rdf:type owl:NamedIndividual ,
+                     sk:Studievorm .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Engels
+sk:Engels rdf:type owl:NamedIndividual ,
+                   sk:Voertaal .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Finance
+sk:Finance rdf:type owl:NamedIndividual ,
+                    sk:Studie ;
+           sk:wordtGegevenInHet sk:Engels .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Informatiekunde
+sk:Informatiekunde rdf:type owl:NamedIndividual ,
+                            sk:Studie ;
+                   sk:heeftStudievorm sk:Voltijd ;
+                   sk:wordtGegevenInHet sk:Nederlands .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Master
+sk:Master rdf:type owl:NamedIndividual ,
+                   sk:Graad .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Nederlands
+sk:Nederlands rdf:type owl:NamedIndividual ,
+                       sk:Voertaal .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Universiteit_van_Amsterdam
+sk:Universiteit_van_Amsterdam rdf:type owl:NamedIndividual ,
+                                       sk:Universiteit ;
+                              sk:biedtAan sk:Finance ,
+                                          sk:Informatiekunde .
+
+
+###  http://www.example.org/nina/studiekeuzegids/Voltijd
+sk:Voltijd rdf:type owl:NamedIndividual ,
+                    sk:Studievorm ;
+           sk:isMogelijkeStudievormBij sk:Finance .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

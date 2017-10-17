@@ -1,0 +1,288 @@
+@prefix : <http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix university: <http://www.semanticweb.org/zahrasaied/ontologies/2017/9/university#> .
+@prefix universityzahra: <http://www.semanticweb.org/zahrasaied/ontologies/2017/9/universityZahra.owl#> .
+@base <http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl> .
+
+<http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/zahrasaied/Studies
+<http://www.semanticweb.org/zahrasaied/Studies> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://www.semanticweb.org/zahrasaied/Studies> ;
+                                                              owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Student>
+                                                            ] ;
+                                                rdfs:range [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.semanticweb.org/zahrasaied/Studies> ;
+                                                             owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Course>
+                                                           ] .
+
+
+###  http://www.semanticweb.org/zahrasaied/Teaches
+<http://www.semanticweb.org/zahrasaied/Teaches> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://www.semanticweb.org/zahrasaied/Teaches> ;
+                                                              owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Lecturer>
+                                                            ] ;
+                                                rdfs:range [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.semanticweb.org/zahrasaied/Teaches> ;
+                                                             owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Course>
+                                                           ] .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#enjoys
+:enjoys rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#hates
+:hates rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/zahrasaied/firstname
+<http://www.semanticweb.org/zahrasaied/firstname> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:domain <http://www.semanticweb.org/zahrasaied/Person> ;
+                                                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/lastname
+<http://www.semanticweb.org/zahrasaied/lastname> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://www.semanticweb.org/zahrasaied/Person> ;
+                                                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/studentID
+<http://www.semanticweb.org/zahrasaied/studentID> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:domain <http://www.semanticweb.org/zahrasaied/Student> ;
+                                                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Albumname
+:Albumname rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#coursename
+:coursename rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#moviename
+:moviename rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/zahrasaied/Biology
+<http://www.semanticweb.org/zahrasaied/Biology> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Course> ;
+                                                owl:disjointWith <http://www.semanticweb.org/zahrasaied/Biology_Lecturer> ,
+                                                                 <http://www.semanticweb.org/zahrasaied/Biology_Student> ,
+                                                                 <http://www.semanticweb.org/zahrasaied/Math> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Biology_Lecturer
+<http://www.semanticweb.org/zahrasaied/Biology_Lecturer> rdf:type owl:Class ;
+                                                         owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://www.semanticweb.org/zahrasaied/Teaches> ;
+                                                                               owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Biology>
+                                                                             ] ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :enjoys ;
+                                                                               owl:someValuesFrom :Movies
+                                                                             ] ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hates ;
+                                                                               owl:someValuesFrom :Music
+                                                                             ] ;
+                                                         rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Lecturer> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Biology_Student
+<http://www.semanticweb.org/zahrasaied/Biology_Student> rdf:type owl:Class ;
+                                                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty <http://www.semanticweb.org/zahrasaied/Studies> ;
+                                                                              owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Biology>
+                                                                            ] ;
+                                                        rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Student> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Course
+<http://www.semanticweb.org/zahrasaied/Course> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zahrasaied/Lecturer
+<http://www.semanticweb.org/zahrasaied/Lecturer> rdf:type owl:Class ;
+                                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty <http://www.semanticweb.org/zahrasaied/Teaches> ;
+                                                                       owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Course>
+                                                                     ] ;
+                                                 rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Person> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Math
+<http://www.semanticweb.org/zahrasaied/Math> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Course> ;
+                                             owl:disjointWith <http://www.semanticweb.org/zahrasaied/Math_Lecturer> ,
+                                                              <http://www.semanticweb.org/zahrasaied/Math_Student> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Math_Lecturer
+<http://www.semanticweb.org/zahrasaied/Math_Lecturer> rdf:type owl:Class ;
+                                                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <http://www.semanticweb.org/zahrasaied/Teaches> ;
+                                                                            owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Math>
+                                                                          ] ,
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :enjoys ;
+                                                                            owl:someValuesFrom :Music
+                                                                          ] ,
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hates ;
+                                                                            owl:someValuesFrom :Movies
+                                                                          ] ;
+                                                      rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Lecturer> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Math_Student
+<http://www.semanticweb.org/zahrasaied/Math_Student> rdf:type owl:Class ;
+                                                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <http://www.semanticweb.org/zahrasaied/Studies> ;
+                                                                           owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Math>
+                                                                         ] ;
+                                                     rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Student> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Person
+<http://www.semanticweb.org/zahrasaied/Person> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zahrasaied/Student
+<http://www.semanticweb.org/zahrasaied/Student> rdf:type owl:Class ;
+                                                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty <http://www.semanticweb.org/zahrasaied/Studies> ;
+                                                                      owl:someValuesFrom <http://www.semanticweb.org/zahrasaied/Course>
+                                                                    ] ;
+                                                rdfs:subClassOf <http://www.semanticweb.org/zahrasaied/Person> .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Hobbies
+:Hobbies rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Movies
+:Movies rdf:type owl:Class ;
+        rdfs:subClassOf :Hobbies .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Music
+:Music rdf:type owl:Class ;
+       rdfs:subClassOf :Hobbies .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/zahrasaied/BI101
+<http://www.semanticweb.org/zahrasaied/BI101> rdf:type owl:NamedIndividual ,
+                                                       <http://www.semanticweb.org/zahrasaied/Biology> .
+
+
+###  http://www.semanticweb.org/zahrasaied/BI104
+<http://www.semanticweb.org/zahrasaied/BI104> rdf:type owl:NamedIndividual ,
+                                                       <http://www.semanticweb.org/zahrasaied/Biology> .
+
+
+###  http://www.semanticweb.org/zahrasaied/Lecturer1
+<http://www.semanticweb.org/zahrasaied/Lecturer1> rdf:type owl:NamedIndividual ,
+                                                           <http://www.semanticweb.org/zahrasaied/Lecturer> ;
+                                                  <http://www.semanticweb.org/zahrasaied/firstname> "Stefan"^^xsd:string ;
+                                                  <http://www.semanticweb.org/zahrasaied/lastname> "Schlobach"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/Lecturer2
+<http://www.semanticweb.org/zahrasaied/Lecturer2> rdf:type owl:NamedIndividual ,
+                                                           <http://www.semanticweb.org/zahrasaied/Lecturer> ;
+                                                  <http://www.semanticweb.org/zahrasaied/firstname> "Klaas"^^xsd:string ;
+                                                  <http://www.semanticweb.org/zahrasaied/lastname> "de Graaf"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/calculus1
+<http://www.semanticweb.org/zahrasaied/calculus1> rdf:type owl:NamedIndividual ,
+                                                           <http://www.semanticweb.org/zahrasaied/Math> .
+
+
+###  http://www.semanticweb.org/zahrasaied/calculus2
+<http://www.semanticweb.org/zahrasaied/calculus2> rdf:type owl:NamedIndividual ,
+                                                           <http://www.semanticweb.org/zahrasaied/Math> .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Person1
+:Person1 rdf:type owl:NamedIndividual ,
+                  <http://www.semanticweb.org/zahrasaied/Person> ;
+         <http://www.semanticweb.org/zahrasaied/lastname> "Saied"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Person2
+:Person2 rdf:type owl:NamedIndividual ,
+                  <http://www.semanticweb.org/zahrasaied/Person> ;
+         <http://www.semanticweb.org/zahrasaied/lastname> "Schlobach"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Queen
+:Queen rdf:type owl:NamedIndividual ,
+                :Music ;
+       :Albumname "News of the World"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Radiohead
+:Radiohead rdf:type owl:NamedIndividual ,
+                    :Music ;
+           :Albumname "Kid A"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#Student1
+:Student1 rdf:type owl:NamedIndividual ,
+                   <http://www.semanticweb.org/zahrasaied/Student> ;
+          <http://www.semanticweb.org/zahrasaied/firstname> "Zahra"^^xsd:string ;
+          <http://www.semanticweb.org/zahrasaied/lastname> "Saied"^^xsd:string ;
+          <http://www.semanticweb.org/zahrasaied/studentID> "zsd500"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#romcom
+:romcom rdf:type owl:NamedIndividual ,
+                 :Movies ;
+        :moviename "Pretty Woman"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#semester_1
+:semester_1 rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/zahrasaied/Course> ;
+            :coursename "Biology"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#semester_2
+:semester_2 rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/zahrasaied/Course> ;
+            :coursename "Math"^^xsd:string .
+
+
+###  http://www.semanticweb.org/zahrasaied/ontologies/2017/9/UniversityZahra.owl#thriller
+:thriller rdf:type owl:NamedIndividual ,
+                   :Movies ;
+          :moviename "Psycho"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

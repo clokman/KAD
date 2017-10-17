@@ -1,0 +1,478 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/martenposthumus/ontologies/2017/9/untitled-ontology-15#"
+     xml:base="http://www.semanticweb.org/martenposthumus/ontologies/2017/9/untitled-ontology-15"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:sonsofanarchy="http://www.semanticweb.org/martenposthumus/sonsofanarchy/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/martenposthumus/ontologies/2017/9/untitled-ontology-15"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Amount_Of_Members -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Amount_Of_Members">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Deals_In -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Deals_In">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Has_Mother -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Has_Mother">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Is_Located_In -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Is_Located_In"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Is_Of_Ethnicity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Is_Of_Ethnicity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Member_Commited -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Member_Commited">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Members_Drive -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Members_Drive"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Members_In_Prison -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Members_In_Prison">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Camaron_Hayes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Camaron_Hayes">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/IRA"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drug_Distribution -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drug_Distribution">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Deals_In"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drugs"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drugs -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drugs"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ethnicity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ethnicity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/IRA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/IRA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapon_Dealer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Imprisoned_Member -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Imprisoned_Member">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Member_Commited"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Sons_Of_Anarchy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Location"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Mayans -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Mayans">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorclub"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorclub -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorclub">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Members_Drive"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorcycles"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorcycles -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorcycles"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Nordics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Nordics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drug_Distribution"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/One_Niners -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/One_Niners">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Is_Of_Ethnicity"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ethnicity"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorclub"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Persons -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Persons"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Sons_Of_Anarchy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Sons_Of_Anarchy">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Member_Commited"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Members_In_Prison"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Imprisoned_Member"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorclub"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapon_Dealer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapon_Dealer">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Deals_In"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapons"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapons -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapons"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/AK_47 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/AK_47">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Weapons"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Black -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Black">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ethnicity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Charming -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Charming">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Location"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Chester_Kray -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Chester_Kray">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/One_Niners"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Clay_Morrow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Clay_Morrow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Sons_Of_Anarchy"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Cocaine -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Cocaine">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drugs"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ernest_Darby -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ernest_Darby">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Nordics"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Gemma_Teller -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Gemma_Teller">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Persons"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Harley_Davidson_Iron884 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Harley_Davidson_Iron884">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorcycles"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Harley_Davidson_RoadKing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Harley_Davidson_RoadKing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorcycles"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Harley_Davidson_StreetGlyde -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Harley_Davidson_StreetGlyde">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Motorcycles"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ireland -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Ireland">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Location"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Jackson_Teller -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Jackson_Teller">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Sons_Of_Anarchy"/>
+        <sonsofanarchy:Has_Mother rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Gemma_Teller"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Laroy_Wayne -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Laroy_Wayne">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/One_Niners"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Lenny_Janowitz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Lenny_Janowitz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Imprisoned_Member"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Marcus_Alvarez -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Marcus_Alvarez">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Mayans"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Methamphetamine -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Methamphetamine">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Drugs"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Murder -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Murder">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Nothern_California -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Nothern_California">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Location"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Oakland -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Oakland">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Location"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Physical_Abuse -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Physical_Abuse">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martenposthumus/sonsofanarchy/Robbery -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Robbery">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Crimes"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/IRA"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Mayans"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Nordics"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/One_Niners"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/martenposthumus/sonsofanarchy/Sons_Of_Anarchy"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi -->
+

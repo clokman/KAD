@@ -1,0 +1,399 @@
+@prefix : <http://www.semanticweb.org/pcprincipal/assignment4/> .
+@prefix as4: <http://www.semanticweb.org/pcprincipal/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/pcprincipal/assignment4/> .
+
+<http://www.semanticweb.org/pcprincipal/assignment4/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/has_developed
+as4:has_developed rdf:type owl:ObjectProperty ;
+                  owl:inverseOf as4:is_developed_by ;
+                  rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/includes
+as4:includes rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/is_developed_by
+as4:is_developed_by rdf:type owl:ObjectProperty ,
+                             owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/is_mostly_played
+as4:is_mostly_played rdf:type owl:ObjectProperty ,
+                              owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/is_played_on_a
+as4:is_played_on_a rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/is_used_to_play
+as4:is_used_to_play rdf:type owl:ObjectProperty ,
+                             owl:AsymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/times_sold
+as4:times_sold rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Age_of_Empires
+as4:Age_of_Empires rdf:type owl:Class ;
+                   rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Age_of_Mythology
+as4:Age_of_Mythology rdf:type owl:Class ;
+                     rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Battlefield
+as4:Battlefield rdf:type owl:Class ;
+                rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Console
+as4:Console rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty as4:is_used_to_play ;
+                                  owl:someValuesFrom as4:Games
+                                ] .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/CounterStrike
+as4:CounterStrike rdf:type owl:Class ;
+                  rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/DOTA
+as4:DOTA rdf:type owl:Class ;
+         rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Desktop
+as4:Desktop rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Developers
+as4:Developers rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty as4:has_developed ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass as4:Games
+                                   ] .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/FIFA
+as4:FIFA rdf:type owl:Class ;
+         rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/GTA
+as4:GTA rdf:type owl:Class ;
+        rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Games
+as4:Games rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:unionOf ( as4:Desktop
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty as4:is_played_on_a ;
+                                                owl:someValuesFrom as4:Console
+                                              ]
+                                            )
+                              ] .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Generals
+as4:Generals rdf:type owl:Class ;
+             rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Left_4_Dead
+as4:Left_4_Dead rdf:type owl:Class ;
+                rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Mario_Kart
+as4:Mario_Kart rdf:type owl:Class ;
+               rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Nintendo_Sports
+as4:Nintendo_Sports rdf:type owl:Class ;
+                    rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Offline_Category
+as4:Offline_Category rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty as4:includes ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass as4:Games
+                                         ] .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Online_Category
+as4:Online_Category rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty as4:includes ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass as4:Games
+                                        ] .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Playstation
+as4:Playstation rdf:type owl:Class ;
+                rdfs:subClassOf as4:Console .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/World_of_Warcraft
+as4:World_of_Warcraft rdf:type owl:Class ;
+                      rdfs:subClassOf as4:Games .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Xbox
+as4:Xbox rdf:type owl:Class ;
+         rdfs:subClassOf as4:Console .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Age_Of_Empires_2
+as4:Age_Of_Empires_2 rdf:type owl:NamedIndividual ,
+                              as4:Age_of_Empires .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Blizzard
+as4:Blizzard rdf:type owl:NamedIndividual ,
+                      as4:Developers ;
+             as4:has_developed as4:DOTA_2 .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Board_Games
+as4:Board_Games rdf:type owl:NamedIndividual ,
+                         as4:Offline_Category .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/CO-OP
+as4:CO-OP rdf:type owl:NamedIndividual ,
+                   as4:Online_Category .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/CounterStrike_GO
+as4:CounterStrike_GO rdf:type owl:NamedIndividual ,
+                              as4:CounterStrike .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/DOTA_2
+as4:DOTA_2 rdf:type owl:NamedIndividual ,
+                    as4:DOTA .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/EA
+as4:EA rdf:type owl:NamedIndividual ,
+                as4:Developers ;
+       as4:has_developed as4:FIFA_2018 .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/FIFA_2018
+as4:FIFA_2018 rdf:type owl:NamedIndividual ,
+                       as4:FIFA .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/FPS
+as4:FPS rdf:type owl:NamedIndividual ,
+                 as4:Online_Category ;
+        as4:includes as4:CounterStrike_GO .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Generals_3
+as4:Generals_3 rdf:type owl:NamedIndividual ,
+                        as4:Generals ;
+               as4:is_mostly_played as4:Strategy ;
+               as4:is_played_on_a as4:PC .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Grand_theft_Auto_5
+as4:Grand_theft_Auto_5 rdf:type owl:NamedIndividual ,
+                                as4:GTA ;
+                       as4:is_developed_by as4:Rockstar ;
+                       as4:is_played_on_a as4:PC ,
+                                          as4:Playstation_4 .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Grand_theft_Auto_San_Andreas
+as4:Grand_theft_Auto_San_Andreas rdf:type owl:NamedIndividual ,
+                                          as4:GTA ;
+                                 as4:is_played_on_a as4:Playstation_2 .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Laptop
+as4:Laptop rdf:type owl:NamedIndividual ,
+                    as4:Desktop .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/League_of_Legends
+as4:League_of_Legends rdf:type owl:NamedIndividual ,
+                               as4:Games ;
+                      as4:is_played_on_a as4:PC .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Left_4_Dead_2
+as4:Left_4_Dead_2 rdf:type owl:NamedIndividual ,
+                           as4:Left_4_Dead ;
+                  as4:is_developed_by as4:Valve ;
+                  as4:is_played_on_a as4:PC .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/MAC
+as4:MAC rdf:type owl:NamedIndividual ,
+                 as4:Desktop .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/MMORPG
+as4:MMORPG rdf:type owl:NamedIndividual ,
+                    as4:Online_Category .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/MOBA
+as4:MOBA rdf:type owl:NamedIndividual ,
+                  as4:Online_Category .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Mario_Kart
+as4:Mario_Kart rdf:type owl:NamedIndividual ,
+                        as4:Nintendo_Sports ;
+               as4:is_mostly_played as4:CO-OP ;
+               as4:is_played_on_a as4:WII .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Mario_Kart_5
+as4:Mario_Kart_5 rdf:type owl:NamedIndividual ,
+                          as4:Mario_Kart .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Microsoft
+as4:Microsoft rdf:type owl:NamedIndividual ,
+                       as4:Developers ;
+              as4:has_developed as4:Age_Of_Empires_2 .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Nintendo_Co
+as4:Nintendo_Co rdf:type owl:NamedIndividual ,
+                         as4:Developers ;
+                as4:has_developed as4:Mario_Kart_5 .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/PC
+as4:PC rdf:type owl:NamedIndividual ,
+                as4:Desktop .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Playstation_1
+as4:Playstation_1 rdf:type owl:NamedIndividual ,
+                           as4:Playstation .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Playstation_2
+as4:Playstation_2 rdf:type owl:NamedIndividual ,
+                           as4:Playstation .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Playstation_3
+as4:Playstation_3 rdf:type owl:NamedIndividual ,
+                           as4:Playstation .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Playstation_4
+as4:Playstation_4 rdf:type owl:NamedIndividual ,
+                           as4:Playstation .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Re_Logic
+as4:Re_Logic rdf:type owl:NamedIndividual ,
+                      as4:Developers ;
+             as4:has_developed as4:Terraria .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Riot
+as4:Riot rdf:type owl:NamedIndividual ,
+                  as4:Developers ;
+         as4:has_developed as4:League_of_Legends .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Rockstar
+as4:Rockstar rdf:type owl:NamedIndividual ,
+                      as4:Developers ;
+             as4:has_developed as4:Grand_theft_Auto_5 ,
+                               as4:Grand_theft_Auto_San_Andreas .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Sports
+as4:Sports rdf:type owl:NamedIndividual ,
+                    as4:Offline_Category .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Strategy
+as4:Strategy rdf:type owl:NamedIndividual ,
+                      as4:Offline_Category .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Terraria
+as4:Terraria rdf:type owl:NamedIndividual ,
+                      as4:Games ;
+             as4:is_developed_by as4:Re_Logic ;
+             as4:is_mostly_played as4:CO-OP ;
+             as4:is_played_on_a as4:PC .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Valve
+as4:Valve rdf:type owl:NamedIndividual ,
+                   as4:Developers ;
+          as4:has_developed as4:CounterStrike_GO .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/WII
+as4:WII rdf:type owl:NamedIndividual ,
+                 as4:Console .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/World_of_Warcraft_The_Burning_Crusade
+as4:World_of_Warcraft_The_Burning_Crusade rdf:type owl:NamedIndividual ,
+                                                   as4:World_of_Warcraft ;
+                                          as4:is_developed_by as4:Blizzard ;
+                                          as4:is_mostly_played as4:MMORPG .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Xbox_360
+as4:Xbox_360 rdf:type owl:NamedIndividual ,
+                      as4:Xbox .
+
+
+###  http://www.semanticweb.org/pcprincipal/assignment4/Xbox_One
+as4:Xbox_One rdf:type owl:NamedIndividual ,
+                      as4:Xbox .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

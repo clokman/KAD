@@ -1,0 +1,139 @@
+@prefix : <http://www.example.org/mjh210/ontologies/2017/assignment4/mjh210.ttl#> .
+@prefix ex: <http://www.example.org/mjh210/ontologies/2017/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/mjh210/ontologies/2017/assignment4/mjh210.ttl> .
+
+<http://www.example.org/mjh210/ontologies/2017/assignment4/mjh210.ttl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/is_a_collection_of
+ex:is_a_collection_of rdf:type owl:ObjectProperty ;
+                      owl:inverseOf ex:is_part_of .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/is_of_genre
+ex:is_of_genre rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/is_part_of
+ex:is_part_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/plays_a_role_in
+ex:plays_a_role_in rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/won
+ex:won rdf:type owl:ObjectProperty ,
+                owl:SymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Actor
+ex:Actor rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ex:plays_a_role_in ;
+                                                      owl:someValuesFrom ex:Episode
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ owl:intersectionOf ( ex:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ex:won ;
+                                                      owl:hasValue ex:Best_Actor_2012
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf ex:Person .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Episode
+ex:Episode rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ex:is_part_of ;
+                                 owl:someValuesFrom ex:TelevisionSerie
+                               ] .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Genre
+ex:Genre rdf:type owl:Class .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/GoldenGlobe
+ex:GoldenGlobe rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty ex:won ;
+                                     owl:someValuesFrom ex:Actor
+                                   ] .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Person
+ex:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/TelevisionSerie
+ex:TelevisionSerie rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty ex:is_a_collection_of ;
+                                         owl:someValuesFrom ex:Episode
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ex:is_of_genre ;
+                                         owl:someValuesFrom ex:Genre
+                                       ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Best_Actor_2012
+ex:Best_Actor_2012 rdf:type owl:NamedIndividual ,
+                            ex:GoldenGlobe .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Best_Drama_2012
+ex:Best_Drama_2012 rdf:type owl:NamedIndividual ,
+                            ex:GoldenGlobe ;
+                   ex:is_of_genre ex:Drama ;
+                   ex:won ex:Game_of_Thrones .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Drama
+ex:Drama rdf:type owl:NamedIndividual ,
+                  ex:Genre .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Fire_and_Blood
+ex:Fire_and_Blood rdf:type owl:NamedIndividual ,
+                           ex:Episode .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Game_of_Thrones
+ex:Game_of_Thrones rdf:type owl:NamedIndividual ,
+                            ex:TelevisionSerie ;
+                   ex:is_of_genre ex:Drama .
+
+
+###  http://www.example.org/mjh210/ontologies/2017/assignment4/Peter_Dinklage
+ex:Peter_Dinklage rdf:type owl:NamedIndividual ,
+                           ex:Person ;
+                  ex:plays_a_role_in ex:Fire_and_Blood ;
+                  ex:won ex:Best_Actor_2012 .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

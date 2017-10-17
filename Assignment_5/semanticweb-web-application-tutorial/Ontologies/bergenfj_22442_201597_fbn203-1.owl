@@ -1,0 +1,299 @@
+@prefix : <http://www.semanticweb.org/femke/Asia#> .
+@prefix ex: <http://example.com> .
+@prefix sw: <http://www.semanticweb.org/femke/Asia/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/femke/Asia> .
+
+<http://www.semanticweb.org/femke/Asia> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/femke/Asia/HasHighlight
+sw:HasHighlight rdf:type owl:ObjectProperty ;
+                rdfs:range sw:Highlight .
+
+
+###  http://www.semanticweb.org/femke/Asia/hasCapital
+sw:hasCapital rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf sw:hasCity ;
+              rdf:type owl:InverseFunctionalProperty ,
+                       owl:AsymmetricProperty ;
+              rdfs:range sw:Capital .
+
+
+###  http://www.semanticweb.org/femke/Asia/hasCity
+sw:hasCity rdf:type owl:ObjectProperty ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty sw:hasCity ;
+                         owl:someValuesFrom sw:Country
+                       ] ;
+           rdfs:range sw:City .
+
+
+###  http://www.semanticweb.org/femke/Asia/hasEmotion
+sw:hasEmotion rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/femke/Asia/hasVisitors
+sw:hasVisitors rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/femke/Asia/livesIn
+sw:livesIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/femke/Asia/locatedIn
+sw:locatedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/femke/Asia/mentionedIn
+sw:mentionedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/femke/Asia/transports
+sw:transports rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/femke/Asia/transportsOn
+sw:transportsOn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/femke/Asia/ExchangeDollarRate
+sw:ExchangeDollarRate rdf:type owl:DatatypeProperty ;
+                      rdfs:range xsd:double .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/femke/Asia/Buildings
+sw:Buildings rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/femke/Asia/Capital
+sw:Capital rdf:type owl:Class ;
+           rdfs:subClassOf sw:City .
+
+
+###  http://www.semanticweb.org/femke/Asia/City
+sw:City rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/femke/Asia/Country
+sw:Country rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty sw:hasCapital ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sw:Capital
+                               ] ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty sw:hasCity ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass sw:City
+                           ] .
+
+
+###  http://www.semanticweb.org/femke/Asia/Highlight
+sw:Highlight rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty sw:mentionedIn ;
+                                   owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                   owl:onClass sw:TravelGuide
+                                 ] ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty sw:hasVisitors ;
+                               owl:someValuesFrom sw:Human
+                             ] .
+
+
+###  http://www.semanticweb.org/femke/Asia/Human
+sw:Human rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty sw:hasEmotion ;
+                               owl:someValuesFrom sw:emotions
+                             ] ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty sw:livesIn ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass sw:Buildings
+                         ] .
+
+
+###  http://www.semanticweb.org/femke/Asia/PassengerTrain
+sw:PassengerTrain rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty sw:transportsOn ;
+                                        owl:hasValue sw:TrainRails
+                                      ] ;
+                  rdfs:subClassOf sw:Transportation ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty sw:transports ;
+                                    owl:someValuesFrom sw:Human
+                                  ] .
+
+
+###  http://www.semanticweb.org/femke/Asia/Rails
+sw:Rails rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/femke/Asia/Transportation
+sw:Transportation rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/femke/Asia/TravelGuide
+sw:TravelGuide rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/femke/Asia/Valuta
+sw:Valuta rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sw:ExchangeDollarRate ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:double
+                              ] .
+
+
+###  http://www.semanticweb.org/femke/Asia/emotions
+sw:emotions rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/femke/Asia/Beijing
+sw:Beijing rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/China
+sw:China rdf:type owl:NamedIndividual ;
+         sw:hasCapital sw:Beijing .
+
+
+###  http://www.semanticweb.org/femke/Asia/Femke
+sw:Femke rdf:type owl:NamedIndividual ;
+         sw:livesIn sw:house .
+
+
+###  http://www.semanticweb.org/femke/Asia/HaLongBay
+sw:HaLongBay rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/Hanoi
+sw:Hanoi rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/HoChiMinh
+sw:HoChiMinh rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/LivitransExpressTrain
+sw:LivitransExpressTrain rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/TrainRails
+sw:TrainRails rdf:type owl:NamedIndividual ,
+                       sw:Rails .
+
+
+###  http://www.semanticweb.org/femke/Asia/Vietnam
+sw:Vietnam rdf:type owl:NamedIndividual ;
+           sw:HasHighlight sw:HaLongBay ;
+           sw:hasCapital sw:Hanoi ;
+           sw:hasCity sw:HoChiMinh .
+
+
+###  http://www.semanticweb.org/femke/Asia/VietnameseDong
+sw:VietnameseDong rdf:type owl:NamedIndividual ;
+                  sw:ExchangeDollarRate "4.0E-5"^^xsd:double .
+
+
+###  http://www.semanticweb.org/femke/Asia/VioletteExpressTrain
+sw:VioletteExpressTrain rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/anger
+sw:anger rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/disliking
+sw:disliking rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/fear
+sw:fear rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/house
+sw:house rdf:type owl:NamedIndividual ,
+                  sw:Buildings .
+
+
+###  http://www.semanticweb.org/femke/Asia/joy
+sw:joy rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/liking
+sw:liking rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/lonelyPlanet
+sw:lonelyPlanet rdf:type owl:NamedIndividual ,
+                         sw:TravelGuide .
+
+
+###  http://www.semanticweb.org/femke/Asia/love
+sw:love rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/marcoPolo
+sw:marcoPolo rdf:type owl:NamedIndividual ,
+                      sw:TravelGuide .
+
+
+###  http://www.semanticweb.org/femke/Asia/sadness
+sw:sadness rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/femke/Asia/sapa
+sw:sapa rdf:type owl:NamedIndividual ;
+        sw:mentionedIn sw:lonelyPlanet ,
+                       sw:timeToMomo .
+
+
+###  http://www.semanticweb.org/femke/Asia/timeToMomo
+sw:timeToMomo rdf:type owl:NamedIndividual ,
+                       sw:TravelGuide .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( sw:lonelyPlanet
+                        sw:marcoPolo
+                        sw:timeToMomo
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( sw:marcoPolo
+                        sw:timeToMomo
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

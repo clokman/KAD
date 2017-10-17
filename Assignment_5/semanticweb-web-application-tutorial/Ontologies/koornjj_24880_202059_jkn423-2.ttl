@@ -1,0 +1,310 @@
+@prefix : <http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/> .
+@prefix p: <http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/> .
+
+<http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/evolvedFrom
+p:evolvedFrom rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf p:evolvesInto .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/evolvesInto
+p:evolvesInto rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/hasLeader
+p:hasLeader rdf:type owl:ObjectProperty ;
+            owl:inverseOf p:ownsGym .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/hasPower
+p:hasPower rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/hasTrainer
+p:hasTrainer rdf:type owl:ObjectProperty ;
+             owl:inverseOf p:trains .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/hasType
+p:hasType rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/loves
+p:loves rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/ownsGym
+p:ownsGym rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/ownsPokemon
+p:ownsPokemon rdf:type owl:ObjectProperty ;
+              owl:equivalentProperty p:trains .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/trains
+p:trains rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Character
+p:Character rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/ElectricPokemon
+p:ElectricPokemon rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty p:hasPower ;
+                                                        owl:someValuesFrom p:ElectricPower
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty p:hasType ;
+                                                        owl:hasValue p:Electric
+                                                      ]
+                                                    )
+                                      ] ;
+                  rdfs:subClassOf p:Pokemon .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/ElectricPower
+p:ElectricPower rdf:type owl:Class ;
+                rdfs:subClassOf p:Power .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/EvolvedElectricPokemon
+p:EvolvedElectricPokemon rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Restriction ;
+                                               owl:onProperty p:evolvedFrom ;
+                                               owl:someValuesFrom p:ElectricPokemon
+                                             ] ;
+                         rdfs:subClassOf p:ElectricPokemon .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/EvolvedWaterPokemon
+p:EvolvedWaterPokemon rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty p:evolvedFrom ;
+                                            owl:someValuesFrom p:WaterPokemon
+                                          ] ;
+                      rdfs:subClassOf p:WaterPokemon .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Gym
+p:Gym rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/GymLeader
+p:GymLeader rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty p:ownsGym ;
+                                  owl:someValuesFrom p:Gym
+                                ] ;
+            rdfs:subClassOf p:Trainer .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Person
+p:Person rdf:type owl:Class ;
+         rdfs:subClassOf p:Character .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Pokemon
+p:Pokemon rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty p:hasPower ;
+                                owl:someValuesFrom p:Power
+                              ] ;
+          rdfs:subClassOf p:Person .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Power
+p:Power rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/RockPokemon
+p:RockPokemon rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Class ;
+                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty p:hasPower ;
+                                                    owl:someValuesFrom p:RockPower
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty p:hasType ;
+                                                    owl:hasValue p:Rock
+                                                  ]
+                                                )
+                                  ] ;
+              rdfs:subClassOf p:Pokemon .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/RockPower
+p:RockPower rdf:type owl:Class ;
+            rdfs:subClassOf p:Power .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Trainer
+p:Trainer rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty p:ownsPokemon ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass p:Pokemon
+                              ] ;
+          rdfs:subClassOf p:Person .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Type
+p:Type rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/WaterPokemon
+p:WaterPokemon rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty p:hasPower ;
+                                                     owl:someValuesFrom p:WaterPower
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty p:hasType ;
+                                                     owl:hasValue p:Water
+                                                   ]
+                                                 )
+                                   ] ;
+               rdfs:subClassOf p:Pokemon .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/WaterPower
+p:WaterPower rdf:type owl:Class ;
+             rdfs:subClassOf p:Power .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Ash
+p:Ash rdf:type owl:NamedIndividual ,
+               p:Character ;
+      p:ownsPokemon p:Pikachu ;
+      p:trains p:Raichu .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Boulder
+p:Boulder rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Brock
+p:Brock rdf:type owl:NamedIndividual ,
+                 p:Character ;
+        p:loves p:Joy ;
+        p:ownsGym p:PewterGym ;
+        p:ownsPokemon p:Geodude .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/CeruleanGym
+p:CeruleanGym rdf:type owl:NamedIndividual ,
+                       p:Gym ;
+              p:hasLeader p:Misty .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/DiamondStorm
+p:DiamondStorm rdf:type owl:NamedIndividual ,
+                        p:RockPower .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Electric
+p:Electric rdf:type owl:NamedIndividual ,
+                    p:Type .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Geodude
+p:Geodude rdf:type owl:NamedIndividual ,
+                   p:Character ;
+          p:hasPower p:Thunderbolt .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/HydroPump
+p:HydroPump rdf:type owl:NamedIndividual ,
+                     p:WaterPower .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Joy
+p:Joy rdf:type owl:NamedIndividual ,
+               p:Character .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Misty
+p:Misty rdf:type owl:NamedIndividual ,
+                 p:Character ;
+        p:ownsPokemon p:Staryu .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/PewterGym
+p:PewterGym rdf:type owl:NamedIndividual ,
+                     p:Gym .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Pikachu
+p:Pikachu rdf:type owl:NamedIndividual ,
+                   p:Character ;
+          p:hasPower p:Thunderbolt .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Raichu
+p:Raichu rdf:type owl:NamedIndividual ,
+                  p:Character ;
+         p:evolvedFrom p:Pikachu .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Rock
+p:Rock rdf:type owl:NamedIndividual ,
+                p:Type .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Starmie
+p:Starmie rdf:type owl:NamedIndividual ,
+                   p:Character ;
+          p:hasType p:Water .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Staryu
+p:Staryu rdf:type owl:NamedIndividual ,
+                  p:Character ;
+         p:evolvesInto p:Starmie ;
+         p:hasType p:Water .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Thunderbolt
+p:Thunderbolt rdf:type owl:NamedIndividual ,
+                       p:ElectricPower .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Water
+p:Water rdf:type owl:NamedIndividual ,
+                 p:Type .
+
+
+###  http://www.semanticweb.org/pc/ontologies/2017/8/pokemon/Wigglytuff
+p:Wigglytuff rdf:type owl:NamedIndividual ,
+                      p:Pokemon ;
+             p:hasTrainer p:Joy .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

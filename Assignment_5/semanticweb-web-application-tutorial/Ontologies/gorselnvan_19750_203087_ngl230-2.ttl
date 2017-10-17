@@ -1,0 +1,249 @@
+@prefix : <http://www.example.org/niels/assignment4#> .
+@prefix a4: <http://www.example.org/niels/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/niels/assignment4> .
+
+<http://www.example.org/niels/assignment4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/niels/assignment4/Directs
+a4:Directs rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/niels/assignment4/HasGenre
+a4:HasGenre rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:comment "Every movie is having some genres, it is possible that one movie has multiple, if so you can just add multiple movie genres to the movie."@en .
+
+
+###  http://www.example.org/niels/assignment4/PlayesRoleIn
+a4:PlayesRoleIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/niels/assignment4/Writes_text
+a4:Writes_text rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/niels/assignment4/knows
+a4:knows rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdf:type owl:ReflexiveProperty ;
+         rdfs:domain a4:Person ;
+         rdfs:range a4:Person .
+
+
+###  http://www.example.org/niels/assignment4/worked_with
+a4:worked_with rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty ;
+               rdfs:comment "Here we desribe all the people that have worked with each other before."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/niels/assignment4/Actor
+a4:Actor rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( a4:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty a4:PlayesRoleIn ;
+                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                      owl:onClass a4:Movie
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf a4:Person .
+
+
+###  http://www.example.org/niels/assignment4/Director
+a4:Director rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( a4:Person
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty a4:Directs ;
+                                                         owl:someValuesFrom a4:Movie
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf a4:Person .
+
+
+###  http://www.example.org/niels/assignment4/Genre
+a4:Genre rdf:type owl:Class .
+
+
+###  http://www.example.org/niels/assignment4/Movie
+a4:Movie rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty a4:Directs ;
+                           owl:someValuesFrom a4:Director
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty a4:HasGenre ;
+                           owl:someValuesFrom a4:Genre
+                         ] .
+
+
+###  http://www.example.org/niels/assignment4/Person
+a4:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/niels/assignment4/Writer
+a4:Writer rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( a4:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty a4:Writes_text ;
+                                                       owl:someValuesFrom a4:Movie
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf a4:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/niels/assignment4/Aaron_Eckhart
+a4:Aaron_Eckhart rdf:type owl:NamedIndividual ,
+                          a4:Person ;
+                 a4:PlayesRoleIn a4:The_Dark_Knight ;
+                 a4:knows a4:Linda_Woolverton .
+
+
+###  http://www.example.org/niels/assignment4/Action
+a4:Action rdf:type owl:NamedIndividual ,
+                   a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Adventure
+a4:Adventure rdf:type owl:NamedIndividual ,
+                      a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Alice_in_Wonderland
+a4:Alice_in_Wonderland rdf:type owl:NamedIndividual ,
+                                a4:Movie ;
+                       a4:HasGenre a4:Adventure ,
+                                   a4:Fantasy .
+
+
+###  http://www.example.org/niels/assignment4/Brad_Pitt
+a4:Brad_Pitt rdf:type owl:NamedIndividual ,
+                      a4:Person ;
+             a4:PlayesRoleIn a4:Titantic ;
+             a4:knows a4:Christopher_Nolan ,
+                      a4:Heath_Ledger ,
+                      a4:Linda_Woolverton ;
+             a4:worked_with a4:Johnny_Depp .
+
+
+###  http://www.example.org/niels/assignment4/Christian_Bale
+a4:Christian_Bale rdf:type owl:NamedIndividual ,
+                           a4:Person ;
+                  a4:PlayesRoleIn a4:The_Dark_Knight ;
+                  a4:worked_with a4:Heath_Ledger .
+
+
+###  http://www.example.org/niels/assignment4/Christopher_Nolan
+a4:Christopher_Nolan rdf:type owl:NamedIndividual ,
+                              a4:Person ;
+                     a4:Directs a4:The_Dark_Knight ;
+                     a4:knows a4:Linda_Woolverton .
+
+
+###  http://www.example.org/niels/assignment4/Comedy
+a4:Comedy rdf:type owl:NamedIndividual ,
+                   a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Crime
+a4:Crime rdf:type owl:NamedIndividual ,
+                  a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Drama
+a4:Drama rdf:type owl:NamedIndividual ,
+                  a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Fantasy
+a4:Fantasy rdf:type owl:NamedIndividual ,
+                    a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Heath_Ledger
+a4:Heath_Ledger rdf:type owl:NamedIndividual ,
+                         a4:Person ;
+                a4:PlayesRoleIn a4:The_Dark_Knight ;
+                a4:worked_with a4:Christian_Bale .
+
+
+###  http://www.example.org/niels/assignment4/Horror
+a4:Horror rdf:type owl:NamedIndividual ,
+                   a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Johnny_Depp
+a4:Johnny_Depp rdf:type owl:NamedIndividual ,
+                        a4:Person ;
+               a4:PlayesRoleIn a4:Alice_in_Wonderland ;
+               a4:knows a4:Linda_Woolverton .
+
+
+###  http://www.example.org/niels/assignment4/Jonathan_Nolan
+a4:Jonathan_Nolan rdf:type owl:NamedIndividual ,
+                           a4:Person ;
+                  a4:Writes_text a4:The_Dark_Knight .
+
+
+###  http://www.example.org/niels/assignment4/Linda_Woolverton
+a4:Linda_Woolverton rdf:type owl:NamedIndividual ,
+                             a4:Person ;
+                    a4:Writes_text a4:Alice_in_Wonderland ;
+                    a4:knows a4:Christian_Bale ;
+                    a4:worked_with a4:Brad_Pitt ,
+                                   a4:Christian_Bale ,
+                                   a4:Jonathan_Nolan .
+
+
+###  http://www.example.org/niels/assignment4/Peyote
+a4:Peyote rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/niels/assignment4/Sci-Fi
+a4:Sci-Fi rdf:type owl:NamedIndividual ,
+                   a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/The_Dark_Knight
+a4:The_Dark_Knight rdf:type owl:NamedIndividual ,
+                            a4:Movie ;
+                   a4:HasGenre a4:Action ,
+                               a4:Crime ,
+                               a4:Drama ,
+                               a4:Thriller .
+
+
+###  http://www.example.org/niels/assignment4/Thriller
+a4:Thriller rdf:type owl:NamedIndividual ,
+                     a4:Genre .
+
+
+###  http://www.example.org/niels/assignment4/Titantic
+a4:Titantic rdf:type owl:NamedIndividual ,
+                     a4:Movie ;
+            a4:HasGenre a4:Adventure ,
+                        a4:Drama .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

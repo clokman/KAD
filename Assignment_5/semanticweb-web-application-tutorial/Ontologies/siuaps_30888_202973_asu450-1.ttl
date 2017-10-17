@@ -1,0 +1,206 @@
+@prefix : <http://www.semanticweb.org/angelique/universityOfAmsterdam#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix uva: <http://www.semanticweb.org/angelique/universityOfAmsterdam/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/angelique/universityOfAmsterdam> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/beginsIn
+
+uva:beginsIn a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/followsCourse
+
+uva:followsCourse a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/hasName
+
+uva:hasName a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/isAt
+
+uva:isAt a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/knows
+
+uva:knows a owl:ObjectProperty , owl:SymmetricProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/minimalStudents
+
+uva:minimalStudents a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/takesPlaceIn
+
+uva:takesPlaceIn a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/teachesIn
+
+uva:teachesIn a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Course
+
+uva:Course a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty uva:isAt ;
+	owl:someValuesFrom uva:Location .
+
+uva:Course owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty uva:takesPlaceIn ;
+	owl:someValuesFrom uva:Semester .
+
+uva:Course owl:equivalentClass _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty uva:minimalStudents ;
+	owl:minCardinality "10"^^xsd:nonNegativeInteger .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Location
+
+uva:Location a owl:Class .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Person
+
+uva:Person a owl:Class .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Semester
+
+uva:Semester a owl:Class .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Student
+
+uva:Student a owl:Class ;
+	owl:equivalentClass _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty uva:followsCourse ;
+	owl:someValuesFrom uva:Course .
+
+uva:Student owl:equivalentClass _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty uva:knows ;
+	owl:someValuesFrom uva:Teacher .
+
+uva:Student owl:equivalentClass _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty uva:hasName ;
+	owl:hasValue uva:JaneDoe .
+
+uva:Student rdfs:subClassOf uva:Person .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Teacher
+
+uva:Teacher a owl:Class ;
+	owl:equivalentClass _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty uva:knows ;
+	owl:someValuesFrom uva:Student .
+
+uva:Teacher owl:equivalentClass _:genid8 .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty uva:teachesIn ;
+	owl:someValuesFrom uva:Course .
+
+uva:Teacher rdfs:subClassOf uva:Person .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Communications
+
+uva:Communications a owl:NamedIndividual ;
+	uva:isAt uva:Roeterseiland , uva:SciencePark .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/DenzelWit
+
+uva:DenzelWit a owl:NamedIndividual ;
+	uva:followsCourse uva:Networkorganisations , uva:Webprogramming .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/HenkJans
+
+uva:HenkJans a owl:NamedIndividual ;
+	uva:teachesIn uva:Webprogramming .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/JaneDoe
+
+uva:JaneDoe a owl:NamedIndividual ;
+	uva:followsCourse uva:Networkorganisations .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Networkorganisations
+
+uva:Networkorganisations a owl:NamedIndividual , uva:Course ;
+	uva:beginsIn uva:One ;
+	uva:isAt uva:Roeterseiland .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/One
+
+uva:One a owl:NamedIndividual , uva:Semester .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/PieterBel
+
+uva:PieterBel a owl:NamedIndividual ;
+	uva:followsCourse uva:Webprogramming .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/PollyHerk
+
+uva:PollyHerk a owl:NamedIndividual ;
+	uva:followsCourse uva:Networkorganisations ;
+	uva:teachesIn uva:Webprogramming .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Roeterseiland
+
+uva:Roeterseiland a owl:NamedIndividual , uva:Location .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/SciencePark
+
+uva:SciencePark a owl:NamedIndividual , uva:Location .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/ToonAbcouwer
+
+uva:ToonAbcouwer a owl:NamedIndividual ;
+	uva:teachesIn uva:Networkorganisations .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Two
+
+uva:Two a owl:NamedIndividual , uva:Semester .
+# 
+# http://www.semanticweb.org/angelique/universityOfAmsterdam/Webprogramming
+
+uva:Webprogramming a owl:NamedIndividual , uva:Course ;
+	uva:beginsIn uva:Two ;
+	uva:isAt uva:SciencePark .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

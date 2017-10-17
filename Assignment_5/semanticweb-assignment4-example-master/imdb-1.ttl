@@ -1,0 +1,28 @@
+@prefix imdb: <http://imdb.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+imdb:tt0120669 a imdb:Movie ;
+    imdb:actor "Benicio Del Toro",
+        "Ellen Barkin",
+        "Johnny Depp",
+        "Tobey Maguire" ;
+    imdb:director "Terry Gilliam" ;
+    imdb:genre "Adventure"@en,
+        "Comedy"@en,
+        "Drama"@en ;
+    imdb:language "English"@en ;
+    imdb:plot "An oddball journalist and his psychopathic lawyer travel to Las Vegas for a series of psychedelic escapades."@en ;
+    imdb:poster <http://ia.media-imdb.com/images/M/MV5BNjA2ZDY3ZjYtZmNiMC00MDU5LTgxMWEtNzk1YmI3NzdkMTU0XkEyXkFqcGdeQXVyNjQyMjcwNDM@._V1_SX300.jpg> ;
+    imdb:rated "R" ;
+    imdb:rating 7.7e+00 ;
+    imdb:runtime "118M"^^xsd:duration ;
+    imdb:title "Fear and Loathing in Las Vegas"@en ;
+    imdb:writer "Alex Cox (screenplay)",
+        "Hunter S. Thompson (book)",
+        "Terry Gilliam (screenplay)",
+        "Tod Davies (screenplay)",
+        "Tony Grisoni (screenplay)" ;
+    imdb:year "1998"^^xsd:gYear .

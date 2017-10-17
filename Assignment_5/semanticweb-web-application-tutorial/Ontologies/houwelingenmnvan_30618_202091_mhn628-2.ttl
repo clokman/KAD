@@ -1,0 +1,255 @@
+@prefix : <http://www.semanticweb.org/melanie/ontologies/2017/9/artist#> .
+@prefix a: <http://www.semanticweb.org/melanie/ontologies/2017/9/artist/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/melanie/ontologies/2017/9/artist> .
+
+<http://www.semanticweb.org/melanie/ontologies/2017/9/artist> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/geboortelandVan
+a:geboortelandVan rdf:type owl:ObjectProperty ;
+                  owl:inverseOf a:geborenIn .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/geborenIn
+a:geborenIn rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/genreVan
+a:genreVan rdf:type owl:ObjectProperty ;
+           owl:inverseOf a:heeftGenre .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/geslachtVan
+a:geslachtVan rdf:type owl:ObjectProperty ;
+              owl:inverseOf a:heeftGeslacht .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/heeftArtiest
+a:heeftArtiest rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/heeftContractBij
+a:heeftContractBij rdf:type owl:ObjectProperty ;
+                   owl:inverseOf a:heeftGecontracteerd .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/heeftGecontracteerd
+a:heeftGecontracteerd rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/heeftGenre
+a:heeftGenre rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/heeftGeslacht
+a:heeftGeslacht rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/heeftLied
+a:heeftLied rdf:type owl:ObjectProperty ;
+            owl:inverseOf a:liedVan .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/isVanLabel
+a:isVanLabel rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/liedVan
+a:liedVan rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/zingtInMuziekgenre
+a:zingtInMuziekgenre rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Afrika_Continent
+a:Afrika_Continent rdf:type owl:Class ;
+                   rdfs:subClassOf a:Land .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Artiest
+a:Artiest rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty a:heeftLied ;
+                                owl:someValuesFrom a:Lied
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty a:geborenIn ;
+                                owl:allValuesFrom a:Land
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty a:heeftGeslacht ;
+                                owl:allValuesFrom a:Geslacht
+                              ] .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Azië_Continent
+a:Azië_Continent rdf:type owl:Class ;
+                 rdfs:subClassOf a:Land .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Europa_Continent
+a:Europa_Continent rdf:type owl:Class ;
+                   rdfs:subClassOf a:Land .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Genre
+a:Genre rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Geslacht
+a:Geslacht rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Label
+a:Label rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty a:heeftGecontracteerd ;
+                              owl:someValuesFrom a:Artiest
+                            ] .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Land
+a:Land rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty a:geboortelandVan ;
+                             owl:someValuesFrom a:Artiest
+                           ] .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Lied
+a:Lied rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty a:heeftGenre ;
+                             owl:someValuesFrom a:Genre
+                           ] .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Noord-Amerika_Continent
+a:Noord-Amerika_Continent rdf:type owl:Class ;
+                          rdfs:subClassOf a:Land .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Oceanië_Continent
+a:Oceanië_Continent rdf:type owl:Class ;
+                    rdfs:subClassOf a:Land .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Zuid-Amerika_Continent
+a:Zuid-Amerika_Continent rdf:type owl:Class ;
+                         rdfs:subClassOf a:Land .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Anders
+a:Anders rdf:type owl:NamedIndividual ,
+                  a:Geslacht .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Beyoncé
+a:Beyoncé rdf:type owl:NamedIndividual ,
+                   a:Artiest ;
+          a:geborenIn a:Verenigde_Staten ;
+          a:heeftContractBij a:Columbia ,
+                             a:Sony_Urban_Music ;
+          a:heeftGeslacht a:Vrouw ;
+          a:heeftLied a:Irreplaceable ;
+          a:zingtInMuziekgenre a:Dance-pop ,
+                               a:Hiphop ,
+                               a:R_and_B ,
+                               a:Soul .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Columbia
+a:Columbia rdf:type owl:NamedIndividual ,
+                    a:Label .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Dance-pop
+a:Dance-pop rdf:type owl:NamedIndividual ,
+                     a:Genre .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Hiphop
+a:Hiphop rdf:type owl:NamedIndividual ,
+                  a:Genre .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Irreplaceable
+a:Irreplaceable rdf:type owl:NamedIndividual ,
+                         a:Lied ;
+                a:heeftGenre a:Pop ,
+                             a:R_and_B ;
+                a:isVanLabel a:Columbia ;
+                a:liedVan a:Beyoncé .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Man
+a:Man rdf:type owl:NamedIndividual ,
+               a:Geslacht .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Pop
+a:Pop rdf:type owl:NamedIndividual ,
+               a:Genre .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/R_and_B
+a:R_and_B rdf:type owl:NamedIndividual ,
+                   a:Genre .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Sony_Urban_Music
+a:Sony_Urban_Music rdf:type owl:NamedIndividual ,
+                            a:Label .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Soul
+a:Soul rdf:type owl:NamedIndividual ,
+                a:Genre .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Verenigde_Staten
+a:Verenigde_Staten rdf:type owl:NamedIndividual ;
+                   a:heeftArtiest a:Beyoncé .
+
+
+###  http://www.semanticweb.org/melanie/ontologies/2017/9/artist/Vrouw
+a:Vrouw rdf:type owl:NamedIndividual ,
+                 a:Geslacht .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( a:Afrika_Continent
+                a:Azië_Continent
+                a:Europa_Continent
+                a:Noord-Amerika_Continent
+                a:Oceanië_Continent
+                a:Zuid-Amerika_Continent
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

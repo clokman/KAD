@@ -1,0 +1,258 @@
+@prefix : <http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List#> .
+@prefix bl: <http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List> .
+
+<http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/has_Read
+bl:has_Read rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/has_Reviewed
+bl:has_Reviewed rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/has_Translated
+bl:has_Translated rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/has_Written
+bl:has_Written rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty ,
+                        owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/is_Female_Character_of
+bl:is_Female_Character_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/is_Female_Main_Character_of
+bl:is_Female_Main_Character_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/is_Main_Character_of
+bl:is_Main_Character_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/is_Male_Character_of
+bl:is_Male_Character_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/is_Male_Main_Character_of
+bl:is_Male_Main_Character_of rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Author
+bl:Author rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty bl:has_Written ;
+                                owl:someValuesFrom bl:Book
+                              ] ;
+          rdfs:subClassOf bl:Person .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Book
+bl:Book rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Character
+bl:Character rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty bl:is_Main_Character_of ;
+                                   owl:someValuesFrom bl:Book
+                                 ] ;
+             rdfs:subClassOf bl:Person .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Female_Character
+bl:Female_Character rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty bl:is_Female_Character_of ;
+                                          owl:someValuesFrom bl:Book
+                                        ] ;
+                    rdfs:subClassOf bl:Character .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Female_Main_Character
+bl:Female_Main_Character rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( bl:Character
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty bl:is_Female_Main_Character_of ;
+                                                                      owl:someValuesFrom bl:Book
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf bl:Character ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty bl:is_Female_Main_Character_of ;
+                                           owl:allValuesFrom bl:Character
+                                         ] .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Male_Character
+bl:Male_Character rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty bl:is_Male_Character_of ;
+                                        owl:someValuesFrom bl:Book
+                                      ] ;
+                  rdfs:subClassOf bl:Character .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Male_Main_Character
+bl:Male_Main_Character rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( bl:Character
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty bl:is_Male_Main_Character_of ;
+                                                                    owl:someValuesFrom bl:Book
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf bl:Character ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty bl:is_Male_Main_Character_of ;
+                                         owl:allValuesFrom bl:Character
+                                       ] .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Person
+bl:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Reader
+bl:Reader rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty bl:has_Read ;
+                                owl:someValuesFrom bl:Book
+                              ] ;
+          rdfs:subClassOf bl:Person .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Reviewer
+bl:Reviewer rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( bl:Reader
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty bl:has_Reviewed ;
+                                                         owl:someValuesFrom bl:Book
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf bl:Reader ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty bl:has_Reviewed ;
+                              owl:allValuesFrom bl:Book
+                            ] .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Translator
+bl:Translator rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( bl:Reader
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty bl:has_Translated ;
+                                                           owl:someValuesFrom bl:Book
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf bl:Reader ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty bl:has_Translated ;
+                                owl:allValuesFrom bl:Book
+                              ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/A_Tale_of_Two_Cities
+bl:A_Tale_of_Two_Cities rdf:type owl:NamedIndividual ,
+                                 bl:Book .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/A_Wind_Up_Bird_Chronicle
+bl:A_Wind_Up_Bird_Chronicle rdf:type owl:NamedIndividual ,
+                                     bl:Book .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Charles_Dickens
+bl:Charles_Dickens rdf:type owl:NamedIndividual ,
+                            bl:Person ;
+                   bl:has_Written bl:A_Tale_of_Two_Cities .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Dario_Zempetti
+bl:Dario_Zempetti rdf:type owl:NamedIndividual ,
+                           bl:Person ;
+                  bl:has_Read bl:A_Wind_Up_Bird_Chronicle ;
+                  bl:has_Reviewed bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Haruki_Murakami
+bl:Haruki_Murakami rdf:type owl:NamedIndividual ,
+                            bl:Person ;
+                   bl:has_Written bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Havise_Kavi
+bl:Havise_Kavi rdf:type owl:NamedIndividual ;
+               bl:has_Read bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Jay_Rubin
+bl:Jay_Rubin rdf:type owl:NamedIndividual ,
+                      bl:Person ;
+             bl:has_Read bl:A_Wind_Up_Bird_Chronicle ;
+             bl:has_Translated bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Kumiko_Okada
+bl:Kumiko_Okada rdf:type owl:NamedIndividual ,
+                         bl:Person ;
+                bl:is_Female_Character_of bl:A_Wind_Up_Bird_Chronicle ;
+                bl:is_Female_Main_Character_of bl:A_Wind_Up_Bird_Chronicle ;
+                bl:is_Main_Character_of bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Malta_Kano
+bl:Malta_Kano rdf:type owl:NamedIndividual ,
+                       bl:Person ;
+              bl:is_Female_Character_of bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Noboru_Wataya
+bl:Noboru_Wataya rdf:type owl:NamedIndividual ,
+                          bl:Person ;
+                 bl:is_Male_Character_of bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Oktay_Kavi
+bl:Oktay_Kavi rdf:type owl:NamedIndividual ,
+                       bl:Person ;
+              bl:has_Read bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  http://www.semanticweb.org/oktay/ontologies/Oktay/Book_List/Toru_Okada
+bl:Toru_Okada rdf:type owl:NamedIndividual ,
+                       bl:Person ;
+              bl:is_Main_Character_of bl:A_Wind_Up_Bird_Chronicle ;
+              bl:is_Male_Character_of bl:A_Wind_Up_Bird_Chronicle ;
+              bl:is_Male_Main_Character_of bl:A_Wind_Up_Bird_Chronicle .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

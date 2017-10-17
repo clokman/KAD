@@ -1,0 +1,267 @@
+@prefix : <http://www.semanticweb.org/tomer/football#> .
+@prefix fbl: <http://www.semanticweb.org/tomer/football/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/tomer/football> .
+
+<http://www.semanticweb.org/tomer/football> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/tomer/football/PlaysIn
+fbl:PlaysIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/Supports
+fbl:Supports rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/directorAt
+fbl:directorAt rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/employs
+fbl:employs rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/hasRival
+fbl:hasRival rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/managesAt
+fbl:managesAt rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/ownerOf
+fbl:ownerOf rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/playsAt
+fbl:playsAt rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/tomer/football/supportsManager
+fbl:supportsManager rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/tomer/football/Amateur
+fbl:Amateur rdf:type owl:Class ;
+            rdfs:subClassOf fbl:Club .
+
+
+###  http://www.semanticweb.org/tomer/football/Amateur_Player
+fbl:Amateur_Player rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty fbl:playsAt ;
+                                         owl:someValuesFrom fbl:Amateur
+                                       ] ;
+                   rdfs:subClassOf fbl:Person .
+
+
+###  http://www.semanticweb.org/tomer/football/Assistant_Manager
+fbl:Assistant_Manager rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( fbl:Person
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty fbl:supportsManager ;
+                                                                   owl:someValuesFrom fbl:Manager
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty fbl:supportsManager ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass fbl:Manager
+                                          ] ;
+                      rdfs:subClassOf fbl:Person .
+
+
+###  http://www.semanticweb.org/tomer/football/Club
+fbl:Club rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty fbl:employs ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass fbl:Person
+                             ] .
+
+
+###  http://www.semanticweb.org/tomer/football/Director
+fbl:Director rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( fbl:Person
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty fbl:directorAt ;
+                                                          owl:someValuesFrom fbl:Club
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+             rdfs:subClassOf fbl:Person .
+
+
+###  http://www.semanticweb.org/tomer/football/Division
+fbl:Division rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tomer/football/Manager
+fbl:Manager rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( fbl:Person
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty fbl:managesAt ;
+                                                         owl:someValuesFrom fbl:Club
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty fbl:managesAt ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass fbl:Club
+                                ] ;
+            rdfs:subClassOf fbl:Person .
+
+
+###  http://www.semanticweb.org/tomer/football/Owner
+fbl:Owner rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( fbl:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty fbl:ownerOf ;
+                                                       owl:someValuesFrom fbl:Club
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf fbl:Person .
+
+
+###  http://www.semanticweb.org/tomer/football/Person
+fbl:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/tomer/football/Player
+fbl:Player rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( fbl:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty fbl:playsAt ;
+                                                        owl:someValuesFrom fbl:Club
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf fbl:Person .
+
+
+###  http://www.semanticweb.org/tomer/football/Professional
+fbl:Professional rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty fbl:PlaysIn ;
+                                       owl:someValuesFrom fbl:Division
+                                     ] ;
+                 rdfs:subClassOf fbl:Club .
+
+
+###  http://www.semanticweb.org/tomer/football/Supporter
+fbl:Supporter rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( fbl:Person
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty fbl:Supports ;
+                                                           owl:someValuesFrom fbl:Club
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf fbl:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/tomer/football/Ajax
+fbl:Ajax rdf:type owl:NamedIndividual ,
+                  fbl:Club ;
+         fbl:PlaysIn fbl:Eredivisie .
+
+
+###  http://www.semanticweb.org/tomer/football/Bayern
+fbl:Bayern rdf:type owl:NamedIndividual ,
+                    fbl:Club .
+
+
+###  http://www.semanticweb.org/tomer/football/Eredivisie
+fbl:Eredivisie rdf:type owl:NamedIndividual ,
+                        fbl:Division .
+
+
+###  http://www.semanticweb.org/tomer/football/Feyenoord
+fbl:Feyenoord rdf:type owl:NamedIndividual ,
+                       fbl:Club ;
+              fbl:hasRival fbl:Ajax .
+
+
+###  http://www.semanticweb.org/tomer/football/Hakim_Ziyech
+fbl:Hakim_Ziyech rdf:type owl:NamedIndividual ,
+                          fbl:Person ;
+                 fbl:playsAt fbl:Ajax .
+
+
+###  http://www.semanticweb.org/tomer/football/Hennie_Spijkerman
+fbl:Hennie_Spijkerman rdf:type owl:NamedIndividual ,
+                               fbl:Person ;
+                      fbl:supportsManager fbl:Marcel_Keizer .
+
+
+###  http://www.semanticweb.org/tomer/football/Ijsselmeer_vogels
+fbl:Ijsselmeer_vogels rdf:type owl:NamedIndividual ,
+                               fbl:Amateur .
+
+
+###  http://www.semanticweb.org/tomer/football/Jaap
+fbl:Jaap rdf:type owl:NamedIndividual ,
+                  fbl:Person ;
+         fbl:Supports fbl:Feyenoord .
+
+
+###  http://www.semanticweb.org/tomer/football/Marc_Overmars
+fbl:Marc_Overmars rdf:type owl:NamedIndividual ,
+                           fbl:Person ;
+                  fbl:directorAt fbl:Ajax .
+
+
+###  http://www.semanticweb.org/tomer/football/Marcel_Keizer
+fbl:Marcel_Keizer rdf:type owl:NamedIndividual ,
+                           fbl:Person ;
+                  fbl:managesAt fbl:Ajax .
+
+
+###  http://www.semanticweb.org/tomer/football/Nasser_Al-Khelaifi
+fbl:Nasser_Al-Khelaifi rdf:type owl:NamedIndividual ,
+                                fbl:Person ;
+                       fbl:ownerOf fbl:PSG .
+
+
+###  http://www.semanticweb.org/tomer/football/PSG
+fbl:PSG rdf:type owl:NamedIndividual ,
+                 fbl:Club .
+
+
+###  http://www.semanticweb.org/tomer/football/Rick_Rickerstein
+fbl:Rick_Rickerstein rdf:type owl:NamedIndividual ,
+                              fbl:Person ;
+                     fbl:playsAt fbl:Ijsselmeer_vogels .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,165 @@
+@prefix : <http://www.semanticweb.org/yulia/music#> .
+@prefix mu: <http://www.semanticweb.org/yulia/music/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/yulia/music> .
+
+<http://www.semanticweb.org/yulia/music> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#domain
+rdfs:domain rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#range
+rdfs:range rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/yulia/music/composedBy
+mu:composedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf mu:hasComposed ;
+              rdf:type owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/yulia/music/hasComposed
+mu:hasComposed rdf:type owl:ObjectProperty ;
+               rdfs:domain mu:Composer .
+
+
+###  http://www.semanticweb.org/yulia/music/hasInstrumentalPart
+mu:hasInstrumentalPart rdf:type owl:ObjectProperty ;
+                       owl:inverseOf mu:isInstrumentalPartOf .
+
+
+###  http://www.semanticweb.org/yulia/music/hasPlayed
+mu:hasPlayed rdf:type owl:ObjectProperty ;
+             owl:inverseOf mu:playedBy .
+
+
+###  http://www.semanticweb.org/yulia/music/isInstrumentalPartOf
+mu:isInstrumentalPartOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/yulia/music/playedBy
+mu:playedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain mu:Musical_Instrument .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/yulia/music/Composer
+mu:Composer rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty mu:hasComposed ;
+                                  owl:someValuesFrom mu:Musical_Composition
+                                ] ;
+            rdfs:subClassOf mu:Person .
+
+
+###  http://www.semanticweb.org/yulia/music/Mozart_Composition
+mu:Mozart_Composition rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty mu:composedBy ;
+                                            owl:hasValue mu:W_A_Mozart
+                                          ] ;
+                      rdfs:subClassOf mu:Musical_Composition .
+
+
+###  http://www.semanticweb.org/yulia/music/Musical_Composition
+mu:Musical_Composition rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty mu:composedBy ;
+                                             owl:someValuesFrom mu:Composer
+                                           ] .
+
+
+###  http://www.semanticweb.org/yulia/music/Musical_Instrument
+mu:Musical_Instrument rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/yulia/music/Person
+mu:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/yulia/music/String_Instrument
+mu:String_Instrument rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty mu:hasInstrumentalPart ;
+                                           owl:hasValue mu:String
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty mu:hasInstrumentalPart ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass mu:String_Instrument_Parts
+                                         ] ;
+                     rdfs:subClassOf mu:Musical_Instrument .
+
+
+###  http://www.semanticweb.org/yulia/music/String_Instrument_Parts
+mu:String_Instrument_Parts rdf:type owl:Class ;
+                           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                 owl:onProperty mu:isInstrumentalPartOf ;
+                                                 owl:someValuesFrom mu:Musical_Instrument
+                                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/yulia/music/Eine_Kleine_Nachtmusik
+mu:Eine_Kleine_Nachtmusik rdf:type owl:NamedIndividual ;
+                          mu:composedBy mu:W_A_Mozart .
+
+
+###  http://www.semanticweb.org/yulia/music/Fifth_Symphony
+mu:Fifth_Symphony rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/yulia/music/Guitar
+mu:Guitar rdf:type owl:NamedIndividual ;
+          mu:hasInstrumentalPart mu:String .
+
+
+###  http://www.semanticweb.org/yulia/music/L_Van_Beethoven
+mu:L_Van_Beethoven rdf:type owl:NamedIndividual ;
+                   mu:hasComposed mu:Fifth_Symphony .
+
+
+###  http://www.semanticweb.org/yulia/music/Neck
+mu:Neck rdf:type owl:NamedIndividual ;
+        mu:isInstrumentalPartOf mu:Violin .
+
+
+###  http://www.semanticweb.org/yulia/music/Piano
+mu:Piano rdf:type owl:NamedIndividual ;
+         mu:playedBy mu:W_A_Mozart .
+
+
+###  http://www.semanticweb.org/yulia/music/String
+mu:String rdf:type owl:NamedIndividual ;
+          mu:isInstrumentalPartOf mu:Piano .
+
+
+###  http://www.semanticweb.org/yulia/music/Violin
+mu:Violin rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/yulia/music/W_A_Mozart
+mu:W_A_Mozart rdf:type owl:NamedIndividual ;
+              mu:hasPlayed mu:Violin .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

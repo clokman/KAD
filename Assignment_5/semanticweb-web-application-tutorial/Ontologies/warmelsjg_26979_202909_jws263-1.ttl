@@ -1,0 +1,236 @@
+@prefix : <http://www.example.org/jiska/snacks#> .
+@prefix sn: <http://www.example.org/jiska/snacks/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/jiska/snacks> .
+
+<http://www.example.org/jiska/snacks> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/jiska/snacks/feels
+sn:feels rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/jiska/snacks/hasBrand
+sn:hasBrand rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty .
+
+
+###  http://www.example.org/jiska/snacks/hasColour
+sn:hasColour rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/jiska/snacks/tastes
+sn:tastes rdf:type owl:ObjectProperty ,
+                   owl:IrreflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/jiska/snacks/Brand
+sn:Brand rdf:type owl:Class .
+
+
+###  http://www.example.org/jiska/snacks/Candy
+sn:Candy rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty sn:hasColour ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sn:Colour
+                             ] ;
+         rdfs:subClassOf sn:Snack .
+
+
+###  http://www.example.org/jiska/snacks/Colour
+sn:Colour rdf:type owl:Class .
+
+
+###  http://www.example.org/jiska/snacks/Crisp
+sn:Crisp rdf:type owl:Class ;
+         rdfs:subClassOf sn:Snack .
+
+
+###  http://www.example.org/jiska/snacks/Snack
+sn:Snack rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty sn:feels ;
+                               owl:someValuesFrom sn:Structure
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sn:hasColour ;
+                               owl:someValuesFrom sn:Colour
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sn:tastes ;
+                               owl:someValuesFrom sn:Taste
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sn:feels ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sn:Structure
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty sn:hasBrand ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass sn:Brand
+                             ] .
+
+
+###  http://www.example.org/jiska/snacks/Structure
+sn:Structure rdf:type owl:Class .
+
+
+###  http://www.example.org/jiska/snacks/Taste
+sn:Taste rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/jiska/snacks/Black
+sn:Black rdf:type owl:NamedIndividual ,
+                  sn:Colour .
+
+
+###  http://www.example.org/jiska/snacks/Chupachupa
+sn:Chupachupa rdf:type owl:NamedIndividual ,
+                       sn:Brand .
+
+
+###  http://www.example.org/jiska/snacks/Crispy
+sn:Crispy rdf:type owl:NamedIndividual ,
+                   sn:Structure .
+
+
+###  http://www.example.org/jiska/snacks/Hard
+sn:Hard rdf:type owl:NamedIndividual ,
+                 sn:Structure .
+
+
+###  http://www.example.org/jiska/snacks/Hard_Candy
+sn:Hard_Candy rdf:type owl:NamedIndividual ,
+                       sn:Candy ;
+              sn:feels sn:Hard ;
+              sn:hasBrand sn:Napoleon ;
+              sn:tastes sn:Sour .
+
+
+###  http://www.example.org/jiska/snacks/Lays
+sn:Lays rdf:type owl:NamedIndividual ,
+                 sn:Brand .
+
+
+###  http://www.example.org/jiska/snacks/Liquorice
+sn:Liquorice rdf:type owl:NamedIndividual ,
+                      sn:Candy ;
+             sn:feels sn:Squishy ;
+             sn:hasBrand sn:Venco ;
+             sn:hasColour sn:Black .
+
+
+###  http://www.example.org/jiska/snacks/Lollipop
+sn:Lollipop rdf:type owl:NamedIndividual ,
+                     sn:Candy ;
+            sn:hasBrand sn:Chupachupa ;
+            sn:tastes sn:Sweet .
+
+
+###  http://www.example.org/jiska/snacks/Nacho
+sn:Nacho rdf:type owl:NamedIndividual ,
+                  sn:Crisp ;
+         sn:feels sn:Crispy ;
+         sn:hasColour sn:Orange ;
+         sn:tastes sn:Savory .
+
+
+###  http://www.example.org/jiska/snacks/Napoleon
+sn:Napoleon rdf:type owl:NamedIndividual ,
+                     sn:Brand .
+
+
+###  http://www.example.org/jiska/snacks/Orange
+sn:Orange rdf:type owl:NamedIndividual ,
+                   sn:Colour .
+
+
+###  http://www.example.org/jiska/snacks/Pink
+sn:Pink rdf:type owl:NamedIndividual ,
+                 sn:Colour .
+
+
+###  http://www.example.org/jiska/snacks/Redband
+sn:Redband rdf:type owl:NamedIndividual ,
+                    sn:Brand .
+
+
+###  http://www.example.org/jiska/snacks/Regular
+sn:Regular rdf:type owl:NamedIndividual ,
+                    sn:Crisp ;
+           sn:hasBrand sn:Lays .
+
+
+###  http://www.example.org/jiska/snacks/Ribbed
+sn:Ribbed rdf:type owl:NamedIndividual ,
+                   sn:Crisp ;
+          sn:feels sn:Crispy ;
+          sn:tastes sn:Savory .
+
+
+###  http://www.example.org/jiska/snacks/Salty
+sn:Salty rdf:type owl:NamedIndividual ,
+                  sn:Taste .
+
+
+###  http://www.example.org/jiska/snacks/Savory
+sn:Savory rdf:type owl:NamedIndividual ,
+                   sn:Taste .
+
+
+###  http://www.example.org/jiska/snacks/Soft
+sn:Soft rdf:type owl:NamedIndividual ,
+                 sn:Structure .
+
+
+###  http://www.example.org/jiska/snacks/Sour
+sn:Sour rdf:type owl:NamedIndividual ,
+                 sn:Taste .
+
+
+###  http://www.example.org/jiska/snacks/Squishy
+sn:Squishy rdf:type owl:NamedIndividual ,
+                    sn:Structure .
+
+
+###  http://www.example.org/jiska/snacks/Sweet
+sn:Sweet rdf:type owl:NamedIndividual ,
+                  sn:Taste .
+
+
+###  http://www.example.org/jiska/snacks/Venco
+sn:Venco rdf:type owl:NamedIndividual ,
+                  sn:Brand .
+
+
+###  http://www.example.org/jiska/snacks/Winegum
+sn:Winegum rdf:type owl:NamedIndividual ,
+                    sn:Candy ;
+           sn:feels sn:Squishy ;
+           sn:hasBrand sn:Redband ;
+           sn:tastes sn:Sweet .
+
+
+###  http://www.example.org/jiska/snacks/Yellow
+sn:Yellow rdf:type owl:NamedIndividual ,
+                   sn:Colour .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

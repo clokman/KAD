@@ -1,0 +1,164 @@
+@prefix : <http://www.knowledgedatavu.com/example/vehicles#> .
+@prefix ve: <http://www.knowledgedatavu.com/example/vehicles/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.knowledgedatavu.com/example/vehicles> .
+
+<http://www.knowledgedatavu.com/example/vehicles> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.knowledgedatavu.com/example/vehicles/CEOOf
+ve:CEOOf rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ;
+         rdfs:domain ve:Person ;
+         rdfs:range ve:Company .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/HasCEO
+ve:HasCEO rdf:type owl:ObjectProperty ,
+                   owl:AsymmetricProperty .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/HasCompany
+ve:HasCompany rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/IsBasedIn
+ve:IsBasedIn rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ,
+                      owl:AsymmetricProperty ;
+             rdfs:domain ve:Company ;
+             rdfs:range ve:Location .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/IsProducedIn
+ve:IsProducedIn rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Produces
+ve:Produces rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty ;
+            rdfs:domain ve:Company .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/ProducesCar
+ve:ProducesCar rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf ve:Produces ;
+               rdfs:range ve:Car .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/ProducesMotorcycle
+ve:ProducesMotorcycle rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf ve:Produces ;
+                      rdfs:range ve:Motorcycle .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.knowledgedatavu.com/example/vehicles/Car
+ve:Car rdf:type owl:Class ;
+       rdfs:subClassOf ve:Vehicle .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Company
+ve:Company rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ve:Produces ;
+                                 owl:someValuesFrom ve:Vehicle
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ve:IsBasedIn ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass ve:Location
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ve:HasCEO ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass ve:Person
+                               ] .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Location
+ve:Location rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ve:HasCompany ;
+                                  owl:someValuesFrom ve:Company
+                                ] .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Motorcycle
+ve:Motorcycle rdf:type owl:Class ;
+              rdfs:subClassOf ve:Vehicle .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Person
+ve:Person rdf:type owl:Class .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Vehicle
+ve:Vehicle rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ve:IsProducedIn ;
+                                 owl:someValuesFrom ve:Location
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.knowledgedatavu.com/example/vehicles/Accord
+ve:Accord rdf:type owl:NamedIndividual ;
+          ve:IsProducedIn ve:Japan .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/CB300F
+ve:CB300F rdf:type owl:NamedIndividual ;
+          ve:IsProducedIn ve:Japan .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Elon_Musk
+ve:Elon_Musk rdf:type owl:NamedIndividual ;
+             ve:CEOOf ve:Tesla .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Honda
+ve:Honda rdf:type owl:NamedIndividual ;
+         ve:IsBasedIn ve:Japan ;
+         ve:ProducesCar ve:Accord ;
+         ve:ProducesMotorcycle ve:CB300F .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Japan
+ve:Japan rdf:type owl:NamedIndividual ;
+         ve:HasCompany ve:Honda .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Model_S
+ve:Model_S rdf:type owl:NamedIndividual ;
+           ve:IsProducedIn ve:USA .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/Tesla
+ve:Tesla rdf:type owl:NamedIndividual ;
+         ve:HasCEO ve:Elon_Musk ;
+         ve:IsBasedIn ve:USA ;
+         ve:ProducesCar ve:Model_S .
+
+
+###  http://www.knowledgedatavu.com/example/vehicles/USA
+ve:USA rdf:type owl:NamedIndividual ;
+       ve:HasCompany ve:Tesla .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

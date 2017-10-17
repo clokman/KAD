@@ -1,0 +1,490 @@
+@prefix : <http://www.semanticweb.org/cgeurts/assignment4/transport/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/cgeurts/assignment4/transport> .
+
+<http://www.semanticweb.org/cgeurts/assignment4/transport> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/CanTransport
+:CanTransport rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/ControlsTheFlightOf
+:ControlsTheFlightOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/DrivesAn
+:DrivesAn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/IsAlwaysInControlOfA
+:IsAlwaysInControlOfA rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/NavigateThe
+:NavigateThe rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/OperatesAn
+:OperatesAn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Transports
+:Transports rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/TransportsBy
+:TransportsBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/TransportsThrough
+:TransportsThrough rdf:type owl:ObjectProperty ,
+                            owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/WorksAtA
+:WorksAtA rdf:type owl:ObjectProperty ,
+                   owl:SymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Air
+:Air rdf:type owl:Class ;
+     rdfs:subClassOf :Transport .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Aircraft
+:Aircraft rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :IsAlwaysInControlOfA ;
+                                                       owl:someValuesFrom :Pilot
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :TransportsThrough ;
+                                                       owl:someValuesFrom :Air
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf :Air .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Boat
+:Boat rdf:type owl:Class ;
+      rdfs:subClassOf :Water .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Bus_driver
+:Bus_driver rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :DrivesAn ;
+                                                         owl:someValuesFrom :Busses
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :WorksAtA ;
+                                                         owl:someValuesFrom :Passanger_transport_company
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf :People ;
+            owl:disjointWith [ rdf:type owl:Restriction ;
+                               owl:onProperty :ControlsTheFlightOf ;
+                               owl:someValuesFrom :Aircraft
+                             ] .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Busses
+:Busses rdf:type owl:Class ;
+        rdfs:subClassOf :Road .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Captain
+:Captain rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Class ;
+                               owl:unionOf ( :Passanger_transport_company
+                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :NavigateThe ;
+                                                                      owl:someValuesFrom :Boat
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :WorksAtA ;
+                                                                      owl:someValuesFrom :Freight_transport_company
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                                           )
+                             ] ;
+         rdfs:subClassOf :People .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf :Taxi .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Freight_transport_company
+:Freight_transport_company rdf:type owl:Class ;
+                           rdfs:subClassOf :Transport_company .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Passanger_transport_company
+:Passanger_transport_company rdf:type owl:Class ;
+                             rdfs:subClassOf :Transport_company .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/People
+:People rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Pilot
+:Pilot rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :ControlsTheFlightOf ;
+                             owl:someValuesFrom :Aircraft
+                           ] ;
+       rdfs:subClassOf :People .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Rail
+:Rail rdf:type owl:Class ;
+      rdfs:subClassOf :Transport .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Road
+:Road rdf:type owl:Class ;
+      rdfs:subClassOf :Transport .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Subway
+:Subway rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :IsAlwaysInControlOfA ;
+                                                     owl:someValuesFrom :Subway_driver
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :TransportsBy ;
+                                                     owl:someValuesFrom :Rail
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf :Rail .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Subway_driver
+:Subway_driver rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty :OperatesAn ;
+                                     owl:someValuesFrom :Subway
+                                   ] ;
+               rdfs:subClassOf :People .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Taxi
+:Taxi rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :IsAlwaysInControlOfA ;
+                                                   owl:someValuesFrom :Taxi_driver
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :Transports ;
+                                                   owl:someValuesFrom :People
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :TransportsBy ;
+                                                   owl:someValuesFrom :Road
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
+      rdfs:subClassOf :Road ;
+      owl:disjointWith [ rdf:type owl:Restriction ;
+                         owl:onProperty :CanTransport ;
+                         owl:someValuesFrom :Water
+                       ] .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Taxi_company
+:Taxi_company rdf:type owl:Class ;
+              rdfs:subClassOf :Passanger_transport_company .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Taxi_driver
+:Taxi_driver rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :DrivesAn ;
+                                   owl:someValuesFrom :Taxi
+                                 ] ;
+             rdfs:subClassOf :People .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Train
+:Train rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :IsAlwaysInControlOfA ;
+                                                    owl:someValuesFrom :Train_driver
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :TransportsBy ;
+                                                    owl:someValuesFrom :Rail
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf :Rail .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Train_driver
+:Train_driver rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :OperatesAn ;
+                                    owl:someValuesFrom :Train
+                                  ] ;
+              rdfs:subClassOf :People .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Tram
+:Tram rdf:type owl:Class ;
+      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :IsAlwaysInControlOfA ;
+                                                   owl:someValuesFrom :Tram_driver
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :TransportsBy ;
+                                                   owl:someValuesFrom :Rail
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ;
+      rdfs:subClassOf :Rail .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Tram_driver
+:Tram_driver rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty :OperatesAn ;
+                                   owl:someValuesFrom :Tram
+                                 ] ;
+             rdfs:subClassOf :People .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Transport
+:Transport rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Transport_company
+:Transport_company rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Water
+:Water rdf:type owl:Class ;
+       rdfs:subClassOf :Transport .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Airbus_A380
+:Airbus_A380 rdf:type owl:NamedIndividual ,
+                      :Aircraft .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Aérospatiale_Dauphin
+:Aérospatiale_Dauphin rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Bob
+:Bob rdf:type owl:NamedIndividual ,
+              :Pilot .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Boeing_737
+:Boeing_737 rdf:type owl:NamedIndividual ,
+                     :Aircraft .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Boeing_747
+:Boeing_747 rdf:type owl:NamedIndividual ,
+                     :Aircraft .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Boeing_747_400_ERF
+:Boeing_747_400_ERF rdf:type owl:NamedIndividual ,
+                             :Aircraft .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/DAF_SB250
+:DAF_SB250 rdf:type owl:NamedIndividual ,
+                    :Busses .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Dylan
+:Dylan rdf:type owl:NamedIndividual ,
+                :Pilot .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Erickson_Air_Crane
+:Erickson_Air_Crane rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Flyn
+:Flyn rdf:type owl:NamedIndividual ,
+               :Bus_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/G1200
+:G1200 rdf:type owl:NamedIndividual ,
+                :Train .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/G2000
+:G2000 rdf:type owl:NamedIndividual ,
+                :Train .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/General_Purpose_tanker
+:General_Purpose_tanker rdf:type owl:NamedIndividual ,
+                                 :Boat .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/George
+:George rdf:type owl:NamedIndividual ,
+                 :Taxi_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Harvey
+:Harvey rdf:type owl:NamedIndividual ,
+                 :Bus_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/James
+:James rdf:type owl:NamedIndividual ,
+                :Captain .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Jamie
+:Jamie rdf:type owl:NamedIndividual ,
+                :Tram_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Jimmy
+:Jimmy rdf:type owl:NamedIndividual ,
+                :Subway_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Joey
+:Joey rdf:type owl:NamedIndividual ,
+               :Train_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/John
+:John rdf:type owl:NamedIndividual ,
+               :Taxi_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/KLM
+:KLM rdf:type owl:NamedIndividual ,
+              :Passanger_transport_company ,
+              :Transport .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Lufthansa
+:Lufthansa rdf:type owl:NamedIndividual ,
+                    :Passanger_transport_company ,
+                    :Transport .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/MAERSK
+:MAERSK rdf:type owl:NamedIndividual ,
+                 :Freight_transport_company .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/MAN_11220
+:MAN_11220 rdf:type owl:NamedIndividual ,
+                    :Busses .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Mercedes
+:Mercedes rdf:type owl:NamedIndividual ,
+                   :Car .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Mike
+:Mike rdf:type owl:NamedIndividual ,
+               :Tram_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Mitch
+:Mitch rdf:type owl:NamedIndividual ,
+                :Subway_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Peter
+:Peter rdf:type owl:NamedIndividual ,
+                :Captain .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Robin
+:Robin rdf:type owl:NamedIndividual ,
+                :Train_driver .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Serie_12G
+:Serie_12G rdf:type owl:NamedIndividual ,
+                    :Tram .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Serie_14G
+:Serie_14G rdf:type owl:NamedIndividual ,
+                    :Tram .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Serie_M3
+:Serie_M3 rdf:type owl:NamedIndividual ,
+                   :Subway .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Serie_M5
+:Serie_M5 rdf:type owl:NamedIndividual ,
+                   :Subway .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Serie_S2
+:Serie_S2 rdf:type owl:NamedIndividual ,
+                   :Subway .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Tesla
+:Tesla rdf:type owl:NamedIndividual ,
+                :Car .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Van_der_Heijden
+:Van_der_Heijden rdf:type owl:NamedIndividual ,
+                          :Freight_transport_company .
+
+
+###  http://www.semanticweb.org/cgeurts/assignment4/transport/Willem
+:Willem rdf:type owl:NamedIndividual ,
+                 :Pilot .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

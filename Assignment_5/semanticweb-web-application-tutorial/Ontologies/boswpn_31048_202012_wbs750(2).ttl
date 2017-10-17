@@ -1,0 +1,257 @@
+@prefix : <http://www.example.org/wpnbos/havermout#> .
+@prefix ht: <http://www.example.org/wpnbos/havermout/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/wpnbos/havermout> .
+
+<http://www.example.org/wpnbos/havermout> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/wpnbos/havermout/byBand
+ht:byBand rdf:type owl:ObjectProperty ,
+                   owl:TransitiveProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/fanOf
+ht:fanOf rdf:type owl:ObjectProperty ,
+                  owl:TransitiveProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/hasAlbum
+ht:hasAlbum rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/hasMusician
+ht:hasMusician rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf ht:playsInBand .
+
+
+###  http://www.example.org/wpnbos/havermout/hasTrack
+ht:hasTrack rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf ht:trackOnAlbum .
+
+
+###  http://www.example.org/wpnbos/havermout/hasWriter
+ht:hasWriter rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/inBandWith
+ht:inBandWith rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/instrumentPlayedBy
+ht:instrumentPlayedBy rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      owl:inverseOf ht:playsInstrument .
+
+
+###  http://www.example.org/wpnbos/havermout/playsInBand
+ht:playsInBand rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/playsInstrument
+ht:playsInstrument rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/wpnbos/havermout/trackOnAlbum
+ht:trackOnAlbum rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.org/wpnbos/havermout/hasLength
+ht:hasLength rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/wpnbos/havermout/Album
+ht:Album rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ht:hasTrack ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass ht:Song
+                             ] .
+
+
+###  http://www.example.org/wpnbos/havermout/Band
+ht:Band rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty ht:hasAlbum ;
+                              owl:someValuesFrom ht:Album
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ht:hasMusician ;
+                              owl:someValuesFrom ht:Musician
+                            ] .
+
+
+###  http://www.example.org/wpnbos/havermout/Drummer
+ht:Drummer rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ht:playsInstrument ;
+                                 owl:hasValue ht:Drums
+                               ] ;
+           rdfs:subClassOf ht:Musician .
+
+
+###  http://www.example.org/wpnbos/havermout/Guitarist
+ht:Guitarist rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty ht:playsInstrument ;
+                                   owl:hasValue ht:Guitar
+                                 ] ;
+             rdfs:subClassOf ht:Musician .
+
+
+###  http://www.example.org/wpnbos/havermout/Instrument
+ht:Instrument rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ht:instrumentPlayedBy ;
+                                    owl:someValuesFrom ht:Musician
+                                  ] .
+
+
+###  http://www.example.org/wpnbos/havermout/Musician
+ht:Musician rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ht:playsInstrument ;
+                                  owl:someValuesFrom ht:Instrument
+                                ] .
+
+
+###  http://www.example.org/wpnbos/havermout/Song
+ht:Song rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty ht:hasWriter ;
+                              owl:someValuesFrom ht:Musician
+                            ] .
+
+
+###  http://www.example.org/wpnbos/havermout/Vocalist
+ht:Vocalist rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ht:playsInstrument ;
+                                  owl:hasValue ht:Microphone
+                                ] ;
+            rdfs:subClassOf ht:Musician .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/wpnbos/havermout/Bring_Me_The_Horizon
+ht:Bring_Me_The_Horizon rdf:type owl:NamedIndividual ,
+                                 ht:Band ;
+                        ht:hasAlbum ht:Suicide_Season ;
+                        ht:hasMusician ht:Oliver_Sykes .
+
+
+###  http://www.example.org/wpnbos/havermout/Count_Your_Blessings
+ht:Count_Your_Blessings rdf:type owl:NamedIndividual ;
+                        ht:hasTrack ht:Pray_For_Plagues .
+
+
+###  http://www.example.org/wpnbos/havermout/Drums
+ht:Drums rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/wpnbos/havermout/Guitar
+ht:Guitar rdf:type owl:NamedIndividual ,
+                   ht:Instrument .
+
+
+###  http://www.example.org/wpnbos/havermout/James_Hetfield
+ht:James_Hetfield rdf:type owl:NamedIndividual ;
+                  ht:playsInstrument ht:Guitar ,
+                                     ht:Microphone .
+
+
+###  http://www.example.org/wpnbos/havermout/Kirk_Hammett
+ht:Kirk_Hammett rdf:type owl:NamedIndividual ;
+                ht:playsInBand ht:Metallica ;
+                ht:playsInstrument ht:Guitar .
+
+
+###  http://www.example.org/wpnbos/havermout/Lee_Malia
+ht:Lee_Malia rdf:type owl:NamedIndividual ,
+                      ht:Guitarist ;
+             ht:inBandWith ht:Matthew_Nicholls ,
+                           ht:Oliver_Sykes ;
+             ht:playsInBand ht:Bring_Me_The_Horizon .
+
+
+###  http://www.example.org/wpnbos/havermout/Matthew_Nicholls
+ht:Matthew_Nicholls rdf:type owl:NamedIndividual ,
+                             ht:Drummer ;
+                    ht:fanOf ht:Oliver_Sykes ;
+                    ht:inBandWith ht:Oliver_Sykes ;
+                    ht:playsInBand ht:Bring_Me_The_Horizon .
+
+
+###  http://www.example.org/wpnbos/havermout/Metallica
+ht:Metallica rdf:type owl:NamedIndividual ;
+             ht:hasMusician ht:James_Hetfield .
+
+
+###  http://www.example.org/wpnbos/havermout/Microphone
+ht:Microphone rdf:type owl:NamedIndividual ,
+                       ht:Instrument .
+
+
+###  http://www.example.org/wpnbos/havermout/Oliver_Sykes
+ht:Oliver_Sykes rdf:type owl:NamedIndividual ,
+                         ht:Vocalist ;
+                ht:fanOf ht:James_Hetfield .
+
+
+###  http://www.example.org/wpnbos/havermout/Pray_For_Plagues
+ht:Pray_For_Plagues rdf:type owl:NamedIndividual ;
+                    ht:hasWriter ht:Lee_Malia .
+
+
+###  http://www.example.org/wpnbos/havermout/Suicide_Season
+ht:Suicide_Season rdf:type owl:NamedIndividual ,
+                           ht:Album ;
+                  ht:hasTrack ht:The_Sadness_Will_Never_End .
+
+
+###  http://www.example.org/wpnbos/havermout/The_Sadness_Will_Never_End
+ht:The_Sadness_Will_Never_End rdf:type owl:NamedIndividual ;
+                              ht:hasWriter ht:Oliver_Sykes ;
+                              ht:hasLength 322 .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ht:Album
+                ht:Band
+                ht:Instrument
+                ht:Musician
+                ht:Song
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

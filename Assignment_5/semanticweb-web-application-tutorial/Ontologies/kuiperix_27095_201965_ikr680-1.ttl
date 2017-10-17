@@ -1,0 +1,197 @@
+@prefix : <http://www.semanticweb.org/isabe/ontologies/SPORTS2#> .
+@prefix st: <http://www.semanticweb.org/isabe/ontologies/SPORTS2/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/isabe/ontologies/SPORTS2> .
+
+<http://www.semanticweb.org/isabe/ontologies/SPORTS2> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/BringsLuckIn
+st:BringsLuckIn rdf:type owl:ObjectProperty ;
+                rdfs:domain st:Mascot ;
+                rdfs:range st:Sport .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Coaches
+st:Coaches rdf:type owl:ObjectProperty ;
+           owl:inverseOf st:IsCoachedBy ;
+           rdf:type owl:AsymmetricProperty ;
+           rdfs:domain st:Coach ;
+           rdfs:range st:Athlete .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Has
+st:Has rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsA
+st:IsA rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsCoachedBy
+st:IsCoachedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain st:Athlete ;
+               rdfs:range st:Coach .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsNeededFor
+st:IsNeededFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsPlayedBy
+st:IsPlayedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf st:Plays ;
+              rdfs:domain st:Sport ;
+              rdfs:range st:Athlete .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsPlayedIn
+st:IsPlayedIn rdf:type owl:ObjectProperty ;
+              rdfs:domain st:Sport ;
+              rdfs:range st:Location .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsTeamMateOf
+st:IsTeamMateOf rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/IsUsedIn
+st:IsUsedIn rdf:type owl:ObjectProperty ;
+            owl:inverseOf st:Uses ;
+            rdfs:domain st:Attribute ;
+            rdfs:range st:Sport .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Plays
+st:Plays rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Uses
+st:Uses rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Athlete
+st:Athlete rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty st:IsCoachedBy ;
+                                 owl:someValuesFrom st:Coach
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty st:Plays ;
+                                 owl:someValuesFrom st:Sport
+                               ] ;
+           rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Attribute
+st:Attribute rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty st:IsUsedIn ;
+                                   owl:someValuesFrom st:Sport
+                                 ] .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Coach
+st:Coach rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty st:Coaches ;
+                               owl:someValuesFrom st:Athlete
+                             ] ;
+         rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Location
+st:Location rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty st:IsNeededFor ;
+                                  owl:someValuesFrom st:Sport
+                                ] .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Mascot
+st:Mascot rdf:type owl:Class ;
+          rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Person
+st:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Sport
+st:Sport rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty st:IsPlayedBy ;
+                               owl:someValuesFrom st:Athlete
+                             ] .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/TeamMate
+st:TeamMate rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty st:IsA ;
+                                  owl:someValuesFrom st:Athlete
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty st:IsTeamMateOf ;
+                                  owl:someValuesFrom st:Athlete
+                                ] ;
+            rdfs:subClassOf st:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Ball
+st:Ball rdf:type owl:NamedIndividual ;
+        st:IsUsedIn st:Soccer .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/ErnestoValverde
+st:ErnestoValverde rdf:type owl:NamedIndividual ;
+                   st:Coaches st:Messi .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Messi
+st:Messi rdf:type owl:NamedIndividual ;
+         st:IsTeamMateOf st:Suarez ;
+         st:Plays st:Soccer .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Soccer
+st:Soccer rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Suarez
+st:Suarez rdf:type owl:NamedIndividual ;
+          st:Plays st:Soccer .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/TheOrangeLion
+st:TheOrangeLion rdf:type owl:NamedIndividual ;
+                 st:BringsLuckIn st:Soccer .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/Water
+st:Water rdf:type owl:NamedIndividual ;
+         st:IsNeededFor st:WaterPolo .
+
+
+###  http://www.semanticweb.org/isabe/ontologies/SPORTS2/WaterPolo
+st:WaterPolo rdf:type owl:NamedIndividual ;
+             st:IsPlayedIn st:Water .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

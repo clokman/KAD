@@ -1,0 +1,328 @@
+@prefix : <http://www.semanticweb.org/daniel/week4#> .
+@prefix w: <http://www.semanticweb.org/daniel/week4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/daniel/week4> .
+
+<http://www.semanticweb.org/daniel/week4> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/daniel/week4/childOf
+w:childOf rdf:type owl:ObjectProperty ;
+          owl:inverseOf w:hasChild ,
+                        w:parentOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/daughterOf
+w:daughterOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf w:childOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/fatherOf
+w:fatherOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf w:parentOf ;
+           owl:propertyDisjointWith w:motherOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/grandFatherOf
+w:grandFatherOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf w:grandParentOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/grandMotherOf
+w:grandMotherOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf w:grandParentOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/grandParentOf
+w:grandParentOf rdf:type owl:ObjectProperty ;
+                owl:inverseOf w:hasGrandParent .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasBrother
+w:hasBrother rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf w:hasSibling ;
+             rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasChild
+w:hasChild rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasDaughter
+w:hasDaughter rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf w:hasChild .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasFather
+w:hasFather rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf w:hasParent .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasGrandChild
+w:hasGrandChild rdf:type owl:ObjectProperty ;
+                owl:inverseOf w:hasGrandParent .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasGrandDaughter
+w:hasGrandDaughter rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf w:hasGrandChild .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasGrandFather
+w:hasGrandFather rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf w:hasGrandParent ;
+                 owl:propertyChainAxiom ( w:hasParent
+                                          w:hasFather
+                                        ) .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasGrandMother
+w:hasGrandMother rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf w:hasGrandParent ;
+                 owl:propertyChainAxiom ( w:hasParent
+                                          w:hasMother
+                                        ) .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasGrandParent
+w:hasGrandParent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasGrandSon
+w:hasGrandSon rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf w:hasGrandChild .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasMother
+w:hasMother rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf w:hasParent .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasParent
+w:hasParent rdf:type owl:ObjectProperty ;
+            owl:inverseOf w:parentOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasSibling
+w:hasSibling rdf:type owl:ObjectProperty ,
+                      owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasSister
+w:hasSister rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf w:hasSibling ;
+            rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/hasSon
+w:hasSon rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf w:hasChild .
+
+
+###  http://www.semanticweb.org/daniel/week4/marriedTo
+w:marriedTo rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/motherOf
+w:motherOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf w:parentOf .
+
+
+###  http://www.semanticweb.org/daniel/week4/parentOf
+w:parentOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/daniel/week4/sonOf
+w:sonOf rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf w:childOf .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/daniel/week4/hasGender
+w:hasGender rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string ,
+                       [ rdf:type rdfs:Datatype ;
+                         owl:oneOf [ rdf:type rdf:List ;
+                                     rdf:first "Female" ;
+                                     rdf:rest [ rdf:type rdf:List ;
+                                                rdf:first "Male" ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                       ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/daniel/week4/Child
+w:Child rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty w:hasParent ;
+                              owl:someValuesFrom w:Parent
+                            ] ;
+        rdfs:subClassOf w:Family .
+
+
+###  http://www.semanticweb.org/daniel/week4/Daughter
+w:Daughter rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty w:childOf ;
+                                 owl:someValuesFrom w:Parent
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty w:hasGender ;
+                                 owl:hasValue "Female"
+                               ] ;
+           rdfs:subClassOf w:Child .
+
+
+###  http://www.semanticweb.org/daniel/week4/Family
+w:Family rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/week4/Father
+w:Father rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty w:fatherOf ;
+                               owl:someValuesFrom w:Child
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty w:hasParent ;
+                               owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                               owl:onClass w:Parent
+                             ] ;
+         rdfs:subClassOf w:Parent ;
+         rdfs:comment "" .
+
+
+###  http://www.semanticweb.org/daniel/week4/Grandfather
+w:Grandfather rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty w:fatherOf ;
+                                    owl:someValuesFrom w:Parent
+                                  ] ;
+              rdfs:subClassOf w:Grandparent .
+
+
+###  http://www.semanticweb.org/daniel/week4/Grandmother
+w:Grandmother rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty w:motherOf ;
+                                    owl:someValuesFrom w:Parent
+                                  ] ;
+              rdfs:subClassOf w:Grandparent .
+
+
+###  http://www.semanticweb.org/daniel/week4/Grandparent
+w:Grandparent rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty w:hasChild ;
+                                    owl:someValuesFrom w:Parent
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty w:hasGrandChild ;
+                                    owl:someValuesFrom w:Child
+                                  ] ;
+              rdfs:subClassOf w:Family .
+
+
+###  http://www.semanticweb.org/daniel/week4/Mother
+w:Mother rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty w:motherOf ;
+                               owl:someValuesFrom w:Child
+                             ] ;
+         rdfs:subClassOf w:Parent .
+
+
+###  http://www.semanticweb.org/daniel/week4/Parent
+w:Parent rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty w:hasChild ;
+                               owl:someValuesFrom w:Child
+                             ] ;
+         rdfs:subClassOf w:Family .
+
+
+###  http://www.semanticweb.org/daniel/week4/Son
+w:Son rdf:type owl:Class ;
+      owl:equivalentClass [ rdf:type owl:Restriction ;
+                            owl:onProperty w:hasGender ;
+                            owl:hasValue "Male"
+                          ] ;
+      rdfs:subClassOf w:Child .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/daniel/week4/Americo_Dominguez
+w:Americo_Dominguez rdf:type owl:NamedIndividual ;
+                    w:fatherOf w:Harold_Dominguez ;
+                    w:grandFatherOf w:Daniel_Dominguez_vanTilburg ;
+                    w:marriedTo w:Lucia_Dominguez .
+
+
+###  http://www.semanticweb.org/daniel/week4/Daniel_Dominguez_vanTilburg
+w:Daniel_Dominguez_vanTilburg rdf:type owl:NamedIndividual ;
+                              w:hasSister w:Luci_Dominguez_vanTilburg ,
+                                          w:Maaike_Dominguez_vanTilburg ;
+                              w:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/daniel/week4/Ellie_vanTilburg
+w:Ellie_vanTilburg rdf:type owl:NamedIndividual ;
+                   w:grandMotherOf w:Luci_Dominguez_vanTilburg ;
+                   w:marriedTo w:Peter_vanTilburg ;
+                   w:motherOf w:Lisette_vanTilburg .
+
+
+###  http://www.semanticweb.org/daniel/week4/Harold_Dominguez
+w:Harold_Dominguez rdf:type owl:NamedIndividual ;
+                   w:fatherOf w:Daniel_Dominguez_vanTilburg ;
+                   w:hasMother w:Lucia_Dominguez ;
+                   w:marriedTo w:Lisette_vanTilburg ;
+                   w:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/daniel/week4/Lisette_vanTilburg
+w:Lisette_vanTilburg rdf:type owl:NamedIndividual ;
+                     w:motherOf w:Daniel_Dominguez_vanTilburg ;
+                     w:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/daniel/week4/Luci_Dominguez_vanTilburg
+w:Luci_Dominguez_vanTilburg rdf:type owl:NamedIndividual ;
+                            w:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/daniel/week4/Lucia_Dominguez
+w:Lucia_Dominguez rdf:type owl:NamedIndividual ;
+                  w:motherOf w:Harold_Dominguez .
+
+
+###  http://www.semanticweb.org/daniel/week4/Maaike_Dominguez_vanTilburg
+w:Maaike_Dominguez_vanTilburg rdf:type owl:NamedIndividual ;
+                              w:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/daniel/week4/Peter_vanTilburg
+w:Peter_vanTilburg rdf:type owl:NamedIndividual ;
+                   w:fatherOf w:Lisette_vanTilburg .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -1,0 +1,277 @@
+@prefix : <http://www.example.org/daz900/animals#> .
+@prefix st: <http://www.example.org/daz900/animals/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/daz900/animals> .
+
+<http://www.example.org/daz900/animals> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/daz900/animals/eats
+st:eats rdf:type owl:ObjectProperty ;
+        owl:inverseOf st:isEatenBy ;
+        rdf:type owl:InverseFunctionalProperty .
+
+
+###  http://www.example.org/daz900/animals/hasBodyParts
+st:hasBodyParts rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/daz900/animals/isEatenBy
+st:isEatenBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/daz900/animals/isOfType
+st:isOfType rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/daz900/animals/livesInHabitat
+st:livesInHabitat rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/daz900/animals/Animal
+st:Animal rdf:type owl:Class .
+
+
+###  http://www.example.org/daz900/animals/Bird
+st:Bird rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( st:Animal
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty st:livesInHabitat ;
+                                                     owl:someValuesFrom st:Sky
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ owl:intersectionOf ( st:Animal
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty st:hasBodyParts ;
+                                                     owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                     owl:onClass st:bodypartSky
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.example.org/daz900/animals/Bodypart
+st:Bodypart rdf:type owl:Class ;
+            rdfs:subClassOf st:Descriptives .
+
+
+###  http://www.example.org/daz900/animals/Cow
+st:Cow rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( st:Animal
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty st:hasBodyParts ;
+                                                    owl:someValuesFrom st:bodypartLand
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ,
+                           [ owl:intersectionOf ( st:Animal
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty st:isOfType ;
+                                                    owl:allValuesFrom st:Prey
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://www.example.org/daz900/animals/Descriptives
+st:Descriptives rdf:type owl:Class .
+
+
+###  http://www.example.org/daz900/animals/Fish
+st:Fish rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( st:Animal
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty st:isOfType ;
+                                                     owl:someValuesFrom st:typeOfAnimal
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ owl:intersectionOf ( st:Animal
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty st:livesInHabitat ;
+                                                     owl:someValuesFrom st:Sea
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.example.org/daz900/animals/Food
+st:Food rdf:type owl:Class ;
+        rdfs:subClassOf st:Descriptives .
+
+
+###  http://www.example.org/daz900/animals/Habitat
+st:Habitat rdf:type owl:Class ;
+           rdfs:subClassOf st:Descriptives .
+
+
+###  http://www.example.org/daz900/animals/Land
+st:Land rdf:type owl:Class ;
+        rdfs:subClassOf st:Habitat .
+
+
+###  http://www.example.org/daz900/animals/Predator
+st:Predator rdf:type owl:Class ;
+            rdfs:subClassOf st:typeOfAnimal ;
+            owl:disjointWith st:Prey .
+
+
+###  http://www.example.org/daz900/animals/Prey
+st:Prey rdf:type owl:Class ;
+        rdfs:subClassOf st:typeOfAnimal .
+
+
+###  http://www.example.org/daz900/animals/Sea
+st:Sea rdf:type owl:Class ;
+       rdfs:subClassOf st:Habitat .
+
+
+###  http://www.example.org/daz900/animals/Sky
+st:Sky rdf:type owl:Class ;
+       rdfs:subClassOf st:Habitat .
+
+
+###  http://www.example.org/daz900/animals/bodypartLand
+st:bodypartLand rdf:type owl:Class ;
+                rdfs:subClassOf st:Bodypart .
+
+
+###  http://www.example.org/daz900/animals/bodypartSea
+st:bodypartSea rdf:type owl:Class ;
+               rdfs:subClassOf st:Bodypart .
+
+
+###  http://www.example.org/daz900/animals/bodypartSky
+st:bodypartSky rdf:type owl:Class ;
+               rdfs:subClassOf st:Bodypart .
+
+
+###  http://www.example.org/daz900/animals/typeOfAnimal
+st:typeOfAnimal rdf:type owl:Class ;
+                rdfs:subClassOf st:Descriptives .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/daz900/animals/Beak
+st:Beak rdf:type owl:NamedIndividual ,
+                 st:bodypartSky .
+
+
+###  http://www.example.org/daz900/animals/Dutch_Friesian
+st:Dutch_Friesian rdf:type owl:NamedIndividual ,
+                           st:Animal ;
+                  st:hasBodyParts st:Leg .
+
+
+###  http://www.example.org/daz900/animals/Falcon
+st:Falcon rdf:type owl:NamedIndividual ,
+                   st:Animal ;
+          st:hasBodyParts st:Beak ;
+          st:livesInHabitat st:Sky ,
+                            st:Wing .
+
+
+###  http://www.example.org/daz900/animals/Fin
+st:Fin rdf:type owl:NamedIndividual ,
+                st:bodypartSea .
+
+
+###  http://www.example.org/daz900/animals/Great_White
+st:Great_White rdf:type owl:NamedIndividual ,
+                        st:Animal ;
+               st:isOfType st:Predator .
+
+
+###  http://www.example.org/daz900/animals/Land
+st:Land rdf:type owl:NamedIndividual ,
+                 st:Land .
+
+
+###  http://www.example.org/daz900/animals/Leg
+st:Leg rdf:type owl:NamedIndividual ,
+                st:bodypartLand .
+
+
+###  http://www.example.org/daz900/animals/Meat
+st:Meat rdf:type owl:NamedIndividual ,
+                 st:Food .
+
+
+###  http://www.example.org/daz900/animals/Plant
+st:Plant rdf:type owl:NamedIndividual ,
+                  st:Food .
+
+
+###  http://www.example.org/daz900/animals/Predator
+st:Predator rdf:type owl:NamedIndividual ,
+                     st:Predator .
+
+
+###  http://www.example.org/daz900/animals/Prey
+st:Prey rdf:type owl:NamedIndividual ,
+                 st:Prey .
+
+
+###  http://www.example.org/daz900/animals/Sea
+st:Sea rdf:type owl:NamedIndividual ,
+                st:Sea .
+
+
+###  http://www.example.org/daz900/animals/Sky
+st:Sky rdf:type owl:NamedIndividual ,
+                st:Sky .
+
+
+###  http://www.example.org/daz900/animals/Wing
+st:Wing rdf:type owl:NamedIndividual ,
+                 st:bodypartSky .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( st:bodypartLand
+                st:bodypartSea
+                st:bodypartSky
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( st:Beak
+                        st:Wing
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( st:Meat
+                        st:Plant
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,144 @@
+@prefix : <http://example.org/igv400/ontologies/2017/8/company#> .
+@prefix ex: <http://example.org/igv400/ontologies/2017/8/kad2017/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/igv400/ontologies/2017/8/company> .
+
+<http://example.org/igv400/ontologies/2017/8/company> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/igv400/ontologies/2017/8/company#hasEmployee
+:hasEmployee rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#hasEmployer
+:hasEmployer rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#hasJuniorCollege
+:hasJuniorCollege rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:SymmetricProperty ,
+                           owl:ReflexiveProperty .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#hasSeniorCollege
+:hasSeniorCollege rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:SymmetricProperty ,
+                           owl:ReflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/igv400/ontologies/2017/8/company#CEO
+:CEO rdf:type owl:Class ;
+     owl:equivalentClass [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasEmployee ;
+                           owl:someValuesFrom :Employee
+                         ] ;
+     rdfs:subClassOf :Employer .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Employee
+:Employee rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEmployer ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Employer
+                              ] ;
+          rdfs:subClassOf :Person .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Employer
+:Employer rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasEmployee ;
+                                owl:maxQualifiedCardinality "100"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Employee
+                              ] ;
+          rdfs:subClassOf :Person .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Junior_Developer
+:Junior_Developer rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasSeniorCollege ;
+                                        owl:someValuesFrom :Senior_Developer
+                                      ] ;
+                  rdfs:subClassOf :Employee .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Person
+:Person rdf:type owl:Class .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Senior_Developer
+:Senior_Developer rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasEmployer ;
+                                        owl:someValuesFrom :Employer
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasJuniorCollege ;
+                                        owl:someValuesFrom :Junior_Developer
+                                      ] ;
+                  rdfs:subClassOf :Employee .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/igv400/ontologies/2017/8/company#CEO1
+:CEO1 rdf:type owl:NamedIndividual ,
+               :Person ;
+      :hasEmployee :Senior01 ,
+                   :Senior02 .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Junior01
+:Junior01 rdf:type owl:NamedIndividual ,
+                   :Person ;
+          :hasSeniorCollege :Senior01 ,
+                            :Senior02 .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Junior02
+:Junior02 rdf:type owl:NamedIndividual ,
+                   :Person ;
+          :hasSeniorCollege :Senior01 ,
+                            :Senior02 .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Senior01
+:Senior01 rdf:type owl:NamedIndividual ,
+                   :Person ;
+          :hasEmployer :CEO1 ;
+          :hasJuniorCollege :Junior01 ,
+                            :Junior02 .
+
+
+###  http://example.org/igv400/ontologies/2017/8/company#Senior02
+:Senior02 rdf:type owl:NamedIndividual ,
+                   :Person ;
+          :hasEmployer :CEO1 ;
+          :hasJuniorCollege :Junior01 ,
+                            :Junior02 .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

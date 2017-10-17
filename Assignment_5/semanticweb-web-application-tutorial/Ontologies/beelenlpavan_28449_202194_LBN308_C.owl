@@ -1,0 +1,225 @@
+@prefix : <http://www.semanticweb.org/luuk/ontologies/2017/food/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix food: <http://www.semanticweb.org/luuk/ontologies/2017/food/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/luuk/ontologies/2017/food> .
+
+<http://www.semanticweb.org/luuk/ontologies/2017/food> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/caughtIn
+food:caughtIn rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/harvestedOn
+food:harvestedOn rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/hasColor
+food:hasColor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/madeFrom
+food:madeFrom rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/animals
+food:animals rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/annual_plants
+food:annual_plants rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/bread
+food:bread rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty food:madeFrom ;
+                                 owl:someValuesFrom food:dough
+                               ] .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/colors
+food:colors rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/cookies
+food:cookies rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/dough
+food:dough rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/fish
+food:fish rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty food:caughtIn ;
+                                owl:allValuesFrom food:sea
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty food:caughtIn ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass food:location
+                              ] .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/fruit
+food:fruit rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty food:harvestedOn ;
+                                 owl:someValuesFrom food:land
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty food:harvestedOn ;
+                                 owl:allValuesFrom food:land
+                               ] .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/land
+food:land rdf:type owl:Class ;
+          rdfs:subClassOf food:location .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/location
+food:location rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/meat
+food:meat rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty food:madeFrom ;
+                                owl:someValuesFrom food:animals
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty food:madeFrom ;
+                                owl:allValuesFrom food:animals
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty food:madeFrom ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass food:animals
+                              ] .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/perennial_plants
+food:perennial_plants rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/sea
+food:sea rdf:type owl:Class ;
+         rdfs:subClassOf food:location .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/vegetable
+food:vegetable rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty food:harvestedOn ;
+                                     owl:allValuesFrom food:land
+                                   ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/Atlantic_ocean
+food:Atlantic_ocean rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/North_sea
+food:North_sea rdf:type owl:NamedIndividual ,
+                        food:sea .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/apple
+food:apple rdf:type owl:NamedIndividual ,
+                    food:annual_plants ,
+                    food:fruit ;
+           food:hasColor food:red .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/broccoli
+food:broccoli rdf:type owl:NamedIndividual ,
+                       food:perennial_plants ,
+                       food:vegetable ;
+              food:hasColor food:green .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/butter_dough
+food:butter_dough rdf:type owl:NamedIndividual ,
+                           food:dough .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/chicken
+food:chicken rdf:type owl:NamedIndividual ,
+                      food:animals .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/chicken_wings
+food:chicken_wings rdf:type owl:NamedIndividual ,
+                            food:meat ;
+                   food:madeFrom food:chicken .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/cow
+food:cow rdf:type owl:NamedIndividual ,
+                  food:animals .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/french_bread
+food:french_bread rdf:type owl:NamedIndividual ,
+                           food:bread .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/green
+food:green rdf:type owl:NamedIndividual ,
+                    food:colors .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/mackerel
+food:mackerel rdf:type owl:NamedIndividual ,
+                       food:fish ;
+              food:caughtIn food:Atlantic_ocean ,
+                            food:North_sea .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/oreo
+food:oreo rdf:type owl:NamedIndividual ,
+                   food:cookies .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/outdoor_ground
+food:outdoor_ground rdf:type owl:NamedIndividual ,
+                             food:land .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/red
+food:red rdf:type owl:NamedIndividual ,
+                  food:colors .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/sand_dough
+food:sand_dough rdf:type owl:NamedIndividual ,
+                         food:dough .
+
+
+###  http://www.semanticweb.org/luuk/ontologies/2017/food/wagyu
+food:wagyu rdf:type owl:NamedIndividual ;
+           food:madeFrom food:cow .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

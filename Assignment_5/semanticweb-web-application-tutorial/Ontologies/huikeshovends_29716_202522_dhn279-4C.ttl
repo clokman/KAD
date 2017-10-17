@@ -1,0 +1,201 @@
+@prefix : <http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix plc: <http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/has_Captain
+
+plc:has_Captain a owl:ObjectProperty ;
+	owl:inverseOf plc:is_captain_Of .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/has_Manager
+
+plc:has_Manager a owl:ObjectProperty ;
+	owl:inverseOf plc:is_manager_Of .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/has_Owner
+
+plc:has_Owner a owl:ObjectProperty ;
+	owl:inverseOf plc:is_owner_Of .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/has_Stadium
+
+plc:has_Stadium a owl:ObjectProperty ;
+	owl:inverseOf plc:is_stadium_Of .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/is_captain_Of
+
+plc:is_captain_Of a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/is_from_City
+
+plc:is_from_City a owl:ObjectProperty , owl:AsymmetricProperty ;
+	rdfs:range plc:City .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/is_manager_Of
+
+plc:is_manager_Of a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/is_owner_Of
+
+plc:is_owner_Of a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/is_stadium_Of
+
+plc:is_stadium_Of a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/amount_of_Players
+
+plc:amount_of_Players a owl:DatatypeProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Captain
+
+plc:Captain a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty plc:is_captain_Of ;
+	owl:someValuesFrom plc:Club .
+
+plc:Captain rdfs:subClassOf plc:Player .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/City
+
+plc:City a owl:Class .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Club
+
+plc:Club a owl:Class ;
+	owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty plc:amount_of_Players ;
+	owl:minQualifiedCardinality "11"^^xsd:nonNegativeInteger ;
+	owl:onDataRange xsd:integer .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Club_Owner
+
+plc:Club_Owner a owl:Class ;
+	owl:equivalentClass _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty plc:is_owner_Of ;
+	owl:someValuesFrom plc:Club .
+
+plc:Club_Owner rdfs:subClassOf plc:Person .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Manager
+
+plc:Manager a owl:Class ;
+	owl:equivalentClass _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty plc:is_manager_Of ;
+	owl:someValuesFrom plc:Club .
+
+plc:Manager rdfs:subClassOf plc:Person .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Person
+
+plc:Person a owl:Class .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Player
+
+plc:Player a owl:Class ;
+	rdfs:subClassOf plc:Person .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Stadium
+
+plc:Stadium a owl:Class ;
+	owl:equivalentClass _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty plc:is_stadium_Of ;
+	owl:someValuesFrom plc:Club .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Antonio_Valencia
+
+plc:Antonio_Valencia a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Ed_Woodward
+
+plc:Ed_Woodward a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Everton_FC
+
+plc:Everton_FC a owl:NamedIndividual , plc:Club ;
+	plc:has_Stadium plc:Goodison_Park ;
+	plc:is_from_City plc:Liverpool ;
+	plc:amount_of_Players "29"^^xsd:integer .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Goodison_Park
+
+plc:Goodison_Park a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Jose_Mourinho
+
+plc:Jose_Mourinho a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Liverpool
+
+plc:Liverpool a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Manchester
+
+plc:Manchester a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Manchester_United
+
+plc:Manchester_United a owl:NamedIndividual , plc:Club ;
+	plc:has_Captain plc:Antonio_Valencia ;
+	plc:has_Manager plc:Jose_Mourinho ;
+	plc:has_Owner plc:Ed_Woodward ;
+	plc:has_Stadium plc:Old_Trafford ;
+	plc:is_from_City plc:Manchester ;
+	plc:amount_of_Players "31"^^xsd:integer .
+# 
+# http://www.semanticweb.org/daan/ontologies/2017/9/Premier_League_Clubs/Old_Trafford
+
+plc:Old_Trafford a owl:NamedIndividual .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

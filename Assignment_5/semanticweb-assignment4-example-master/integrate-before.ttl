@@ -1,0 +1,55 @@
+@prefix fb: <https://graph.facebook.com/> .
+@prefix imdb: <http://imdb.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+imdb:tt0120669 a imdb:Movie ;
+    imdb:actor "Benicio Del Toro",
+        "Ellen Barkin",
+        "Johnny Depp",
+        "Tobey Maguire" ;
+    imdb:director "Terry Gilliam" ;
+    imdb:genre "Adventure"@en,
+        "Comedy"@en,
+        "Drama"@en ;
+    imdb:language "English"@en ;
+    imdb:plot "An oddball journalist and his psychopathic lawyer travel to Las Vegas for a series of psychedelic escapades."@en ;
+    imdb:poster <http://ia.media-imdb.com/images/M/MV5BNjA2ZDY3ZjYtZmNiMC00MDU5LTgxMWEtNzk1YmI3NzdkMTU0XkEyXkFqcGdeQXVyNjQyMjcwNDM@._V1_SX300.jpg> ;
+    imdb:rated "R" ;
+    imdb:rating 7.7e+00 ;
+    imdb:runtime "118M"^^xsd:duration ;
+    imdb:title "Fear and Loathing in Las Vegas"@en ;
+    imdb:writer "Alex Cox (screenplay)",
+        "Hunter S. Thompson (book)",
+        "Terry Gilliam (screenplay)",
+        "Tod Davies (screenplay)",
+        "Tony Grisoni (screenplay)" ;
+    imdb:year "1998"^^xsd:gYear .
+
+fb:user-594486635 a fb:User ;
+    fb:likes fb:movie-105638652803531,
+        fb:movie-109327925759703,
+        fb:movie-289482145973,
+        fb:movie-32985985640,
+        fb:movie-688257014589959,
+        fb:movie-8305524854 .
+
+fb:movie-105638652803531 a fb:Movie ;
+    fb:name "Fear and Loathing in Las Vegas"@en .
+
+fb:movie-109327925759703 a fb:Movie ;
+    fb:name "Waking Life"@en .
+
+fb:movie-289482145973 a fb:Movie ;
+    fb:name "Human Flight 3D The Movie"@en .
+
+fb:movie-32985985640 a fb:Community ;
+    fb:name "Zeitgeist"@en .
+
+fb:movie-688257014589959 a fb:Movie ;
+    fb:name "Strawman - The Nature Of The Cage"@en .
+
+fb:movie-8305524854 a fb:Movie ;
+    fb:name "The Fountain"@en .

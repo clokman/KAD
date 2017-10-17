@@ -1,0 +1,279 @@
+@prefix : <http://www.semanticweb.org/radhikesh/ontologies/Pokemon#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pok: <http://www.semanticweb.org/radhikesh/ontologies/Pokemon#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix namespace: <http://www.example.org/kad2017> .
+@base <http://www.semanticweb.org/radhikesh/ontologies/Pokemon> .
+
+<http://www.semanticweb.org/radhikesh/ontologies/Pokemon> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#hasMainMove
+pok:hasMainMove rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#hasMove
+pok:hasMove rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#hasPokemon
+pok:hasPokemon rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#isStrongAgainst
+pok:isStrongAgainst rdf:type owl:ObjectProperty ,
+                             owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#isWeakAgainst
+pok:isWeakAgainst rdf:type owl:ObjectProperty ,
+                           owl:AsymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Electric_Move
+pok:Electric_Move rdf:type owl:Class ;
+                  rdfs:subClassOf pok:Pokemon_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Electric_Pokemon
+pok:Electric_Pokemon rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty pok:isStrongAgainst ;
+                                           owl:someValuesFrom pok:Water_Pokemon
+                                         ] ;
+                     rdfs:subClassOf pok:Pokemon .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Fire_Move
+pok:Fire_Move rdf:type owl:Class ;
+              rdfs:subClassOf pok:Pokemon_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Fire_Pokemon
+pok:Fire_Pokemon rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty pok:isStrongAgainst ;
+                                       owl:someValuesFrom pok:Grass_Pokemon
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty pok:isWeakAgainst ;
+                                       owl:someValuesFrom pok:Water_Pokemon
+                                     ] ;
+                 rdfs:subClassOf pok:Pokemon .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Grass_Move
+pok:Grass_Move rdf:type owl:Class ;
+               rdfs:subClassOf pok:Pokemon_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Grass_Pokemon
+pok:Grass_Pokemon rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty pok:isStrongAgainst ;
+                                        owl:someValuesFrom pok:Water_Pokemon
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty pok:isWeakAgainst ;
+                                        owl:someValuesFrom pok:Fire_Pokemon
+                                      ] ;
+                  rdfs:subClassOf pok:Pokemon .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Gymleader
+pok:Gymleader rdf:type owl:Class ;
+              rdfs:subClassOf pok:Person .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Normal_Move
+pok:Normal_Move rdf:type owl:Class ;
+                rdfs:subClassOf pok:Pokemon_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Normal_Pokemon
+pok:Normal_Pokemon rdf:type owl:Class ;
+                   rdfs:subClassOf pok:Pokemon .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Person
+pok:Person rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty pok:hasPokemon ;
+                                 owl:someValuesFrom pok:Pokemon
+                               ] ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty pok:hasPokemon ;
+                             owl:allValuesFrom pok:Pokemon
+                           ] ;
+           owl:disjointWith pok:Pokemon .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Pokemon
+pok:Pokemon rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Pokemon_Move
+pok:Pokemon_Move rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Trainer
+pok:Trainer rdf:type owl:Class ;
+            rdfs:subClassOf pok:Person .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Villain
+pok:Villain rdf:type owl:Class ;
+            rdfs:subClassOf pok:Person .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Water_Move
+pok:Water_Move rdf:type owl:Class ;
+               rdfs:subClassOf pok:Pokemon_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Water_Pokemon
+pok:Water_Pokemon rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty pok:isStrongAgainst ;
+                                        owl:someValuesFrom pok:Fire_Pokemon
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty pok:isWeakAgainst ;
+                                        owl:someValuesFrom pok:Grass_Pokemon
+                                      ] ;
+                  rdfs:subClassOf pok:Pokemon .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Ash
+pok:Ash rdf:type owl:NamedIndividual ,
+                 pok:Trainer ;
+        pok:hasPokemon pok:Bulbasaur ,
+                       pok:Charmander ,
+                       pok:Pikachu .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Bulbasaur
+pok:Bulbasaur rdf:type owl:NamedIndividual ,
+                       pok:Grass_Pokemon ;
+              pok:hasMainMove pok:Petal_Dance ;
+              pok:hasMove pok:Vine_Whip .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Charmander
+pok:Charmander rdf:type owl:NamedIndividual ,
+                        pok:Fire_Pokemon ;
+               pok:hasMainMove pok:Fire_Blast ;
+               pok:hasMove pok:Overheat .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Electro_Ball
+pok:Electro_Ball rdf:type owl:NamedIndividual ,
+                          pok:Electric_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Fire_Blast
+pok:Fire_Blast rdf:type owl:NamedIndividual ,
+                        pok:Fire_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Giovanni
+pok:Giovanni rdf:type owl:NamedIndividual ,
+                      pok:Gymleader ;
+             pok:hasPokemon pok:Persian .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Hydro_Pump
+pok:Hydro_Pump rdf:type owl:NamedIndividual ,
+                        pok:Water_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Hyper_Beam
+pok:Hyper_Beam rdf:type owl:NamedIndividual ,
+                        pok:Normal_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Jessie
+pok:Jessie rdf:type owl:NamedIndividual ,
+                    pok:Villain ;
+           pok:hasPokemon pok:Meowth .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Meowth
+pok:Meowth rdf:type owl:NamedIndividual ,
+                    pok:Normal_Pokemon ;
+           pok:hasMainMove pok:Hyper_Beam ;
+           pok:hasMove pok:Scratch .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Misty
+pok:Misty rdf:type owl:NamedIndividual ,
+                   pok:Trainer ;
+          pok:hasPokemon pok:Psyduck .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Overheat
+pok:Overheat rdf:type owl:NamedIndividual ,
+                      pok:Fire_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Persian
+pok:Persian rdf:type owl:NamedIndividual ,
+                     pok:Normal_Pokemon ;
+            pok:hasMainMove pok:Hyper_Beam ;
+            pok:hasMove pok:Scratch .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Petal_Dance
+pok:Petal_Dance rdf:type owl:NamedIndividual ,
+                         pok:Grass_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Pikachu
+pok:Pikachu rdf:type owl:NamedIndividual ,
+                     pok:Electric_Pokemon ;
+            pok:hasMainMove pok:Thunder ;
+            pok:hasMove pok:Electro_Ball .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Psyduck
+pok:Psyduck rdf:type owl:NamedIndividual ,
+                     pok:Water_Pokemon ;
+            pok:hasMainMove pok:Hydro_Pump ;
+            pok:hasMove pok:Surf .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Scratch
+pok:Scratch rdf:type owl:NamedIndividual ,
+                     pok:Normal_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Surf
+pok:Surf rdf:type owl:NamedIndividual ,
+                  pok:Water_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Thunder
+pok:Thunder rdf:type owl:NamedIndividual ,
+                     pok:Electric_Move .
+
+
+###  http://www.semanticweb.org/radhikesh/ontologies/Pokemon#Vine_Whip
+pok:Vine_Whip rdf:type owl:NamedIndividual ,
+                       pok:Grass_Move .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,211 @@
+@prefix : <http://www.example.org/lochtenberg/music#> .
+@prefix mu: <http://www.example.org/lochtenberg/music/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/lochtenberg/music> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/lochtenberg/music/containsTrack
+
+mu:containsTrack a owl:ObjectProperty ;
+	owl:inverseOf mu:isATrackOf .
+# 
+# http://www.example.org/lochtenberg/music/hasComposed
+
+mu:hasComposed a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/lochtenberg/music/hasMember
+
+mu:hasMember a owl:ObjectProperty .
+# 
+# http://www.example.org/lochtenberg/music/isATrackOf
+
+mu:isATrackOf a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://www.example.org/lochtenberg/music/isPlayedBy
+
+mu:isPlayedBy a owl:ObjectProperty .
+# 
+# http://www.example.org/lochtenberg/music/isUsedOn
+
+mu:isUsedOn a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/lochtenberg/music/Album
+
+mu:Album a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty mu:containsTrack ;
+	owl:someValuesFrom mu:Song .
+# 
+# http://www.example.org/lochtenberg/music/Band
+
+mu:Band a owl:Class ;
+	owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty mu:hasMember ;
+	owl:someValuesFrom mu:Bandmember .
+# 
+# http://www.example.org/lochtenberg/music/Bandmember
+
+mu:Bandmember a owl:Class ;
+	rdfs:subClassOf mu:Musician , _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty mu:hasMember ;
+	owl:allValuesFrom mu:Band .
+# 
+# http://www.example.org/lochtenberg/music/George_Harrison
+
+mu:George_Harrison a owl:Class .
+# 
+# http://www.example.org/lochtenberg/music/Guitar
+
+mu:Guitar a owl:Class ;
+	rdfs:subClassOf mu:String_instruments .
+# 
+# http://www.example.org/lochtenberg/music/Individual_artist
+
+mu:Individual_artist a owl:Class ;
+	rdfs:subClassOf mu:Musician .
+# 
+# http://www.example.org/lochtenberg/music/Instrument
+
+mu:Instrument a owl:Class ;
+	rdfs:subClassOf _:genid4 .
+
+_:genid4 a owl:Class ;
+	owl:unionOf _:genid7 .
+
+_:genid7 a rdf:List ;
+	rdf:first mu:Band ;
+	rdf:rest _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty mu:isPlayedBy ;
+	owl:someValuesFrom mu:Musician .
+
+_:genid5 rdf:rest rdf:nil .
+# 
+# http://www.example.org/lochtenberg/music/Musician
+
+mu:Musician a owl:Class ;
+	rdfs:subClassOf mu:Person .
+# 
+# http://www.example.org/lochtenberg/music/Person
+
+mu:Person a owl:Class .
+# 
+# http://www.example.org/lochtenberg/music/Piano
+
+mu:Piano a owl:Class ;
+	rdfs:subClassOf mu:String_instruments .
+# 
+# http://www.example.org/lochtenberg/music/Song
+
+mu:Song a owl:Class ;
+	owl:equivalentClass _:genid8 .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty mu:isATrackOf ;
+	owl:someValuesFrom mu:Album .
+
+mu:Song rdfs:subClassOf _:genid9 .
+
+_:genid9 a owl:Class ;
+	owl:unionOf _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first mu:Band ;
+	rdf:rest _:genid10 .
+
+_:genid10 a rdf:List ;
+	rdf:first _:genid11 .
+
+_:genid11 a owl:Restriction ;
+	owl:onProperty mu:isPlayedBy ;
+	owl:someValuesFrom mu:Musician .
+
+_:genid10 rdf:rest rdf:nil .
+# 
+# http://www.example.org/lochtenberg/music/String_instruments
+
+mu:String_instruments a owl:Class ;
+	rdfs:subClassOf mu:Instrument ;
+	owl:disjointWith mu:Wind_instruments .
+# 
+# http://www.example.org/lochtenberg/music/Trumpet
+
+mu:Trumpet a owl:Class ;
+	rdfs:subClassOf mu:Wind_instruments .
+# 
+# http://www.example.org/lochtenberg/music/Wind_instruments
+
+mu:Wind_instruments a owl:Class ;
+	rdfs:subClassOf mu:Instrument .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/lochtenberg/music/Abbey_Road
+
+mu:Abbey_Road a owl:NamedIndividual ;
+	mu:containsTrack mu:Come_together .
+# 
+# http://www.example.org/lochtenberg/music/Come_together
+
+mu:Come_together a owl:NamedIndividual ;
+	mu:isATrackOf mu:Abbey_Road .
+# 
+# http://www.example.org/lochtenberg/music/George_Harrison
+
+mu:George_Harrison a owl:NamedIndividual .
+# 
+# http://www.example.org/lochtenberg/music/George_Harrisons_telecaster
+
+mu:George_Harrisons_telecaster a owl:NamedIndividual , mu:Guitar ;
+	mu:isPlayedBy mu:George_Harrison ;
+	mu:isUsedOn mu:Come_together .
+# 
+# http://www.example.org/lochtenberg/music/John_Lennon
+
+mu:John_Lennon a owl:NamedIndividual ;
+	mu:hasComposed mu:Come_together .
+# 
+# http://www.example.org/lochtenberg/music/The_Beatles
+
+mu:The_Beatles a owl:NamedIndividual ;
+	mu:hasMember mu:John_Lennon .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

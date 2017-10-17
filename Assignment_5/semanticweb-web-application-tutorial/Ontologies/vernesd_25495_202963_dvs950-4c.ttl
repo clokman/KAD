@@ -1,0 +1,241 @@
+@prefix : <http://www.semanticweb.org/daanv/schools#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sch: <http://www.semanticweb.org/daanv/schools/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/daanv/schools> .
+
+<http://www.semanticweb.org/daanv/schools> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/daanv/schools/GetsTaughtIn
+sch:GetsTaughtIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/daanv/schools/HasGrade
+sch:HasGrade rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/daanv/schools/IsTaughtBy
+sch:IsTaughtBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf sch:TeachesStudent ;
+               owl:propertyDisjointWith sch:TeachesStudent .
+
+
+###  http://www.semanticweb.org/daanv/schools/TaughtByTeacher
+sch:TaughtByTeacher rdf:type owl:ObjectProperty ;
+                    owl:inverseOf sch:Teaches .
+
+
+###  http://www.semanticweb.org/daanv/schools/Teaches
+sch:Teaches rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/daanv/schools/TeachesStudent
+sch:TeachesStudent rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/daanv/schools/Classroom
+sch:Classroom rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daanv/schools/Cleaner
+sch:Cleaner rdf:type owl:Class ;
+            rdfs:subClassOf sch:Staff ;
+            owl:disjointWith sch:Teacher .
+
+
+###  http://www.semanticweb.org/daanv/schools/ComputerScienceGrade
+sch:ComputerScienceGrade rdf:type owl:Class ;
+                         rdfs:subClassOf sch:Grade .
+
+
+###  http://www.semanticweb.org/daanv/schools/EconomyGrade
+sch:EconomyGrade rdf:type owl:Class ;
+                 rdfs:subClassOf sch:Grade .
+
+
+###  http://www.semanticweb.org/daanv/schools/Grade
+sch:Grade rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daanv/schools/Staff
+sch:Staff rdf:type owl:Class ;
+          owl:disjointWith sch:Student ;
+          owl:disjointUnionOf ( sch:Cleaner
+                                sch:Teacher
+                              ) .
+
+
+###  http://www.semanticweb.org/daanv/schools/Student
+sch:Student rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty sch:HasGrade ;
+                                  owl:someValuesFrom sch:Grade
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty sch:IsTaughtBy ;
+                                  owl:someValuesFrom sch:Teacher
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty sch:IsTaughtBy ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass sch:Teacher
+                                ] ;
+            rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty sch:HasGrade ;
+                                                     owl:someValuesFrom sch:ComputerScienceGrade
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty sch:HasGrade ;
+                                                     owl:someValuesFrom sch:EconomyGrade
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty sch:IsTaughtBy ;
+                              owl:allValuesFrom sch:Teacher
+                            ] .
+
+
+###  http://www.semanticweb.org/daanv/schools/Subject
+sch:Subject rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty sch:GetsTaughtIn ;
+                                  owl:someValuesFrom sch:Classroom
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty sch:TaughtByTeacher ;
+                                  owl:someValuesFrom sch:Teacher
+                                ] .
+
+
+###  http://www.semanticweb.org/daanv/schools/Teacher
+sch:Teacher rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty sch:Teaches ;
+                                  owl:someValuesFrom sch:Subject
+                                ] ;
+            rdfs:subClassOf sch:Staff .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/daanv/schools/Bas_Verschuur
+sch:Bas_Verschuur rdf:type owl:NamedIndividual ,
+                           sch:Student ;
+                  sch:IsTaughtBy sch:Ruurd_Sabben .
+
+
+###  http://www.semanticweb.org/daanv/schools/Carel_Wijk
+sch:Carel_Wijk rdf:type owl:NamedIndividual ,
+                        sch:Student ;
+               sch:IsTaughtBy sch:Ruurd_Sabben .
+
+
+###  http://www.semanticweb.org/daanv/schools/Computer_Science
+sch:Computer_Science rdf:type owl:NamedIndividual ,
+                              sch:Subject ;
+                     sch:GetsTaughtIn sch:Room_1 .
+
+
+###  http://www.semanticweb.org/daanv/schools/Danielle_Wit
+sch:Danielle_Wit rdf:type owl:NamedIndividual ,
+                          sch:Student ;
+                 sch:IsTaughtBy sch:Ruurd_Sabben .
+
+
+###  http://www.semanticweb.org/daanv/schools/Economy
+sch:Economy rdf:type owl:NamedIndividual ,
+                     sch:Subject ;
+            sch:GetsTaughtIn sch:Room_2 .
+
+
+###  http://www.semanticweb.org/daanv/schools/Gijs_Leeuwen
+sch:Gijs_Leeuwen rdf:type owl:NamedIndividual ,
+                          sch:Student ;
+                 sch:IsTaughtBy sch:Hans_Mol .
+
+
+###  http://www.semanticweb.org/daanv/schools/Hans_Mol
+sch:Hans_Mol rdf:type owl:NamedIndividual ,
+                      sch:Teacher ;
+             sch:Teaches sch:Computer_Science .
+
+
+###  http://www.semanticweb.org/daanv/schools/Henk_Wiegant
+sch:Henk_Wiegant rdf:type owl:NamedIndividual ,
+                          sch:Cleaner .
+
+
+###  http://www.semanticweb.org/daanv/schools/Max_Rademakers
+sch:Max_Rademakers rdf:type owl:NamedIndividual ,
+                            sch:Student ;
+                   sch:IsTaughtBy sch:Hans_Mol .
+
+
+###  http://www.semanticweb.org/daanv/schools/Room_1
+sch:Room_1 rdf:type owl:NamedIndividual ,
+                    sch:Classroom .
+
+
+###  http://www.semanticweb.org/daanv/schools/Room_2
+sch:Room_2 rdf:type owl:NamedIndividual ,
+                    sch:Classroom .
+
+
+###  http://www.semanticweb.org/daanv/schools/Room_3
+sch:Room_3 rdf:type owl:NamedIndividual ,
+                    sch:Classroom .
+
+
+###  http://www.semanticweb.org/daanv/schools/Ruurd_Sabben
+sch:Ruurd_Sabben rdf:type owl:NamedIndividual ,
+                          sch:Teacher ;
+                 sch:Teaches sch:Economy .
+
+
+###  http://www.semanticweb.org/daanv/schools/Sanne_Leeuwen
+sch:Sanne_Leeuwen rdf:type owl:NamedIndividual ,
+                           sch:Student ;
+                  sch:IsTaughtBy sch:Hans_Mol .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( sch:Hans_Mol
+                        sch:Henk_Wiegant
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( sch:Hans_Mol
+                        sch:Ruurd_Sabben
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( sch:Henk_Wiegant
+                        sch:Ruurd_Sabben
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,191 @@
+@prefix : <http://www.semanticweb.org/erkin/ontologies/2017/8/food#> .
+@prefix Fo: <http://www.semanticweb.org/erkin/ontologies/2017/8/food#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix food: <http://www.example.com/kad2017/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/erkin/ontologies/2017/8/food> .
+
+<http://www.semanticweb.org/erkin/ontologies/2017/8/food> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Can_Be_Eaten_At
+Fo:Can_Be_Eaten_At rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty ;
+                   rdfs:domain Fo:Food ;
+                   rdfs:range Fo:Location .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Contains
+Fo:Contains rdf:type owl:ObjectProperty ;
+            rdfs:domain Fo:Food ;
+            rdfs:range Fo:Ingredients .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Has_Preparation_Time
+Fo:Has_Preparation_Time rdf:type owl:ObjectProperty ;
+                        rdfs:domain Fo:Food ;
+                        rdfs:range Fo:Preparation_Time .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Has_Taste
+Fo:Has_Taste rdf:type owl:ObjectProperty ;
+             rdfs:domain Fo:Food ;
+             rdfs:range Fo:Taste .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Is_Eaten_In
+Fo:Is_Eaten_In rdf:type owl:ObjectProperty ;
+               rdfs:domain Fo:Food ;
+               rdfs:range Fo:Times .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Makes_Food_Taste
+Fo:Makes_Food_Taste rdf:type owl:ObjectProperty ;
+                    rdfs:domain Fo:Hunger_Level ;
+                    rdfs:range Fo:Taste .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Breakfast
+Fo:Breakfast rdf:type owl:Class ;
+             rdfs:subClassOf Fo:Food .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Dinner
+Fo:Dinner rdf:type owl:Class ;
+          rdfs:subClassOf Fo:Food .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Food
+Fo:Food rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty Fo:Can_Be_Eaten_At ;
+                              owl:allValuesFrom Fo:Location
+                            ] .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Hunger_Level
+Fo:Hunger_Level rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty Fo:Makes_Food_Taste ;
+                                      owl:allValuesFrom Fo:Taste
+                                    ] .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Ingredients
+Fo:Ingredients rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Location
+Fo:Location rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Preparation_Time
+Fo:Preparation_Time rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Taste
+Fo:Taste rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Times
+Fo:Times rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Apple
+Fo:Apple rdf:type owl:NamedIndividual ,
+                  Fo:Food .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Bad
+Fo:Bad rdf:type owl:NamedIndividual ,
+                Fo:Taste .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Evening
+Fo:Evening rdf:type owl:NamedIndividual ,
+                    Fo:Times .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Good
+Fo:Good rdf:type owl:NamedIndividual ,
+                 Fo:Taste .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#High
+Fo:High rdf:type owl:NamedIndividual ,
+                 Fo:Hunger_Level .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Home
+Fo:Home rdf:type owl:NamedIndividual ,
+                 Fo:Location .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Long
+Fo:Long rdf:type owl:NamedIndividual ,
+                 Fo:Preparation_Time .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Low
+Fo:Low rdf:type owl:NamedIndividual ,
+                Fo:Hunger_Level .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Medium
+Fo:Medium rdf:type owl:NamedIndividual ,
+                   Fo:Preparation_Time .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Milk
+Fo:Milk rdf:type owl:NamedIndividual ,
+                 Fo:Ingredients .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Morning
+Fo:Morning rdf:type owl:NamedIndividual ,
+                    Fo:Times .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Pancake
+Fo:Pancake rdf:type owl:NamedIndividual ,
+                    Fo:Breakfast ;
+           Fo:Is_Eaten_In Fo:Morning .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Raw_Meat
+Fo:Raw_Meat rdf:type owl:NamedIndividual ,
+                     Fo:Ingredients .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Restaurant
+Fo:Restaurant rdf:type owl:NamedIndividual ,
+                       Fo:Location .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Short
+Fo:Short rdf:type owl:NamedIndividual ,
+                  Fo:Preparation_Time .
+
+
+###  http://www.semanticweb.org/erkin/ontologies/2017/8/food#Steak
+Fo:Steak rdf:type owl:NamedIndividual ,
+                  Fo:Dinner ;
+         Fo:Is_Eaten_In Fo:Evening .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

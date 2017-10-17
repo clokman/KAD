@@ -1,0 +1,281 @@
+@prefix : <http://www.semanticweb.org/betul/sweets#> .
+@prefix sw: <http://www.semanticweb.org/betul/sweets/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/betul/sweets> .
+
+<http://www.semanticweb.org/betul/sweets> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/betul/sweets/IsFamousFor
+sw:IsFamousFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/betul/sweets/IsPackagedIn
+sw:IsPackagedIn rdf:type owl:ObjectProperty ;
+                owl:equivalentProperty sw:PreservedIn .
+
+
+###  http://www.semanticweb.org/betul/sweets/IsProducedBy
+sw:IsProducedBy rdf:type owl:ObjectProperty ;
+                owl:inverseOf sw:Makes .
+
+
+###  http://www.semanticweb.org/betul/sweets/Makes
+sw:Makes rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/betul/sweets/OnlyHolds
+sw:OnlyHolds rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/betul/sweets/PreservedIn
+sw:PreservedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/betul/sweets/ShipsInternational
+sw:ShipsInternational rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/betul/sweets/ABrand
+sw:ABrand rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sw:IsFamousFor ;
+                                owl:someValuesFrom sw:Chips
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty sw:ShipsInternational ;
+                                owl:allValuesFrom sw:Chips
+                              ] ;
+          rdfs:subClassOf sw:Company .
+
+
+###  http://www.semanticweb.org/betul/sweets/BBrand
+sw:BBrand rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( sw:BBrand
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty sw:Makes ;
+                                                       owl:someValuesFrom sw:CheesePizza
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf sw:Company .
+
+
+###  http://www.semanticweb.org/betul/sweets/Candy
+sw:Candy rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( sw:Candy
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty sw:IsProducedBy ;
+                                                      owl:allValuesFrom sw:Company
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.semanticweb.org/betul/sweets/Cbrand
+sw:Cbrand rdf:type owl:Class ;
+          rdfs:subClassOf sw:Company .
+
+
+###  http://www.semanticweb.org/betul/sweets/CheesePizza
+sw:CheesePizza rdf:type owl:Class ;
+               rdfs:subClassOf sw:Pizza .
+
+
+###  http://www.semanticweb.org/betul/sweets/Chips
+sw:Chips rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/betul/sweets/Company
+sw:Company rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/betul/sweets/Cookies
+sw:Cookies rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/betul/sweets/Drinks
+sw:Drinks rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( sw:Drinks
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty sw:IsPackagedIn ;
+                                                       owl:someValuesFrom sw:Packaging
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.semanticweb.org/betul/sweets/FruitJuices
+sw:FruitJuices rdf:type owl:Class ;
+               rdfs:subClassOf sw:Drinks .
+
+
+###  http://www.semanticweb.org/betul/sweets/MeatPizza
+sw:MeatPizza rdf:type owl:Class ;
+             rdfs:subClassOf sw:Pizza .
+
+
+###  http://www.semanticweb.org/betul/sweets/Packaging
+sw:Packaging rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/betul/sweets/Pizza
+sw:Pizza rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty sw:IsPackagedIn ;
+                               owl:allValuesFrom sw:Packaging
+                             ] .
+
+
+###  http://www.semanticweb.org/betul/sweets/SaltyCandy
+sw:SaltyCandy rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty sw:IsProducedBy ;
+                                    owl:allValuesFrom sw:Cbrand
+                                  ] ;
+              rdfs:subClassOf sw:Candy .
+
+
+###  http://www.semanticweb.org/betul/sweets/SugarDrinks
+sw:SugarDrinks rdf:type owl:Class ;
+               rdfs:subClassOf sw:Drinks .
+
+
+###  http://www.semanticweb.org/betul/sweets/SweetCandy
+sw:SweetCandy rdf:type owl:Class ;
+              rdfs:subClassOf sw:Candy .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/betul/sweets/AH_Huismerk
+sw:AH_Huismerk rdf:type owl:NamedIndividual ,
+                        sw:Cbrand ;
+               sw:IsFamousFor sw:Chocolate_Chip_Cookies ;
+               sw:Makes sw:Mozarella_Pizza ,
+                        sw:Orange_Juice ,
+                        sw:Pineapple_Juice ,
+                        sw:Salami_Pizza .
+
+
+###  http://www.semanticweb.org/betul/sweets/Carton_Box
+sw:Carton_Box rdf:type owl:NamedIndividual ,
+                       sw:Packaging .
+
+
+###  http://www.semanticweb.org/betul/sweets/Chocolate_Chip_Cookies
+sw:Chocolate_Chip_Cookies rdf:type owl:NamedIndividual ,
+                                   sw:Cookies ;
+                          sw:IsPackagedIn sw:Carton_Box ;
+                          sw:IsProducedBy sw:AH_Huismerk .
+
+
+###  http://www.semanticweb.org/betul/sweets/Coca_Cola
+sw:Coca_Cola rdf:type owl:NamedIndividual ,
+                      sw:SugarDrinks ;
+             sw:IsPackagedIn sw:Plastic_Bottle .
+
+
+###  http://www.semanticweb.org/betul/sweets/Dr_Oetker
+sw:Dr_Oetker rdf:type owl:NamedIndividual ,
+                      sw:BBrand ;
+             sw:Makes sw:Mozarella_Pizza ,
+                      sw:Salami_Pizza .
+
+
+###  http://www.semanticweb.org/betul/sweets/Fanta
+sw:Fanta rdf:type owl:NamedIndividual ,
+                  sw:SugarDrinks ;
+         sw:IsPackagedIn sw:Plastic_Bottle .
+
+
+###  http://www.semanticweb.org/betul/sweets/IsPackagedIn
+sw:IsPackagedIn rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/betul/sweets/Lays
+sw:Lays rdf:type owl:NamedIndividual ,
+                 sw:ABrand ;
+        sw:IsFamousFor sw:Nacho_Chips ;
+        sw:ShipsInternational sw:Nacho_Chips .
+
+
+###  http://www.semanticweb.org/betul/sweets/Liquorish
+sw:Liquorish rdf:type owl:NamedIndividual ,
+                      sw:SaltyCandy ;
+             sw:IsPackagedIn sw:Plastic_Bag ;
+             sw:IsProducedBy sw:AH_Huismerk .
+
+
+###  http://www.semanticweb.org/betul/sweets/Lollipop
+sw:Lollipop rdf:type owl:NamedIndividual ,
+                     sw:SweetCandy ;
+            sw:IsPackagedIn sw:Plastic_Bag ;
+            sw:IsProducedBy sw:AH_Huismerk .
+
+
+###  http://www.semanticweb.org/betul/sweets/Mozarella_Pizza
+sw:Mozarella_Pizza rdf:type owl:NamedIndividual ,
+                            sw:CheesePizza ,
+                            sw:Pizza ;
+                   sw:IsPackagedIn sw:Carton_Box .
+
+
+###  http://www.semanticweb.org/betul/sweets/Nacho_Chips
+sw:Nacho_Chips rdf:type owl:NamedIndividual ,
+                        sw:Chips ;
+               sw:IsPackagedIn sw:Plastic_Bag ;
+               sw:IsProducedBy sw:AH_Huismerk ,
+                               sw:Lays .
+
+
+###  http://www.semanticweb.org/betul/sweets/Orange_Juice
+sw:Orange_Juice rdf:type owl:NamedIndividual ,
+                         sw:FruitJuices ;
+                sw:IsPackagedIn sw:Carton_Box ,
+                                sw:Plastic_Bottle .
+
+
+###  http://www.semanticweb.org/betul/sweets/Pineapple_Juice
+sw:Pineapple_Juice rdf:type owl:NamedIndividual ,
+                            sw:FruitJuices ;
+                   sw:IsPackagedIn sw:Carton_Box .
+
+
+###  http://www.semanticweb.org/betul/sweets/Plastic_Bag
+sw:Plastic_Bag rdf:type owl:NamedIndividual ,
+                        sw:Packaging .
+
+
+###  http://www.semanticweb.org/betul/sweets/Plastic_Bottle
+sw:Plastic_Bottle rdf:type owl:NamedIndividual ,
+                           sw:Packaging ;
+                  sw:OnlyHolds sw:Coca_Cola ,
+                               sw:Fanta ,
+                               sw:Orange_Juice .
+
+
+###  http://www.semanticweb.org/betul/sweets/Salami_Pizza
+sw:Salami_Pizza rdf:type owl:NamedIndividual ,
+                         sw:MeatPizza ,
+                         sw:Pizza ;
+                sw:IsPackagedIn sw:Carton_Box .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

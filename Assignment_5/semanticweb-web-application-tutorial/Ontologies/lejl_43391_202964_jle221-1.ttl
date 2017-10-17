@@ -1,0 +1,170 @@
+@prefix : <http://www.example.org/le/ontologies/openbaarvervoer.owl#> .
+@prefix ov: <http://www.example.org/le/ontologies/openbaarvervoer.owl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/le/ontologies/openbaarvervoer.owl> .
+
+<http://www.example.org/le/ontologies/openbaarvervoer.owl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/hasNeighbour
+ov:hasNeighbour rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/hasRoute
+ov:hasRoute rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/inRoute
+ov:inRoute rdf:type owl:ObjectProperty ;
+           owl:inverseOf ov:includesStation .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/includesStation
+ov:includesStation rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/Metro
+ov:Metro rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ov:hasRoute ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass ov:MetroRoute
+                             ] ;
+         rdfs:subClassOf ov:Vehicle .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/MetroRoute
+ov:MetroRoute rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ov:includesStation ;
+                                    owl:allValuesFrom ov:MetroStation
+                                  ] ;
+              rdfs:subClassOf ov:Route .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/MetroStation
+ov:MetroStation rdf:type owl:Class ;
+                rdfs:subClassOf ov:Station .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/Route
+ov:Route rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ov:includesStation ;
+                               owl:someValuesFrom ov:Station
+                             ] .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/Station
+ov:Station rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ov:hasNeighbour ;
+                                 owl:someValuesFrom ov:Station
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ov:inRoute ;
+                                 owl:someValuesFrom ov:Route
+                               ] .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/Train
+ov:Train rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ov:hasRoute ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass ov:TrainRoute
+                             ] ;
+         rdfs:subClassOf ov:Vehicle .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/TrainRoute
+ov:TrainRoute rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ov:includesStation ;
+                                    owl:someValuesFrom ov:TrainStation
+                                  ] ;
+              rdfs:subClassOf ov:Route .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/TrainStation
+ov:TrainStation rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty ov:inRoute ;
+                                      owl:someValuesFrom ov:TrainRoute
+                                    ] ;
+                rdfs:subClassOf ov:Station .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/Vehicle
+ov:Vehicle rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty ov:hasRoute ;
+                                 owl:someValuesFrom ov:Route
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/GVB00000001
+ov:GVB00000001 rdf:type owl:NamedIndividual ;
+               ov:hasRoute ov:GVB_M54 .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/GVB00000002
+ov:GVB00000002 rdf:type owl:NamedIndividual ,
+                        ov:Metro .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/GVB_M54
+ov:GVB_M54 rdf:type owl:NamedIndividual ;
+           ov:includesStation ov:ST_Westwijk .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/NS00000001
+ov:NS00000001 rdf:type owl:NamedIndividual ;
+              ov:hasRoute ov:NS_Amsterdam_to_Nijmegen .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/NS_Amsterdam_to_Nijmegen
+ov:NS_Amsterdam_to_Nijmegen rdf:type owl:NamedIndividual ;
+                            ov:includesStation ov:ST_Amsterdam_Central .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/ST_Amsterdam_Central
+ov:ST_Amsterdam_Central rdf:type owl:NamedIndividual ,
+                                 ov:Station ;
+                        ov:hasNeighbour ov:ST_Zaandam .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/ST_Nieuwmarkt
+ov:ST_Nieuwmarkt rdf:type owl:NamedIndividual ,
+                          ov:MetroStation ;
+                 ov:hasNeighbour ov:ST_Amsterdam_Central ;
+                 ov:inRoute ov:GVB_M54 .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/ST_Westwijk
+ov:ST_Westwijk rdf:type owl:NamedIndividual ,
+                        ov:MetroStation ;
+               ov:inRoute ov:GVB_M54 .
+
+
+###  http://www.example.org/le/ontologies/openbaarvervoer.owl/ST_Zaandam
+ov:ST_Zaandam rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,280 @@
+@prefix : <http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/> .
+@prefix tl: <http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/> .
+
+<http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/established_in
+tl:established_in rdf:type owl:ObjectProperty ;
+                  owl:propertyDisjointWith tl:located_in .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/has_football_player
+tl:has_football_player rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/is_forward_of
+tl:is_forward_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/is_goalkeeper_of
+tl:is_goalkeeper_of rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/located_in
+tl:located_in rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/managed_by
+tl:managed_by rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/plays_as_substitute_for
+tl:plays_as_substitute_for rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/plays_at_stadion
+tl:plays_at_stadion rdf:type owl:ObjectProperty ,
+                             owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/plays_first11_for
+tl:plays_first11_for rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/sponsored_by
+tl:sponsored_by rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/has_CityNumber
+tl:has_CityNumber rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/has_Length
+tl:has_Length rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/has_ShirtNumber
+tl:has_ShirtNumber rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/City
+tl:City rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Club
+tl:Club rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty tl:has_football_player ;
+                              owl:someValuesFrom tl:Football_Player
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty tl:sponsored_by ;
+                              owl:someValuesFrom tl:Sponsor
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty tl:established_in ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass tl:City
+                            ] .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Club_Manager
+tl:Club_Manager rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Club_of_Istanbul
+tl:Club_of_Istanbul rdf:type owl:Class ;
+                    rdfs:subClassOf tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Club_of_Sivas
+tl:Club_of_Sivas rdf:type owl:Class ;
+                 rdfs:subClassOf tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/First_Eleven_Player
+tl:First_Eleven_Player rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty tl:plays_first11_for ;
+                                             owl:someValuesFrom tl:Club
+                                           ] ;
+                       rdfs:subClassOf tl:Football_Player ;
+                       owl:disjointWith tl:Substitute_Player .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Football_Player
+tl:Football_Player rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty tl:plays_at_stadion ;
+                                         owl:someValuesFrom tl:Football_Stadium
+                                       ] .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Football_Stadium
+tl:Football_Stadium rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty tl:located_in ;
+                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass tl:City
+                                        ] .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Forward_Player
+tl:Forward_Player rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty tl:is_forward_of ;
+                                        owl:someValuesFrom tl:Club
+                                      ] ;
+                  rdfs:subClassOf tl:Football_Player .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Goalkeeper
+tl:Goalkeeper rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty tl:is_goalkeeper_of ;
+                                    owl:someValuesFrom tl:Club
+                                  ] ;
+              rdfs:subClassOf tl:Football_Player .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Sponsor
+tl:Sponsor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Substitute_Player
+tl:Substitute_Player rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty tl:plays_as_substitute_for ;
+                                           owl:someValuesFrom tl:Club
+                                         ] ;
+                     rdfs:subClassOf tl:Football_Player .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Alanyaspor
+tl:Alanyaspor rdf:type owl:NamedIndividual ,
+                       tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Antalyaspor
+tl:Antalyaspor rdf:type owl:NamedIndividual ,
+                        tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Aykut_Kocaman
+tl:Aykut_Kocaman rdf:type owl:NamedIndividual ,
+                          tl:Club_Manager .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Bafatimbi_Gomis
+tl:Bafatimbi_Gomis rdf:type owl:NamedIndividual ,
+                            tl:Football_Player ;
+                   tl:is_forward_of tl:Galatasaray ;
+                   tl:plays_first11_for tl:Galatasaray .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Basaksehir
+tl:Basaksehir rdf:type owl:NamedIndividual ,
+                       tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Besiktas
+tl:Besiktas rdf:type owl:NamedIndividual ,
+                     tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Bursaspor
+tl:Bursaspor rdf:type owl:NamedIndividual ,
+                      tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Fenerbahce
+tl:Fenerbahce rdf:type owl:NamedIndividual ,
+                       tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Fernando_Muslera
+tl:Fernando_Muslera rdf:type owl:NamedIndividual ,
+                             tl:Football_Player ;
+                    tl:is_goalkeeper_of tl:Galatasaray .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Galatasaray
+tl:Galatasaray rdf:type owl:NamedIndividual ,
+                        tl:Club ;
+               tl:managed_by tl:Igor_Tudor .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Genclerbirligi
+tl:Genclerbirligi rdf:type owl:NamedIndividual ,
+                           tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Igor_Tudor
+tl:Igor_Tudor rdf:type owl:NamedIndividual ,
+                       tl:Club_Manager .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Istanbul
+tl:Istanbul rdf:type owl:NamedIndividual ,
+                     tl:City .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Nef
+tl:Nef rdf:type owl:NamedIndividual ,
+                tl:Sponsor .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Nike
+tl:Nike rdf:type owl:NamedIndividual ,
+                 tl:Sponsor .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Ricardo_Quaresma
+tl:Ricardo_Quaresma rdf:type owl:NamedIndividual ,
+                             tl:Football_Player ;
+                    tl:plays_as_substitute_for tl:Besiktas .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Sivas
+tl:Sivas rdf:type owl:NamedIndividual ,
+                  tl:City .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Sivasspor
+tl:Sivasspor rdf:type owl:NamedIndividual ,
+                      tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Trabzonspor
+tl:Trabzonspor rdf:type owl:NamedIndividual ,
+                        tl:Club .
+
+
+###  http://www.semanticweb.org/abdussamed/ontologies/turkish_football_leauge/Turk_Telekom
+tl:Turk_Telekom rdf:type owl:NamedIndividual ,
+                         tl:Football_Stadium .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

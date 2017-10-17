@@ -1,0 +1,262 @@
+@prefix : <http://www.semanticweb.org/alex/ontologies/restaurant#> .
+@prefix st: <http://www.semanticweb.org/alex/ontologies/restaurant/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/alex/ontologies/restaurant> .
+
+<http://www.semanticweb.org/alex/ontologies/restaurant> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/has_color
+st:has_color rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/has_statement
+st:has_statement rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/is_being_cooked_for
+st:is_being_cooked_for rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/is_eating
+st:is_eating rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/is_serving_at
+st:is_serving_at rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/is_sitting_at
+st:is_sitting_at rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/pays
+st:pays rdf:type owl:ObjectProperty ,
+                 owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/share_fridge_with
+st:share_fridge_with rdf:type owl:ObjectProperty ,
+                              owl:SymmetricProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Client
+st:Client rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( st:Client
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty st:is_eating ;
+                                                       owl:someValuesFrom st:Food
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ owl:intersectionOf ( st:Client
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty st:is_sitting_at ;
+                                                       owl:allValuesFrom st:Table
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty st:pays ;
+                                owl:allValuesFrom st:Waiter
+                              ] ;
+          rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Color
+st:Color rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/ColorlessTable
+st:ColorlessTable rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty st:has_color ;
+                                        owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                        owl:onClass st:Color
+                                      ] ;
+                  rdfs:subClassOf st:Table .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Food
+st:Food rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty st:is_being_cooked_for ;
+                              owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                              owl:onClass st:Client
+                            ] .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/FreshFish
+st:FreshFish rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty st:share_fridge_with ;
+                                   owl:someValuesFrom st:NotFreshMeat
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty st:has_statement ;
+                                   owl:hasValue st:Fresh
+                                 ] ;
+             rdfs:subClassOf st:Food .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/NotFreshMeat
+st:NotFreshMeat rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty st:share_fridge_with ;
+                                      owl:someValuesFrom st:FreshFish
+                                    ] ;
+                rdfs:subClassOf st:Food .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Owner
+st:Owner rdf:type owl:Class ;
+         rdfs:subClassOf st:Person .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Person
+st:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/RedTable
+st:RedTable rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty st:has_color ;
+                                  owl:hasValue st:Red
+                                ] ;
+            rdfs:subClassOf st:Table .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/StateOfFood
+st:StateOfFood rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Table
+st:Table rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Waiter
+st:Waiter rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty st:is_serving_at ;
+                                owl:someValuesFrom st:Client
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty st:pays ;
+                                owl:allValuesFrom st:Owner
+                              ] ;
+          rdfs:subClassOf st:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Albert
+st:Albert rdf:type owl:NamedIndividual ,
+                   st:Waiter .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Alex
+st:Alex rdf:type owl:NamedIndividual ,
+                 st:Owner .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Blue
+st:Blue rdf:type owl:NamedIndividual ,
+                 st:Color .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Fish_and_chips
+st:Fish_and_chips rdf:type owl:NamedIndividual ,
+                           st:Food .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Fresh
+st:Fresh rdf:type owl:NamedIndividual ,
+                  st:StateOfFood .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/FreshSalmon
+st:FreshSalmon rdf:type owl:NamedIndividual ,
+                        st:FreshFish .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Frozen
+st:Frozen rdf:type owl:NamedIndividual ,
+                   st:StateOfFood .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/George
+st:George rdf:type owl:NamedIndividual ,
+                   st:Client .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Julia
+st:Julia rdf:type owl:NamedIndividual ,
+                  st:Client .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Lena
+st:Lena rdf:type owl:NamedIndividual ,
+                 st:Waiter .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Lucy
+st:Lucy rdf:type owl:NamedIndividual ,
+                 st:Client .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/NotFreshChicken
+st:NotFreshChicken rdf:type owl:NamedIndividual ,
+                            st:NotFreshMeat .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/NotFreshHamburger
+st:NotFreshHamburger rdf:type owl:NamedIndividual ,
+                              st:NotFreshMeat .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Peter
+st:Peter rdf:type owl:NamedIndividual ,
+                  st:Person .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Red
+st:Red rdf:type owl:NamedIndividual ,
+                st:Color .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Table_four
+st:Table_four rdf:type owl:NamedIndividual ,
+                       st:Table .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Table_one
+st:Table_one rdf:type owl:NamedIndividual ,
+                      st:Table .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Table_three
+st:Table_three rdf:type owl:NamedIndividual ,
+                        st:ColorlessTable .
+
+
+###  http://www.semanticweb.org/alex/ontologies/restaurant/Table_two
+st:Table_two rdf:type owl:NamedIndividual ,
+                      st:RedTable .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

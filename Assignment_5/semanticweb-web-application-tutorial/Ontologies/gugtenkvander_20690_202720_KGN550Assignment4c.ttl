@@ -1,0 +1,269 @@
+@prefix : <http://www.example.nl/kevin/voetbal#> .
+@prefix vb: <http://www.example.nl/kevin/voetbal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.nl/kevin/voetbal> .
+
+<http://www.example.nl/kevin/voetbal> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.nl/kevin/voetbal/IsTeammateOf
+vb:IsTeammateOf rdf:type owl:ObjectProperty ;
+                owl:propertyChainAxiom ( vb:IsTeammateOf
+                                         vb:IsTeammateOf
+                                       ) .
+
+
+###  http://www.example.nl/kevin/voetbal/ManagerOf
+vb:ManagerOf rdf:type owl:ObjectProperty ;
+             owl:inverseOf vb:hasManager .
+
+
+###  http://www.example.nl/kevin/voetbal/ManagesLeague
+vb:ManagesLeague rdf:type owl:ObjectProperty ;
+                 owl:propertyChainAxiom ( vb:ManagerOf
+                                          vb:PlaysInCompetition
+                                        ) .
+
+
+###  http://www.example.nl/kevin/voetbal/PlaysIn
+vb:PlaysIn rdf:type owl:ObjectProperty ;
+           owl:propertyChainAxiom ( vb:hasClub
+                                    vb:PlaysInCompetition
+                                  ) .
+
+
+###  http://www.example.nl/kevin/voetbal/PlaysInCompetition
+vb:PlaysInCompetition rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.nl/kevin/voetbal/PlaysInStadium
+vb:PlaysInStadium rdf:type owl:ObjectProperty ;
+                  owl:propertyChainAxiom ( vb:hasClub
+                                           vb:hasStadium
+                                         ) .
+
+
+###  http://www.example.nl/kevin/voetbal/Practices
+vb:Practices rdf:type owl:ObjectProperty ;
+             owl:inverseOf vb:PractisedBy .
+
+
+###  http://www.example.nl/kevin/voetbal/PractisedBy
+vb:PractisedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.nl/kevin/voetbal/getsManagedBy
+vb:getsManagedBy rdf:type owl:ObjectProperty ;
+                 owl:propertyChainAxiom ( vb:hasClub
+                                          vb:hasManager
+                                        ) .
+
+
+###  http://www.example.nl/kevin/voetbal/hasClub
+vb:hasClub rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.nl/kevin/voetbal/hasManager
+vb:hasManager rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.nl/kevin/voetbal/hasStadium
+vb:hasStadium rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.nl/kevin/voetbal/Athlete
+vb:Athlete rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( vb:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty vb:Practices ;
+                                                        owl:someValuesFrom vb:Sport
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf vb:Person .
+
+
+###  http://www.example.nl/kevin/voetbal/Competition
+vb:Competition rdf:type owl:Class .
+
+
+###  http://www.example.nl/kevin/voetbal/FootballClub
+vb:FootballClub rdf:type owl:Class .
+
+
+###  http://www.example.nl/kevin/voetbal/FootballPlayers
+vb:FootballPlayers rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty vb:hasClub ;
+                                         owl:someValuesFrom owl:Thing
+                                       ] .
+
+
+###  http://www.example.nl/kevin/voetbal/HockeyPlayers
+vb:HockeyPlayers rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty vb:Practices ;
+                                       owl:hasValue vb:Hockey
+                                     ] .
+
+
+###  http://www.example.nl/kevin/voetbal/Manager
+vb:Manager rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty vb:ManagerOf ;
+                                 owl:someValuesFrom vb:FootballClub
+                               ] ;
+           rdfs:subClassOf vb:Person .
+
+
+###  http://www.example.nl/kevin/voetbal/Person
+vb:Person rdf:type owl:Class .
+
+
+###  http://www.example.nl/kevin/voetbal/Sport
+vb:Sport rdf:type owl:Class .
+
+
+###  http://www.example.nl/kevin/voetbal/Stadium
+vb:Stadium rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.nl/kevin/voetbal/Abdelhak_Nouri
+vb:Abdelhak_Nouri rdf:type owl:NamedIndividual ,
+                           vb:Person ;
+                  vb:IsTeammateOf vb:Mathijs_de_Ligt ;
+                  vb:Practices vb:Football ;
+                  vb:hasClub vb:Ajax .
+
+
+###  http://www.example.nl/kevin/voetbal/Ajax
+vb:Ajax rdf:type owl:NamedIndividual ,
+                 vb:FootballClub ;
+        vb:PlaysInCompetition vb:Eredivisie ;
+        vb:hasStadium vb:Arena .
+
+
+###  http://www.example.nl/kevin/voetbal/Anfield
+vb:Anfield rdf:type owl:NamedIndividual ,
+                    vb:Stadium .
+
+
+###  http://www.example.nl/kevin/voetbal/Arena
+vb:Arena rdf:type owl:NamedIndividual ,
+                  vb:Stadium .
+
+
+###  http://www.example.nl/kevin/voetbal/BBVA
+vb:BBVA rdf:type owl:NamedIndividual ,
+                 vb:Competition .
+
+
+###  http://www.example.nl/kevin/voetbal/BPL
+vb:BPL rdf:type owl:NamedIndividual ,
+                vb:Competition .
+
+
+###  http://www.example.nl/kevin/voetbal/Barcelona
+vb:Barcelona rdf:type owl:NamedIndividual ,
+                      vb:FootballClub ;
+             vb:PlaysInCompetition vb:BBVA ;
+             vb:hasStadium vb:Camp_Nou .
+
+
+###  http://www.example.nl/kevin/voetbal/Camp_Nou
+vb:Camp_Nou rdf:type owl:NamedIndividual ,
+                     vb:Stadium .
+
+
+###  http://www.example.nl/kevin/voetbal/Daniel_Sturridge
+vb:Daniel_Sturridge rdf:type owl:NamedIndividual ,
+                             vb:Person ;
+                    vb:Practices vb:Football ;
+                    vb:hasClub vb:Liverpool .
+
+
+###  http://www.example.nl/kevin/voetbal/Eredivisie
+vb:Eredivisie rdf:type owl:NamedIndividual ,
+                       vb:Competition .
+
+
+###  http://www.example.nl/kevin/voetbal/Ernesto_Valverde
+vb:Ernesto_Valverde rdf:type owl:NamedIndividual ,
+                             vb:Person ;
+                    vb:ManagerOf vb:Barcelona .
+
+
+###  http://www.example.nl/kevin/voetbal/Football
+vb:Football rdf:type owl:NamedIndividual ,
+                     vb:Sport .
+
+
+###  http://www.example.nl/kevin/voetbal/Hockey
+vb:Hockey rdf:type owl:NamedIndividual ,
+                   vb:Sport .
+
+
+###  http://www.example.nl/kevin/voetbal/Jurgen_Klopp
+vb:Jurgen_Klopp rdf:type owl:NamedIndividual ,
+                         vb:Person ;
+                vb:ManagerOf vb:Liverpool .
+
+
+###  http://www.example.nl/kevin/voetbal/Kasper_Dolberg
+vb:Kasper_Dolberg rdf:type owl:NamedIndividual ,
+                           vb:Person ;
+                  vb:Practices vb:Football ;
+                  vb:hasClub vb:Ajax .
+
+
+###  http://www.example.nl/kevin/voetbal/Lionel_Messi
+vb:Lionel_Messi rdf:type owl:NamedIndividual ,
+                         vb:Person ;
+                vb:Practices vb:Football ;
+                vb:hasClub vb:Barcelona .
+
+
+###  http://www.example.nl/kevin/voetbal/Liverpool
+vb:Liverpool rdf:type owl:NamedIndividual ,
+                      vb:FootballClub ;
+             vb:PlaysInCompetition vb:BPL ;
+             vb:hasStadium vb:Anfield .
+
+
+###  http://www.example.nl/kevin/voetbal/Marcel_Keizer
+vb:Marcel_Keizer rdf:type owl:NamedIndividual ,
+                          vb:Person ;
+                 vb:ManagerOf vb:Ajax .
+
+
+###  http://www.example.nl/kevin/voetbal/Mathijs_de_Ligt
+vb:Mathijs_de_Ligt rdf:type owl:NamedIndividual ,
+                            vb:Person ;
+                   vb:IsTeammateOf vb:Kasper_Dolberg ;
+                   vb:Practices vb:Football ;
+                   vb:hasClub vb:Ajax .
+
+
+###  http://www.example.nl/kevin/voetbal/Piet_Hein
+vb:Piet_Hein rdf:type owl:NamedIndividual ,
+                      vb:Person ;
+             vb:Practices vb:Hockey .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

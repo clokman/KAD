@@ -1,0 +1,197 @@
+@prefix : <http://www.semanticweb.org/ninosauleo/foodchain#> .
+@prefix fc: <http://www.semanticweb.org/ninosauleo/foodchain/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ninosauleo/foodchain> .
+
+<http://www.semanticweb.org/ninosauleo/foodchain> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/consumesA
+fc:consumesA rdf:type owl:ObjectProperty ;
+             owl:inverseOf fc:isConsumedBy ;
+             rdf:type owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/decomposeA
+fc:decomposeA rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/isConsumedBy
+fc:isConsumedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/isPhotosynthetic
+fc:isPhotosynthetic rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/Animal
+fc:Animal rdf:type owl:Class ;
+          owl:disjointWith fc:Bacteria ,
+                           fc:Fungui ,
+                           fc:Plants .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/Bacteria
+fc:Bacteria rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty fc:decomposeA ;
+                                  owl:someValuesFrom fc:Animal
+                                ] ;
+            owl:disjointWith fc:Plants .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/Fungui
+fc:Fungui rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty fc:decomposeA ;
+                                owl:someValuesFrom fc:Plants
+                              ] ;
+          rdfs:subClassOf fc:decomposers ;
+          owl:disjointWith fc:Plants .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/Plants
+fc:Plants rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty fc:isPhotosynthetic ;
+                                owl:someValuesFrom fc:Sunlight
+                              ] .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/PrimaryConsumers
+fc:PrimaryConsumers rdf:type owl:Class ;
+                    owl:equivalentClass fc:herbivores ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty fc:consumesA ;
+                                          owl:someValuesFrom fc:Plants
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty fc:isConsumedBy ;
+                                          owl:someValuesFrom fc:SecondaryConsumers
+                                        ] ;
+                    rdfs:subClassOf fc:Animal .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/SecondaryConsumers
+fc:SecondaryConsumers rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty fc:consumesA ;
+                                            owl:someValuesFrom fc:PrimaryConsumers
+                                          ] ;
+                      rdfs:subClassOf fc:Animal .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/Sunlight
+fc:Sunlight rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/TertiaryConsumers
+fc:TertiaryConsumers rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty fc:consumesA ;
+                                           owl:someValuesFrom fc:SecondaryConsumers
+                                         ] ;
+                     rdfs:subClassOf fc:Animal .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/carnivores
+fc:carnivores rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty fc:consumesA ;
+                                    owl:someValuesFrom fc:Animal
+                                  ] .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/decomposers
+fc:decomposers rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:unionOf ( fc:Plants
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty fc:decomposeA ;
+                                                     owl:someValuesFrom fc:Animal
+                                                   ]
+                                                 )
+                                   ] .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/herbivores
+fc:herbivores rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty fc:consumesA ;
+                                    owl:allValuesFrom fc:Plants
+                                  ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/BacillusSubtilis
+fc:BacillusSubtilis rdf:type owl:NamedIndividual ;
+                    fc:decomposeA fc:rabbit .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/BoldEagle
+fc:BoldEagle rdf:type owl:NamedIndividual ;
+             fc:consumesA fc:wolf .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/Energy
+fc:Energy rdf:type owl:NamedIndividual ,
+                   fc:Sunlight .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/PseudomonasFluorescens
+fc:PseudomonasFluorescens rdf:type owl:NamedIndividual ,
+                                   fc:Bacteria .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/cow
+fc:cow rdf:type owl:NamedIndividual ;
+       fc:consumesA fc:grass .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/grass
+fc:grass rdf:type owl:NamedIndividual ,
+                  fc:Plants ;
+         fc:isPhotosynthetic fc:Energy .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/lion
+fc:lion rdf:type owl:NamedIndividual ;
+        fc:consumesA fc:wolf .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/mint
+fc:mint rdf:type owl:NamedIndividual ;
+        fc:isPhotosynthetic fc:Energy .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/rabbit
+fc:rabbit rdf:type owl:NamedIndividual ;
+          fc:consumesA fc:grass .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/saprotrophic
+fc:saprotrophic rdf:type owl:NamedIndividual ;
+                fc:decomposeA fc:grass .
+
+
+###  http://www.semanticweb.org/ninosauleo/foodchain/wolf
+fc:wolf rdf:type owl:NamedIndividual ;
+        fc:consumesA fc:rabbit .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

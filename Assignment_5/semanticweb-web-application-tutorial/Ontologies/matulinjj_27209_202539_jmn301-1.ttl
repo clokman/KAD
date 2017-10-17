@@ -1,0 +1,273 @@
+@prefix : <http://www.semanticweb.org/joshua/phylogeny#> .
+@prefix cel: <http://www.example.org/joshua/celestialData/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/joshua/celestialData> .
+
+<http://www.example.org/joshua/celestialData> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/joshua/celestialData/constructed
+cel:constructed rdf:type owl:ObjectProperty ;
+                owl:inverseOf cel:constructedBy .
+
+
+###  http://www.example.org/joshua/celestialData/constructedBy
+cel:constructedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/joshua/celestialData/containsStar
+cel:containsStar rdf:type owl:ObjectProperty ;
+                 owl:inverseOf cel:partOfConstellation ;
+                 rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/joshua/celestialData/enactsTidalForcesOn
+cel:enactsTidalForcesOn rdf:type owl:ObjectProperty ;
+                        owl:inverseOf cel:tidalForcesEnactedBy .
+
+
+###  http://www.example.org/joshua/celestialData/nearbyStar
+cel:nearbyStar rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain cel:Star ;
+               rdfs:range cel:Star .
+
+
+###  http://www.example.org/joshua/celestialData/orbitedBy
+cel:orbitedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf cel:orbits .
+
+
+###  http://www.example.org/joshua/celestialData/orbits
+cel:orbits rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/joshua/celestialData/partOfConstellation
+cel:partOfConstellation rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/joshua/celestialData/partOfSystem
+cel:partOfSystem rdf:type owl:ObjectProperty ,
+                          owl:TransitiveProperty .
+
+
+###  http://www.example.org/joshua/celestialData/tidalForcesEnactedBy
+cel:tidalForcesEnactedBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/joshua/celestialData/Celestial_Body
+cel:Celestial_Body rdf:type owl:Class .
+
+
+###  http://www.example.org/joshua/celestialData/Constellation
+cel:Constellation rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty cel:containsStar ;
+                                        owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                        owl:onClass cel:Star
+                                      ] .
+
+
+###  http://www.example.org/joshua/celestialData/Manmade_Satellite
+cel:Manmade_Satellite rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty cel:constructedBy ;
+                                                                   owl:someValuesFrom owl:Thing
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty cel:orbits ;
+                                                                   owl:someValuesFrom owl:Thing
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty cel:orbits ;
+                                            owl:hasValue cel:Earth_Moon
+                                          ] ;
+                      rdfs:subClassOf cel:Celestial_Body .
+
+
+###  http://www.example.org/joshua/celestialData/Moon
+cel:Moon rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty cel:enactsTidalForcesOn ;
+                               owl:someValuesFrom cel:Planet
+                             ] ;
+         rdfs:subClassOf cel:Celestial_Body ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty cel:orbits ;
+                           owl:allValuesFrom cel:Planet
+                         ] .
+
+
+###  http://www.example.org/joshua/celestialData/Organisation
+cel:Organisation rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty cel:constructed ;
+                                       owl:someValuesFrom cel:Manmade_Satellite
+                                     ] .
+
+
+###  http://www.example.org/joshua/celestialData/Planet
+cel:Planet rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty cel:orbits ;
+                                 owl:someValuesFrom cel:Star
+                               ] ;
+           rdfs:subClassOf cel:Celestial_Body .
+
+
+###  http://www.example.org/joshua/celestialData/Star
+cel:Star rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty cel:partOfConstellation ;
+                               owl:someValuesFrom owl:Thing
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cel:orbitedBy ;
+                               owl:allValuesFrom cel:Planet
+                             ] ;
+         rdfs:subClassOf cel:Celestial_Body .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/joshua/celestialData/Beta_Canis_Majoris
+cel:Beta_Canis_Majoris rdf:type owl:NamedIndividual ;
+                       cel:partOfConstellation cel:Canis_Major .
+
+
+###  http://www.example.org/joshua/celestialData/Canis_Major
+cel:Canis_Major rdf:type owl:NamedIndividual ;
+                cel:containsStar cel:Beta_Canis_Majoris ,
+                                 cel:Epsilon_Canis_Majoris ,
+                                 cel:Sirius .
+
+
+###  http://www.example.org/joshua/celestialData/Centaurus
+cel:Centaurus rdf:type owl:NamedIndividual ;
+              cel:containsStar cel:Gamma_Centauri ,
+                               cel:Theta_Centauri .
+
+
+###  http://www.example.org/joshua/celestialData/Earth
+cel:Earth rdf:type owl:NamedIndividual ;
+          cel:orbitedBy cel:Earth_Moon ;
+          cel:orbits cel:Sun ;
+          cel:tidalForcesEnactedBy cel:Earth_Moon .
+
+
+###  http://www.example.org/joshua/celestialData/Earth_Moon
+cel:Earth_Moon rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/joshua/celestialData/Epsilon_Canis_Majoris
+cel:Epsilon_Canis_Majoris rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/joshua/celestialData/Gamma_Centauri
+cel:Gamma_Centauri rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/joshua/celestialData/Hubble_Telescope
+cel:Hubble_Telescope rdf:type owl:NamedIndividual ;
+                     cel:constructedBy cel:NASA ;
+                     cel:orbits cel:Earth .
+
+
+###  http://www.example.org/joshua/celestialData/Io
+cel:Io rdf:type owl:NamedIndividual ;
+       cel:orbits cel:Jupiter .
+
+
+###  http://www.example.org/joshua/celestialData/Jupiter
+cel:Jupiter rdf:type owl:NamedIndividual ;
+            cel:tidalForcesEnactedBy cel:Io .
+
+
+###  http://www.example.org/joshua/celestialData/Lunar_Reconnaissance_Orbiter
+cel:Lunar_Reconnaissance_Orbiter rdf:type owl:NamedIndividual ;
+                                 cel:orbits cel:Earth_Moon .
+
+
+###  http://www.example.org/joshua/celestialData/Mercury
+cel:Mercury rdf:type owl:NamedIndividual ;
+            cel:orbits cel:Sun .
+
+
+###  http://www.example.org/joshua/celestialData/NASA
+cel:NASA rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/joshua/celestialData/Proxima_Centauri
+cel:Proxima_Centauri rdf:type owl:NamedIndividual ;
+                     cel:nearbyStar cel:Theta_Centauri ;
+                     cel:partOfConstellation cel:Centaurus .
+
+
+###  http://www.example.org/joshua/celestialData/Sirius
+cel:Sirius rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/joshua/celestialData/Sirius_A
+cel:Sirius_A rdf:type owl:NamedIndividual ;
+             cel:orbits cel:Sirius .
+
+
+###  http://www.example.org/joshua/celestialData/Sun
+cel:Sun rdf:type owl:NamedIndividual ;
+        cel:nearbyStar cel:Proxima_Centauri ;
+        cel:orbitedBy cel:Jupiter .
+
+
+###  http://www.example.org/joshua/celestialData/Theta_Centauri
+cel:Theta_Centauri rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( cel:Beta_Canis_Majoris
+                        cel:Canis_Major
+                        cel:Centaurus
+                        cel:Earth
+                        cel:Earth_Moon
+                        cel:Epsilon_Canis_Majoris
+                        cel:Gamma_Centauri
+                        cel:Hubble_Telescope
+                        cel:Io
+                        cel:Jupiter
+                        cel:Lunar_Reconnaissance_Orbiter
+                        cel:Mercury
+                        cel:NASA
+                        cel:Proxima_Centauri
+                        cel:Sirius
+                        cel:Sirius_A
+                        cel:Sun
+                        cel:Theta_Centauri
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

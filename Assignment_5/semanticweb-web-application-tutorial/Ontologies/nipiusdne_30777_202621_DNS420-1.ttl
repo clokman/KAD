@@ -1,0 +1,354 @@
+@prefix : <http://www.semanticweb.org/doortje/ontologies/instruments#> .
+@prefix ins: <http://www.semanticweb.org/doortje/ontologies/instruments/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/doortje/ontologies/instruments> .
+
+<http://www.semanticweb.org/doortje/ontologies/instruments> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/160+
+ins:160+ rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf owl:backwardCompatibleWith .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/AlwaysHas
+ins:AlwaysHas rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/HasMaximum
+ins:HasMaximum rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Instrument
+ins:Instrument rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/ListenTrough
+ins:ListenTrough rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/PartOf
+ins:PartOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/PlayedBy
+ins:PlayedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Plays
+ins:Plays rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/PlaysIn
+ins:PlaysIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Teach
+ins:Teach rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/hasStrings
+ins:hasStrings rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/onehundredsixtyplus
+ins:onehundredsixtyplus rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/BPM
+ins:BPM rdf:type owl:Class ;
+        rdfs:subClassOf ins:Genre ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty ins:onehundredsixtyplus ;
+                          owl:allValuesFrom ins:Hardcore
+                        ] .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Bowed
+ins:Bowed rdf:type owl:Class ;
+          rdfs:subClassOf ins:Instruments .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/ClassicMusicians
+ins:ClassicMusicians rdf:type owl:Class ;
+                     rdfs:subClassOf ins:Musicians .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/DJs
+ins:DJs rdf:type owl:Class ;
+        rdfs:subClassOf ins:Musicians .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Drums
+ins:Drums rdf:type owl:Class ;
+          rdfs:subClassOf ins:Struck .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Electric_Music
+ins:Electric_Music rdf:type owl:Class ;
+                   rdfs:subClassOf ins:Genre .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Genre
+ins:Genre rdf:type owl:Class ;
+          rdfs:subClassOf ins:Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Guitar
+ins:Guitar rdf:type owl:Class ;
+           rdfs:subClassOf ins:String ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:AlwaysHas ;
+                             owl:someValuesFrom ins:String
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:PartOf ;
+                             owl:someValuesFrom ins:String
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:PlayedBy ;
+                             owl:allValuesFrom ins:Human
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:AlwaysHas ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass ins:String
+                           ] .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Hardcore
+ins:Hardcore rdf:type owl:Class ;
+             rdfs:subClassOf ins:Electric_Music ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ins:PlayedBy ;
+                               owl:allValuesFrom ins:Human
+                             ] .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/House
+ins:House rdf:type owl:Class ;
+          rdfs:subClassOf ins:Electric_Music ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty ins:PlayedBy ;
+                            owl:allValuesFrom ins:Human
+                          ] .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Human
+ins:Human rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty ins:Plays ;
+                                owl:someValuesFrom ins:Instruments
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ins:PlaysIn ;
+                                owl:someValuesFrom ins:Locations
+                              ] ;
+          rdfs:subClassOf ins:Human ,
+                          ins:Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Instruments
+ins:Instruments rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty ins:ListenTrough ;
+                                      owl:someValuesFrom ins:ListeningOptions
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ins:hasStrings ;
+                                      owl:someValuesFrom ins:Guitar
+                                    ] ;
+                rdfs:subClassOf ins:Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/ListeningOptions
+ins:ListeningOptions rdf:type owl:Class ;
+                     rdfs:subClassOf ins:Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Locations
+ins:Locations rdf:type owl:Class ;
+              rdfs:subClassOf ins:Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Music
+ins:Music rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Musicians
+ins:Musicians rdf:type owl:Class ;
+              rdfs:subClassOf ins:Human ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ins:Teach ;
+                                owl:allValuesFrom ins:Human
+                              ] .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/String
+ins:String rdf:type owl:Class ;
+           rdfs:subClassOf ins:Instruments ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:PartOf ;
+                             owl:someValuesFrom ins:Instruments
+                           ] .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Struck
+ins:Struck rdf:type owl:Class ;
+           rdfs:subClassOf ins:Instruments .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Techno
+ins:Techno rdf:type owl:Class ;
+           rdfs:subClassOf ins:Electric_Music ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:PlayedBy ;
+                             owl:allValuesFrom ins:Human
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ins:HasMaximum ;
+                             owl:maxQualifiedCardinality "150"^^xsd:nonNegativeInteger ;
+                             owl:onClass ins:BPM
+                           ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/doortje/ontologies/instrumentsAcoustic
+<http://www.semanticweb.org/doortje/ontologies/instrumentsAcoustic> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instrumentsBanjo
+<http://www.semanticweb.org/doortje/ontologies/instrumentsBanjo> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instrumentsCello
+<http://www.semanticweb.org/doortje/ontologies/instrumentsCello> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instrumentsElectric
+<http://www.semanticweb.org/doortje/ontologies/instrumentsElectric> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instrumentsPiano
+<http://www.semanticweb.org/doortje/ontologies/instrumentsPiano> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Acoustic
+ins:Acoustic rdf:type owl:NamedIndividual ,
+                      ins:Guitar .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Arena
+ins:Arena rdf:type owl:NamedIndividual ,
+                   ins:Locations .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Banjo
+ins:Banjo rdf:type owl:NamedIndividual ,
+                   ins:Guitar .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Brendel
+ins:Brendel rdf:type owl:NamedIndividual ,
+                     ins:Human .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/CD
+ins:CD rdf:type owl:NamedIndividual ,
+                ins:ListeningOptions .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Classic
+ins:Classic rdf:type owl:NamedIndividual ,
+                     ins:Genre .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Club
+ins:Club rdf:type owl:NamedIndividual ,
+                  ins:Locations .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Concert_Hall
+ins:Concert_Hall rdf:type owl:NamedIndividual ,
+                          ins:Locations .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/DJ_Leon
+ins:DJ_Leon rdf:type owl:NamedIndividual ,
+                     ins:Human ;
+            ins:PlaysIn ins:Club .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Electric
+ins:Electric rdf:type owl:NamedIndividual ,
+                      ins:Guitar ;
+             ins:ListenTrough ins:CD .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/House
+ins:House rdf:type owl:NamedIndividual ,
+                   ins:Electric_Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Piano
+ins:Piano rdf:type owl:NamedIndividual ,
+                   ins:Struck .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Pop
+ins:Pop rdf:type owl:NamedIndividual ,
+                 ins:Genre .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Sokolov
+ins:Sokolov rdf:type owl:NamedIndividual ,
+                     ins:Human .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Spotify
+ins:Spotify rdf:type owl:NamedIndividual ,
+                     ins:ListeningOptions .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Techno
+ins:Techno rdf:type owl:NamedIndividual ,
+                    ins:Electric_Music .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Vinyl
+ins:Vinyl rdf:type owl:NamedIndividual ,
+                   ins:ListeningOptions .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/Violin
+ins:Violin rdf:type owl:NamedIndividual ,
+                    ins:Bowed .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/jfbdjf
+ins:jfbdjf rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/doortje/ontologies/instruments/160+
+ins:160+ rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

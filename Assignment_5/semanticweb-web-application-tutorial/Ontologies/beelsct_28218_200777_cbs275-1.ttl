@@ -1,0 +1,226 @@
+@prefix : <http://www.semanticweb.org/christiaanbeels/dasauto/> .
+@prefix da: <http://www.semanticweb.org/christiaanbeels/dasauto/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/christiaanbeels/dasauto/> .
+
+<http://www.semanticweb.org/christiaanbeels/dasauto/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/hasCategory
+da:hasCategory rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/hasModel
+da:hasModel rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/hasPrice
+da:hasPrice rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/hasPropulsion
+da:hasPropulsion rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/hasType
+da:hasType rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/higherThan
+da:higherThan rdf:type owl:ObjectProperty ,
+                       owl:InverseFunctionalProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/isCategory
+da:isCategory rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/isModelOf
+da:isModelOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/isPrice
+da:isPrice rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/isPropulsion
+da:isPropulsion rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/isType
+da:isType rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Brands
+da:Brands rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty da:hasModel ;
+                                owl:someValuesFrom da:Models
+                              ] .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Categories
+da:Categories rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty da:isCategory ;
+                                    owl:hasValue da:car_classes
+                                  ] .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Models
+da:Models rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty da:isModelOf ;
+                                owl:hasValue da:car_models
+                              ] .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/PriceSegments
+da:PriceSegments rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty da:isPrice ;
+                                       owl:hasValue da:price_segments
+                                     ] .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Propulsions
+da:Propulsions rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty da:isPropulsion ;
+                                     owl:hasValue da:car_propulsion
+                                   ] .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Types
+da:Types rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty da:isType ;
+                               owl:hasValue da:car_types
+                             ] ;
+         rdfs:subClassOf da:Models .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/A1
+da:A1 rdf:type owl:NamedIndividual ;
+      da:hasCategory da:Coupe ;
+      da:hasPrice da:LowSegment ;
+      da:isModelOf da:car_models .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/A4
+da:A4 rdf:type owl:NamedIndividual ;
+      da:hasCategory da:Coupe ;
+      da:hasPrice da:LowSegment ;
+      da:isModelOf da:car_models .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/A8
+da:A8 rdf:type owl:NamedIndividual ;
+      da:hasCategory da:Coupe ;
+      da:hasPrice da:HighSegment ;
+      da:isModelOf da:car_models .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Audi
+da:Audi rdf:type owl:NamedIndividual ;
+        da:hasModel da:A1 ,
+                    da:A4 ,
+                    da:A8 ,
+                    da:Q7 .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/BMW
+da:BMW rdf:type owl:NamedIndividual ;
+       da:hasModel da:X5 .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Coupe
+da:Coupe rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/HighSegment
+da:HighSegment rdf:type owl:NamedIndividual ;
+               da:higherThan da:LowSegment ;
+               da:isPrice da:price_segments .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/LowSegment
+da:LowSegment rdf:type owl:NamedIndividual ;
+              da:isPrice da:price_segments .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Q7
+da:Q7 rdf:type owl:NamedIndividual ;
+      da:hasCategory da:SUV ;
+      da:hasPrice da:HighSegment ;
+      da:hasPropulsion da:AllWheelDrive ;
+      da:hasType da:Q7RS ;
+      da:isModelOf da:car_models .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/Q7RS
+da:Q7RS rdf:type owl:NamedIndividual ;
+        da:isType da:car_types .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/SUV
+da:SUV rdf:type owl:NamedIndividual ;
+       da:isCategory da:car_classes .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/X5
+da:X5 rdf:type owl:NamedIndividual ;
+      da:hasCategory da:SUV ;
+      da:hasPrice da:HighSegment ;
+      da:hasPropulsion da:AllWheelDrive ;
+      da:hasType da:X5M ;
+      da:isModelOf da:car_models .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/X5M
+da:X5M rdf:type owl:NamedIndividual ;
+       da:hasType da:X5 ;
+       da:isType da:car_types .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/car_classes
+da:car_classes rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/car_models
+da:car_models rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/car_propulsion
+da:car_propulsion rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/car_types
+da:car_types rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/price_segments
+da:price_segments rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/christiaanbeels/dasauto/44AllWheelDrive
+da:AllWheelDrive rdf:type owl:NamedIndividual ;
+                 da:isPropulsion da:car_propulsion .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

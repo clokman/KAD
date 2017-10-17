@@ -1,0 +1,221 @@
+@prefix : <http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry#> .
+@prefix gi: <http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry> .
+
+<http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/hasEmployed
+gi:hasEmployed rdf:type owl:ObjectProperty ;
+               owl:inverseOf gi:worksFor .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/hasGenre
+gi:hasGenre rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/hasWon
+gi:hasWon rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/isMadeBy
+gi:isMadeBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/isPlayedBy
+gi:isPlayedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf gi:plays .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/plays
+gi:plays rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/voicesCharacterIn
+gi:voicesCharacterIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/worksFor
+gi:worksFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/worksOn
+gi:worksOn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Award
+gi:Award rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Award_Winning_Game
+gi:Award_Winning_Game rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty gi:hasWon ;
+                                            owl:someValuesFrom gi:Award
+                                          ] ;
+                      rdfs:subClassOf gi:Game .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Company
+gi:Company rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty gi:hasEmployed ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass gi:Person
+                               ] .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Game
+gi:Game rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty gi:hasGenre ;
+                                                     owl:someValuesFrom gi:Genre
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty gi:isMadeBy ;
+                                                     owl:someValuesFrom gi:Company
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty gi:isPlayedBy ;
+                                                     owl:someValuesFrom gi:Player
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Game_of_the_Year
+gi:Game_of_the_Year rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty gi:hasWon ;
+                                          owl:hasValue gi:Game_of_the_Year_Award
+                                        ] ;
+                    rdfs:subClassOf gi:Award_Winning_Game .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Genre
+gi:Genre rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Golden_Joystick_Award
+gi:Golden_Joystick_Award rdf:type owl:Class ;
+                         rdfs:subClassOf gi:Award .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Person
+gi:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Player
+gi:Player rdf:type owl:Class ;
+          rdfs:subClassOf gi:Person .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Programmer
+gi:Programmer rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty gi:worksFor ;
+                                                           owl:someValuesFrom gi:Company
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty gi:worksOn ;
+                                                           owl:someValuesFrom gi:Game
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf gi:Person .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Strategy
+gi:Strategy rdf:type owl:Class ;
+            rdfs:subClassOf gi:Genre .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Voice_Actor
+gi:Voice_Actor rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                            owl:onProperty gi:voicesCharacterIn ;
+                                                            owl:someValuesFrom gi:Game
+                                                          ]
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty gi:worksFor ;
+                                                            owl:someValuesFrom gi:Company
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ;
+               rdfs:subClassOf gi:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Barry_Hendriks
+gi:Barry_Hendriks rdf:type owl:NamedIndividual ,
+                           gi:Player ;
+                  gi:plays gi:League_of_Legends ,
+                           gi:Overwatch .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Best_Free-to-Play_Game
+gi:Best_Free-to-Play_Game rdf:type owl:NamedIndividual ,
+                                   gi:Golden_Joystick_Award .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Game_of_the_Year_Award
+gi:Game_of_the_Year_Award rdf:type owl:NamedIndividual ,
+                                   gi:Golden_Joystick_Award .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/League_of_Legends
+gi:League_of_Legends rdf:type owl:NamedIndividual ;
+                     gi:hasGenre gi:Multiplayer_Online_Battle_Arena ;
+                     gi:hasWon gi:Best_Free-to-Play_Game ;
+                     gi:isMadeBy gi:Riot_Games .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Multiplayer_Online_Battle_Arena
+gi:Multiplayer_Online_Battle_Arena rdf:type owl:NamedIndividual ,
+                                            gi:Strategy .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Overwatch
+gi:Overwatch rdf:type owl:NamedIndividual ,
+                      gi:Award_Winning_Game ;
+             gi:hasWon gi:Game_of_the_Year_Award .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Riot_Games
+gi:Riot_Games rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Sarah_Anne_Williams
+gi:Sarah_Anne_Williams rdf:type owl:NamedIndividual ,
+                                gi:Person ;
+                       gi:voicesCharacterIn gi:League_of_Legends ;
+                       gi:worksFor gi:Riot_Games .
+
+
+###  http://www.semanticweb.org/barry/ontologies/2017/9/Game_Industry/Steve_Feak
+gi:Steve_Feak rdf:type owl:NamedIndividual ,
+                       gi:Person ;
+              gi:worksFor gi:Riot_Games ;
+              gi:worksOn gi:League_of_Legends .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

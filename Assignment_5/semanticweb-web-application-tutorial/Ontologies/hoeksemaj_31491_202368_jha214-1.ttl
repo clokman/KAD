@@ -1,0 +1,171 @@
+@prefix : <http://www.semanticweb.org/jannehoeksema/football#> .
+@prefix fb: <http://www.semanticweb.org/jannehoeksema/football/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/jannehoeksema/football> .
+
+<http://www.semanticweb.org/jannehoeksema/football> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rdf.freebase.com/ns/HasCharacteristic
+<http://rdf.freebase.com/ns/HasCharacteristic> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/CoachesIn
+fb:CoachesIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/PlaysIn
+fb:PlaysIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/PlaysWith
+fb:PlaysWith rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/RefereesIn
+fb:RefereesIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/SupportsThe
+fb:SupportsThe rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/jannehoeksema/football/Ball
+fb:Ball rdf:type owl:Class ;
+        rdfs:subClassOf fb:Objects ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <http://rdf.freebase.com/ns/HasCharacteristic> ;
+                          owl:hasValue <http://rdf.freebase.com/ns/Round>
+                        ] .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Coach
+fb:Coach rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty fb:CoachesIn ;
+                               owl:someValuesFrom fb:Game
+                             ] ;
+         rdfs:subClassOf fb:Person .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Game
+fb:Game rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Objects
+fb:Objects rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Person
+fb:Person rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty fb:PlaysIn ;
+                            owl:allValuesFrom fb:Player
+                          ] .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Player
+fb:Player rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( fb:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty fb:PlaysIn ;
+                                                       owl:someValuesFrom fb:Game
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ owl:intersectionOf ( fb:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty fb:PlaysWith ;
+                                                       owl:someValuesFrom fb:Ball
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf fb:Person ;
+          owl:disjointWith fb:Referee .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Referee
+fb:Referee rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fb:RefereesIn ;
+                                 owl:someValuesFrom fb:Game
+                               ] ;
+           rdfs:subClassOf fb:Person .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Stadium
+fb:Stadium rdf:type owl:Class ;
+           rdfs:subClassOf fb:Objects .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Supporter
+fb:Supporter rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty fb:SupportsThe ;
+                                   owl:someValuesFrom fb:Game
+                                 ] ;
+             rdfs:subClassOf fb:Person .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://rdf.freebase.com/ns/Round
+<http://rdf.freebase.com/ns/Round> rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Adidas_Ball
+fb:Adidas_Ball rdf:type owl:NamedIndividual ,
+                        fb:Objects .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Amsterdam_Arena
+fb:Amsterdam_Arena rdf:type owl:NamedIndividual ,
+                            fb:Objects .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Arjen_Robben
+fb:Arjen_Robben rdf:type owl:NamedIndividual ,
+                         fb:Person ;
+                fb:PlaysIn fb:Nederland-Bulgarije ;
+                fb:PlaysWith fb:Adidas_Ball .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Dick_Advocaat
+fb:Dick_Advocaat rdf:type owl:NamedIndividual ,
+                          fb:Person ;
+                 fb:CoachesIn fb:Nederland-Bulgarije .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Nederland-Bulgarije
+fb:Nederland-Bulgarije rdf:type owl:NamedIndividual ,
+                                fb:Game .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Pol_van_Boekel
+fb:Pol_van_Boekel rdf:type owl:NamedIndividual ,
+                           fb:Person ;
+                  fb:RefereesIn fb:Nederland-Bulgarije .
+
+
+###  http://www.semanticweb.org/jannehoeksema/football/Winfried_Witjes
+fb:Winfried_Witjes rdf:type owl:NamedIndividual ,
+                            fb:Person ;
+                   fb:SupportsThe fb:Nederland-Bulgarije .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

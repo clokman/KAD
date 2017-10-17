@@ -1,0 +1,293 @@
+@prefix : <http://www.example.org/aron/soccerclubs/> .
+@prefix sc: <http://www.example.org/aron/soccerclubs/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/aron/soccerclubs/> .
+
+<http://www.example.org/aron/soccerclubs/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/aron/soccerclubs/coaches
+sc:coaches rdf:type owl:ObjectProperty ;
+           owl:inverseOf sc:isCoachedBy ;
+           rdf:type owl:InverseFunctionalProperty .
+
+
+###  http://www.example.org/aron/soccerclubs/isCityOf
+sc:isCityOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf sc:isLocatedIn .
+
+
+###  http://www.example.org/aron/soccerclubs/isCoachOf
+sc:isCoachOf rdf:type owl:ObjectProperty ;
+             owl:propertyDisjointWith sc:isPlayerOf .
+
+
+###  http://www.example.org/aron/soccerclubs/isCoachedBy
+sc:isCoachedBy rdf:type owl:ObjectProperty ,
+                        owl:InverseFunctionalProperty .
+
+
+###  http://www.example.org/aron/soccerclubs/isHomeStadiumOf
+sc:isHomeStadiumOf rdf:type owl:ObjectProperty ;
+                   owl:inverseOf sc:playsHomeMatchesIn .
+
+
+###  http://www.example.org/aron/soccerclubs/isLocatedIn
+sc:isLocatedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/aron/soccerclubs/isPlayerOf
+sc:isPlayerOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/aron/soccerclubs/playsAwayMatchesIn
+sc:playsAwayMatchesIn rdf:type owl:ObjectProperty ;
+                      owl:propertyDisjointWith sc:playsHomeMatchesIn .
+
+
+###  http://www.example.org/aron/soccerclubs/playsHomeMatchesIn
+sc:playsHomeMatchesIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/aron/soccerclubs/playsIn
+sc:playsIn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/aron/soccerclubs/wonBy
+sc:wonBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/aron/soccerclubs/City
+sc:City rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty sc:isCityOf ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass sc:Country
+                            ] ;
+        rdfs:subClassOf sc:Country .
+
+
+###  http://www.example.org/aron/soccerclubs/Competition
+sc:Competition rdf:type owl:Class .
+
+
+###  http://www.example.org/aron/soccerclubs/Country
+sc:Country rdf:type owl:Class .
+
+
+###  http://www.example.org/aron/soccerclubs/Person
+sc:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/aron/soccerclubs/Prizes
+sc:Prizes rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sc:wonBy ;
+                                owl:someValuesFrom sc:SoccerClub
+                              ] .
+
+
+###  http://www.example.org/aron/soccerclubs/SoccerClub
+sc:SoccerClub rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty sc:playsIn ;
+                                    owl:someValuesFrom sc:Competition
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty sc:playsHomeMatchesIn ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass sc:Stadium
+                                  ] .
+
+
+###  http://www.example.org/aron/soccerclubs/SoccerCoach
+sc:SoccerCoach rdf:type owl:Class ;
+               owl:equivalentClass [ owl:intersectionOf ( sc:Person
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty sc:isCoachOf ;
+                                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                            owl:onClass sc:SoccerClub
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sc:coaches ;
+                                     owl:someValuesFrom sc:SoccerPlayer
+                                   ] ;
+               rdfs:subClassOf sc:Person .
+
+
+###  http://www.example.org/aron/soccerclubs/SoccerPlayer
+sc:SoccerPlayer rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( sc:Person
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty sc:isPlayerOf ;
+                                                             owl:someValuesFrom sc:SoccerClub
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty sc:isCoachedBy ;
+                                      owl:someValuesFrom sc:SoccerCoach
+                                    ] ;
+                rdfs:subClassOf sc:Person .
+
+
+###  http://www.example.org/aron/soccerclubs/Stadium
+sc:Stadium rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty sc:isLocatedIn ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass sc:City
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/aron/soccerclubs/Ajax
+sc:Ajax rdf:type owl:NamedIndividual ,
+                 sc:SoccerClub ;
+        sc:playsHomeMatchesIn sc:Johan_Cruijf_Arena ;
+        sc:playsIn sc:Eredivisie .
+
+[ rdf:type owl:NegativePropertyAssertion ;
+   owl:sourceIndividual sc:Ajax ;
+   owl:assertionProperty sc:playsAwayMatchesIn ;
+   owl:targetIndividual sc:Johan_Cruijf_Arena
+ ] .
+
+
+###  http://www.example.org/aron/soccerclubs/Alexis_Sanchez
+sc:Alexis_Sanchez rdf:type owl:NamedIndividual ,
+                           sc:Person ;
+                  sc:isPlayerOf sc:Arsenal .
+
+
+###  http://www.example.org/aron/soccerclubs/Amsterdam
+sc:Amsterdam rdf:type owl:NamedIndividual ,
+                      sc:City ;
+             sc:isCityOf sc:Netherlands .
+
+
+###  http://www.example.org/aron/soccerclubs/Andre_Onana
+sc:Andre_Onana rdf:type owl:NamedIndividual ,
+                        sc:Person ;
+               sc:isPlayerOf sc:Ajax .
+
+
+###  http://www.example.org/aron/soccerclubs/Arsenal
+sc:Arsenal rdf:type owl:NamedIndividual ,
+                    sc:SoccerClub ;
+           sc:playsHomeMatchesIn sc:Emirates_Stadium ;
+           sc:playsIn sc:Premier_League .
+
+[ rdf:type owl:NegativePropertyAssertion ;
+   owl:sourceIndividual sc:Arsenal ;
+   owl:assertionProperty sc:playsAwayMatchesIn ;
+   owl:targetIndividual sc:Emirates_Stadium
+ ] .
+
+
+###  http://www.example.org/aron/soccerclubs/Arsène_Wenger
+sc:Arsène_Wenger rdf:type owl:NamedIndividual ,
+                          sc:Person ;
+                 sc:isCoachOf sc:Arsenal .
+
+
+###  http://www.example.org/aron/soccerclubs/Champion_Premier_League
+sc:Champion_Premier_League rdf:type owl:NamedIndividual ,
+                                    sc:Prizes ;
+                           sc:wonBy sc:Arsenal .
+
+
+###  http://www.example.org/aron/soccerclubs/Emirates_Stadium
+sc:Emirates_Stadium rdf:type owl:NamedIndividual ,
+                             sc:Stadium ;
+                    sc:isLocatedIn sc:London .
+
+
+###  http://www.example.org/aron/soccerclubs/Engeland
+sc:Engeland rdf:type owl:NamedIndividual ,
+                     sc:Country .
+
+
+###  http://www.example.org/aron/soccerclubs/Eredivisie
+sc:Eredivisie rdf:type owl:NamedIndividual ,
+                       sc:Competition .
+
+
+###  http://www.example.org/aron/soccerclubs/Eredivisie_Schaal
+sc:Eredivisie_Schaal rdf:type owl:NamedIndividual ,
+                              sc:Prizes ;
+                     sc:wonBy sc:Ajax .
+
+
+###  http://www.example.org/aron/soccerclubs/Johan_Cruijf_Arena
+sc:Johan_Cruijf_Arena rdf:type owl:NamedIndividual ,
+                               sc:Stadium ;
+                      sc:isLocatedIn sc:Amsterdam .
+
+
+###  http://www.example.org/aron/soccerclubs/Joël_Veltman
+sc:Joël_Veltman rdf:type owl:NamedIndividual ,
+                         sc:Person ;
+                sc:isPlayerOf sc:Ajax .
+
+
+###  http://www.example.org/aron/soccerclubs/Klaas_Jan_Huntelaar
+sc:Klaas_Jan_Huntelaar rdf:type owl:NamedIndividual ,
+                                sc:Person ;
+                       sc:isPlayerOf sc:Ajax .
+
+
+###  http://www.example.org/aron/soccerclubs/London
+sc:London rdf:type owl:NamedIndividual ,
+                   sc:City ;
+          sc:isCityOf sc:Engeland .
+
+
+###  http://www.example.org/aron/soccerclubs/Marcel_Keizer
+sc:Marcel_Keizer rdf:type owl:NamedIndividual ,
+                          sc:Person ;
+                 sc:isCoachOf sc:Ajax .
+
+
+###  http://www.example.org/aron/soccerclubs/Mesut_Ozil
+sc:Mesut_Ozil rdf:type owl:NamedIndividual ,
+                       sc:Person ;
+              sc:isPlayerOf sc:Arsenal .
+
+
+###  http://www.example.org/aron/soccerclubs/Netherlands
+sc:Netherlands rdf:type owl:NamedIndividual ,
+                        sc:Country .
+
+
+###  http://www.example.org/aron/soccerclubs/Premier_League
+sc:Premier_League rdf:type owl:NamedIndividual ,
+                           sc:Competition .
+
+
+###  http://www.example.org/aron/soccerclubs/Siem_de_Jong
+sc:Siem_de_Jong rdf:type owl:NamedIndividual ,
+                         sc:Person ;
+                sc:isPlayerOf sc:Ajax .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

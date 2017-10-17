@@ -1,0 +1,234 @@
+@prefix : <http://www.example.org/nathan/chips#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.example.org/nathan/chips> a owl:Ontology ;
+	rdfs:comment "I have no clue what to do still." .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/nathan/chips#edibility
+
+:edibility a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#hasBrand
+
+:hasBrand a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#hasFlavour
+
+:hasFlavour a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#hasIngredient
+
+:hasIngredient a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#hasPriceCategory
+
+:hasPriceCategory a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#hasShape
+
+:hasShape a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#ingredientOf
+
+:ingredientOf a owl:ObjectProperty .
+# 
+# http://www.example.org/nathan/chips#isBrandOf
+
+:isBrandOf a owl:ObjectProperty ;
+	owl:inverseOf :isShapeOf ;
+	a owl:AsymmetricProperty .
+# 
+# http://www.example.org/nathan/chips#isShapeOf
+
+:isShapeOf a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/nathan/chips#Chips
+
+:Chips a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty :hasBrand ;
+	owl:someValuesFrom :ChipsBrand .
+
+:Chips owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty :hasShape ;
+	owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :ChipsShape .
+
+:Chips owl:equivalentClass _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty :hasPriceCategory ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :ChipsPriceCategory .
+
+:Chips owl:equivalentClass _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty :hasIngredient ;
+	owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+	owl:onClass :ChipsIngredient .
+# 
+# http://www.example.org/nathan/chips#ChipsBrand
+
+:ChipsBrand a owl:Class .
+# 
+# http://www.example.org/nathan/chips#ChipsFlavour
+
+:ChipsFlavour a owl:Class .
+# 
+# http://www.example.org/nathan/chips#ChipsIngredient
+
+:ChipsIngredient a owl:Class .
+# 
+# http://www.example.org/nathan/chips#ChipsPriceCategory
+
+:ChipsPriceCategory a owl:Class .
+# 
+# http://www.example.org/nathan/chips#ChipsShape
+
+:ChipsShape a owl:Class .
+# 
+# http://www.example.org/nathan/chips#Lays
+
+:Lays a owl:Class ;
+	rdfs:subClassOf :ChipsBrand .
+# 
+# http://www.example.org/nathan/chips#Potato
+
+:Potato a owl:Class ;
+	owl:equivalentClass _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :ingredientOf ;
+	owl:someValuesFrom :Lays .
+
+:Potato rdfs:subClassOf :Vegetable .
+# 
+# http://www.example.org/nathan/chips#Vegetable
+
+:Vegetable a owl:Class ;
+	rdfs:subClassOf :ChipsIngredient .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.example.org/nathan/chips#beet
+
+:beet a owl:NamedIndividual , :Vegetable .
+# 
+# http://www.example.org/nathan/chips#cheap
+
+:cheap a owl:NamedIndividual , :ChipsPriceCategory .
+# 
+# http://www.example.org/nathan/chips#croky
+
+:croky a owl:NamedIndividual , :ChipsBrand ;
+	:hasBrand :croky .
+# 
+# http://www.example.org/nathan/chips#curly
+
+:curly a owl:NamedIndividual , :ChipsShape ;
+	:isShapeOf :wokkels .
+# 
+# http://www.example.org/nathan/chips#dough
+
+:dough a owl:NamedIndividual , :ChipsIngredient .
+# 
+# http://www.example.org/nathan/chips#edible
+
+:edible a owl:NamedIndividual , :Chips .
+# 
+# http://www.example.org/nathan/chips#expensive
+
+:expensive a owl:NamedIndividual , :ChipsPriceCategory .
+# 
+# http://www.example.org/nathan/chips#lays
+
+:lays a owl:NamedIndividual , :ChipsBrand ;
+	:hasBrand :lays .
+# 
+# http://www.example.org/nathan/chips#original
+
+:original a owl:NamedIndividual , :Lays ;
+	:hasBrand :lays ;
+	:hasFlavour :originalFlavour ;
+	:hasIngredient :regularPotato ;
+	:hasPriceCategory :regular ;
+	:hasShape :round .
+# 
+# http://www.example.org/nathan/chips#originalFlavour
+
+:originalFlavour a owl:NamedIndividual , :ChipsFlavour .
+# 
+# http://www.example.org/nathan/chips#paprikaFlavour
+
+:paprikaFlavour a owl:NamedIndividual , :ChipsFlavour .
+# 
+# http://www.example.org/nathan/chips#patatjeJoppieFlavour
+
+:patatjeJoppieFlavour a owl:NamedIndividual , :ChipsFlavour .
+# 
+# http://www.example.org/nathan/chips#regular
+
+:regular a owl:NamedIndividual , :ChipsPriceCategory .
+# 
+# http://www.example.org/nathan/chips#regularPotato
+
+:regularPotato a owl:NamedIndividual ;
+	:ingredientOf :wokkels .
+# 
+# http://www.example.org/nathan/chips#round
+
+:round a owl:NamedIndividual , :ChipsShape ;
+	:isShapeOf :original .
+# 
+# http://www.example.org/nathan/chips#stick
+
+:stick a owl:NamedIndividual , :ChipsShape .
+# 
+# http://www.example.org/nathan/chips#sweetPotato
+
+:sweetPotato a owl:NamedIndividual , :Potato .
+# 
+# http://www.example.org/nathan/chips#wokkels
+
+:wokkels a owl:NamedIndividual , :Lays ;
+	:edibility :edible ;
+	:hasBrand :lays ;
+	:hasFlavour :paprikaFlavour ;
+	:hasIngredient :regularPotato ;
+	:hasPriceCategory :regular ;
+	:hasShape :curly .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

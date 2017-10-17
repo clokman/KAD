@@ -1,0 +1,207 @@
+@prefix : <http://www.gandreadis.com/ontologies/train#> .
+@prefix tr: <http://www.gandreadis.com/ontologies/train/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.gandreadis.com/ontologies/train> .
+
+<http://www.gandreadis.com/ontologies/train> rdf:type owl:Ontology ;
+                                              rdfs:comment "An ontology describing trains." .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.gandreadis.com/ontologies/train/hasFinalDestination
+tr:hasFinalDestination rdf:type owl:ObjectProperty ,
+                                owl:FunctionalProperty .
+
+
+###  http://www.gandreadis.com/ontologies/train/hasHeadTrainUnit
+tr:hasHeadTrainUnit rdf:type owl:ObjectProperty ,
+                             owl:FunctionalProperty .
+
+
+###  http://www.gandreadis.com/ontologies/train/isConnectedByRails
+tr:isConnectedByRails rdf:type owl:ObjectProperty ,
+                               owl:SymmetricProperty ,
+                               owl:TransitiveProperty .
+
+
+###  http://www.gandreadis.com/ontologies/train/isInFrontOf
+tr:isInFrontOf rdf:type owl:ObjectProperty ,
+                        owl:TransitiveProperty .
+
+
+###  http://www.gandreadis.com/ontologies/train/isListeningToRailwayCentre
+tr:isListeningToRailwayCentre rdf:type owl:ObjectProperty .
+
+
+###  http://www.gandreadis.com/ontologies/train/isTransporting
+tr:isTransporting rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.gandreadis.com/ontologies/train/CargoTrain
+tr:CargoTrain rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty tr:isTransporting ;
+                                    owl:someValuesFrom tr:TransportedGood
+                                  ] ;
+              rdfs:subClassOf tr:Train .
+
+
+###  http://www.gandreadis.com/ontologies/train/Locomotive
+tr:Locomotive rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Class ;
+                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty tr:isInFrontOf ;
+                                                    owl:someValuesFrom tr:Locomotive
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty tr:isInFrontOf ;
+                                                    owl:someValuesFrom tr:Wagon
+                                                  ]
+                                                )
+                                  ] .
+
+
+###  http://www.gandreadis.com/ontologies/train/PassengerTrain
+tr:PassengerTrain rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Restriction ;
+                                        owl:onProperty tr:isTransporting ;
+                                        owl:someValuesFrom foaf:Person
+                                      ] ;
+                  rdfs:subClassOf tr:Train ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty tr:isTransporting ;
+                                    owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onClass tr:TransportedGood
+                                  ] .
+
+
+###  http://www.gandreadis.com/ontologies/train/Station
+tr:Station rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty tr:isConnectedByRails ;
+                                 owl:someValuesFrom tr:Station
+                               ] .
+
+
+###  http://www.gandreadis.com/ontologies/train/Train
+tr:Train rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty tr:hasFinalDestination ;
+                                                      owl:someValuesFrom tr:Station
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty tr:hasHeadTrainUnit ;
+                                                      owl:someValuesFrom tr:Locomotive
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty tr:isListeningToRailwayCentre ;
+                           owl:hasValue tr:RailwayControlCentre
+                         ] .
+
+
+###  http://www.gandreadis.com/ontologies/train/TransportedGood
+tr:TransportedGood rdf:type owl:Class .
+
+
+###  http://www.gandreadis.com/ontologies/train/Wagon
+tr:Wagon rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty tr:isInFrontOf ;
+                               owl:someValuesFrom tr:Wagon
+                             ] .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.gandreadis.com/ontologies/train/AmsterdamSchiphol
+tr:AmsterdamSchiphol rdf:type owl:NamedIndividual ;
+                     tr:isConnectedByRails tr:AmsterdamZuid .
+
+
+###  http://www.gandreadis.com/ontologies/train/AmsterdamZuid
+tr:AmsterdamZuid rdf:type owl:NamedIndividual ,
+                          tr:Station .
+
+
+###  http://www.gandreadis.com/ontologies/train/Bob
+tr:Bob rdf:type owl:NamedIndividual ,
+                foaf:Person .
+
+
+###  http://www.gandreadis.com/ontologies/train/DenHaagCentraal
+tr:DenHaagCentraal rdf:type owl:NamedIndividual ;
+                   tr:isConnectedByRails tr:AmsterdamSchiphol .
+
+
+###  http://www.gandreadis.com/ontologies/train/DenHaagHS
+tr:DenHaagHS rdf:type owl:NamedIndividual ;
+             tr:isConnectedByRails tr:DenHaagCentraal .
+
+
+###  http://www.gandreadis.com/ontologies/train/Intercity2356
+tr:Intercity2356 rdf:type owl:NamedIndividual ;
+                 tr:hasFinalDestination tr:AmsterdamSchiphol ;
+                 tr:hasHeadTrainUnit tr:Locomotive4242 ;
+                 tr:isListeningToRailwayCentre tr:RailwayControlCentre ;
+                 tr:isTransporting tr:Bob .
+
+
+###  http://www.gandreadis.com/ontologies/train/Iron
+tr:Iron rdf:type owl:NamedIndividual ,
+                 tr:TransportedGood .
+
+
+###  http://www.gandreadis.com/ontologies/train/IronCargoTrain
+tr:IronCargoTrain rdf:type owl:NamedIndividual ;
+                  tr:hasFinalDestination tr:AmsterdamZuid ;
+                  tr:hasHeadTrainUnit tr:Locomotive4242 ;
+                  tr:isListeningToRailwayCentre tr:RailwayControlCentre ;
+                  tr:isTransporting tr:Iron .
+
+
+###  http://www.gandreadis.com/ontologies/train/Locomotive4242
+tr:Locomotive4242 rdf:type owl:NamedIndividual ,
+                           tr:Locomotive ;
+                  tr:isInFrontOf tr:Wagon1223 .
+
+
+###  http://www.gandreadis.com/ontologies/train/RailwayControlCentre
+tr:RailwayControlCentre rdf:type owl:NamedIndividual .
+
+
+###  http://www.gandreadis.com/ontologies/train/Wagon1223
+tr:Wagon1223 rdf:type owl:NamedIndividual ;
+             tr:isInFrontOf tr:Wagon1234 .
+
+
+###  http://www.gandreadis.com/ontologies/train/Wagon1234
+tr:Wagon1234 rdf:type owl:NamedIndividual ;
+             tr:isInFrontOf tr:Wagon2334 .
+
+
+###  http://www.gandreadis.com/ontologies/train/Wagon2334
+tr:Wagon2334 rdf:type owl:NamedIndividual ,
+                      tr:Wagon .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

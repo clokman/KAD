@@ -1,0 +1,290 @@
+@prefix : <http://www.semanticweb.org/bas/dutch_army#> .
+@prefix da: <http://www.semanticweb.org/bas/dutch_army/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/bas/dutch_army> .
+
+<http://www.semanticweb.org/bas/dutch_army> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/bas/dutch_army/gebruikt_munitie
+da:gebruikt_munitie rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/gebruikt_wapen
+da:gebruikt_wapen rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/kan_besturen
+da:kan_besturen rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/uitgerust_met
+da:uitgerust_met rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/bas/dutch_army/Bescherming
+da:Bescherming rdf:type owl:Class ;
+               rdfs:subClassOf da:Uitrusting .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Commandant_der_Strijdkrachten
+da:Commandant_der_Strijdkrachten rdf:type owl:Class ;
+                                 rdfs:subClassOf da:Persoon .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Gemonteerd_wapen
+da:Gemonteerd_wapen rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( da:Gemonteerd_wapen
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty da:gebruikt_munitie ;
+                                                                 owl:someValuesFrom da:Munitie
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf da:Wapen ;
+                    owl:disjointWith da:Infanterie_wapen .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Granaat
+da:Granaat rdf:type owl:Class ;
+           rdfs:subClassOf da:Uitrusting ,
+                           da:Wapen ;
+           owl:disjointWith da:Munitie .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Infanterie_wapen
+da:Infanterie_wapen rdf:type owl:Class ;
+                    owl:equivalentClass [ owl:intersectionOf ( da:Infanterie_wapen
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty da:gebruikt_munitie ;
+                                                                 owl:someValuesFrom da:Munitie
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ;
+                    rdfs:subClassOf da:Wapen .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Munitie
+da:Munitie rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Persoon
+da:Persoon rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( da:Persoon
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty da:gebruikt_wapen ;
+                                                        owl:allValuesFrom da:Infanterie_wapen
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty da:kan_besturen ;
+                                 owl:someValuesFrom da:Voertuig
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty da:uitgerust_met ;
+                                 owl:someValuesFrom da:Uitrusting
+                               ] .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Rugzak
+da:Rugzak rdf:type owl:Class ;
+          rdfs:subClassOf da:Uitrusting .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Soldaat_der_1e_klasse
+da:Soldaat_der_1e_klasse rdf:type owl:Class ;
+                         rdfs:subClassOf da:Persoon .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Uitrusting
+da:Uitrusting rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Voertuig
+da:Voertuig rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( da:Voertuig
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty da:gebruikt_wapen ;
+                                                         owl:someValuesFrom da:Gemonteerd_wapen
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Wapen
+da:Wapen rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/bas/dutch_army/Accuracy-scherpschuttersgeweer
+da:Accuracy-scherpschuttersgeweer rdf:type owl:NamedIndividual ,
+                                           da:Infanterie_wapen ;
+                                  da:gebruikt_munitie da:Lapua_Magnum_8.6x70mm .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Berghaus_Vulcan
+da:Berghaus_Vulcan rdf:type owl:NamedIndividual ,
+                            da:Rugzak .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Bob_Lee_Swagger
+da:Bob_Lee_Swagger rdf:type owl:NamedIndividual ;
+                   da:gebruikt_wapen da:Accuracy-scherpschuttersgeweer .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Browning_M2-zwaar_machinegeweer
+da:Browning_M2-zwaar_machinegeweer rdf:type owl:NamedIndividual ,
+                                            da:Gemonteerd_wapen ;
+                                   da:gebruikt_munitie da:Browning_machine_gun_12.7x99mm .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Browning_machine_gun_12.7x99mm
+da:Browning_machine_gun_12.7x99mm rdf:type owl:NamedIndividual ,
+                                           da:Munitie .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Bushmaster
+da:Bushmaster rdf:type owl:NamedIndividual ,
+                       da:Voertuig ;
+              da:gebruikt_wapen da:Browning_M2-zwaar_machinegeweer .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Bushmaster_35mm_round
+da:Bushmaster_35mm_round rdf:type owl:NamedIndividual ,
+                                  da:Munitie .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/CV90-infanteriegevechtsvoertuig
+da:CV90-infanteriegevechtsvoertuig rdf:type owl:NamedIndividual ;
+                                   da:gebruikt_wapen da:snelvuurkanon_35mm .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Glock_17
+da:Glock_17 rdf:type owl:NamedIndividual ,
+                     da:Infanterie_wapen ;
+            da:gebruikt_munitie da:Parabellum_9x19mm .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Helm
+da:Helm rdf:type owl:NamedIndividual ,
+                 da:Bescherming .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Jan-Joost_Beijersbergen
+da:Jan-Joost_Beijersbergen rdf:type owl:NamedIndividual ,
+                                    da:Soldaat_der_1e_klasse ;
+                           da:gebruikt_wapen da:Glock_17 ;
+                           da:kan_besturen da:Bushmaster ;
+                           da:uitgerust_met da:Berghaus_Vulcan ,
+                                            da:Helm ,
+                                            da:Scherfwerend_vest .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Jonah_van_den_Berghe
+da:Jonah_van_den_Berghe rdf:type owl:NamedIndividual ;
+                        da:gebruikt_wapen da:M67_granaat ;
+                        da:uitgerust_met da:Helm ,
+                                         da:Lowe_Alpine ,
+                                         da:Scherfwerend_vest .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Lapua_Magnum_8.6x70mm
+da:Lapua_Magnum_8.6x70mm rdf:type owl:NamedIndividual ,
+                                  da:Munitie .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Lowe_Alpine
+da:Lowe_Alpine rdf:type owl:NamedIndividual ,
+                        da:Rugzak .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/M67_granaat
+da:M67_granaat rdf:type owl:NamedIndividual ,
+                        da:Granaat .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/M84_stun_granaat
+da:M84_stun_granaat rdf:type owl:NamedIndividual ,
+                             da:Granaat .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Parabellum_9x19mm
+da:Parabellum_9x19mm rdf:type owl:NamedIndividual ,
+                              da:Munitie .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Scherfwerend_vest
+da:Scherfwerend_vest rdf:type owl:NamedIndividual ,
+                              da:Bescherming .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/Tom_Middendorp
+da:Tom_Middendorp rdf:type owl:NamedIndividual ,
+                           da:Commandant_der_Strijdkrachten .
+
+
+###  http://www.semanticweb.org/bas/dutch_army/snelvuurkanon_35mm
+da:snelvuurkanon_35mm rdf:type owl:NamedIndividual ,
+                               da:Gemonteerd_wapen ;
+                      da:gebruikt_munitie da:Bushmaster_35mm_round .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty da:gebruikt_munitie ;
+  owl:someValuesFrom da:Munitie ;
+  rdfs:subClassOf da:Wapen
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty da:gebruikt_wapen ;
+  owl:someValuesFrom da:Gemonteerd_wapen ;
+  rdfs:subClassOf da:Voertuig
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty da:gebruikt_wapen ;
+  owl:someValuesFrom da:Infanterie_wapen ;
+  rdfs:subClassOf da:Soldaat_der_1e_klasse
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty da:gebruikt_wapen ;
+  owl:someValuesFrom [ owl:intersectionOf ( da:Wapen
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty da:uitgerust_met ;
+                                              owl:someValuesFrom da:Uitrusting
+                                            ]
+                                          ) ;
+                       rdf:type owl:Class
+                     ] ;
+  rdfs:subClassOf da:Soldaat_der_1e_klasse
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

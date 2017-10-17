@@ -1,0 +1,244 @@
+@prefix : <http://www.semanticweb.org/rosan/ontologies/lt#> .
+@prefix lt: <http://www.semanticweb.org/rosan/ontologies/lt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/rosan/ontologies/lt> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/hasAuthor
+
+lt:hasAuthor a owl:ObjectProperty ;
+	owl:inverseOf lt:hasWritten .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/hasGenre
+
+lt:hasGenre a owl:ObjectProperty , owl:InverseFunctionalProperty ;
+	rdfs:domain lt:Book ;
+	rdfs:range lt:Genre .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/hasISBN
+
+lt:hasISBN a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:domain lt:Book ;
+	rdfs:range lt:ISBN .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/hasName
+
+lt:hasName a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:domain lt:Person ;
+	rdfs:range lt:Name .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/hasWritten
+
+lt:hasWritten a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/isGenreOf
+
+lt:isGenreOf a owl:ObjectProperty , owl:InverseFunctionalProperty ;
+	rdfs:domain lt:Genre ;
+	rdfs:range lt:Book .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/knows
+
+lt:knows a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Author
+
+lt:Author a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty lt:hasWritten ;
+	owl:someValuesFrom lt:Book .
+
+lt:Author rdfs:subClassOf lt:Person .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Book
+
+lt:Book a owl:Class ;
+	owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty lt:hasGenre ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass _:genid3 .
+
+_:genid3 a owl:Class ;
+	owl:unionOf _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first lt:Fiction ;
+	rdf:rest _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first lt:nonFiction ;
+	rdf:rest rdf:nil .
+
+lt:Book owl:equivalentClass _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty lt:hasISBN ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass lt:ISBN .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/BookTitle
+
+lt:BookTitle a owl:Class ;
+	rdfs:subClassOf lt:Book .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Fiction
+
+lt:Fiction a owl:Class ;
+	rdfs:subClassOf lt:Genre ;
+	owl:disjointWith lt:nonFiction .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Genre
+
+lt:Genre a owl:Class ;
+	owl:equivalentClass _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty lt:isGenreOf ;
+	owl:someValuesFrom lt:Book .
+
+lt:Genre rdfs:comment "Genre of a Book" .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/ISBN
+
+lt:ISBN a owl:Class .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Name
+
+lt:Name a owl:Class .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Person
+
+lt:Person a owl:Class ;
+	owl:equivalentClass _:genid8 .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty lt:hasName ;
+	owl:someValuesFrom lt:Name .
+
+lt:Person owl:equivalentClass _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty lt:knows ;
+	owl:someValuesFrom lt:Person .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Publisher
+
+lt:Publisher a owl:Class .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/nonFiction
+
+lt:nonFiction a owl:Class ;
+	rdfs:subClassOf lt:Genre .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/A_Semantic_Web_Primer
+
+lt:A_Semantic_Web_Primer a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Grigoris_Antoniou
+
+lt:Grigoris_Antoniou a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/ISBN_9780262018289
+
+lt:ISBN_9780262018289 a owl:NamedIndividual .
+# 
+# http://www.semanticweb.org/rosan/ontologies/lt/Mit_Press_Ltd
+
+lt:Mit_Press_Ltd a owl:NamedIndividual .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    General axioms
+# #
+# #################################################################
+# 
+# 
+
+_:genid10 a owl:AllDisjointClasses ;
+	owl:members _:genid16 .
+
+_:genid16 a rdf:List ;
+	rdf:first lt:Book ;
+	rdf:rest _:genid15 .
+
+_:genid15 a rdf:List ;
+	rdf:first lt:Genre ;
+	rdf:rest _:genid14 .
+
+_:genid14 a rdf:List ;
+	rdf:first lt:ISBN ;
+	rdf:rest _:genid13 .
+
+_:genid13 a rdf:List ;
+	rdf:first lt:Name ;
+	rdf:rest _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first lt:Person ;
+	rdf:rest _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first lt:Publisher ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid17 a owl:AllDisjointClasses ;
+	owl:members _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first lt:Book ;
+	rdf:rest _:genid21 .
+
+_:genid21 a rdf:List ;
+	rdf:first lt:Genre ;
+	rdf:rest _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first lt:Name ;
+	rdf:rest _:genid19 .
+
+_:genid19 a rdf:List ;
+	rdf:first lt:Person ;
+	rdf:rest _:genid18 .
+
+_:genid18 a rdf:List ;
+	rdf:first lt:Publisher ;
+	rdf:rest rdf:nil .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,279 @@
+@prefix : <http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix famJV: <http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/> .
+@base <http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman> .
+
+<http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Has_child
+famJV:Has_child rdf:type owl:ObjectProperty ;
+                owl:inverseOf famJV:Has_parent .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Has_grandchild
+famJV:Has_grandchild rdf:type owl:ObjectProperty ;
+                     owl:inverseOf famJV:Has_grandparent .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Has_grandparent
+famJV:Has_grandparent rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Has_parent
+famJV:Has_parent rdf:type owl:ObjectProperty ;
+                 owl:inverseOf famJV:isParentOf .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/hasSibling
+famJV:hasSibling rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/isFatherOf
+famJV:isFatherOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf famJV:isParentOf .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/isMotherOf
+famJV:isMotherOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf famJV:isParentOf .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/isParentOf
+famJV:isParentOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/mariedTo
+famJV:mariedTo rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/hasGender
+famJV:hasGender rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ,
+                           [ rdf:type rdfs:Datatype ;
+                             owl:oneOf [ rdf:type rdf:List ;
+                                         rdf:first "Female" ;
+                                         rdf:rest [ rdf:type rdf:List ;
+                                                    rdf:first "Male" ;
+                                                    rdf:rest rdf:nil
+                                                  ]
+                                       ]
+                           ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Children
+famJV:Children rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty famJV:Has_parent ;
+                                     owl:someValuesFrom famJV:Person
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty famJV:hasSibling ;
+                                     owl:someValuesFrom famJV:Person
+                                   ] ;
+               rdfs:subClassOf famJV:Family .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Daughter
+famJV:Daughter rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty famJV:hasGender ;
+                                     owl:hasValue "Female"
+                                   ] ;
+               rdfs:subClassOf famJV:Children .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Family
+famJV:Family rdf:type owl:Class ;
+             rdfs:subClassOf famJV:Person .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Father
+famJV:Father rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( famJV:Parents
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty famJV:hasGender ;
+                                                          owl:hasValue "Male"
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty famJV:isFatherOf ;
+                                   owl:someValuesFrom famJV:Children
+                                 ] ;
+             rdfs:subClassOf famJV:Parents .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Grandfather
+famJV:Grandfather rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( famJV:Grandparents
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty famJV:hasGender ;
+                                                               owl:hasValue "Male"
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf famJV:Grandparents .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Grandmother
+famJV:Grandmother rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( famJV:Grandparents
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty famJV:hasGender ;
+                                                               owl:hasValue "Female"
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf famJV:Grandparents .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Grandparents
+famJV:Grandparents rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty famJV:Has_child ;
+                                         owl:someValuesFrom famJV:Parents
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty famJV:Has_grandchild ;
+                                         owl:someValuesFrom famJV:Children
+                                       ] ;
+                   rdfs:subClassOf famJV:Family .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Mother
+famJV:Mother rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( famJV:Parents
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty famJV:hasGender ;
+                                                          owl:hasValue "Female"
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty famJV:isMotherOf ;
+                                   owl:someValuesFrom famJV:Children
+                                 ] ;
+             rdfs:subClassOf famJV:Parents .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Parents
+famJV:Parents rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty famJV:Has_child ;
+                                    owl:someValuesFrom famJV:Children
+                                  ] ;
+              rdfs:subClassOf famJV:Family .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Person
+famJV:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Son
+famJV:Son rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( famJV:Children
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty famJV:hasGender ;
+                                                       owl:hasValue "Male"
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf famJV:Children .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Anita_Veldman
+famJV:Anita_Veldman rdf:type owl:NamedIndividual ,
+                             famJV:Person ;
+                    famJV:Has_parent famJV:Simon_Veldman ;
+                    famJV:hasGender "Female" .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Fred_Veldman
+famJV:Fred_Veldman rdf:type owl:NamedIndividual ,
+                            famJV:Person ;
+                   famJV:Has_parent famJV:Simon_Veldman ;
+                   famJV:hasGender "Male" .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Jochem_Veldman
+famJV:Jochem_Veldman rdf:type owl:NamedIndividual ,
+                              famJV:Person ;
+                     famJV:Has_parent famJV:Simon_Veldman ;
+                     famJV:hasSibling famJV:Sarah_Veldman ;
+                     famJV:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Noortje_Veldman
+famJV:Noortje_Veldman rdf:type owl:NamedIndividual ,
+                               famJV:Person ;
+                      famJV:Has_parent famJV:Simon_Veldman ;
+                      famJV:hasGender "Female" .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Oma_Veldman
+famJV:Oma_Veldman rdf:type owl:NamedIndividual ,
+                           famJV:Person ;
+                  famJV:Has_grandchild famJV:Jochem_Veldman ;
+                  famJV:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Opa_Veldman
+famJV:Opa_Veldman rdf:type owl:NamedIndividual ,
+                           famJV:Person ;
+                  famJV:Has_grandchild famJV:Jochem_Veldman ;
+                  famJV:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Sarah_Veldman
+famJV:Sarah_Veldman rdf:type owl:NamedIndividual ,
+                             famJV:Person ;
+                    famJV:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Simon_Veldman
+famJV:Simon_Veldman rdf:type owl:NamedIndividual ,
+                             famJV:Person ;
+                    famJV:Has_child famJV:Sarah_Veldman ;
+                    famJV:isFatherOf famJV:Sarah_Veldman ;
+                    famJV:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/jochemveldman/ontologie/family_Jochem_Veldman/Tineke_Blaauboer
+famJV:Tineke_Blaauboer rdf:type owl:NamedIndividual ,
+                                famJV:Person ;
+                       famJV:Has_child famJV:Jochem_Veldman ,
+                                       famJV:Sarah_Veldman ;
+                       famJV:isMotherOf famJV:Jochem_Veldman ,
+                                        famJV:Sarah_Veldman ;
+                       famJV:mariedTo famJV:Simon_Veldman ;
+                       famJV:hasGender "Female"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

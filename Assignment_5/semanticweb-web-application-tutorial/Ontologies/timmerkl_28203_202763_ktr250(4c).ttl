@@ -1,0 +1,256 @@
+@prefix : <http://www.semanticweb.org/kick_/Music#> .
+@prefix mu: <http://www.semanticweb.org/kick_/Music/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/kick_/Music> .
+
+<http://www.semanticweb.org/kick_/Music> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/kick_/Music/DrumsIn
+mu:DrumsIn rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/DrumsOn
+mu:DrumsOn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/HasRecorded
+mu:HasRecorded rdf:type owl:ObjectProperty ;
+               owl:inverseOf mu:Recordedby .
+
+
+###  http://www.semanticweb.org/kick_/Music/IsOfType
+mu:IsOfType rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/PlaysGenre
+mu:PlaysGenre rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/PlaysInstrument
+mu:PlaysInstrument rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/Recordedby
+mu:Recordedby rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/SingsIn
+mu:SingsIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/kick_/Music/SingsOn
+mu:SingsOn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/kick_/Music/AcapellaCD
+mu:AcapellaCD rdf:type owl:Class ;
+              rdfs:subClassOf mu:MusicCD .
+
+
+###  http://www.semanticweb.org/kick_/Music/Drummer
+mu:Drummer rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( mu:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty mu:DrumsIn ;
+                                                        owl:someValuesFrom mu:MusicBand
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ owl:intersectionOf ( mu:Person
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty mu:DrumsOn ;
+                                                        owl:someValuesFrom mu:MusicCD
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf mu:Person .
+
+
+###  http://www.semanticweb.org/kick_/Music/MusicBand
+mu:MusicBand rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kick_/Music/MusicCD
+mu:MusicCD rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kick_/Music/MusicGenre
+mu:MusicGenre rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kick_/Music/MusicInstrument
+mu:MusicInstrument rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kick_/Music/Person
+mu:Person rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kick_/Music/Rock
+mu:Rock rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty mu:IsOfType ;
+                              owl:someValuesFrom mu:MusicGenre
+                            ] ;
+        rdfs:subClassOf mu:MusicGenre .
+
+
+###  http://www.semanticweb.org/kick_/Music/RockBand
+mu:RockBand rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( mu:MusicBand
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty mu:PlaysGenre ;
+                                                         owl:someValuesFrom mu:Rock
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf mu:MusicBand .
+
+
+###  http://www.semanticweb.org/kick_/Music/RockCD
+mu:RockCD rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty mu:Recordedby ;
+                                owl:someValuesFrom mu:RockBand
+                              ] ;
+          rdfs:subClassOf mu:MusicCD .
+
+
+###  http://www.semanticweb.org/kick_/Music/Singer
+mu:Singer rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( mu:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty mu:SingsIn ;
+                                                       owl:someValuesFrom mu:MusicBand
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ,
+                              [ owl:intersectionOf ( mu:Person
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty mu:SingsOn ;
+                                                       owl:someValuesFrom mu:MusicCD
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf mu:Person .
+
+
+###  http://www.semanticweb.org/kick_/Music/TVShows
+mu:TVShows rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/kick_/Music/Accoustic_Guitar
+mu:Accoustic_Guitar rdf:type owl:NamedIndividual ,
+                             mu:MusicInstrument .
+
+
+###  http://www.semanticweb.org/kick_/Music/Dave_Grohl
+mu:Dave_Grohl rdf:type owl:NamedIndividual ,
+                       mu:Person ;
+              mu:DrumsIn mu:Nirvana ;
+              mu:SingsIn mu:Foo_Fighters .
+
+
+###  http://www.semanticweb.org/kick_/Music/Divide
+mu:Divide rdf:type owl:NamedIndividual ,
+                   mu:MusicCD .
+
+
+###  http://www.semanticweb.org/kick_/Music/Ed_Sheeran
+mu:Ed_Sheeran rdf:type owl:NamedIndividual ,
+                       mu:Person ;
+              mu:SingsOn mu:Divide .
+
+
+###  http://www.semanticweb.org/kick_/Music/Electric_Guitar
+mu:Electric_Guitar rdf:type owl:NamedIndividual ,
+                            mu:MusicInstrument .
+
+
+###  http://www.semanticweb.org/kick_/Music/Foo_Fighters
+mu:Foo_Fighters rdf:type owl:NamedIndividual ,
+                         mu:MusicBand ;
+                mu:PlaysGenre mu:Rock .
+
+
+###  http://www.semanticweb.org/kick_/Music/Hard-Rock
+mu:Hard-Rock rdf:type owl:NamedIndividual ,
+                      mu:Rock .
+
+
+###  http://www.semanticweb.org/kick_/Music/MTV_Music
+mu:MTV_Music rdf:type owl:NamedIndividual ,
+                      mu:TVShows .
+
+
+###  http://www.semanticweb.org/kick_/Music/Nevermind
+mu:Nevermind rdf:type owl:NamedIndividual ,
+                      mu:MusicCD ;
+             mu:Recordedby mu:Nirvana .
+
+
+###  http://www.semanticweb.org/kick_/Music/Nirvana
+mu:Nirvana rdf:type owl:NamedIndividual ,
+                    mu:MusicBand ;
+           mu:PlaysGenre mu:Rock .
+
+
+###  http://www.semanticweb.org/kick_/Music/Rock
+mu:Rock rdf:type owl:NamedIndividual ,
+                 mu:Rock .
+
+
+###  http://www.semanticweb.org/kick_/Music/TMF
+mu:TMF rdf:type owl:NamedIndividual ,
+                mu:TVShows .
+
+
+###  http://www.semanticweb.org/kick_/Music/The_Colour_And_The_Shape
+mu:The_Colour_And_The_Shape rdf:type owl:NamedIndividual ,
+                                     mu:MusicCD ;
+                            mu:Recordedby mu:Foo_Fighters .
+
+
+###  http://www.semanticweb.org/kick_/Music/The_Drum
+mu:The_Drum rdf:type owl:NamedIndividual ,
+                     mu:MusicInstrument .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( mu:MusicBand
+                mu:MusicCD
+                mu:MusicGenre
+                mu:MusicInstrument
+                mu:Person
+                mu:TVShows
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -1,0 +1,221 @@
+@prefix : <http://www.semanticweb.org/lisannevanvliet/ontologies/2017/9/untitled-ontology-23#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lisannevanvliet/ontologies/2017/9/untitled-ontology-23> .
+
+<http://www.semanticweb.org/lisannevanvliet/ontologies/2017/9/untitled-ontology-23> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/HasGenre
+<http://www.semanticweb.org/lisannevanvliet/assignment4/HasGenre> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/HasMovie
+<http://www.semanticweb.org/lisannevanvliet/assignment4/HasMovie> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/HasNumber
+<http://www.semanticweb.org/lisannevanvliet/assignment4/HasNumber> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/HasPublished
+<http://www.semanticweb.org/lisannevanvliet/assignment4/HasPublished> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/HasWritten
+<http://www.semanticweb.org/lisannevanvliet/assignment4/HasWritten> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/IsBasedOn
+<http://www.semanticweb.org/lisannevanvliet/assignment4/IsBasedOn> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/IsPublishedBy
+<http://www.semanticweb.org/lisannevanvliet/assignment4/IsPublishedBy> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Author
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Author> rdf:type owl:Class ;
+                                                                owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/lisannevanvliet/assignment4/Person>
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/HasWritten> ;
+                                                                                                             owl:someValuesFrom <http://www.semanticweb.org/lisannevanvliet/assignment4/Books>
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ] ;
+                                                                rdfs:subClassOf <http://www.semanticweb.org/lisannevanvliet/assignment4/Person> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Books
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Books> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/HasGenre> ;
+                                                                                     owl:someValuesFrom <http://www.semanticweb.org/lisannevanvliet/assignment4/Genres>
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/IsPublishedBy> ;
+                                                                                     owl:someValuesFrom <http://www.semanticweb.org/lisannevanvliet/assignment4/Publisher>
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/HasNumber> ;
+                                                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBNNumber>
+                                                                                   ] ,
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/HasMovie> ;
+                                                                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                     owl:onClass <http://www.semanticweb.org/lisannevanvliet/assignment4/Movies>
+                                                                                   ] .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/FilmedBooks
+<http://www.semanticweb.org/lisannevanvliet/assignment4/FilmedBooks> rdf:type owl:Class ;
+                                                                     owl:equivalentClass [ owl:intersectionOf ( <http://www.semanticweb.org/lisannevanvliet/assignment4/Movies>
+                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                  owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/IsBasedOn> ;
+                                                                                                                  owl:someValuesFrom <http://www.semanticweb.org/lisannevanvliet/assignment4/Books>
+                                                                                                                ]
+                                                                                                              ) ;
+                                                                                           rdf:type owl:Class
+                                                                                         ] ;
+                                                                     rdfs:subClassOf <http://www.semanticweb.org/lisannevanvliet/assignment4/Movies> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Genres
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Genres> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/ISBNNumber
+<http://www.semanticweb.org/lisannevanvliet/assignment4/ISBNNumber> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Movies
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Movies> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Person
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Person> rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Publisher
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Publisher> rdf:type owl:Class ;
+                                                                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <http://www.semanticweb.org/lisannevanvliet/assignment4/HasPublished> ;
+                                                                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                         owl:onClass <http://www.semanticweb.org/lisannevanvliet/assignment4/Books>
+                                                                                       ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Anthos
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Anthos> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.semanticweb.org/lisannevanvliet/assignment4/Publisher> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Arjen_Lubach
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Arjen_Lubach> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/lisannevanvliet/assignment4/Author> ,
+                                                                               <http://www.semanticweb.org/lisannevanvliet/assignment4/Person> ;
+                                                                      <http://www.semanticweb.org/lisannevanvliet/assignment4/HasWritten> <http://www.semanticweb.org/lisannevanvliet/assignment4/Magnus> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Deja_vu
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Deja_vu> rdf:type owl:NamedIndividual ,
+                                                                          <http://www.semanticweb.org/lisannevanvliet/assignment4/Books> ;
+                                                                 <http://www.semanticweb.org/lisannevanvliet/assignment4/HasGenre> <http://www.semanticweb.org/lisannevanvliet/assignment4/Thriller> ;
+                                                                 <http://www.semanticweb.org/lisannevanvliet/assignment4/HasNumber> <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789026330902> ;
+                                                                 <http://www.semanticweb.org/lisannevanvliet/assignment4/IsPublishedBy> <http://www.semanticweb.org/lisannevanvliet/assignment4/Anthos> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Esther_Verhoef
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Esther_Verhoef> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/lisannevanvliet/assignment4/Author> ,
+                                                                                 <http://www.semanticweb.org/lisannevanvliet/assignment4/Person> ;
+                                                                        <http://www.semanticweb.org/lisannevanvliet/assignment4/HasWritten> <http://www.semanticweb.org/lisannevanvliet/assignment4/Deja_vu> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Fantasy
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Fantasy> rdf:type owl:NamedIndividual ,
+                                                                          <http://www.semanticweb.org/lisannevanvliet/assignment4/Genres> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Harry_Potter
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Harry_Potter> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/lisannevanvliet/assignment4/Books> ;
+                                                                      <http://www.semanticweb.org/lisannevanvliet/assignment4/HasGenre> <http://www.semanticweb.org/lisannevanvliet/assignment4/Fantasy> ;
+                                                                      <http://www.semanticweb.org/lisannevanvliet/assignment4/HasNumber> <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789022322338> ;
+                                                                      <http://www.semanticweb.org/lisannevanvliet/assignment4/IsPublishedBy> <http://www.semanticweb.org/lisannevanvliet/assignment4/Uitgeverij_de_Harmonie> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Harry_Potter_The_Movie
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Harry_Potter_The_Movie> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/lisannevanvliet/assignment4/FilmedBooks> ,
+                                                                                         <http://www.semanticweb.org/lisannevanvliet/assignment4/Movies> ;
+                                                                                <http://www.semanticweb.org/lisannevanvliet/assignment4/IsBasedOn> <http://www.semanticweb.org/lisannevanvliet/assignment4/Harry_Potter> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789022322338
+<http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789022322338> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBNNumber> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789026330902
+<http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789026330902> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBNNumber> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789057598197
+<http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789057598197> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBNNumber> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/J_K_Rowling
+<http://www.semanticweb.org/lisannevanvliet/assignment4/J_K_Rowling> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/lisannevanvliet/assignment4/Author> ,
+                                                                              <http://www.semanticweb.org/lisannevanvliet/assignment4/Person> ;
+                                                                     <http://www.semanticweb.org/lisannevanvliet/assignment4/HasWritten> <http://www.semanticweb.org/lisannevanvliet/assignment4/Harry_Potter> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Magnus
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Magnus> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.semanticweb.org/lisannevanvliet/assignment4/Books> ;
+                                                                <http://www.semanticweb.org/lisannevanvliet/assignment4/HasGenre> <http://www.semanticweb.org/lisannevanvliet/assignment4/Roman> ;
+                                                                <http://www.semanticweb.org/lisannevanvliet/assignment4/HasNumber> <http://www.semanticweb.org/lisannevanvliet/assignment4/ISBN_9789057598197> ;
+                                                                <http://www.semanticweb.org/lisannevanvliet/assignment4/IsPublishedBy> <http://www.semanticweb.org/lisannevanvliet/assignment4/Uitgeverij_Podium_BV> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Roman
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Roman> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.semanticweb.org/lisannevanvliet/assignment4/Genres> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Thriller
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Thriller> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.semanticweb.org/lisannevanvliet/assignment4/Genres> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Uitgeverij_Podium_BV
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Uitgeverij_Podium_BV> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/lisannevanvliet/assignment4/Publisher> .
+
+
+###  http://www.semanticweb.org/lisannevanvliet/assignment4/Uitgeverij_de_Harmonie
+<http://www.semanticweb.org/lisannevanvliet/assignment4/Uitgeverij_de_Harmonie> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.semanticweb.org/lisannevanvliet/assignment4/Publisher> .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

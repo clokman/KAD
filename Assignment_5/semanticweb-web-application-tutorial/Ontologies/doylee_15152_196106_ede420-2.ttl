@@ -1,0 +1,201 @@
+@prefix : <http://www.semanticweb.org/evanmdoyle/kd_ontology#> .
+@prefix ex: <http://example.com/evanmdoyle/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/evanmdoyle/kd_ontology> .
+
+<http://www.semanticweb.org/evanmdoyle/kd_ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.com/evanmdoyle/actsAs
+ex:actsAs rdf:type owl:ObjectProperty ;
+          rdfs:range ex:Character .
+
+
+###  http://example.com/evanmdoyle/actsIn
+ex:actsIn rdf:type owl:ObjectProperty ;
+          rdfs:domain ex:Actor ;
+          rdfs:range ex:Movie .
+
+
+###  http://example.com/evanmdoyle/hasCharacter
+ex:hasCharacter rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty ;
+                rdfs:range ex:Character .
+
+
+###  http://example.com/evanmdoyle/hates
+ex:hates rdf:type owl:ObjectProperty ;
+         owl:propertyDisjointWith ex:likes .
+
+
+###  http://example.com/evanmdoyle/likes
+ex:likes rdf:type owl:ObjectProperty ;
+         rdfs:domain ex:Person .
+
+
+###  http://example.com/evanmdoyle/plays
+ex:plays rdf:type owl:ObjectProperty ;
+         rdfs:domain ex:Person ;
+         rdfs:range ex:Game .
+
+
+###  http://example.com/evanmdoyle/reads
+ex:reads rdf:type owl:ObjectProperty ;
+         rdfs:domain ex:Person ;
+         rdfs:range ex:Book .
+
+
+###  http://example.com/evanmdoyle/sameStoryAs
+ex:sameStoryAs rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+###  http://example.com/evanmdoyle/stars
+ex:stars rdf:type owl:ObjectProperty ;
+         rdfs:range ex:Actor .
+
+
+###  http://example.com/evanmdoyle/wrote
+ex:wrote rdf:type owl:ObjectProperty ;
+         rdfs:domain ex:Author ;
+         rdfs:range ex:Book .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.com/evanmdoyle/Actor
+ex:Actor rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:actsIn ;
+                               owl:someValuesFrom ex:Movie
+                             ] ;
+         rdfs:subClassOf ex:Person .
+
+
+###  http://example.com/evanmdoyle/Author
+ex:Author rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty ex:wrote ;
+                                owl:someValuesFrom ex:Book
+                              ] ;
+          rdfs:subClassOf ex:Person .
+
+
+###  http://example.com/evanmdoyle/Book
+ex:Book rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty ex:hasCharacter ;
+                          owl:someValuesFrom ex:Character
+                        ] .
+
+
+###  http://example.com/evanmdoyle/Character
+ex:Character rdf:type owl:Class .
+
+
+###  http://example.com/evanmdoyle/CoolPerson
+ex:CoolPerson rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty ex:plays ;
+                                    owl:hasValue ex:PathOfExile
+                                  ] ;
+              rdfs:subClassOf ex:Person ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ex:likes ;
+                                owl:someValuesFrom ex:myFavoriteMovie
+                              ] .
+
+
+###  http://example.com/evanmdoyle/Game
+ex:Game rdf:type owl:Class .
+
+
+###  http://example.com/evanmdoyle/Movie
+ex:Movie rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty ex:stars ;
+                               owl:someValuesFrom ex:Actor
+                             ] ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty ex:hasCharacter ;
+                           owl:someValuesFrom ex:Character
+                         ] .
+
+
+###  http://example.com/evanmdoyle/Person
+ex:Person rdf:type owl:Class .
+
+
+###  http://example.com/evanmdoyle/myFavoriteMovie
+ex:myFavoriteMovie rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty ex:stars ;
+                                         owl:hasValue ex:WillFerrell
+                                       ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.com/evanmdoyle/Anchorman
+ex:Anchorman rdf:type owl:NamedIndividual ;
+             ex:hasCharacter ex:RonBurgundy ;
+             ex:stars ex:WillFerrell .
+
+
+###  http://example.com/evanmdoyle/Evan
+ex:Evan rdf:type owl:NamedIndividual ;
+        ex:likes ex:Anchorman ;
+        ex:plays ex:PathOfExile ;
+        ex:reads ex:HarryPotter .
+
+
+###  http://example.com/evanmdoyle/Hannah
+ex:Hannah rdf:type owl:NamedIndividual ;
+          ex:plays ex:PathOfExile .
+
+
+###  http://example.com/evanmdoyle/HarryPotter
+ex:HarryPotter rdf:type owl:NamedIndividual ;
+               ex:hasCharacter ex:Hermione .
+
+
+###  http://example.com/evanmdoyle/HarryPotterMovie
+ex:HarryPotterMovie rdf:type owl:NamedIndividual ;
+                    ex:sameStoryAs ex:HarryPotter .
+
+
+###  http://example.com/evanmdoyle/Hermione
+ex:Hermione rdf:type owl:NamedIndividual .
+
+
+###  http://example.com/evanmdoyle/JKRowling
+ex:JKRowling rdf:type owl:NamedIndividual ;
+             ex:wrote ex:HarryPotter .
+
+
+###  http://example.com/evanmdoyle/PathOfExile
+ex:PathOfExile rdf:type owl:NamedIndividual .
+
+
+###  http://example.com/evanmdoyle/RonBurgundy
+ex:RonBurgundy rdf:type owl:NamedIndividual .
+
+
+###  http://example.com/evanmdoyle/WillFerrell
+ex:WillFerrell rdf:type owl:NamedIndividual ;
+               ex:actsAs ex:RonBurgundy ;
+               ex:actsIn ex:Anchorman .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

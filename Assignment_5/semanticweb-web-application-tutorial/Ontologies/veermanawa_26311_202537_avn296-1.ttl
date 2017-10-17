@@ -1,0 +1,379 @@
+@prefix : <http://www.semanticweb.org/annaveerman/ontologies/2017/9/untitled-ontology-8#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://few.vu.nl~lkt580> .
+
+<http://few.vu.nl~lkt580> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://few.vu.nl~lkt580#Cures
+
+<http://few.vu.nl~lkt580#Cures> rdf:type owl:ObjectProperty ,
+                                         owl:TransitiveProperty ;
+                                
+                                rdfs:range <http://few.vu.nl~lkt580#Disease> ;
+                                
+                                rdfs:domain <http://few.vu.nl~lkt580#Doctor> .
+
+
+
+###  http://few.vu.nl~lkt580#can_give_a_patient
+
+<http://few.vu.nl~lkt580#can_give_a_patient> rdf:type owl:ObjectProperty .
+
+
+
+###  http://few.vu.nl~lkt580#has
+
+<http://few.vu.nl~lkt580#has> rdf:type owl:ObjectProperty .
+
+
+
+###  http://few.vu.nl~lkt580#has_as_consequence
+
+<http://few.vu.nl~lkt580#has_as_consequence> rdf:type owl:ObjectProperty .
+
+
+
+###  http://few.vu.nl~lkt580#has_as_symptom
+
+<http://few.vu.nl~lkt580#has_as_symptom> rdf:type owl:ObjectProperty .
+
+
+
+###  http://few.vu.nl~lkt580#investigates
+
+<http://few.vu.nl~lkt580#investigates> rdf:type owl:AsymmetricProperty ,
+                                                owl:ObjectProperty ;
+                                       
+                                       rdfs:range <http://few.vu.nl~lkt580#Diabetes> ;
+                                       
+                                       rdfs:domain <http://few.vu.nl~lkt580#Doctor> .
+
+
+
+###  http://few.vu.nl~lkt580#is_caused_by
+
+<http://few.vu.nl~lkt580#is_caused_by> rdf:type owl:ObjectProperty .
+
+
+
+###  http://few.vu.nl~lkt580#suffer_from
+
+<http://few.vu.nl~lkt580#suffer_from> rdf:type owl:ObjectProperty ;
+                                      
+                                      rdfs:range <http://few.vu.nl~lkt580#Cancer> ;
+                                      
+                                      rdfs:domain <http://few.vu.nl~lkt580#Patient> .
+
+
+
+###  http://few.vu.nl~lkt580#treats
+
+<http://few.vu.nl~lkt580#treats> rdf:type owl:ObjectProperty ;
+                                 
+                                 rdfs:domain <http://few.vu.nl~lkt580#Doctor> ;
+                                 
+                                 rdfs:range <http://few.vu.nl~lkt580#Muscle_Disease> .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://few.vu.nl~lkt580#AMC
+
+<http://few.vu.nl~lkt580#AMC> rdf:type owl:Class ;
+                              
+                              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://few.vu.nl~lkt580#has> ;
+                                                    owl:onClass <http://few.vu.nl~lkt580#Doctor> ;
+                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                  ] ;
+                              
+                              rdfs:subClassOf <http://few.vu.nl~lkt580#Hospitals> .
+
+
+
+###  http://few.vu.nl~lkt580#Brain_disease
+
+<http://few.vu.nl~lkt580#Brain_disease> rdf:type owl:Class ;
+                                        
+                                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                              owl:onProperty <http://few.vu.nl~lkt580#can_give_a_patient> ;
+                                                              owl:someValuesFrom <http://few.vu.nl~lkt580#physical/functional_constraints>
+                                                            ] ;
+                                        
+                                        rdfs:subClassOf <http://few.vu.nl~lkt580#Disease> .
+
+
+
+###  http://few.vu.nl~lkt580#Cancer
+
+<http://few.vu.nl~lkt580#Cancer> rdf:type owl:Class ;
+                                 
+                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <http://few.vu.nl~lkt580#is_caused_by> ;
+                                                       owl:someValuesFrom <http://few.vu.nl~lkt580#uncontrolled_celldivision>
+                                                     ] ;
+                                 
+                                 rdfs:subClassOf <http://few.vu.nl~lkt580#Disease> .
+
+
+
+###  http://few.vu.nl~lkt580#Complications
+
+<http://few.vu.nl~lkt580#Complications> rdf:type owl:Class .
+
+
+
+###  http://few.vu.nl~lkt580#Diabetes
+
+<http://few.vu.nl~lkt580#Diabetes> rdf:type owl:Class ;
+                                   
+                                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://few.vu.nl~lkt580#has_as_symptom> ;
+                                                         owl:someValuesFrom <http://few.vu.nl~lkt580#thirst>
+                                                       ] ;
+                                   
+                                   rdfs:subClassOf <http://few.vu.nl~lkt580#Disease> .
+
+
+
+###  http://few.vu.nl~lkt580#Disease
+
+<http://few.vu.nl~lkt580#Disease> rdf:type owl:Class .
+
+
+
+###  http://few.vu.nl~lkt580#Doctor
+
+<http://few.vu.nl~lkt580#Doctor> rdf:type owl:Class ;
+                                 
+                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                       owl:onProperty <http://few.vu.nl~lkt580#investigates> ;
+                                                       owl:someValuesFrom <http://few.vu.nl~lkt580#Diabetes>
+                                                     ] ;
+                                 
+                                 rdfs:subClassOf <http://few.vu.nl~lkt580#Person> .
+
+
+
+###  http://few.vu.nl~lkt580#Hospitals
+
+<http://few.vu.nl~lkt580#Hospitals> rdf:type owl:Class .
+
+
+
+###  http://few.vu.nl~lkt580#Muscle_Disease
+
+<http://few.vu.nl~lkt580#Muscle_Disease> rdf:type owl:Class ;
+                                         
+                                         owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                               owl:onProperty <http://few.vu.nl~lkt580#has_as_consequence> ;
+                                                               owl:someValuesFrom <http://few.vu.nl~lkt580#weakened_or_fallingout_muscles>
+                                                             ] ;
+                                         
+                                         rdfs:subClassOf <http://few.vu.nl~lkt580#Disease> .
+
+
+
+###  http://few.vu.nl~lkt580#Nurse
+
+<http://few.vu.nl~lkt580#Nurse> rdf:type owl:Class ;
+                                
+                                rdfs:subClassOf <http://few.vu.nl~lkt580#Person> .
+
+
+
+###  http://few.vu.nl~lkt580#Patient
+
+<http://few.vu.nl~lkt580#Patient> rdf:type owl:Class ;
+                                  
+                                  rdfs:subClassOf <http://few.vu.nl~lkt580#Person> .
+
+
+
+###  http://few.vu.nl~lkt580#Person
+
+<http://few.vu.nl~lkt580#Person> rdf:type owl:Class .
+
+
+
+###  http://few.vu.nl~lkt580#UMC
+
+<http://few.vu.nl~lkt580#UMC> rdf:type owl:Class ;
+                              
+                              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://few.vu.nl~lkt580#has> ;
+                                                    owl:onClass <http://few.vu.nl~lkt580#Doctor> ;
+                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                  ] ;
+                              
+                              rdfs:subClassOf <http://few.vu.nl~lkt580#Hospitals> ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty <http://few.vu.nl~lkt580#treats> ;
+                                                owl:allValuesFrom <http://few.vu.nl~lkt580#Cancer>
+                                              ] .
+
+
+
+###  http://few.vu.nl~lkt580#VUmc
+
+<http://few.vu.nl~lkt580#VUmc> rdf:type owl:Class ;
+                               
+                               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                     owl:onProperty <http://few.vu.nl~lkt580#has> ;
+                                                     owl:onClass <http://few.vu.nl~lkt580#Doctor> ;
+                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                   ] ;
+                               
+                               rdfs:subClassOf <http://few.vu.nl~lkt580#Hospitals> .
+
+
+
+###  http://few.vu.nl~lkt580#low_blood_sugar_level
+
+<http://few.vu.nl~lkt580#low_blood_sugar_level> rdf:type owl:Class ;
+                                                
+                                                rdfs:subClassOf <http://few.vu.nl~lkt580#Complications> .
+
+
+
+###  http://few.vu.nl~lkt580#physical/functional_constraints
+
+<http://few.vu.nl~lkt580#physical/functional_constraints> rdf:type owl:Class ;
+                                                          
+                                                          rdfs:subClassOf <http://few.vu.nl~lkt580#Complications> .
+
+
+
+###  http://few.vu.nl~lkt580#thirst
+
+<http://few.vu.nl~lkt580#thirst> rdf:type owl:Class ;
+                                 
+                                 rdfs:subClassOf <http://few.vu.nl~lkt580#Complications> .
+
+
+
+###  http://few.vu.nl~lkt580#uncontrolled_celldivision
+
+<http://few.vu.nl~lkt580#uncontrolled_celldivision> rdf:type owl:Class ;
+                                                    
+                                                    rdfs:subClassOf <http://few.vu.nl~lkt580#Complications> .
+
+
+
+###  http://few.vu.nl~lkt580#weakened_or_fallingout_muscles
+
+<http://few.vu.nl~lkt580#weakened_or_fallingout_muscles> rdf:type owl:Class ;
+                                                         
+                                                         rdfs:subClassOf <http://few.vu.nl~lkt580#Complications> .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://few.vu.nl~lkt580#Agetha
+
+<http://few.vu.nl~lkt580#Agetha> rdf:type <http://few.vu.nl~lkt580#Doctor> ,
+                                          owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#Braincancer
+
+<http://few.vu.nl~lkt580#Braincancer> rdf:type <http://few.vu.nl~lkt580#Cancer> ,
+                                               owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#Dementia
+
+<http://few.vu.nl~lkt580#Dementia> rdf:type <http://few.vu.nl~lkt580#Brain_disease> ,
+                                            owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#Diabetes_type_1
+
+<http://few.vu.nl~lkt580#Diabetes_type_1> rdf:type <http://few.vu.nl~lkt580#Diabetes> ,
+                                                   owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#Disease1
+
+<http://few.vu.nl~lkt580#Disease1> rdf:type <http://few.vu.nl~lkt580#Disease> ,
+                                            owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#Lucia
+
+<http://few.vu.nl~lkt580#Lucia> rdf:type <http://few.vu.nl~lkt580#Person> ,
+                                         owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#MS
+
+<http://few.vu.nl~lkt580#MS> rdf:type <http://few.vu.nl~lkt580#Muscle_Disease> ,
+                                      owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#Noa
+
+<http://few.vu.nl~lkt580#Noa> rdf:type <http://few.vu.nl~lkt580#Patient> ,
+                                       owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#hospital1
+
+<http://few.vu.nl~lkt580#hospital1> rdf:type <http://few.vu.nl~lkt580#AMC> ,
+                                             owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#hospital2
+
+<http://few.vu.nl~lkt580#hospital2> rdf:type <http://few.vu.nl~lkt580#UMC> ,
+                                             owl:NamedIndividual .
+
+
+
+###  http://few.vu.nl~lkt580#hospital3
+
+<http://few.vu.nl~lkt580#hospital3> rdf:type <http://few.vu.nl~lkt580#VUmc> ,
+                                             owl:NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

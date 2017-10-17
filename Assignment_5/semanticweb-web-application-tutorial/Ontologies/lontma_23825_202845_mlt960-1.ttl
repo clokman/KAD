@@ -1,0 +1,151 @@
+@prefix : <http://example.org/mennolont/assignment4a/music#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix music: <http://example.org/mennolont/assignment4a/music#> .
+@base <http://example.org/mennolont/assignment4a/music> .
+
+<http://example.org/mennolont/assignment4a/music> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/mennolont/assignment4a/music#containsSong
+music:containsSong rdf:type owl:ObjectProperty ;
+                   owl:inverseOf music:fromAlbum .
+
+
+###  http://example.org/mennolont/assignment4a/music#fromAlbum
+music:fromAlbum rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/mennolont/assignment4a/music#genreOf
+music:genreOf rdf:type owl:ObjectProperty ;
+              owl:inverseOf music:hasGenre ;
+              rdf:type owl:AsymmetricProperty .
+
+
+###  http://example.org/mennolont/assignment4a/music#hasGenre
+music:hasGenre rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty .
+
+
+###  http://example.org/mennolont/assignment4a/music#madeBy
+music:madeBy rdf:type owl:ObjectProperty ;
+             owl:inverseOf music:madeSong .
+
+
+###  http://example.org/mennolont/assignment4a/music#madeSong
+music:madeSong rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/mennolont/assignment4a/music#wonAward
+music:wonAward rdf:type owl:ObjectProperty ;
+               owl:inverseOf music:wonBy .
+
+
+###  http://example.org/mennolont/assignment4a/music#wonBy
+music:wonBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/mennolont/assignment4a/music#Album
+music:Album rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty music:containsSong ;
+                                  owl:someValuesFrom music:Song
+                                ] .
+
+
+###  http://example.org/mennolont/assignment4a/music#Award
+music:Award rdf:type owl:Class .
+
+
+###  http://example.org/mennolont/assignment4a/music#AwardWinners
+music:AwardWinners rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty music:wonAward ;
+                                         owl:someValuesFrom music:Award
+                                       ] .
+
+
+###  http://example.org/mennolont/assignment4a/music#Genre
+music:Genre rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty music:genreOf ;
+                                  owl:someValuesFrom owl:Thing
+                                ] .
+
+
+###  http://example.org/mennolont/assignment4a/music#Person
+music:Person rdf:type owl:Class .
+
+
+###  http://example.org/mennolont/assignment4a/music#Singer-Songwriter
+music:Singer-Songwriter rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty music:madeSong ;
+                                              owl:someValuesFrom music:Song
+                                            ] ;
+                        rdfs:subClassOf music:Person .
+
+
+###  http://example.org/mennolont/assignment4a/music#Song
+music:Song rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty music:hasGenre ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass music:Genre
+                               ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/mennolont/assignment4a/music#Adele
+music:Adele rdf:type owl:NamedIndividual ,
+                     music:Singer-Songwriter ;
+            music:wonAward music:Grammy .
+
+
+###  http://example.org/mennolont/assignment4a/music#Grammy
+music:Grammy rdf:type owl:NamedIndividual ,
+                      music:Award .
+
+
+###  http://example.org/mennolont/assignment4a/music#Hello
+music:Hello rdf:type owl:NamedIndividual ,
+                     music:Song ;
+            music:hasGenre music:Soul ;
+            music:madeBy music:Adele .
+
+
+###  http://example.org/mennolont/assignment4a/music#Menno_Lont
+music:Menno_Lont rdf:type owl:NamedIndividual ,
+                          music:Person .
+
+
+###  http://example.org/mennolont/assignment4a/music#Soul
+music:Soul rdf:type owl:NamedIndividual ,
+                    music:Genre .
+
+
+###  http://example.org/mennolont/assignment4a/music#Taylor_Swift
+music:Taylor_Swift rdf:type owl:NamedIndividual ,
+                            music:AwardWinners .
+
+
+###  http://example.org/mennolont/assignment4a/music#25
+:25 rdf:type owl:NamedIndividual ,
+             music:Album ;
+    music:containsSong music:Hello .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

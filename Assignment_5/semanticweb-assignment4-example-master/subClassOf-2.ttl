@@ -1,0 +1,17 @@
+@prefix fb: <https://graph.facebook.com/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+fb:user-594486635		      fb:likes	fb:movie-289482145973, 
+                                    fb:movie-109327925759703 .
+
+fb:movie-109327925759703	fb:name		"Waking Life"@en ;
+					                a			    fb:Movie .
+
+fb:movie-32985985640 		  fb:name		"Zeitgeist"@en ;
+					                a			    fb:Community .
+
+fb:movie			            rdfs:label	"Movie"@en .
+fb:community		          rdfs:label	"Community"@en .
+
+# Added an rdfs:subClassOf statement
+fb:Community		          rdfs:subClassOf fb:Movie .

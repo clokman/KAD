@@ -1,0 +1,231 @@
+@prefix : <http://www.semanticweb.org/marijn/bandmusic#> .
+@prefix bm: <http://www.semanticweb.org/marijn/bandmusic/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.semanticweb.org/marijn/bandmusic> a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/marijn/bandmusic/hasBand
+
+bm:hasBand a owl:ObjectProperty ;
+	owl:inverseOf bm:hasBandMember .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/hasBandMember
+
+bm:hasBandMember a owl:ObjectProperty .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/hasDrummer
+
+bm:hasDrummer a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/hasGuitarist
+
+bm:hasGuitarist a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/hasLeadSinger
+
+bm:hasLeadSinger a owl:ObjectProperty , owl:AsymmetricProperty .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/hasRecordLabel
+
+bm:hasRecordLabel a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/playsIntrument
+
+bm:playsIntrument a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Band
+
+bm:Band a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty bm:hasLeadSinger ;
+	owl:someValuesFrom bm:LeadSinger .
+
+bm:Band owl:equivalentClass _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty bm:hasBandMember ;
+	owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+	owl:onClass bm:BandMember .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/BandMember
+
+bm:BandMember a owl:Class ;
+	owl:equivalentClass _:genid3 .
+
+_:genid3 owl:intersectionOf _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first bm:Person ;
+	rdf:rest _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty bm:hasBand ;
+	owl:someValuesFrom bm:Band .
+
+_:genid4 rdf:rest rdf:nil .
+
+_:genid3 a owl:Class .
+
+bm:BandMember rdfs:subClassOf bm:Person .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/BandRecordLabel
+
+bm:BandRecordLabel a owl:Class .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Drummer
+
+bm:Drummer a owl:Class ;
+	rdfs:subClassOf bm:BandMember , _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty bm:playsIntrument ;
+	owl:hasValue bm:Drums .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Guitarist
+
+bm:Guitarist a owl:Class ;
+	rdfs:subClassOf bm:BandMember .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Intrument
+
+bm:Intrument a owl:Class .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/LeadSinger
+
+bm:LeadSinger a owl:Class ;
+	rdfs:subClassOf bm:BandMember .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/NonOfficialBand
+
+bm:NonOfficialBand a owl:Class ;
+	rdfs:subClassOf bm:Band , _:genid8 .
+
+_:genid8 a owl:Class ;
+	owl:complementOf bm:OfficialBand .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/OfficialBand
+
+bm:OfficialBand a owl:Class ;
+	owl:equivalentClass _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty bm:hasRecordLabel ;
+	owl:someValuesFrom bm:BandRecordLabel .
+
+bm:OfficialBand rdfs:subClassOf bm:Band .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Person
+
+bm:Person a owl:Class .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Bastille
+
+bm:Bastille a owl:NamedIndividual ;
+	bm:hasLeadSinger bm:Dan_Smith .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Brian_May
+
+bm:Brian_May a owl:NamedIndividual , bm:Guitarist ;
+	bm:playsIntrument bm:Guitar .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Dan_Smith
+
+bm:Dan_Smith a owl:NamedIndividual , bm:LeadSinger .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Drums
+
+bm:Drums a owl:NamedIndividual , bm:Intrument .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Freddy_Mercury
+
+bm:Freddy_Mercury a owl:NamedIndividual , bm:LeadSinger .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Gerard_Way
+
+bm:Gerard_Way a owl:NamedIndividual , bm:Person ;
+	bm:hasBand bm:My_Chemical_Romance .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Guitar
+
+bm:Guitar a owl:NamedIndividual , bm:Intrument .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Imagine_Dragons
+
+bm:Imagine_Dragons a owl:NamedIndividual ;
+	bm:hasRecordLabel bm:Interscope_Records .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Interscope_Records
+
+bm:Interscope_Records a owl:NamedIndividual , bm:BandRecordLabel .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/John_Deacon
+
+bm:John_Deacon a owl:NamedIndividual , bm:Person ;
+	bm:hasBand bm:Queen .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Kids_Of_Rock
+
+bm:Kids_Of_Rock a owl:NamedIndividual , bm:NonOfficialBand .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Linkin_Park
+
+bm:Linkin_Park a owl:NamedIndividual ;
+	bm:hasRecordLabel bm:Machine_Shop_Records .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Machine_Shop_Records
+
+bm:Machine_Shop_Records a owl:NamedIndividual , bm:BandRecordLabel .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/My_Chemical_Romance
+
+bm:My_Chemical_Romance a owl:NamedIndividual , bm:Band .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Queen
+
+bm:Queen a owl:NamedIndividual ;
+	bm:hasDrummer bm:Brian_May ;
+	bm:hasGuitarist bm:Roger_Taylor ;
+	bm:hasLeadSinger bm:Freddy_Mercury .
+# 
+# http://www.semanticweb.org/marijn/bandmusic/Roger_Taylor
+
+bm:Roger_Taylor a owl:NamedIndividual , bm:Drummer ;
+	bm:playsIntrument bm:Drums .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

@@ -1,0 +1,11 @@
+@prefix fb: <https://graph.facebook.com/> .
+@prefix imdb: <http://www.imdb.com/title/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fb:user-594486635		fb:likes		fb:movie-105638652803531 . 
+
+imdb:tt0120669		  imdb:actor	"Benicio Del Toro",
+                                "Ellen Barkin",
+                                "Johnny Depp",
+                                "Tobey Maguire" .

@@ -1,0 +1,167 @@
+@prefix : <http://www.example.org/Mjhbrink/albert_heijn#> .
+@prefix ah: <http://www.example.org/Mjhbrink/albert_heijn/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/Mjhbrink/albert_heijn> .
+
+<http://www.example.org/Mjhbrink/albert_heijn> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/Mjhbrink/albert_heijn/boughtBy
+ah:boughtBy rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/soldBy
+ah:soldBy rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/stockedBy
+ah:stockedBy rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/worksAt
+ah:worksAt rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/Mjhbrink/albert_heijn/cashier
+ah:cashier rdf:type owl:Class ;
+           rdfs:subClassOf ah:employee .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/customer
+ah:customer rdf:type owl:Class ;
+            rdfs:subClassOf ah:person .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/employee
+ah:employee rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ah:worksAt ;
+                                  owl:someValuesFrom ah:location
+                                ] ;
+            rdfs:subClassOf ah:person .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/location
+ah:location rdf:type owl:Class .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/meat
+ah:meat rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty ah:boughtBy ;
+                              owl:someValuesFrom ah:non-vegan_customer
+                            ] ;
+        rdfs:subClassOf ah:products ;
+        owl:disjointWith ah:vegetables .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/non-vegan_customer
+ah:non-vegan_customer rdf:type owl:Class ;
+                      rdfs:subClassOf ah:customer .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/person
+ah:person rdf:type owl:Class .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/products
+ah:products rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty ah:boughtBy ;
+                                  owl:someValuesFrom ah:customer
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ah:soldBy ;
+                                  owl:someValuesFrom ah:cashier
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ah:stockedBy ;
+                                  owl:someValuesFrom ah:re-stocker
+                                ] .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/re-stocker
+ah:re-stocker rdf:type owl:Class ;
+              rdfs:subClassOf ah:employee .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/vegan_customer
+ah:vegan_customer rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( ah:customer
+                                                             [ rdf:type owl:Class ;
+                                                               owl:complementOf ah:non-vegan_customer
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf ah:customer .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/vegetables
+ah:vegetables rdf:type owl:Class ;
+              rdfs:subClassOf ah:products .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/Mjhbrink/albert_heijn/alex
+ah:alex rdf:type owl:NamedIndividual ,
+                 ah:person .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/hamburgers
+ah:hamburgers rdf:type owl:NamedIndividual ,
+                       ah:meat ;
+              ah:boughtBy ah:mike ;
+              ah:stockedBy ah:ryan .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/mike
+ah:mike rdf:type owl:NamedIndividual ,
+                 ah:person .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/oostzaan
+ah:oostzaan rdf:type owl:NamedIndividual ,
+                     ah:location .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/pieter
+ah:pieter rdf:type owl:NamedIndividual ,
+                   ah:person .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/ryan
+ah:ryan rdf:type owl:NamedIndividual ,
+                 ah:person .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/tomatoes
+ah:tomatoes rdf:type owl:NamedIndividual ,
+                     ah:vegetables ;
+            ah:boughtBy ah:pieter ;
+            ah:soldBy ah:alex .
+
+
+###  http://www.example.org/Mjhbrink/albert_heijn/zaandam_vermiljoenweg
+ah:zaandam_vermiljoenweg rdf:type owl:NamedIndividual ,
+                                  ah:location .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

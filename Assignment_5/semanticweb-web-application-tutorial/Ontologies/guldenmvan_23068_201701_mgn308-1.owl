@@ -1,0 +1,172 @@
+@prefix : <http://www.semanticweb.org/mischa/universal_music_group#> .
+@prefix rr: <http://www.semanticweb.org/mischa/universal_music_group/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/mischa/universal_music_group> .
+
+<http://www.semanticweb.org/mischa/universal_music_group> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/mischa/universal_music_group/has_artist
+rr:has_artist rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/has_division
+rr:has_division rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/has_genre
+rr:has_genre rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/has_group
+rr:has_group rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/has_soundtrack
+rr:has_soundtrack rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/makesMusic
+rr:makesMusic rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/partOfGroup
+rr:partOfGroup rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Artist
+rr:Artist rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty rr:makesMusic ;
+                                owl:someValuesFrom rr:Music
+                              ] ;
+          rdfs:subClassOf rr:Group .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Division
+rr:Division rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty rr:has_genre ;
+                                  owl:someValuesFrom rr:Genre
+                                ] ;
+            rdfs:subClassOf rr:RecordLabels .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Genre
+rr:Genre rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty rr:has_genre ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass rr:Genre
+                             ] ;
+         rdfs:subClassOf rr:Division .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Group
+rr:Group rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty rr:has_artist ;
+                               owl:someValuesFrom rr:Artist
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty rr:has_artist ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass rr:Artist
+                             ] ;
+         rdfs:subClassOf rr:Genre .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Music
+rr:Music rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty rr:makesMusic ;
+                               owl:someValuesFrom rr:Artist
+                             ] ;
+         rdfs:subClassOf rr:Genre .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/RecordLabels
+rr:RecordLabels rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Soundtrack
+rr:Soundtrack rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty rr:has_soundtrack ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass rr:Soundtrack
+                                  ] ;
+              rdfs:subClassOf rr:Division ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rr:has_soundtrack ;
+                                owl:someValuesFrom rr:Artist
+                              ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Fifty_Shades_of_Grey
+rr:Fifty_Shades_of_Grey rdf:type owl:NamedIndividual ,
+                                 rr:Soundtrack .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Pop
+rr:Pop rdf:type owl:NamedIndividual ,
+                rr:Genre .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Post_Malone
+rr:Post_Malone rdf:type owl:NamedIndividual ;
+               rr:makesMusic rr:too_young .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Republic_records
+rr:Republic_records rdf:type owl:NamedIndividual ,
+                             rr:Division .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/The_Weeknd
+rr:The_Weeknd rdf:type owl:NamedIndividual ;
+              rr:makesMusic rr:starboy ;
+              rr:partOfGroup rr:XO .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/Universal_Music_Group
+rr:Universal_Music_Group rdf:type owl:NamedIndividual ,
+                                  rr:RecordLabels .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/XO
+rr:XO rdf:type owl:NamedIndividual ;
+      rr:has_artist rr:The_Weeknd .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/starboy
+rr:starboy rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mischa/universal_music_group/too_young
+rr:too_young rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

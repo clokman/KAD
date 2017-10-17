@@ -1,0 +1,232 @@
+@prefix : <http://www.example.org/thuis/drn750assignment4ontology#> .
+@prefix as4: <http://www.example.org/thuis/drn750assignment4ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/thuis/drn750assignment4ontology> .
+
+<http://www.example.org/thuis/drn750assignment4ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/thuis/drn750assignment4ontology/albumOf
+as4:albumOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf as4:madeAlbum .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/belongsToAlbum
+as4:belongsToAlbum rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/hasSong
+as4:hasSong rdf:type owl:ObjectProperty ;
+            owl:inverseOf as4:musicalCategoryIs .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/hasWon
+as4:hasWon rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           owl:inverseOf as4:wonBy .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/madeAlbum
+as4:madeAlbum rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/madeBy
+as4:madeBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/madeSong
+as4:madeSong rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/manages
+as4:manages rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            owl:inverseOf as4:worksFor .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/musicalCategoryIs
+as4:musicalCategoryIs rdf:type owl:ObjectProperty ,
+                               owl:TransitiveProperty .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/wonBy
+as4:wonBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/worksFor
+as4:worksFor rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Album
+as4:Album rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty as4:albumOf ;
+                                owl:someValuesFrom owl:Thing
+                              ] .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/MusicAward
+as4:MusicAward rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty as4:wonBy ;
+                                     owl:someValuesFrom as4:MusicProducer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty as4:wonBy ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass as4:MusicProducer
+                                   ] .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/MusicLabel
+as4:MusicLabel rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty as4:manages ;
+                                     owl:someValuesFrom as4:MusicProducer
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty as4:manages ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass as4:MusicProducer
+                                   ] .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/MusicProducer
+as4:MusicProducer rdf:type owl:Class ;
+                  owl:equivalentClass [ rdf:type owl:Class ;
+                                        owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty as4:madeAlbum ;
+                                                        owl:someValuesFrom as4:Album
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty as4:madeSong ;
+                                                        owl:someValuesFrom as4:Song
+                                                      ]
+                                                    )
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty as4:madeSong ;
+                                        owl:someValuesFrom as4:Song
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty as4:madeSong ;
+                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass as4:Song
+                                      ] .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/MusicalCategory
+as4:MusicalCategory rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty as4:hasSong ;
+                                          owl:someValuesFrom as4:Song
+                                        ] .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Pop-Song
+as4:Pop-Song rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty as4:musicalCategoryIs ;
+                                   owl:hasValue as4:Pop
+                                 ] ;
+             rdfs:subClassOf as4:Song .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Song
+as4:Song rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty as4:belongsToAlbum ;
+                               owl:someValuesFrom as4:Album
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty as4:madeBy ;
+                               owl:someValuesFrom as4:MusicProducer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty as4:musicalCategoryIs ;
+                               owl:someValuesFrom owl:Thing
+                             ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Believer
+as4:Believer rdf:type owl:NamedIndividual ;
+             as4:belongsToAlbum as4:Evolve ;
+             as4:madeBy as4:Imagine_Dragons ;
+             as4:musicalCategoryIs as4:Indierock .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Bruno_Mars
+as4:Bruno_Mars rdf:type owl:NamedIndividual ;
+               as4:hasWon as4:Song_of_the_Year2017 ;
+               as4:madeAlbum as4:Twenty-fourK_Magic ;
+               as4:madeSong as4:Thats_what_I_like ;
+               as4:worksFor as4:Elektra_Records .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Elektra_Records
+as4:Elektra_Records rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Evolve
+as4:Evolve rdf:type owl:NamedIndividual ;
+           as4:albumOf as4:Imagine_Dragons .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Imagine_Dragons
+as4:Imagine_Dragons rdf:type owl:NamedIndividual ;
+                    as4:madeAlbum as4:Evolve ;
+                    as4:madeSong as4:Believer ;
+                    as4:worksFor as4:Interscope_Records .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Indierock
+as4:Indierock rdf:type owl:NamedIndividual ;
+              as4:hasSong as4:Believer .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Interscope_Records
+as4:Interscope_Records rdf:type owl:NamedIndividual ;
+                       as4:manages as4:Imagine_Dragons .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Pop
+as4:Pop rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Song_of_the_Year2017
+as4:Song_of_the_Year2017 rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Thats_what_I_like
+as4:Thats_what_I_like rdf:type owl:NamedIndividual ;
+                      as4:belongsToAlbum as4:Twenty-fourK_Magic ;
+                      as4:madeBy as4:Bruno_Mars ;
+                      as4:musicalCategoryIs as4:Pop .
+
+
+###  http://www.example.org/thuis/drn750assignment4ontology/Twenty-fourK_Magic
+as4:Twenty-fourK_Magic rdf:type owl:NamedIndividual ;
+                       as4:albumOf as4:Bruno_Mars .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

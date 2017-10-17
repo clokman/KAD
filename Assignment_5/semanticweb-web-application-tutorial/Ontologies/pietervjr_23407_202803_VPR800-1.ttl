@@ -1,0 +1,225 @@
+@prefix : <http://www.semanticweb.org/valdimir/awesome#> .
+@prefix aws: <http://www.semanticweb.org/valdimir/awesome/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/valdimir/awesome> .
+
+<http://www.semanticweb.org/valdimir/awesome> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/valdimir/awesome/IsCharacterOfA
+aws:IsCharacterOfA rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/hasAbillity
+aws:hasAbillity rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/hasMeleeWeapon
+aws:hasMeleeWeapon rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/hasNoWeapon
+aws:hasNoWeapon rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/hasRangeWeapon
+aws:hasRangeWeapon rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/hasSupportWeapon
+aws:hasSupportWeapon rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/valdimir/awesome/Fighter
+aws:Fighter rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty aws:hasNoWeapon ;
+                                  owl:someValuesFrom aws:Weapon
+                                ] ;
+            rdfs:subClassOf aws:Heroes .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Heroes
+aws:Heroes rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Mage
+aws:Mage rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty aws:hasSupportWeapon ;
+                               owl:someValuesFrom aws:Weapon
+                             ] ;
+         rdfs:subClassOf aws:Heroes .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/MagicUser
+aws:MagicUser rdf:type owl:Class ;
+              rdfs:subClassOf aws:Skills ,
+                              [ rdf:type owl:Class ;
+                                owl:complementOf aws:MagicUser
+                              ] .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Shooter
+aws:Shooter rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty aws:hasRangeWeapon ;
+                                  owl:someValuesFrom aws:Weapon
+                                ] ;
+            rdfs:subClassOf aws:Heroes .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Skills
+aws:Skills rdf:type owl:Class ;
+           rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty aws:hasAbillity ;
+                                                    owl:hasValue aws:StrBase
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty aws:hasAbillity ;
+                                                    owl:hasValue aws:VitBase
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/StrengthUser
+aws:StrengthUser rdf:type owl:Class ;
+                 rdfs:subClassOf aws:Skills .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Warrior
+aws:Warrior rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty aws:hasMeleeWeapon ;
+                                  owl:someValuesFrom aws:Weapon
+                                ] ;
+            rdfs:subClassOf aws:Heroes .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Weapon
+aws:Weapon rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/valdimir/awesome/AgiBase
+aws:AgiBase rdf:type owl:NamedIndividual ,
+                     aws:Skills .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Air_Sword
+aws:Air_Sword rdf:type owl:NamedIndividual ,
+                       aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Dainn_Lunia
+aws:Dainn_Lunia rdf:type owl:NamedIndividual ,
+                         owl:Thing ;
+                aws:hasSupportWeapon aws:Magic_Wand .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Dual_Guns
+aws:Dual_Guns rdf:type owl:NamedIndividual ,
+                       aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Evie_Vindictus
+aws:Evie_Vindictus rdf:type owl:NamedIndividual ,
+                            owl:Thing ;
+                   aws:hasSupportWeapon aws:Sceptre .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/IntBase
+aws:IntBase rdf:type owl:NamedIndividual ,
+                     aws:Skills .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Knockles
+aws:Knockles rdf:type owl:NamedIndividual ,
+                      aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Laracroft_Tombraider
+aws:Laracroft_Tombraider rdf:type owl:NamedIndividual ,
+                                  owl:Thing ;
+                         aws:hasRangeWeapon aws:Dual_Guns .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/LilideRochefort_Tekken
+aws:LilideRochefort_Tekken rdf:type owl:NamedIndividual ,
+                                    owl:Thing ;
+                           aws:hasNoWeapon aws:Knockles .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Link_Zelda
+aws:Link_Zelda rdf:type owl:NamedIndividual ,
+                        owl:Thing ;
+               aws:hasMeleeWeapon aws:Sword_Shield .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Magic_Wand
+aws:Magic_Wand rdf:type owl:NamedIndividual ,
+                        aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/NathanDrake_Uncharted
+aws:NathanDrake_Uncharted rdf:type owl:NamedIndividual ,
+                                   owl:Thing ;
+                          aws:hasRangeWeapon aws:Revolver .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Noctuslucis_Finalfantasy
+aws:Noctuslucis_Finalfantasy rdf:type owl:NamedIndividual ,
+                                      owl:Thing ;
+                             aws:hasMeleeWeapon aws:Air_Sword .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Revolver
+aws:Revolver rdf:type owl:NamedIndividual ,
+                      aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Sceptre
+aws:Sceptre rdf:type owl:NamedIndividual ,
+                     aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/StrBase
+aws:StrBase rdf:type owl:NamedIndividual ,
+                     aws:Skills .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/Sword_Shield
+aws:Sword_Shield rdf:type owl:NamedIndividual ,
+                          aws:Weapon .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/TifaLockheart_FinalFantasy
+aws:TifaLockheart_FinalFantasy rdf:type owl:NamedIndividual ,
+                                        owl:Thing ;
+                               aws:hasNoWeapon aws:Knockles .
+
+
+###  http://www.semanticweb.org/valdimir/awesome/VitBase
+aws:VitBase rdf:type owl:NamedIndividual ,
+                     aws:Skills .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

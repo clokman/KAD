@@ -1,0 +1,536 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix sr: <http://example.com/kad2017/srs239/recipes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.com/kad2017/srs239/recipes> .
+
+<http://example.com/kad2017/srs239/recipes> rdf:type :Ontology ;
+                                            
+                                            rdfs:comment "Assignment for Knowledge and Data by student srs239. An ontology op recipes" .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://example.com/kad2017/srs239/recipes#comesFrom
+
+sr:comesFrom rdf:type :ObjectProperty ;
+             
+             rdfs:range sr:Cuisine ;
+             
+             rdfs:domain sr:Recipe .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#consistOf
+
+sr:consistOf rdf:type :ObjectProperty ,
+                      :ReflexiveProperty ;
+             
+             rdfs:range sr:Ingredient ;
+             
+             rdfs:domain sr:Ingredient .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#containsSpice
+
+sr:containsSpice rdf:type :ObjectProperty ;
+                 
+                 rdfs:range sr:Herbs_and_Spices ;
+                 
+                 rdfs:domain sr:Recipe ;
+                 
+                 rdfs:subPropertyOf :topObjectProperty .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#containsSteakMeat
+
+sr:containsSteakMeat rdf:type :ObjectProperty ;
+                     
+                     rdfs:domain sr:Rib_Eye_Steak ;
+                     
+                     rdfs:range sr:Steak ;
+                     
+                     rdfs:subPropertyOf :topObjectProperty .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#fitsDiet
+
+sr:fitsDiet rdf:type :ObjectProperty ;
+            
+            rdfs:range sr:Diet ;
+            
+            rdfs:domain sr:Recipe .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#forMeal
+
+sr:forMeal rdf:type :ObjectProperty ;
+           
+           rdfs:range sr:Dinner ;
+           
+           rdfs:domain sr:Recipe .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#hasDiet
+
+sr:hasDiet rdf:type :ObjectProperty .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#hasIngredient
+
+sr:hasIngredient rdf:type :ObjectProperty ;
+                 
+                 rdfs:range sr:Ingredient ;
+                 
+                 rdfs:domain sr:Recipe .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#inRecipe
+
+sr:inRecipe rdf:type :ObjectProperty ;
+            
+            rdfs:domain sr:Ingredient ;
+            
+            rdfs:range sr:Recipe ;
+            
+            :inverseOf sr:hasIngredient .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://example.com/kad2017/srs239/recipes#hasDuration
+
+sr:hasDuration rdf:type :DatatypeProperty ;
+               
+               rdfs:comment "Duration time in minutes" ;
+               
+               rdfs:domain sr:Recipe ;
+               
+               rdfs:range xsd:integer .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#hasName
+
+sr:hasName rdf:type :DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://example.com/kad2017/srs239/recipes#Apple
+
+sr:Apple rdf:type :Class ;
+         
+         rdfs:subClassOf sr:Fruit .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Apple_Pie
+
+sr:Apple_Pie rdf:type :Class ;
+             
+             rdfs:subClassOf sr:VegetarianRecipe ,
+                             [ rdf:type :Restriction ;
+                               :onProperty sr:hasIngredient ;
+                               :someValuesFrom sr:Apple
+                             ] .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Apple_Pie_Dough
+
+sr:Apple_Pie_Dough rdf:type :Class ;
+                   
+                   rdfs:subClassOf sr:Apple_Pie ,
+                                   [ rdf:type :Restriction ;
+                                     :onProperty sr:hasIngredient ;
+                                     :someValuesFrom sr:Flour
+                                   ] .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Beef
+
+sr:Beef rdf:type :Class ;
+        
+        rdfs:subClassOf sr:Meat .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Cuisine
+
+sr:Cuisine rdf:type :Class .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Dessert
+
+sr:Dessert rdf:type :Class ;
+           
+           rdfs:subClassOf sr:Dinner ;
+           
+           :disjointWith sr:Main .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Diet
+
+sr:Diet rdf:type :Class .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Dinner
+
+sr:Dinner rdf:type :Class ;
+          
+          rdfs:subClassOf sr:Meal .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Fish
+
+sr:Fish rdf:type :Class ;
+        
+        rdfs:subClassOf sr:Meat .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Flour
+
+sr:Flour rdf:type :Class ;
+         
+         rdfs:subClassOf sr:Grain .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Fruit
+
+sr:Fruit rdf:type :Class ;
+         
+         rdfs:subClassOf sr:Ingredient .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Grain
+
+sr:Grain rdf:type :Class ;
+         
+         rdfs:subClassOf sr:Ingredient .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Herbs_and_Spices
+
+sr:Herbs_and_Spices rdf:type :Class ;
+                    
+                    rdfs:subClassOf sr:Ingredient .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Ingredient
+
+sr:Ingredient rdf:type :Class ;
+              
+              rdfs:subClassOf [ rdf:type :Restriction ;
+                                :onProperty sr:inRecipe ;
+                                :someValuesFrom sr:Recipe
+                              ] .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Main
+
+sr:Main rdf:type :Class ;
+        
+        rdfs:subClassOf sr:Dinner .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Meal
+
+sr:Meal rdf:type :Class .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Meat
+
+sr:Meat rdf:type :Class ;
+        
+        rdfs:subClassOf sr:Ingredient ,
+                        [ rdf:type :Restriction ;
+                          :onProperty sr:hasDiet ;
+                          :allValuesFrom sr:MeatDiet
+                        ] .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#MeatDiet
+
+sr:MeatDiet rdf:type :Class ;
+            
+            rdfs:subClassOf sr:Diet .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#MeatRecipe
+
+sr:MeatRecipe rdf:type :Class ;
+              
+              :equivalentClass [ rdf:type :Class ;
+                                 :intersectionOf ( sr:Recipe
+                                                   [ rdf:type :Restriction ;
+                                                     :onProperty sr:hasIngredient ;
+                                                     :someValuesFrom sr:Meat
+                                                   ]
+                                                 )
+                               ] ;
+              
+              rdfs:subClassOf [ rdf:type :Restriction ;
+                                :onProperty sr:hasDiet ;
+                                :allValuesFrom sr:MeatDiet
+                              ] ;
+              
+              :disjointWith sr:VegetarianRecipe ;
+              
+              rdfs:comment "Recipes containing meat" .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Recipe
+
+sr:Recipe rdf:type :Class ;
+          
+          :equivalentClass [ rdf:type :Restriction ;
+                             :onProperty sr:hasIngredient ;
+                             :someValuesFrom sr:Ingredient
+                           ] .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Rib_Eye_Steak
+
+sr:Rib_Eye_Steak rdf:type :Class ;
+                 
+                 rdfs:subClassOf sr:MeatRecipe ,
+                                 [ rdf:type :Restriction ;
+                                   :onProperty sr:hasIngredient ;
+                                   :onClass sr:Steak ;
+                                   :minQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Rib_Eye_Steak_Sauce
+
+sr:Rib_Eye_Steak_Sauce rdf:type :Class ;
+                       
+                       rdfs:subClassOf sr:Rib_Eye_Steak .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Steak
+
+sr:Steak rdf:type :Class ;
+         
+         rdfs:subClassOf sr:Beef .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#VegetarianDiet
+
+sr:VegetarianDiet rdf:type :Class ;
+                  
+                  rdfs:subClassOf sr:Diet .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#VegetarianRecipe
+
+sr:VegetarianRecipe rdf:type :Class ;
+                    
+                    rdfs:subClassOf sr:Recipe ,
+                                    [ rdf:type :Restriction ;
+                                      :onProperty sr:hasDiet ;
+                                      :allValuesFrom sr:VegetarianDiet
+                                    ] ;
+                    
+                    rdfs:comment "Recipes containing no meat" .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://example.com/kad2017/srs239/recipes#American
+
+sr:American rdf:type :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Apple_Pie
+
+sr:Apple_Pie rdf:type sr:Apple_Pie ,
+                      :NamedIndividual ;
+             
+             sr:hasDuration 25 ;
+             
+             sr:hasName "Apple Pie"@en ,
+                        "Appeltaart"@nl ;
+             
+             sr:consistOf sr:Apple_Pie_Dough ;
+             
+             sr:forMeal sr:Dessert ;
+             
+             sr:comesFrom sr:Western_Europian .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Apple_Pie_Dough
+
+sr:Apple_Pie_Dough rdf:type sr:Apple_Pie_Dough ,
+                            :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Bramley
+
+sr:Bramley rdf:type sr:Apple ,
+                    :NamedIndividual ;
+           
+           sr:inRecipe sr:Apple_Pie .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Cayenne_Pepper
+
+sr:Cayenne_Pepper rdf:type :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Chili_Powder
+
+sr:Chili_Powder rdf:type :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Dessert
+
+sr:Dessert rdf:type sr:Dessert ,
+                    :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Flour
+
+sr:Flour rdf:type sr:Flour ,
+                  :NamedIndividual ;
+         
+         sr:inRecipe sr:Apple_Pie_Dough ;
+         
+         sr:consistOf sr:Flour .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Granny_Smith
+
+sr:Granny_Smith rdf:type sr:Apple ,
+                         :NamedIndividual ;
+                
+                sr:inRecipe sr:Apple_Pie .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Main
+
+sr:Main rdf:type sr:Main ,
+                 :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Pepper
+
+sr:Pepper rdf:type :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Rib_Eye_Steak
+
+sr:Rib_Eye_Steak rdf:type :NamedIndividual ;
+                 
+                 sr:comesFrom sr:American ;
+                 
+                 sr:forMeal sr:Main .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Rib_Eye_Steak_Sauce
+
+sr:Rib_Eye_Steak_Sauce rdf:type :NamedIndividual ;
+                       
+                       sr:containsSpice sr:Cayenne_Pepper ,
+                                        sr:Chili_Powder ,
+                                        sr:Pepper ,
+                                        sr:Salt .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Salt
+
+sr:Salt rdf:type :NamedIndividual .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Steak
+
+sr:Steak rdf:type :NamedIndividual ;
+         
+         sr:forMeal sr:Rib_Eye_Steak .
+
+
+
+###  http://example.com/kad2017/srs239/recipes#Western_Europian
+
+sr:Western_Europian rdf:type :NamedIndividual .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

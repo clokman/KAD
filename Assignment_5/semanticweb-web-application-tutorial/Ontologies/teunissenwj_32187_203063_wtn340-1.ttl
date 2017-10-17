@@ -1,0 +1,250 @@
+@prefix : <http://www.example.org/wes/ontologies/majorLeagueBaseball#> .
+@prefix mlb: <http://www.example.org/wes/ontologies/majorLeagueBaseball/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/wes/ontologies/majorLeagueBaseball> .
+
+<http://www.example.org/wes/ontologies/majorLeagueBaseball> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/belongsTo
+mlb:belongsTo rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/hasContractWith
+mlb:hasContractWith rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/hasPosition
+mlb:hasPosition rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/isLocatedIn
+mlb:isLocatedIn rdf:type owl:ObjectProperty ,
+                         owl:ReflexiveProperty .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/playsFor
+mlb:playsFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/usedBy
+mlb:usedBy rdf:type owl:ObjectProperty ,
+                    owl:ReflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/City
+mlb:City rdf:type owl:Class .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Division
+mlb:Division rdf:type owl:Class .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Person
+mlb:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Player
+mlb:Player rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty mlb:hasContractWith ;
+                                                        owl:someValuesFrom mlb:Team
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty mlb:hasPosition ;
+                                                        owl:someValuesFrom mlb:Position
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf mlb:Person .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Position
+mlb:Position rdf:type owl:Class .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Stadium
+mlb:Stadium rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty mlb:usedBy ;
+                                                         owl:someValuesFrom mlb:Team
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty mlb:isLocatedIn ;
+                                                         owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                         owl:onClass mlb:City
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Staff
+mlb:Staff rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty mlb:hasContractWith ;
+                                                       owl:someValuesFrom mlb:Team
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty mlb:hasPosition ;
+                                                       owl:hasValue mlb:Manager
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf mlb:Person .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Team
+mlb:Team rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty mlb:isLocatedIn ;
+                                                      owl:someValuesFrom mlb:City
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty mlb:belongsTo ;
+                                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                      owl:onClass mlb:Division
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/American_League
+mlb:American_League rdf:type owl:NamedIndividual ,
+                             mlb:Division .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Boston
+mlb:Boston rdf:type owl:NamedIndividual ,
+                    mlb:City .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Catcher
+mlb:Catcher rdf:type owl:NamedIndividual ,
+                     mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Center_Field
+mlb:Center_Field rdf:type owl:NamedIndividual ,
+                          mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Citi_Field
+mlb:Citi_Field rdf:type owl:NamedIndividual ,
+                        mlb:Stadium ;
+               mlb:isLocatedIn mlb:New_York ;
+               mlb:usedBy mlb:Mets .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Dustin_Pedroia
+mlb:Dustin_Pedroia rdf:type owl:NamedIndividual ,
+                            mlb:Person ;
+                   mlb:hasContractWith mlb:Red_Sox ;
+                   mlb:hasPosition mlb:Second_Baseman .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Fenway_Park
+mlb:Fenway_Park rdf:type owl:NamedIndividual ,
+                         mlb:Stadium ;
+                mlb:isLocatedIn mlb:Boston ;
+                mlb:usedBy mlb:Red_Sox .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/First_Baseman
+mlb:First_Baseman rdf:type owl:NamedIndividual ,
+                           mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/John_Farrel
+mlb:John_Farrel rdf:type owl:NamedIndividual ,
+                         mlb:Person ;
+                mlb:hasContractWith mlb:Red_Sox ;
+                mlb:hasPosition mlb:Manager .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Left_Field
+mlb:Left_Field rdf:type owl:NamedIndividual ,
+                        mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Manager
+mlb:Manager rdf:type owl:NamedIndividual ,
+                     mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Mets
+mlb:Mets rdf:type owl:NamedIndividual ,
+                  mlb:Team .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/National_League
+mlb:National_League rdf:type owl:NamedIndividual ,
+                             mlb:Division .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/New_York
+mlb:New_York rdf:type owl:NamedIndividual ,
+                      mlb:City .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Pitcher
+mlb:Pitcher rdf:type owl:NamedIndividual ,
+                     mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Red_Sox
+mlb:Red_Sox rdf:type owl:NamedIndividual ,
+                     mlb:Team .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Right_Field
+mlb:Right_Field rdf:type owl:NamedIndividual ,
+                         mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Second_Baseman
+mlb:Second_Baseman rdf:type owl:NamedIndividual ,
+                            mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Shortstop
+mlb:Shortstop rdf:type owl:NamedIndividual ,
+                       mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Third_Baseman
+mlb:Third_Baseman rdf:type owl:NamedIndividual ,
+                           mlb:Position .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Yankee_Stadium
+mlb:Yankee_Stadium rdf:type owl:NamedIndividual ,
+                            mlb:Stadium ;
+                   mlb:isLocatedIn mlb:New_York ;
+                   mlb:usedBy mlb:Yankees .
+
+
+###  http://www.example.org/wes/ontologies/majorLeagueBaseball/Yankees
+mlb:Yankees rdf:type owl:NamedIndividual ,
+                     mlb:Team .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

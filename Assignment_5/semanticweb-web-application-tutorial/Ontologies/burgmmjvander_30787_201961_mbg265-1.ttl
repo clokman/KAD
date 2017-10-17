@@ -1,0 +1,287 @@
+@prefix : <http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/> .
+@prefix ex: <http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/> .
+
+<http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/isCoachOf
+ex:isCoachOf rdf:type owl:ObjectProperty ,
+                      owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/isFanOf
+ex:isFanOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/isTeammateOf
+ex:isTeammateOf rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/playsIn
+ex:playsIn rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/playsRoleIn
+ex:playsRoleIn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/Coach
+ex:Coach rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ex:isCoachOf ;
+                                                      owl:someValuesFrom ex:HockeyTeam
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/DutchCompetition
+ex:DutchCompetition rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/DutchNationalTeam
+ex:DutchNationalTeam rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/DutchReferee
+ex:DutchReferee rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ex:playsRoleIn ;
+                                                             owl:someValuesFrom ex:DutchCompetition
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/EuropeanTournament
+ex:EuropeanTournament rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/Fan
+ex:Fan rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty ex:isFanOf ;
+                                                    owl:someValuesFrom ex:HockeyTeam
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/GermanNationalTeam
+ex:GermanNationalTeam rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/HockeyTeam
+ex:HockeyTeam rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/Hockeyer
+ex:Hockeyer rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty ex:playsIn ;
+                                                         owl:someValuesFrom ex:HockeyTeam
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/HoofdklassePlayer
+ex:HoofdklassePlayer rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ex:playsIn ;
+                                                                  owl:someValuesFrom ex:DutchCompetition
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/InternationalHockeyer
+ex:InternationalHockeyer rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ex:playsIn ;
+                                                                      owl:someValuesFrom ex:DutchNationalTeam
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ,
+                                             [ owl:intersectionOf ( ex:Person
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ex:playsIn ;
+                                                                      owl:someValuesFrom ex:GermanNationalTeam
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/InternationalReferee
+ex:InternationalReferee rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( ex:Person
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty ex:playsRoleIn ;
+                                                                     owl:someValuesFrom ex:EuropeanTournament
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf ex:Person .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/Person
+ex:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/AmsterdamH1
+ex:AmsterdamH1 rdf:type owl:NamedIndividual ,
+                        ex:HockeyTeam .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/BillyBakker
+ex:BillyBakker rdf:type owl:NamedIndividual ,
+                        ex:Person ;
+               ex:playsIn ex:AmsterdamH1 ,
+                          ex:Hoofdklasse ,
+                          ex:NederlandsElftalHeren .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/EuroHockeyLeague
+ex:EuroHockeyLeague rdf:type owl:NamedIndividual ,
+                             ex:EuropeanTournament .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/EuropeanWomenHockeyCup
+ex:EuropeanWomenHockeyCup rdf:type owl:NamedIndividual ,
+                                   ex:EuropeanTournament .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/FlorianFuchs
+ex:FlorianFuchs rdf:type owl:NamedIndividual ,
+                         ex:Person ;
+                ex:playsIn ex:GermanHockeyElftal ,
+                           ex:UHCHamburg .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/FlorisDeJong
+ex:FlorisDeJong rdf:type owl:NamedIndividual ,
+                         ex:Person ;
+                ex:playsRoleIn ex:Hoofdklasse .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/GermanHockeyElftal
+ex:GermanHockeyElftal rdf:type owl:NamedIndividual ,
+                               ex:GermanNationalTeam .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/GrahamReid
+ex:GrahamReid rdf:type owl:NamedIndividual ,
+                       ex:Person ;
+              ex:isCoachOf ex:AmsterdamH1 .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/Hoofdklasse
+ex:Hoofdklasse rdf:type owl:NamedIndividual ,
+                        ex:DutchCompetition .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/KampongH1
+ex:KampongH1 rdf:type owl:NamedIndividual ,
+                      ex:HockeyTeam ;
+             ex:playsIn ex:Hoofdklasse .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/MarkBlok
+ex:MarkBlok rdf:type owl:NamedIndividual ,
+                     ex:Person ;
+            ex:isFanOf ex:KampongH1 .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/MarkCox
+ex:MarkCox rdf:type owl:NamedIndividual ,
+                    ex:Person ;
+           ex:isCoachOf ex:KampongH1 .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/NederlandsElftalHeren
+ex:NederlandsElftalHeren rdf:type owl:NamedIndividual ,
+                                  ex:DutchNationalTeam .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/PepijnLuyckx
+ex:PepijnLuyckx rdf:type owl:NamedIndividual ,
+                         ex:Person ;
+                ex:playsIn ex:Hoofdklasse ,
+                           ex:KampongH1 .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/PeteWright
+ex:PeteWright rdf:type owl:NamedIndividual ,
+                       ex:Person ;
+              ex:playsRoleIn ex:EuroHockeyLeague .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/RobbertKemperman
+ex:RobbertKemperman rdf:type owl:NamedIndividual ,
+                             ex:Person ;
+                    ex:isTeammateOf ex:SanderDeWijn ;
+                    ex:playsIn ex:Hoofdklasse ,
+                               ex:KampongH1 ,
+                               ex:NederlandsElftalHeren .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/SanderDeWijn
+ex:SanderDeWijn rdf:type owl:NamedIndividual ,
+                         ex:Person ;
+                ex:isTeammateOf ex:PepijnLuyckx ;
+                ex:playsIn ex:Hoofdklasse ,
+                           ex:KampongH1 ,
+                           ex:NederlandsElftalHeren .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/SteveVanAsch
+ex:SteveVanAsch rdf:type owl:NamedIndividual ,
+                         ex:Person ;
+                ex:playsRoleIn ex:EuroHockeyLeague .
+
+
+###  http://www.semanticweb.org/maxvanderburg/ontologies/assignment4/UHCHamburg
+ex:UHCHamburg rdf:type owl:NamedIndividual ,
+                       ex:HockeyTeam .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

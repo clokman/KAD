@@ -1,0 +1,155 @@
+@prefix : <http://www.semanticweb.org/alexisbrockway/olympicsport#> .
+@prefix os: <http://www.semanticweb.org/alexisbrockway/olympicsport/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/alexisbrockway/olympicsport> .
+
+<http://www.semanticweb.org/alexisbrockway/olympicsport> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/competesIn
+os:competesIn rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/isAwardedFor
+os:isAwardedFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/isPlayedBy
+os:isPlayedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/isWonBy
+os:isWonBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/won
+os:won rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Athlete
+os:Athlete rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty os:competesIn ;
+                                 owl:someValuesFrom os:Sport
+                               ] .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Award
+os:Award rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/MultipleOlympicMedalist
+os:MultipleOlympicMedalist rdf:type owl:Class ;
+                           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                 owl:onProperty os:won ;
+                                                 owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                                 owl:onClass os:OlympicMedal
+                                               ] ;
+                           rdfs:subClassOf os:OlympicMedalist .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/OlympicAthlete
+os:OlympicAthlete rdf:type owl:Class ;
+                  rdfs:subClassOf os:Athlete .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/OlympicMedal
+os:OlympicMedal rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty os:isAwardedFor ;
+                                      owl:someValuesFrom os:OlympicSport
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty os:isWonBy ;
+                                      owl:allValuesFrom os:OlympicMedalist
+                                    ] ;
+                rdfs:subClassOf os:Award .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/OlympicMedalist
+os:OlympicMedalist rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty os:won ;
+                                         owl:someValuesFrom os:OlympicMedal
+                                       ] ;
+                   rdfs:subClassOf os:OlympicAthlete .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/OlympicSport
+os:OlympicSport rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty os:isPlayedBy ;
+                                      owl:someValuesFrom os:OlympicAthlete
+                                    ] ;
+                rdfs:subClassOf os:Sport .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Sport
+os:Sport rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Aly_Raisman
+os:Aly_Raisman rdf:type owl:NamedIndividual ;
+               os:competesIn os:Gymnastics .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Gymnastics
+os:Gymnastics rdf:type owl:NamedIndividual ,
+                       os:OlympicSport .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Mens_Swimming_Gold
+os:Mens_Swimming_Gold rdf:type owl:NamedIndividual ,
+                               os:OlympicMedal ;
+                      os:isAwardedFor os:Swimming .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Michael_Phelps
+os:Michael_Phelps rdf:type owl:NamedIndividual ;
+                  os:won os:Mens_Swimming_Gold .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Simone_Biles
+os:Simone_Biles rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Swimming
+os:Swimming rdf:type owl:NamedIndividual ;
+            os:isPlayedBy os:Michael_Phelps .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Tennis
+os:Tennis rdf:type owl:NamedIndividual ;
+          os:isPlayedBy os:Venus_Williams .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Venus_Williams
+os:Venus_Williams rdf:type owl:NamedIndividual ,
+                           os:OlympicAthlete .
+
+
+###  http://www.semanticweb.org/alexisbrockway/olympicsport/Womens_Gymnastics_Gold
+os:Womens_Gymnastics_Gold rdf:type owl:NamedIndividual ;
+                          os:isAwardedFor os:Gymnastics ;
+                          os:isWonBy os:Simone_Biles .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

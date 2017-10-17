@@ -1,0 +1,349 @@
+@prefix : <http://www.example.org/michael/blubber#> .
+@prefix bl: <http://www.example.org/michael/blubber/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/michael/blubber> .
+
+<http://www.example.org/michael/blubber> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/michael/blubber/Located_in
+bl:Located_in rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/michael/blubber/cleans
+bl:cleans rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.org/michael/blubber/connected_to
+bl:connected_to rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.example.org/michael/blubber/follows_sport_training
+bl:follows_sport_training rdf:type owl:ObjectProperty ;
+                          rdfs:domain bl:Person ;
+                          rdfs:range bl:Sports .
+
+
+###  http://www.example.org/michael/blubber/gives_training
+bl:gives_training rdf:type owl:ObjectProperty ;
+                  rdfs:domain bl:SportTeacher ;
+                  rdfs:range bl:Sports .
+
+
+###  http://www.example.org/michael/blubber/studying
+bl:studying rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain bl:Person ,
+                        bl:Student ;
+            rdfs:range bl:Courses .
+
+
+###  http://www.example.org/michael/blubber/teaches
+bl:teaches rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain bl:Teacher ;
+           rdfs:range bl:Courses .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.org/michael/blubber/firstname
+bl:firstname rdf:type owl:DatatypeProperty ;
+             rdfs:domain bl:Person ;
+             rdfs:range xsd:string .
+
+
+###  http://www.example.org/michael/blubber/lastname
+bl:lastname rdf:type owl:DatatypeProperty ;
+            rdfs:domain bl:Person ;
+            rdfs:range xsd:string .
+
+
+###  http://www.example.org/michael/blubber/studentID
+bl:studentID rdf:type owl:DatatypeProperty ;
+             rdfs:domain bl:Student ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.example.org/michael/blubber/teacherID
+bl:teacherID rdf:type owl:DatatypeProperty ;
+             rdfs:domain bl:Teacher ;
+             rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/michael/blubber/Buildings
+bl:Buildings rdf:type owl:Class .
+
+
+###  http://www.example.org/michael/blubber/Chemistry
+bl:Chemistry rdf:type owl:Class ;
+             rdfs:subClassOf bl:Courses ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty bl:Located_in ;
+                               owl:allValuesFrom bl:Chemistry
+                             ] .
+
+
+###  http://www.example.org/michael/blubber/Cleaner
+bl:Cleaner rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty bl:cleans ;
+                                 owl:someValuesFrom bl:Buildings
+                               ] ;
+           rdfs:subClassOf bl:Person .
+
+
+###  http://www.example.org/michael/blubber/Courses
+bl:Courses rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty bl:Located_in ;
+                                 owl:someValuesFrom bl:Buildings
+                               ] .
+
+
+###  http://www.example.org/michael/blubber/Economics
+bl:Economics rdf:type owl:Class ;
+             rdfs:subClassOf bl:Courses ;
+             owl:disjointWith bl:Math ,
+                              bl:Student .
+
+
+###  http://www.example.org/michael/blubber/Math
+bl:Math rdf:type owl:Class ;
+        rdfs:subClassOf bl:Courses .
+
+
+###  http://www.example.org/michael/blubber/Person
+bl:Person rdf:type owl:Class .
+
+
+###  http://www.example.org/michael/blubber/STEMfaculty
+bl:STEMfaculty rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty bl:connected_to ;
+                                     owl:someValuesFrom bl:main_building
+                                   ] ;
+               rdfs:subClassOf bl:Buildings .
+
+
+###  http://www.example.org/michael/blubber/SportTeacher
+bl:SportTeacher rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty bl:gives_training ;
+                                      owl:someValuesFrom bl:Sports
+                                    ] ;
+                rdfs:subClassOf bl:Person .
+
+
+###  http://www.example.org/michael/blubber/Sports
+bl:Sports rdf:type owl:Class .
+
+
+###  http://www.example.org/michael/blubber/Student
+bl:Student rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty bl:studying ;
+                                 owl:someValuesFrom bl:Courses
+                               ] ;
+           rdfs:subClassOf bl:Person ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty bl:studying ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass bl:Courses
+                           ] .
+
+
+###  http://www.example.org/michael/blubber/Teacher
+bl:Teacher rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty bl:teaches ;
+                                 owl:someValuesFrom bl:Courses
+                               ] ;
+           rdfs:subClassOf bl:Person .
+
+
+###  http://www.example.org/michael/blubber/main_building
+bl:main_building rdf:type owl:Class ;
+                 rdfs:subClassOf bl:Buildings .
+
+
+###  http://www.example.org/michael/blubber/soccer
+bl:soccer rdf:type owl:Class ;
+          rdfs:subClassOf bl:Sports .
+
+
+###  http://www.example.org/michael/blubber/student_only_sports
+bl:student_only_sports rdf:type owl:Class ;
+                       rdfs:subClassOf bl:Sports .
+
+
+###  http://www.example.org/michael/blubber/teacher_only_sports
+bl:teacher_only_sports rdf:type owl:Class ;
+                       rdfs:subClassOf bl:Sports .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/michael/blubber/Algebra
+bl:Algebra rdf:type owl:NamedIndividual ,
+                    bl:Math ;
+           bl:cleans bl:room1 .
+
+
+###  http://www.example.org/michael/blubber/Teacher1
+bl:Teacher1 rdf:type owl:NamedIndividual ,
+                     bl:Teacher ;
+            bl:teaches bl:Algebra ;
+            bl:firstname "Erik"^^xsd:string ;
+            bl:lastname "Hartman"^^xsd:string ;
+            bl:teacherID 109348 .
+
+
+###  http://www.example.org/michael/blubber/Teacher2
+bl:Teacher2 rdf:type owl:NamedIndividual ,
+                     bl:Teacher ;
+            bl:follows_sport_training bl:soccersession2 .
+
+
+###  http://www.example.org/michael/blubber/Teacher3
+bl:Teacher3 rdf:type owl:NamedIndividual ,
+                     bl:Teacher ;
+            bl:follows_sport_training bl:soccersession1 ;
+            bl:studying bl:microeconomics .
+
+
+###  http://www.example.org/michael/blubber/Teacher4
+bl:Teacher4 rdf:type owl:NamedIndividual ,
+                     bl:Teacher .
+
+
+###  http://www.example.org/michael/blubber/boxing
+bl:boxing rdf:type owl:NamedIndividual ,
+                   bl:student_only_sports .
+
+
+###  http://www.example.org/michael/blubber/chemistry101
+bl:chemistry101 rdf:type owl:NamedIndividual ,
+                         bl:Chemistry .
+
+
+###  http://www.example.org/michael/blubber/chemistry102
+bl:chemistry102 rdf:type owl:NamedIndividual ,
+                         bl:Chemistry .
+
+
+###  http://www.example.org/michael/blubber/cleaner1
+bl:cleaner1 rdf:type owl:NamedIndividual ,
+                     bl:Cleaner ;
+            bl:cleans bl:mathroom ;
+            bl:teaches bl:Algebra .
+
+
+###  http://www.example.org/michael/blubber/cleaner2
+bl:cleaner2 rdf:type owl:NamedIndividual ,
+                     bl:Cleaner ;
+            bl:cleans bl:room1 ;
+            bl:studying bl:Algebra .
+
+
+###  http://www.example.org/michael/blubber/cleaner3
+bl:cleaner3 rdf:type owl:NamedIndividual ,
+                     bl:Cleaner ;
+            bl:cleans bl:economicsroom ;
+            bl:gives_training bl:boxing .
+
+
+###  http://www.example.org/michael/blubber/cleaner4
+bl:cleaner4 rdf:type owl:NamedIndividual ,
+                     bl:Cleaner .
+
+
+###  http://www.example.org/michael/blubber/economicsroom
+bl:economicsroom rdf:type owl:NamedIndividual ,
+                          bl:main_building .
+
+
+###  http://www.example.org/michael/blubber/macroeconomics
+bl:macroeconomics rdf:type owl:NamedIndividual ,
+                           bl:Economics .
+
+
+###  http://www.example.org/michael/blubber/mathroom
+bl:mathroom rdf:type owl:NamedIndividual ,
+                     bl:STEMfaculty .
+
+
+###  http://www.example.org/michael/blubber/microeconomics
+bl:microeconomics rdf:type owl:NamedIndividual ,
+                           bl:Economics .
+
+
+###  http://www.example.org/michael/blubber/room1
+bl:room1 rdf:type owl:NamedIndividual ,
+                  bl:STEMfaculty .
+
+
+###  http://www.example.org/michael/blubber/soccersession1
+bl:soccersession1 rdf:type owl:NamedIndividual ,
+                           bl:soccer .
+
+
+###  http://www.example.org/michael/blubber/soccersession2
+bl:soccersession2 rdf:type owl:NamedIndividual ,
+                           bl:soccer .
+
+
+###  http://www.example.org/michael/blubber/student1
+bl:student1 rdf:type owl:NamedIndividual ,
+                     bl:Student ;
+            bl:studying bl:Algebra ,
+                        bl:macroeconomics ;
+            bl:firstname "Mika"^^xsd:string ;
+            bl:lastname "Van_Londen"^^xsd:string ;
+            bl:studentID 456232 .
+
+
+###  http://www.example.org/michael/blubber/student2
+bl:student2 rdf:type owl:NamedIndividual ,
+                     bl:Student ;
+            bl:follows_sport_training bl:boxing ,
+                                      bl:soccersession1 ;
+            bl:firstname "Mao"^^xsd:string ;
+            bl:lastname "Queja"^^xsd:string ;
+            bl:studentID 834984 .
+
+
+###  http://www.example.org/michael/blubber/student3
+bl:student3 rdf:type owl:NamedIndividual ,
+                     bl:Student ;
+            bl:teaches bl:Algebra .
+
+
+###  http://www.example.org/michael/blubber/trainer1
+bl:trainer1 rdf:type owl:NamedIndividual ,
+                     bl:SportTeacher ;
+            bl:gives_training bl:soccersession1 ;
+            bl:firstname "Bik"^^xsd:string ;
+            bl:lastname "Blok"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

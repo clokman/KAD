@@ -1,0 +1,237 @@
+@prefix : <http://www.semanticweb.org/willem/ontologies/2017/9/bicycles#> .
+@prefix bi: <http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/willem/ontologies/2017/9/bicycles> .
+
+<http://www.semanticweb.org/willem/ontologies/2017/9/bicycles> rdf:type owl:Ontology ;
+                                                                rdfs:comment "A bicycle ontology that describes different types of x-wheeled transport vehicles." .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/hasWheels
+bi:hasWheels rdf:type owl:ObjectProperty ,
+                      owl:ReflexiveProperty .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/isMotorized
+bi:isMotorized rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/takesPartIn
+bi:takesPartIn rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty ,
+                        owl:TransitiveProperty .
+
+
+###  http://www.w3.org/2002/07/owl#hasValue
+owl:hasValue rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf bi:hasWheels .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Bicycle
+bi:Bicycle rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty bi:takesPartIn ;
+                                 owl:someValuesFrom bi:Traffic
+                               ] ;
+           rdfs:subClassOf bi:Bike ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty bi:hasWheels ;
+                             owl:allValuesFrom bi:Two_Wheels
+                           ] .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Bike
+bi:Bike rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Citybike
+bi:Citybike rdf:type owl:Class ;
+            rdfs:subClassOf bi:Bicycle .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/For_Adults
+bi:For_Adults rdf:type owl:Class ;
+              rdfs:subClassOf bi:Tricycle .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/For_Children
+bi:For_Children rdf:type owl:Class ;
+                rdfs:subClassOf bi:Tricycle .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Four_Wheels
+bi:Four_Wheels rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Motor
+bi:Motor rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty bi:takesPartIn ;
+                               owl:someValuesFrom bi:Traffic
+                             ] ;
+         rdfs:subClassOf bi:Bike ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty bi:hasWheels ;
+                           owl:allValuesFrom bi:Two_Wheels
+                         ] .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Mountainbike
+bi:Mountainbike rdf:type owl:Class ;
+                rdfs:subClassOf bi:Bicycle .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/One_Wheel
+bi:One_Wheel rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Quad
+bi:Quad rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty bi:takesPartIn ;
+                              owl:someValuesFrom bi:Traffic
+                            ] ;
+        rdfs:subClassOf bi:Bike ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty bi:hasWheels ;
+                          owl:allValuesFrom bi:Four_Wheels
+                        ] .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Three_Wheels
+bi:Three_Wheels rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Traffic
+bi:Traffic rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Tricycle
+bi:Tricycle rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty bi:takesPartIn ;
+                                  owl:someValuesFrom bi:Traffic
+                                ] ;
+            rdfs:subClassOf bi:Bike ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty bi:hasWheels ;
+                              owl:allValuesFrom bi:Three_Wheels
+                            ] .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Two_Wheels
+bi:Two_Wheels rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Unicycle
+bi:Unicycle rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty bi:takesPartIn ;
+                                  owl:someValuesFrom bi:Traffic
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty owl:hasValue ;
+                                  owl:allValuesFrom bi:One_Wheel
+                                ] ;
+            rdfs:subClassOf bi:Bike ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty bi:hasWheels ;
+                              owl:allValuesFrom bi:One_Wheel
+                            ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/BMW_S1000RR
+bi:BMW_S1000RR rdf:type owl:NamedIndividual ,
+                        bi:Motor ;
+               owl:topDataProperty "bi:hasWheels 2" .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Four
+bi:Four rdf:type owl:NamedIndividual ,
+                 bi:Four_Wheels .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Highway
+bi:Highway rdf:type owl:NamedIndividual ,
+                    bi:Traffic .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/MTB_ROCKRIDER_540
+bi:MTB_ROCKRIDER_540 rdf:type owl:NamedIndividual ,
+                              bi:Mountainbike ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty owl:hasValue ;
+                                owl:allValuesFrom bi:Two_Wheels
+                              ] ;
+                     owl:topDataProperty "bi:hasWheels 2" .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Off-road
+bi:Off-road rdf:type owl:NamedIndividual ,
+                     bi:Traffic .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/One
+bi:One rdf:type owl:NamedIndividual ,
+                bi:One_Wheel .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Razor_DXT_Drift_Trike
+bi:Razor_DXT_Drift_Trike rdf:type owl:NamedIndividual ,
+                                  bi:Tricycle .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Recreational
+bi:Recreational rdf:type owl:NamedIndividual ,
+                         bi:Traffic .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Schwinn_Unicycle
+bi:Schwinn_Unicycle rdf:type owl:NamedIndividual ,
+                             bi:Unicycle ;
+                    owl:topDataProperty "bi:hasWheels 1" .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Three
+bi:Three rdf:type owl:NamedIndividual ,
+                  bi:Three_Wheels .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Two
+bi:Two rdf:type owl:NamedIndividual ,
+                bi:Two_Wheels .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Urban_Areas
+bi:Urban_Areas rdf:type owl:NamedIndividual ,
+                        bi:Traffic .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Vogue_1020289_Dolphin_28
+bi:Vogue_1020289_Dolphin_28 rdf:type owl:NamedIndividual ,
+                                     bi:Citybike ;
+                            owl:topDataProperty "bi:hasWheels 2" .
+
+
+###  http://www.semanticweb.org/willem/ontologies/2017/9/bicycles/Yamaha_YFZ_450R_2018
+bi:Yamaha_YFZ_450R_2018 rdf:type owl:NamedIndividual ,
+                                 bi:Quad ;
+                        owl:topDataProperty "bi:hasWheels 4" .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

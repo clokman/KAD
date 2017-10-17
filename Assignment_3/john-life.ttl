@@ -1,0 +1,104 @@
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+
+# CLASSES
+ex:aparment a rdfs:class ;
+                rdfs:label "apartment"@en ;
+                rdfs:subClassOf ex:residentialUnit .
+
+ex:unit a rdfs:class ;
+                rdfs:label "unit"@en .
+
+ex:residentialUnit a rdfs:class ;
+                rdfs:label "residential unit"@en ;
+                rdfs:subClassOf ex:unit .
+
+ex:commercialUnit a rdfs:class ;
+                rdfs:label "commercial unit"@en ;
+                rdfs:subClassOf ex:unit .
+
+ex:person a rdfs:class ;
+                rdfs:label "person"@en .
+
+ex:child a rdfs:class ;
+                rdfs:label "child"@en ;
+                rdfs:subClassOf ex:person .
+
+ex:adult a rdfs:class ;
+                rdfs:label "adult"@en ;
+                rdfs:subClassOf ex:person .
+
+ex:company a rdfs:class ;
+        rdfs:label "company" .
+
+
+# PROPERTIES
+
+ex:residesAt a rdfs:property ;
+                rdfs:label "resides at"@en ;
+                rdfs:domain ex:person ;
+                rdfs:range ex:residentialUnit .
+
+ex:rents a rdfs:property ;
+                rdfs:label "rents"@en ;
+                rdfs:subPropertyOf ex:residesAt .
+
+ex:childOf a rdfs:property ;
+                rdfs:label "child of"@en ;
+                rdfs:subPropertyOf ex:residesWith .
+
+
+ex:parentOf a rdfs:property ;
+                rdfs:label "parent of"@en .
+
+ex:worksAt a rdfs:property ;
+                rdfs:label "works at"@en ;
+                rdfs:domain ex:person ;
+                rdfs:range ex:commercialUnit .
+
+ex:hasOfficeAt a rdfs:property ;
+                rdfs:label "has office at"@en ;
+                rdfs:domain ex:company ;
+                rdfs:range ex:commercialUnit ;
+                rdfs:subPropertyOf ex:leases .
+
+ex:leases a rdfs:property ;
+                rdfs:label "leases"@en ;
+                rdfs:domain ex:company ;
+                rdfs:range ex:commercialUnit .
+
+
+
+
+# INSTANCES
+ex:John a ex:person ;
+                rdfs:label "John"@en ;
+                ex:hasChild ex:Grace ;
+                ex:worksAt ex:Clokman .
+                
+
+ex:Grace a ex:child ;
+                rdfs:label "Grace"@en ;
+                ex:childOf ex:John.
+
+ex:BaronWayApartment a ex:apartment ;
+                rdfs:label "Baron Way Apartment"@en .
+
+ex:ZuidOffice a ex:commercialUnit ;
+                rdfs:label "Commercial Unit"@en .
+
+
+
+# RELATIONSHIPS
+ex:apartment rdfs:subClassOf ex:residentialUnit .
+ex:residentialUnit rdfs:subClassOf ex:unit .
+
+ex:rents rdfs:subPropertyOf ex:residesAt .
+ex:rents rdfs:domain ex:person .
+ex:rents rdfs:range ex:unit .
+
+ex:John ex:rents ex:BaronWayApartment .
+
+ex:Clokman ex:leases ex:ZuidOffice .

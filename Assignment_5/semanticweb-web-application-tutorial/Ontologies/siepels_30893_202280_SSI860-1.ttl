@@ -1,0 +1,453 @@
+@prefix : <http://www.semanticweb.org/gebruiker/family#> .
+@prefix fam: <http://www.semanticweb.org/gebruiker/family#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tes2t: <http://www.semanticweb.org/gebruiker/tes2t#> .
+@base <http://www.semanticweb.org/gebruiker/family> .
+
+<http://www.semanticweb.org/gebruiker/family> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/gebruiker/family#hasBrother
+fam:hasBrother rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:hasSibling ;
+               rdf:type owl:TransitiveProperty ;
+               rdfs:comment "Transitive because sander is a brother of martijn, martijn is a brother of martijn2 so sander is a brother of martijn2." .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasCharacteristic
+fam:hasCharacteristic rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasChild
+fam:hasChild rdf:type owl:ObjectProperty ;
+             owl:inverseOf fam:isChildOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasDaughter
+fam:hasDaughter rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fam:hasChild .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasFather
+fam:hasFather rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fam:hasParent ;
+              rdf:type owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGrandChild
+fam:hasGrandChild rdf:type owl:ObjectProperty ;
+                  owl:inverseOf fam:hasGrandParent .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGrandDaughter
+fam:hasGrandDaughter rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf fam:hasGrandChild .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGrandFather
+fam:hasGrandFather rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf fam:hasGrandParent ;
+                   owl:propertyChainAxiom ( fam:hasParent
+                                            fam:hasFather
+                                          ) .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGrandMother
+fam:hasGrandMother rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf fam:hasGrandParent ;
+                   owl:propertyChainAxiom ( fam:hasParent
+                                            fam:hasMother
+                                          ) .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGrandParent
+fam:hasGrandParent rdf:type owl:ObjectProperty ;
+                   owl:inverseOf fam:isGrandParentOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGrandSon
+fam:hasGrandSon rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf fam:hasGrandChild .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasHairColor
+fam:hasHairColor rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fam:hasCharacteristic .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasHairStyle
+fam:hasHairStyle rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fam:hasCharacteristic .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasMother
+fam:hasMother rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fam:hasParent ;
+              rdf:type owl:FunctionalProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasParent
+fam:hasParent rdf:type owl:ObjectProperty ;
+              owl:inverseOf fam:isParentOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasSibling
+fam:hasSibling rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasSister
+fam:hasSister rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf fam:hasSibling ;
+              rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasSon
+fam:hasSon rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf fam:hasChild .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isChildOf
+fam:isChildOf rdf:type owl:ObjectProperty ;
+              owl:inverseOf fam:isParentOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isDaughterOf
+fam:isDaughterOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf fam:isChildOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isFatherOf
+fam:isFatherOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isParentOf ;
+               owl:propertyDisjointWith fam:isMotherOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isGrandFatherOf
+fam:isGrandFatherOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf fam:isGrandParentOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isGrandMotherOf
+fam:isGrandMotherOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf fam:isGrandParentOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isGrandParentOf
+fam:isGrandParentOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isMarriedTo
+fam:isMarriedTo rdf:type owl:ObjectProperty ,
+                         owl:SymmetricProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isMotherOf
+fam:isMotherOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf fam:isParentOf .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isParentOf
+fam:isParentOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#isSonOf
+fam:isSonOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf fam:isChildOf .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/gebruiker/family#hasAge
+fam:hasAge rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasCharacteristic
+fam:hasCharacteristic rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasGender
+fam:hasGender rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ,
+                         [ rdf:type rdfs:Datatype ;
+                           owl:oneOf [ rdf:type rdf:List ;
+                                       rdf:first "Female" ;
+                                       rdf:rest [ rdf:type rdf:List ;
+                                                  rdf:first "Male" ;
+                                                  rdf:rest rdf:nil
+                                                ]
+                                     ]
+                         ] .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasHairColor
+fam:hasHairColor rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ,
+                            [ rdf:type rdfs:Datatype ;
+                              owl:oneOf [ rdf:type rdf:List ;
+                                          rdf:first "Blue" ;
+                                          rdf:rest [ rdf:type rdf:List ;
+                                                     rdf:first "Brown" ;
+                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                rdf:first "Green" ;
+                                                                rdf:rest rdf:nil
+                                                              ]
+                                                   ]
+                                        ]
+                            ] .
+
+
+###  http://www.semanticweb.org/gebruiker/family#hasHairStyle
+fam:hasHairStyle rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string ,
+                            [ rdf:type rdfs:Datatype ;
+                              owl:oneOf [ rdf:type rdf:List ;
+                                          rdf:first "Curly" ;
+                                          rdf:rest [ rdf:type rdf:List ;
+                                                     rdf:first "Messy" ;
+                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                rdf:first "Spiky" ;
+                                                                rdf:rest rdf:nil
+                                                              ]
+                                                   ]
+                                        ]
+                            ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/gebruiker/family#Characteristic
+fam:Characteristic rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Child
+fam:Child rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty fam:hasParent ;
+                                owl:someValuesFrom fam:Parent
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty fam:hasParent ;
+                                owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                owl:onClass fam:Parent
+                              ] ;
+          rdfs:subClassOf fam:Relative .
+
+
+###  http://www.semanticweb.org/gebruiker/family#CurlyHair
+fam:CurlyHair rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty fam:hasHairStyle ;
+                                    owl:hasValue "Curly"
+                                  ] ;
+              rdfs:subClassOf fam:HairStyle .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Daughter
+fam:Daughter rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:isDaughterOf ;
+                                   owl:someValuesFrom fam:Parent
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty fam:hasGender ;
+                                   owl:hasValue "Female"
+                                 ] ;
+             rdfs:subClassOf fam:Child .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Father
+fam:Father rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isFatherOf ;
+                                 owl:someValuesFrom fam:Child
+                               ] ;
+           rdfs:subClassOf fam:Parent .
+
+
+###  http://www.semanticweb.org/gebruiker/family#GrandFather
+fam:GrandFather rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:isFatherOf ;
+                                      owl:someValuesFrom fam:Parent
+                                    ] ;
+                rdfs:subClassOf fam:GrandParent .
+
+
+###  http://www.semanticweb.org/gebruiker/family#GrandMother
+fam:GrandMother rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:isMotherOf ;
+                                      owl:someValuesFrom fam:Parent
+                                    ] ;
+                rdfs:subClassOf fam:GrandParent .
+
+
+###  http://www.semanticweb.org/gebruiker/family#GrandParent
+fam:GrandParent rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:hasChild ;
+                                      owl:someValuesFrom fam:Parent
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty fam:hasGrandChild ;
+                                      owl:someValuesFrom fam:Child
+                                    ] ;
+                rdfs:subClassOf fam:Relative .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Hair
+fam:Hair rdf:type owl:Class ;
+         rdfs:subClassOf fam:Characteristic .
+
+
+###  http://www.semanticweb.org/gebruiker/family#HairColor
+fam:HairColor rdf:type owl:Class ;
+              rdfs:subClassOf fam:Hair .
+
+
+###  http://www.semanticweb.org/gebruiker/family#HairStyle
+fam:HairStyle rdf:type owl:Class ;
+              rdfs:subClassOf fam:Hair .
+
+
+###  http://www.semanticweb.org/gebruiker/family#MessyHair
+fam:MessyHair rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty fam:hasHairStyle ;
+                                    owl:hasValue "Messy"
+                                  ] ;
+              rdfs:subClassOf fam:HairStyle .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Mother
+fam:Mother rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:isMotherOf ;
+                                 owl:someValuesFrom fam:Child
+                               ] ;
+           rdfs:subClassOf fam:Parent .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Parent
+fam:Parent rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:hasChild ;
+                                 owl:someValuesFrom fam:Child
+                               ] ;
+           rdfs:subClassOf fam:Relative .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Person
+fam:Person rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty fam:hasHairStyle ;
+                                 owl:someValuesFrom fam:HairStyle
+                               ] ;
+           rdfs:subClassOf owl:Thing .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Relative
+fam:Relative rdf:type owl:Class ;
+             rdfs:subClassOf fam:Person .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Son
+fam:Son rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty fam:hasGender ;
+                              owl:hasValue "Male"
+                            ] ;
+        rdfs:subClassOf fam:Child .
+
+
+###  http://www.semanticweb.org/gebruiker/family#SpikyHair
+fam:SpikyHair rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty fam:hasHairStyle ;
+                                    owl:hasValue "Spiky"
+                                  ] ;
+              rdfs:subClassOf fam:HairStyle .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/gebruiker/family#Eline
+fam:Eline rdf:type owl:NamedIndividual ;
+          fam:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Harm
+fam:Harm rdf:type owl:NamedIndividual ;
+         fam:isFatherOf fam:Roelof ;
+         fam:isGrandFatherOf fam:Sander ;
+         fam:isMarriedTo fam:Lucia .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Henk
+fam:Henk rdf:type owl:NamedIndividual ;
+         fam:hasParent fam:Roelof ;
+         fam:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Hennie
+fam:Hennie rdf:type owl:NamedIndividual ;
+           fam:isMotherOf fam:Sander ;
+           fam:hasGender "Female"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Lucia
+fam:Lucia rdf:type owl:NamedIndividual ;
+          fam:isMotherOf fam:Roelof .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Martijn
+fam:Martijn rdf:type owl:NamedIndividual ;
+            fam:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Paul
+fam:Paul rdf:type owl:NamedIndividual ;
+         fam:isFatherOf fam:Hennie ;
+         fam:isGrandFatherOf fam:Sander .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Pietje
+fam:Pietje rdf:type owl:NamedIndividual ;
+           fam:isSonOf fam:Roelof ;
+           fam:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Roelof
+fam:Roelof rdf:type owl:NamedIndividual ;
+           fam:hasMother fam:Lucia ;
+           fam:isFatherOf fam:Sander ;
+           fam:isMarriedTo fam:Hennie ;
+           fam:hasAge 44 ;
+           fam:hasGender "Male"^^xsd:string .
+
+
+###  http://www.semanticweb.org/gebruiker/family#Sander
+fam:Sander rdf:type owl:NamedIndividual ;
+           fam:hasBrother fam:Martijn ;
+           fam:hasSister fam:Eline ;
+           fam:hasAge 20 ;
+           fam:hasGender "Male"^^xsd:string ;
+           fam:hasHairStyle "Messy"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

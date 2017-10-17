@@ -1,0 +1,155 @@
+@prefix : <http://www.example.org/baboolal/nature#> .
+@prefix ex: <http://www.example.org/baboolal/nature/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.org/baboolal/nature> .
+
+<http://www.example.org/baboolal/nature> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/baboolal/nature/hasHusband
+ex:hasHusband rdf:type owl:ObjectProperty ;
+              owl:inverseOf ex:hasWife ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty .
+
+
+###  http://www.example.org/baboolal/nature/hasWife
+ex:hasWife rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty .
+
+
+###  http://www.example.org/baboolal/nature/isChild
+ex:isChild rdf:type owl:ObjectProperty ;
+           owl:inverseOf ex:isParent ;
+           rdf:type owl:AsymmetricProperty .
+
+
+###  http://www.example.org/baboolal/nature/isLeaderOf
+ex:isLeaderOf rdf:type owl:ObjectProperty ,
+                       owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty .
+
+
+###  http://www.example.org/baboolal/nature/isParent
+ex:isParent rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty .
+
+
+###  http://www.example.org/baboolal/nature/playsInGameShow
+ex:playsInGameShow rdf:type owl:ObjectProperty ,
+                            owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.org/baboolal/nature/Daughter
+ex:Daughter rdf:type owl:Class ;
+            rdfs:subClassOf ex:Family .
+
+
+###  http://www.example.org/baboolal/nature/Family
+ex:Family rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ex:playsInGameShow ;
+                                                       owl:someValuesFrom ex:FamilyGameShow
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ex:playsInGameShow ;
+                                                       owl:minQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass ex:Family
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.example.org/baboolal/nature/FamilyGameShow
+ex:FamilyGameShow rdf:type owl:Class .
+
+
+###  http://www.example.org/baboolal/nature/Father
+ex:Father rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty ex:isLeaderOf ;
+                                owl:allValuesFrom ex:Family
+                              ] ;
+          rdfs:subClassOf ex:Family .
+
+
+###  http://www.example.org/baboolal/nature/Mother
+ex:Mother rdf:type owl:Class ;
+          rdfs:subClassOf ex:Family .
+
+
+###  http://www.example.org/baboolal/nature/Son
+ex:Son rdf:type owl:Class ;
+       rdfs:subClassOf ex:Family .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/baboolal/nature/Adam
+ex:Adam rdf:type owl:NamedIndividual ,
+                 ex:Father ;
+        ex:isParent ex:Jake ,
+                    ex:Paula .
+
+
+###  http://www.example.org/baboolal/nature/BANG
+ex:BANG rdf:type owl:NamedIndividual ,
+                 ex:FamilyGameShow .
+
+
+###  http://www.example.org/baboolal/nature/Eve
+ex:Eve rdf:type owl:NamedIndividual ,
+                ex:Mother ;
+       ex:hasHusband ex:Adam ;
+       ex:isParent ex:Jake ,
+                   ex:Paula .
+
+
+###  http://www.example.org/baboolal/nature/Jake
+ex:Jake rdf:type owl:NamedIndividual ,
+                 ex:Son ;
+        ex:isChild ex:Adam ,
+                   ex:Eve .
+
+
+###  http://www.example.org/baboolal/nature/Jefferson
+ex:Jefferson rdf:type owl:NamedIndividual ,
+                      ex:Family ;
+             ex:playsInGameShow ex:BANG .
+
+
+###  http://www.example.org/baboolal/nature/Paula
+ex:Paula rdf:type owl:NamedIndividual ,
+                  ex:Daughter ;
+         ex:isChild ex:Adam ,
+                    ex:Eve .
+
+
+###  http://www.example.org/baboolal/nature/SLANG
+ex:SLANG rdf:type owl:NamedIndividual ,
+                  ex:FamilyGameShow .
+
+
+###  http://www.example.org/baboolal/nature/Smiths
+ex:Smiths rdf:type owl:NamedIndividual ,
+                   ex:Family ;
+          ex:playsInGameShow ex:SLANG .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

@@ -1,0 +1,8 @@
+PREFIX fb: <https://graph.facebook.com/> 
+
+SELECT ?title WHERE {
+	?movie a		    fb:Movie ;
+		     fb:name	?title .
+}
+
+

@@ -1,0 +1,17 @@
+@prefix fb: <https://graph.facebook.com/> .
+@prefix imdb: <http://www.imdb.com/title/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+fb:user-594486635		      fb:likes	fb:movie-105638652803531 .	
+
+fb:movie-105638652803531	fb:name 	"Fear and Loathing in Las Vegas"@en .
+
+imdb:tt0120669		imdb:title 	      "Fear and Loathing in Las Vegas"@en ;
+					        imdb:actor	      "Benicio Del Toro",
+                                    "Ellen Barkin",
+                                    "Johnny Depp",
+                                    "Tobey Maguire" .
+
+fb:name		owl:equivalentProperty	  imdb:title .
+fb:name		a						              owl:inverseFunctionalProperty .
+

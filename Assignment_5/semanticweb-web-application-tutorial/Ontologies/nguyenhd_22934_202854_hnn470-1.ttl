@@ -1,0 +1,245 @@
+@prefix : <http://www.semanticweb.org/dat/drugs#> .
+@prefix dr: <http://www.semanticweb.org/dat/drugs/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix drugs: <http://www.semanticweb.org/dat/drugs#> .
+@base <http://www.semanticweb.org/dat/drugs> .
+
+<http://www.semanticweb.org/dat/drugs> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/dat/drugs/Contains
+dr:Contains rdf:type owl:AnnotationProperty ;
+            rdfs:subPropertyOf rdfs:comment .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/dat/drugs/Contains
+dr:Contains rdf:type owl:ObjectProperty ;
+            owl:inverseOf dr:isIngredientOf .
+
+
+###  http://www.semanticweb.org/dat/drugs/aKindOf
+dr:aKindOf rdf:type owl:ObjectProperty ,
+                    owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/dat/drugs/foundIn
+dr:foundIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/dat/drugs/isA
+dr:isA rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/dat/drugs/isIngredientOf
+dr:isIngredientOf rdf:type owl:ObjectProperty ;
+                  owl:equivalentProperty dr:madeOf ;
+                  rdf:type owl:IrreflexiveProperty .
+
+
+###  http://www.semanticweb.org/dat/drugs/madeOf
+dr:madeOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/dat/drugs/mostlyProducedIn
+dr:mostlyProducedIn rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/dat/drugs/similarTo
+dr:similarTo rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/dat/drugs/Amphetamine
+dr:Amphetamine rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty dr:aKindOf ;
+                                     owl:someValuesFrom dr:Illegal_drugs
+                                   ] ;
+               rdfs:subClassOf dr:Synthetic_drugs .
+
+
+###  http://www.semanticweb.org/dat/drugs/Coca
+dr:Coca rdf:type owl:Class ;
+        rdfs:subClassOf dr:Narcotics .
+
+
+###  http://www.semanticweb.org/dat/drugs/Country
+dr:Country rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dat/drugs/Designerdrugs
+dr:Designerdrugs rdf:type owl:Class ;
+                 rdfs:subClassOf dr:Synthetic_drugs .
+
+
+###  http://www.semanticweb.org/dat/drugs/Hard_drugs
+dr:Hard_drugs rdf:type owl:Class ;
+              rdfs:subClassOf dr:Illegal_drugs .
+
+
+###  http://www.semanticweb.org/dat/drugs/Hemp
+dr:Hemp rdf:type owl:Class ;
+        rdfs:subClassOf dr:Soft_drugs .
+
+
+###  http://www.semanticweb.org/dat/drugs/Illegal_drugs
+dr:Illegal_drugs rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dat/drugs/Ingredient
+dr:Ingredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dat/drugs/Narcotics
+dr:Narcotics rdf:type owl:Class ;
+             rdfs:subClassOf dr:Hard_drugs .
+
+
+###  http://www.semanticweb.org/dat/drugs/Soft_drugs
+dr:Soft_drugs rdf:type owl:Class ;
+              rdfs:subClassOf dr:Illegal_drugs .
+
+
+###  http://www.semanticweb.org/dat/drugs/Synthetic_drugs
+dr:Synthetic_drugs rdf:type owl:Class ;
+                   rdfs:subClassOf dr:Hard_drugs .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/dat/drugs/Cocaine
+dr:Cocaine rdf:type owl:NamedIndividual ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty dr:madeOf ;
+                      owl:someValuesFrom dr:Coca
+                    ] ;
+           dr:mostlyProducedIn dr:Colombia ;
+           dr:similarTo dr:Crack .
+
+
+###  http://www.semanticweb.org/dat/drugs/Colombia
+dr:Colombia rdf:type owl:NamedIndividual ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty dr:isA ;
+                       owl:someValuesFrom dr:Country
+                     ] .
+
+
+###  http://www.semanticweb.org/dat/drugs/Crack
+dr:Crack rdf:type owl:NamedIndividual ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty dr:madeOf ;
+                    owl:someValuesFrom dr:Coca
+                  ] .
+
+
+###  http://www.semanticweb.org/dat/drugs/Heroine
+dr:Heroine rdf:type owl:NamedIndividual ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty dr:aKindOf ;
+                      owl:someValuesFrom dr:Narcotics
+                    ] ;
+           dr:Contains dr:Opium .
+
+
+###  http://www.semanticweb.org/dat/drugs/MDMA
+dr:MDMA rdf:type owl:NamedIndividual ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:foundIn ;
+                   owl:someValuesFrom dr:Designerdrugs
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:isA ;
+                   owl:someValuesFrom dr:Ingredient
+                 ] ;
+        dr:isIngredientOf dr:XTC ;
+        dr:mostlyProducedIn dr:Netherlands .
+
+
+###  http://www.semanticweb.org/dat/drugs/Netherlands
+dr:Netherlands rdf:type owl:NamedIndividual ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty dr:isA ;
+                          owl:someValuesFrom dr:Country
+                        ] ;
+               rdfs:comment dr:mostlyProducedIn .
+
+
+###  http://www.semanticweb.org/dat/drugs/Opium
+dr:Opium rdf:type owl:NamedIndividual ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty dr:isA ;
+                    owl:someValuesFrom dr:Ingredient
+                  ] ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty dr:isIngredientOf ;
+                    owl:someValuesFrom dr:Narcotics
+                  ] .
+
+
+###  http://www.semanticweb.org/dat/drugs/Speed
+dr:Speed rdf:type owl:NamedIndividual ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty dr:aKindOf ;
+                    owl:someValuesFrom dr:Amphetamine
+                  ] .
+
+
+###  http://www.semanticweb.org/dat/drugs/XTC
+dr:XTC rdf:type owl:NamedIndividual ,
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty dr:aKindOf ;
+                  owl:someValuesFrom dr:Designerdrugs
+                ] .
+
+
+###  http://www.semanticweb.org/dat/drugs/_4FA
+dr:_4FA rdf:type owl:NamedIndividual ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:aKindOf ;
+                   owl:someValuesFrom dr:Designerdrugs
+                 ] .
+
+
+###  http://www.semanticweb.org/dat/drugs/hasj
+dr:hasj rdf:type owl:NamedIndividual ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:aKindOf ;
+                   owl:someValuesFrom dr:Hemp
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:madeOf ;
+                   owl:someValuesFrom dr:Hemp
+                 ] ;
+        dr:similarTo dr:weed .
+
+
+###  http://www.semanticweb.org/dat/drugs/weed
+dr:weed rdf:type owl:NamedIndividual ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:aKindOf ;
+                   owl:someValuesFrom dr:Hemp
+                 ] ,
+                 [ rdf:type owl:Restriction ;
+                   owl:onProperty dr:madeOf ;
+                   owl:someValuesFrom dr:Hemp
+                 ] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

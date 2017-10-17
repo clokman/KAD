@@ -1,0 +1,383 @@
+@prefix : <http://www.semanticweb.org/noelle/horeca#> .
+@prefix hc: <http://www.semanticweb.org/noelle/horeca/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/noelle/horeca> .
+
+<http://www.semanticweb.org/noelle/horeca> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/noelle/horeca/cleans
+hc:cleans rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/noelle/horeca/employedBy
+hc:employedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/noelle/horeca/has
+hc:has rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/noelle/horeca/hasPersonnel
+hc:hasPersonnel rdf:type owl:ObjectProperty ,
+                         owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/noelle/horeca/sells
+hc:sells rdf:type owl:ObjectProperty ,
+                  owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/noelle/horeca/serves
+hc:serves rdf:type owl:ObjectProperty ,
+                   owl:AsymmetricProperty .
+
+
+###  http://www.semanticweb.org/noelle/horeca/soldBy
+hc:soldBy rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/noelle/horeca/AllYouCanEatRestaurant
+hc:AllYouCanEatRestaurant rdf:type owl:Class ;
+                          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                owl:onProperty hc:sells ;
+                                                owl:someValuesFrom hc:Buffet
+                                              ] ;
+                          rdfs:subClassOf hc:Restaurant .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Bar
+hc:Bar rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty hc:hasPersonnel ;
+                             owl:someValuesFrom hc:Barman
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty hc:sells ;
+                             owl:someValuesFrom hc:Drink
+                           ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Barman
+hc:Barman rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty hc:employedBy ;
+                                owl:someValuesFrom hc:Bar
+                              ] ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty hc:serves ;
+                            owl:allValuesFrom hc:Drink
+                          ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Buffet
+hc:Buffet rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty hc:soldBy ;
+                                owl:someValuesFrom hc:AllYouCanEatRestaurant
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty hc:serves ;
+                                owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                owl:onClass hc:Meal
+                              ] ;
+          rdfs:subClassOf hc:Food .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Cocktail
+hc:Cocktail rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty hc:soldBy ;
+                                  owl:someValuesFrom hc:cocktailBar
+                                ] ;
+            rdfs:subClassOf hc:Drink .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Drink
+hc:Drink rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty hc:soldBy ;
+                               owl:someValuesFrom hc:Bar
+                             ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Food
+hc:Food rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty hc:soldBy ;
+                              owl:someValuesFrom hc:Restaurant
+                            ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Hotel
+hc:Hotel rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty hc:hasPersonnel ;
+                               owl:someValuesFrom hc:Housekeeper
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty hc:sells ;
+                               owl:someValuesFrom hc:Room
+                             ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Housekeeper
+hc:Housekeeper rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty hc:employedBy ;
+                                     owl:someValuesFrom hc:Hotel
+                                   ] ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty hc:cleans ;
+                                 owl:someValuesFrom hc:Room
+                               ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Lodge
+hc:Lodge rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty hc:soldBy ;
+                               owl:allValuesFrom hc:Resort
+                             ] ;
+         rdfs:subClassOf hc:Room .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Meal
+hc:Meal rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty hc:soldBy ;
+                              owl:someValuesFrom hc:Restaurant
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty hc:has ;
+                              owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                              owl:onClass hc:ingredient
+                            ] ;
+        rdfs:subClassOf hc:Food .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Resort
+hc:Resort rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty hc:sells ;
+                                owl:someValuesFrom hc:Lodge
+                              ] ;
+          rdfs:subClassOf hc:Hotel .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Restaurant
+hc:Restaurant rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty hc:hasPersonnel ;
+                                    owl:someValuesFrom hc:Waiter
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty hc:sells ;
+                                    owl:someValuesFrom hc:Food
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty hc:sells ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass hc:Meal
+                                  ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Room
+hc:Room rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty hc:soldBy ;
+                              owl:someValuesFrom hc:Hotel
+                            ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Waiter
+hc:Waiter rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty hc:employedBy ;
+                                owl:someValuesFrom hc:Restaurant
+                              ] ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty hc:serves ;
+                            owl:someValuesFrom hc:Food
+                          ] .
+
+
+###  http://www.semanticweb.org/noelle/horeca/cocktailBar
+hc:cocktailBar rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty hc:sells ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass hc:Cocktail
+                                   ] ;
+               rdfs:subClassOf hc:Bar .
+
+
+###  http://www.semanticweb.org/noelle/horeca/ingredient
+hc:ingredient rdf:type owl:Class ;
+              rdfs:subClassOf hc:Food .
+
+
+###  http://www.semanticweb.org/noelle/horeca/michelinRestaurant
+hc:michelinRestaurant rdf:type owl:Class ;
+                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                            owl:onProperty hc:sells ;
+                                            owl:hasValue hc:michelinFood
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty hc:has ;
+                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass hc:michelinstar
+                                          ] ;
+                      rdfs:subClassOf hc:Restaurant .
+
+
+###  http://www.semanticweb.org/noelle/horeca/michelinstar
+hc:michelinstar rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/noelle/horeca/Cola
+hc:Cola rdf:type owl:NamedIndividual ,
+                 hc:Drink .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Njoy
+hc:Njoy rdf:type owl:NamedIndividual ,
+                 hc:cocktailBar .
+
+
+###  http://www.semanticweb.org/noelle/horeca/OliveOil
+hc:OliveOil rdf:type owl:NamedIndividual ,
+                     hc:ingredient .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Pasta
+hc:Pasta rdf:type owl:NamedIndividual ,
+                  hc:ingredient .
+
+
+###  http://www.semanticweb.org/noelle/horeca/Pesto
+hc:Pesto rdf:type owl:NamedIndividual ,
+                  hc:ingredient .
+
+
+###  http://www.semanticweb.org/noelle/horeca/barBukowski
+hc:barBukowski rdf:type owl:NamedIndividual ;
+               hc:sells hc:Cola .
+
+
+###  http://www.semanticweb.org/noelle/horeca/barJoost
+hc:barJoost rdf:type owl:NamedIndividual ;
+            hc:sells hc:Cola .
+
+
+###  http://www.semanticweb.org/noelle/horeca/deLibrije
+hc:deLibrije rdf:type owl:NamedIndividual ,
+                      hc:michelinRestaurant ;
+             hc:has hc:michelinstar_1 ,
+                    hc:michelinstar_2 ,
+                    hc:michelinstar_3 .
+
+
+###  http://www.semanticweb.org/noelle/horeca/familyLodge
+hc:familyLodge rdf:type owl:NamedIndividual ;
+               hc:soldBy hc:vanDerValkResort .
+
+
+###  http://www.semanticweb.org/noelle/horeca/ginTonic
+hc:ginTonic rdf:type owl:NamedIndividual ;
+            hc:soldBy hc:Njoy .
+
+
+###  http://www.semanticweb.org/noelle/horeca/hiltonAmsterdam
+hc:hiltonAmsterdam rdf:type owl:NamedIndividual ,
+                            hc:Hotel .
+
+
+###  http://www.semanticweb.org/noelle/horeca/michelinFood
+hc:michelinFood rdf:type owl:NamedIndividual ;
+                hc:soldBy hc:deLibrije .
+
+
+###  http://www.semanticweb.org/noelle/horeca/michelinstar_1
+hc:michelinstar_1 rdf:type owl:NamedIndividual ,
+                           hc:michelinstar .
+
+
+###  http://www.semanticweb.org/noelle/horeca/michelinstar_2
+hc:michelinstar_2 rdf:type owl:NamedIndividual ,
+                           hc:michelinstar .
+
+
+###  http://www.semanticweb.org/noelle/horeca/michelinstar_3
+hc:michelinstar_3 rdf:type owl:NamedIndividual ,
+                           hc:michelinstar .
+
+
+###  http://www.semanticweb.org/noelle/horeca/pastaBolognese
+hc:pastaBolognese rdf:type owl:NamedIndividual ;
+                  hc:soldBy hc:restaurantChoux .
+
+
+###  http://www.semanticweb.org/noelle/horeca/pastaPesto
+hc:pastaPesto rdf:type owl:NamedIndividual ,
+                       hc:Meal ;
+              hc:has hc:OliveOil ,
+                     hc:Pasta ,
+                     hc:Pesto .
+
+
+###  http://www.semanticweb.org/noelle/horeca/restaurantChoux
+hc:restaurantChoux rdf:type owl:NamedIndividual ,
+                            hc:Restaurant .
+
+
+###  http://www.semanticweb.org/noelle/horeca/restaurantVandaag
+hc:restaurantVandaag rdf:type owl:NamedIndividual ,
+                              hc:AllYouCanEatRestaurant ;
+                     hc:serves hc:pastaPesto ,
+                               hc:salade .
+
+
+###  http://www.semanticweb.org/noelle/horeca/salade
+hc:salade rdf:type owl:NamedIndividual ,
+                   hc:Meal .
+
+
+###  http://www.semanticweb.org/noelle/horeca/twinRoom
+hc:twinRoom rdf:type owl:NamedIndividual ;
+            hc:soldBy hc:hiltonAmsterdam .
+
+
+###  http://www.semanticweb.org/noelle/horeca/vanDerValkResort
+hc:vanDerValkResort rdf:type owl:NamedIndividual ;
+                    hc:sells hc:twinRoom .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( hc:pastaPesto
+                        hc:salade
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
