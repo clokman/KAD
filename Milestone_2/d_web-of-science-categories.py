@@ -28,7 +28,7 @@ for each_category in wos_categories_list:
 from pprint import pprint
 pprint(triples_list)
 
-file_obj = open("web_of_science_categories.ttl", "w")
+file_obj = open("Output/web_of_science_categories.ttl", "w")
 for each_triple in triples_list:
     file_obj.write(each_triple)
     file_obj.write('\n')

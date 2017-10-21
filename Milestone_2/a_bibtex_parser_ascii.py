@@ -5,7 +5,7 @@ import re
 
 # open a bibtex file
 parser = bibtex.Parser()
-bibdata = parser.parse_file("test.bib")
+bibdata = parser.parse_file("Input//pure_bib_limited.bib")
 
 # this is the container for the main dictionary
 bibDictionary = {}
