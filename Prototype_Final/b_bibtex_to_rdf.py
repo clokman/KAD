@@ -61,7 +61,7 @@ for each_entry in bibDictionary.items():
     # Other fields do not exist for each entry. These fields will be treated individually.
 
 
-    # URIs:
+    #######  URIs  #######
     # NOTE: Do not move the lines below to category and instance definitions section in the beginning of the script. c_document_class values need to be dynamically assigned within this for loop, as the document classes (e.g., Article, Book) are extracted from the resource file.
     c_document_class      = ("<" +  sr + current_type + ">")                  # extract the class of the current document (e.g., Article, Book) and assign it to the current iteration of the c_document_class variable
     i_document_instance   = ("<" +  sr + current_document_instance    + ">")  # assign current document instance to an instance variable (denoted by i_), and give it an URI
@@ -101,5 +101,6 @@ for each_entry in bibDictionary.items():
 from pprint import pprint
 pprint(triples_list)
 
+# TO ADD:
 ###### AUTHOR             - HAS LABEL   - LAVEL VALUE ######
 ###### DOCUMENT INSTANCE  - HAS LABEL   - LABEL VALUE ######
