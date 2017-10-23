@@ -1,0 +1,2350 @@
+@prefix : <http://clokman.com/ontologies/scientific-research#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://clokman.com/ontologies/scientific-research#> a owl:Ontology ;
+	owl:imports <http://clokman.com/ontologies/scientific-research> .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#isAuthorOf
+
+:isAuthorOf a owl:ObjectProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isPublishedOn
+
+:isPublishedOn a owl:ObjectProperty .
+# 
+# http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+
+rdf:type a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#Acoustics
+
+:Acoustics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AgriculturalEconomicsandPolicy
+
+:AgriculturalEconomicsandPolicy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AgriculturalEngineering
+
+:AgriculturalEngineering a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AgricultureDairyandAnimalScience
+
+:AgricultureDairyandAnimalScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AgricultureMultidisciplinary
+
+:AgricultureMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Agronomy
+
+:Agronomy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Allergy
+
+:Allergy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AnatomyandMorphology
+
+:AnatomyandMorphology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Andrology
+
+:Andrology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Anesthesiology
+
+:Anesthesiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Anthropology
+
+:Anthropology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Archaeology
+
+:Archaeology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Architecture
+
+:Architecture a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AreaStudies
+
+:AreaStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Art
+
+:Art a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AsianStudies
+
+:AsianStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AstronomyandAstrophysics
+
+:AstronomyandAstrophysics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#AutomationandControlSystems
+
+:AutomationandControlSystems a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#BehavioralSciences
+
+:BehavioralSciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#BiochemicalResearchMethods
+
+:BiochemicalResearchMethods a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#BiochemistryandMolecularBiology
+
+:BiochemistryandMolecularBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#BiodiversityConservation
+
+:BiodiversityConservation a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Biology
+
+:Biology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Biophysics
+
+:Biophysics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#BiotechnologyandAppliedMicrobiology
+
+:BiotechnologyandAppliedMicrobiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Book
+
+:Book owl:equivalentClass :book .
+
+:book a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#BookChapter
+
+:BookChapter owl:equivalentClass :inbook .
+
+:inbook a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#Business
+
+:Business a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#BusinessFinance
+
+:BusinessFinance a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#CardiacandCardiovascularSystems
+
+:CardiacandCardiovascularSystems a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#CellBiology
+
+:CellBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#CellandTissueEngineering
+
+:CellandTissueEngineering a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryAnalytical
+
+:ChemistryAnalytical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryApplied
+
+:ChemistryApplied a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryInorganicandNuclear
+
+:ChemistryInorganicandNuclear a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryMedicinal
+
+:ChemistryMedicinal a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryMultidisciplinary
+
+:ChemistryMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryOrganic
+
+:ChemistryOrganic a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ChemistryPhysical
+
+:ChemistryPhysical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Classics
+
+:Classics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ClinicalNeurology
+
+:ClinicalNeurology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Communication
+
+:Communication a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceArtificialIntelligence
+
+:ComputerScienceArtificialIntelligence a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceCybernetics
+
+:ComputerScienceCybernetics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceHardwareandArchitecture
+
+:ComputerScienceHardwareandArchitecture a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceInformationSystems
+
+:ComputerScienceInformationSystems a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceInterdisciplinaryApplications
+
+:ComputerScienceInterdisciplinaryApplications a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceSoftwareEngineering
+
+:ComputerScienceSoftwareEngineering a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ComputerScienceTheoryandMethods
+
+:ComputerScienceTheoryandMethods a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ConstructionandBuildingTechnology
+
+:ConstructionandBuildingTechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#CriminologyandPenology
+
+:CriminologyandPenology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#CriticalCareMedicine
+
+:CriticalCareMedicine a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Crystallography
+
+:Crystallography a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#CulturalStudies
+
+:CulturalStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Dance
+
+:Dance a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Demography
+
+:Demography a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#DentistryOralSurgeryandMedicine
+
+:DentistryOralSurgeryandMedicine a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Dermatology
+
+:Dermatology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#DevelopmentalBiology
+
+:DevelopmentalBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Ecology
+
+:Ecology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Economics
+
+:Economics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EducationScientificDisciplines
+
+:EducationScientificDisciplines a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EducationSpecial
+
+:EducationSpecial a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EducationandEducationalResearch
+
+:EducationandEducationalResearch a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Electrochemistry
+
+:Electrochemistry a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EmergencyMedicine
+
+:EmergencyMedicine a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EndocrinologyandMetabolism
+
+:EndocrinologyandMetabolism a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EnergyandFuels
+
+:EnergyandFuels a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringAerospace
+
+:EngineeringAerospace a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringBiomedical
+
+:EngineeringBiomedical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringChemical
+
+:EngineeringChemical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringCivil
+
+:EngineeringCivil a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringElectricalandElectronic
+
+:EngineeringElectricalandElectronic a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringEnvironmental
+
+:EngineeringEnvironmental a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringGeological
+
+:EngineeringGeological a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringIndustrial
+
+:EngineeringIndustrial a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringManufacturing
+
+:EngineeringManufacturing a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringMarine
+
+:EngineeringMarine a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringMechanical
+
+:EngineeringMechanical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringMultidisciplinary
+
+:EngineeringMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringOcean
+
+:EngineeringOcean a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EngineeringPetroleum
+
+:EngineeringPetroleum a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Entomology
+
+:Entomology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EnvironmentalSciences
+
+:EnvironmentalSciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EnvironmentalStudies
+
+:EnvironmentalStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Ergonomics
+
+:Ergonomics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Ethics
+
+:Ethics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EthnicStudies
+
+:EthnicStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#EvolutionaryBiology
+
+:EvolutionaryBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#FamilyStudies
+
+:FamilyStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#FilmRadioTelevision
+
+:FilmRadioTelevision a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Fisheries
+
+:Fisheries a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Folklore
+
+:Folklore a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#FoodScienceandTechnology
+
+:FoodScienceandTechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Forestry
+
+:Forestry a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#GastroenterologyandHepatology
+
+:GastroenterologyandHepatology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#GeneticsandHeredity
+
+:GeneticsandHeredity a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#GeochemistryandGeophysics
+
+:GeochemistryandGeophysics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Geography
+
+:Geography a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#GeographyPhysical
+
+:GeographyPhysical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Geology
+
+:Geology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#GeosciencesMultidisciplinary
+
+:GeosciencesMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#GeriatricsandGerontology
+
+:GeriatricsandGerontology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Gerontology
+
+:Gerontology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#HealthCareSciencesandServices
+
+:HealthCareSciencesandServices a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#HealthPolicyandServices
+
+:HealthPolicyandServices a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Hematology
+
+:Hematology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#History
+
+:History a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#HistoryandPhilosophyofScience
+
+:HistoryandPhilosophyofScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#HistoryofSocialSciences
+
+:HistoryofSocialSciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Horticulture
+
+:Horticulture a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#HospitalityLeisureSportandTourism
+
+:HospitalityLeisureSportandTourism a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#HumanitiesMultidisciplinary
+
+:HumanitiesMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ImagingScienceandPhotographicTechnology
+
+:ImagingScienceandPhotographicTechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Immunology
+
+:Immunology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#IndustrialRelationsandLabor
+
+:IndustrialRelationsandLabor a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#InfectiousDiseases
+
+:InfectiousDiseases a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#InformationScienceandLibraryScience
+
+:InformationScienceandLibraryScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#InstrumentsandInstrumentation
+
+:InstrumentsandInstrumentation a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#IntegrativeandComplementaryMedicine
+
+:IntegrativeandComplementaryMedicine a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#InternationalRelations
+
+:InternationalRelations a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#JournalArticle
+
+:JournalArticle owl:equivalentClass :article .
+
+:article a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#LanguageandLinguistics
+
+:LanguageandLinguistics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Law
+
+:Law a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Limnology
+
+:Limnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Linguistics
+
+:Linguistics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteraryReviews
+
+:LiteraryReviews a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteraryTheoryandCriticism
+
+:LiteraryTheoryandCriticism a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Literature
+
+:Literature a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteratureAfricaAustralianCanadian
+
+:LiteratureAfricaAustralianCanadian a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteratureAmerican
+
+:LiteratureAmerican a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteratureBritishIsles
+
+:LiteratureBritishIsles a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteratureGermanDutchScandinavian
+
+:LiteratureGermanDutchScandinavian a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteratureRomance
+
+:LiteratureRomance a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#LiteratureSlavic
+
+:LiteratureSlavic a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Management
+
+:Management a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MarineandFreshwaterBiology
+
+:MarineandFreshwaterBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceBiomaterials
+
+:MaterialsScienceBiomaterials a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceCeramics
+
+:MaterialsScienceCeramics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceCharacterizationandTesting
+
+:MaterialsScienceCharacterizationandTesting a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceCoatingsandFilms
+
+:MaterialsScienceCoatingsandFilms a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceComposites
+
+:MaterialsScienceComposites a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceMultidisciplinary
+
+:MaterialsScienceMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsSciencePaperandWood
+
+:MaterialsSciencePaperandWood a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MaterialsScienceTextiles
+
+:MaterialsScienceTextiles a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MathematicalandComputationalBiology
+
+:MathematicalandComputationalBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Mathematics
+
+:Mathematics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MathematicsApplied
+
+:MathematicsApplied a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MathematicsInterdisciplinaryApplications
+
+:MathematicsInterdisciplinaryApplications a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Mechanics
+
+:Mechanics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedicalEthics
+
+:MedicalEthics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedicalInformatics
+
+:MedicalInformatics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedicalLaboratoryTechnology
+
+:MedicalLaboratoryTechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedicineGeneralandInternal
+
+:MedicineGeneralandInternal a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedicineLegal
+
+:MedicineLegal a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedicineResearchandExperimental
+
+:MedicineResearchandExperimental a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MedievalandRenaissanceStudies
+
+:MedievalandRenaissanceStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MetallurgyandMetallurgicalEngineering
+
+:MetallurgyandMetallurgicalEngineering a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MeteorologyandAtmosphericSciences
+
+:MeteorologyandAtmosphericSciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Microbiology
+
+:Microbiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Microscopy
+
+:Microscopy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Mineralogy
+
+:Mineralogy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#MiningandMineralProcessing
+
+:MiningandMineralProcessing a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Miscellaneous
+
+:Miscellaneous owl:equivalentClass :misc .
+
+:misc a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#MultidisciplinarySciences
+
+:MultidisciplinarySciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Music
+
+:Music a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Mycology
+
+:Mycology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#NanoscienceandNanotechnology
+
+:NanoscienceandNanotechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Neuroimaging
+
+:Neuroimaging a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Neurosciences
+
+:Neurosciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#NuclearScienceandTechnology
+
+:NuclearScienceandTechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Nursing
+
+:Nursing a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#NutritionandDietetics
+
+:NutritionandDietetics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ObstetricsandGynecology
+
+:ObstetricsandGynecology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Oceanography
+
+:Oceanography a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Oncology
+
+:Oncology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#OperationsResearchandManagementScience
+
+:OperationsResearchandManagementScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Ophthalmology
+
+:Ophthalmology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Optics
+
+:Optics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Ornithology
+
+:Ornithology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Orthopedics
+
+:Orthopedics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Otorhinolaryngology
+
+:Otorhinolaryngology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Paleontology
+
+:Paleontology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Parasitology
+
+:Parasitology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Pathology
+
+:Pathology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Pediatrics
+
+:Pediatrics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PeripheralVascularDisease
+
+:PeripheralVascularDisease a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PharmacologyandPharmacy
+
+:PharmacologyandPharmacy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Philosophy
+
+:Philosophy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsApplied
+
+:PhysicsApplied a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsAtomicMolecularandChemical
+
+:PhysicsAtomicMolecularandChemical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsCondensedMatter
+
+:PhysicsCondensedMatter a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsFluidsandPlasmas
+
+:PhysicsFluidsandPlasmas a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsMathematical
+
+:PhysicsMathematical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsMultidisciplinary
+
+:PhysicsMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsNuclear
+
+:PhysicsNuclear a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PhysicsParticlesandFields
+
+:PhysicsParticlesandFields a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Physiology
+
+:Physiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PlanningandDevelopment
+
+:PlanningandDevelopment a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PlantSciences
+
+:PlantSciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Poetry
+
+:Poetry a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PoliticalScience
+
+:PoliticalScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PolymerScience
+
+:PolymerScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PrimaryHealthCare
+
+:PrimaryHealthCare a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Psychiatry
+
+:Psychiatry a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Psychology
+
+:Psychology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyApplied
+
+:PsychologyApplied a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyBiological
+
+:PsychologyBiological a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyClinical
+
+:PsychologyClinical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyDevelopmental
+
+:PsychologyDevelopmental a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyEducational
+
+:PsychologyEducational a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyExperimental
+
+:PsychologyExperimental a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyMathematical
+
+:PsychologyMathematical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyMultidisciplinary
+
+:PsychologyMultidisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologyPsychoanalysis
+
+:PsychologyPsychoanalysis a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PsychologySocial
+
+:PsychologySocial a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PublicAdministration
+
+:PublicAdministration a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#PublicEnvironmentalandOccupationalHealth
+
+:PublicEnvironmentalandOccupationalHealth a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#RadiologyNuclearMedicineandMedicalImaging
+
+:RadiologyNuclearMedicineandMedicalImaging a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Rehabilitation
+
+:Rehabilitation a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Religion
+
+:Religion a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#RemoteSensing
+
+:RemoteSensing a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ReproductiveBiology
+
+:ReproductiveBiology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#RespiratorySystem
+
+:RespiratorySystem a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Rheumatology
+
+:Rheumatology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Robotics
+
+:Robotics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SocialIssues
+
+:SocialIssues a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SocialSciencesBiomedical
+
+:SocialSciencesBiomedical a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SocialSciencesInterdisciplinary
+
+:SocialSciencesInterdisciplinary a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SocialSciencesMathematicalMethods
+
+:SocialSciencesMathematicalMethods a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SocialWork
+
+:SocialWork a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Sociology
+
+:Sociology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SoilScience
+
+:SoilScience a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Spectroscopy
+
+:Spectroscopy a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SportSciences
+
+:SportSciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#StatisticsandProbability
+
+:StatisticsandProbability a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#SubstanceAbuse
+
+:SubstanceAbuse a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Surgery
+
+:Surgery a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Telecommunications
+
+:Telecommunications a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Theater
+
+:Theater a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Thermodynamics
+
+:Thermodynamics a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Toxicology
+
+:Toxicology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Transplantation
+
+:Transplantation a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Transportation
+
+:Transportation a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#TransportationScienceandTechnology
+
+:TransportationScienceandTechnology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#TropicalMedicine
+
+:TropicalMedicine a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#UrbanStudies
+
+:UrbanStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#UrologyandNephrology
+
+:UrologyandNephrology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#VeterinarySciences
+
+:VeterinarySciences a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Virology
+
+:Virology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#WaterResources
+
+:WaterResources a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#WomensStudies
+
+:WomensStudies a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Zoology
+
+:Zoology a owl:Class ;
+	rdfs:subClassOf :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#article
+
+:article rdfs:subClassOf :Document .
+# 
+# http://clokman.com/ontologies/scientific-research#book
+
+:book rdfs:subClassOf :Document .
+# 
+# http://clokman.com/ontologies/scientific-research#inbook
+
+:inbook rdfs:subClassOf :Document .
+# 
+# http://clokman.com/ontologies/scientific-research#misc
+
+:misc rdfs:subClassOf :Document .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#A_Computational_Cognitive_Model_of_Self_Monitoring_and_Decision_Making_For_Desire_Regulation
+
+:A_Computational_Cognitive_Model_of_Self_Monitoring_and_Decision_Making_For_Desire_Regulation a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#A_Computational_Model_For_the_Role_of_Advertisement_and_Expectation_In_Lifestyle_Changes
+
+:A_Computational_Model_For_the_Role_of_Advertisement_and_Expectation_In_Lifestyle_Changes a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#A_Future_For_Cultural_History_of_the_Dutch_Wadden_Region_Challenges_and_Policies_In_a_Maritime_Agricultural_Landscape
+
+:A_Future_For_Cultural_History_of_the_Dutch_Wadden_Region_Challenges_and_Policies_In_a_Maritime_Agricultural_Landscape a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#A_simple_metaheuristic_For_the_fleetsize_and_mix_problem_With_TimeWindows
+
+:A_simple_metaheuristic_For_the_fleetsize_and_mix_problem_With_TimeWindows a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Advancing_soil_moisture_climate_records_through_the_integration_of_SMOS_observations
+
+:Advancing_soil_moisture_climate_records_through_the_integration_of_SMOS_observations a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Agteresch_HJ
+
+:Agteresch_HJ a owl:NamedIndividual ;
+	:isAuthorOf :Geloof_en_rechtvaardiging .
+# 
+# http://clokman.com/ontologies/scientific-research#AnalyticalandBioanalyticalChemistry
+
+:AnalyticalandBioanalyticalChemistry a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#AppliedAcoustics
+
+:AppliedAcoustics a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Archaean_and_Proterozoic_diamond_growth_From_contrasting_styles_of_large_scale_magmatism
+
+:Archaean_and_Proterozoic_diamond_growth_From_contrasting_styles_of_large_scale_magmatism a owl:NamedIndividual , :article ;
+	:isPublishedOn :NatureCommunications .
+# 
+# http://clokman.com/ontologies/scientific-research#Aristotles_politikos_Statesmanship_magnanimity_and_the_rule_of_the_many
+
+:Aristotles_politikos_Statesmanship_magnanimity_and_the_rule_of_the_many a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Ballesteros-Gmez_Ana
+
+:Ballesteros-Gmez_Ana a owl:NamedIndividual ;
+	:isAuthorOf :Bisphenol_A_alternatives_In_thermal_paper_From_the_Netherlands_Spain_Sweden_and_Norway_Screening_and_potential_toxicity .
+# 
+# http://clokman.com/ontologies/scientific-research#Barrett_AD
+
+:Barrett_AD a owl:NamedIndividual ;
+	:isAuthorOf :Christ_In_the_City .
+# 
+# http://clokman.com/ontologies/scientific-research#Battjes_H
+
+:Battjes_H a owl:NamedIndividual ;
+	:isAuthorOf :Situation_of_Readmitted_Migrants_and_Refugees_From_Greece_to_Turkey_under_the_EU_Turkey_Statement .
+# 
+# http://clokman.com/ontologies/scientific-research#Berghuijs_Joantine
+
+:Berghuijs_Joantine a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#Spiritual_care_For_everyone?_Personal_and_organizational_differences_In_interfaith_spiritual_care_among_chaplains_In_the_Netherlands> .
+# 
+# http://clokman.com/ontologies/scientific-research#Bisphenol_A_alternatives_In_thermal_paper_From_the_Netherlands_Spain_Sweden_and_Norway_Screening_and_potential_toxicity
+
+:Bisphenol_A_alternatives_In_thermal_paper_From_the_Netherlands_Spain_Sweden_and_Norway_Screening_and_potential_toxicity a owl:NamedIndividual , :article ;
+	:isPublishedOn :ScienceoftheTotalEnvironment .
+# 
+# http://clokman.com/ontologies/scientific-research#Blauw_C
+
+:Blauw_C a owl:NamedIndividual ;
+	:isAuthorOf :Johann_Friedrich_Stapfer_1708_1775_Theology_Orthodoxy_and_Polemics_In_the_Late_Orthodoxy_Period .
+# 
+# http://clokman.com/ontologies/scientific-research#Blom_IL
+
+:Blom_IL a owl:NamedIndividual ;
+	:isAuthorOf :Spectacular_Images_Georges_Antoine_Rochegrosses_illustrations_For_Flauberts_Salammb_and_Giovanni_Pastrones_Cabiria , :The_Beauty_of_the_Forzuti_Irresistible_Male_Bodies_On_and_Off_Screen .
+# 
+# http://clokman.com/ontologies/scientific-research#Bosselaar_JH
+
+:Bosselaar_JH a owl:NamedIndividual ;
+	:isAuthorOf :Creating_connections_the_case_of_new_welfare .
+# 
+# http://clokman.com/ontologies/scientific-research#Boulogne_GF
+
+:Boulogne_GF a owl:NamedIndividual ;
+	:isAuthorOf :Chapter_7_Tax_Merger_Directive_and_Chapter_12_Tax_Aspects_of_the_EEIG_the_SE_and_the_SCE , :De_Altviolist_van_het_AEX_team , :Time_Tax_and_the_Merger_Directive_Edited_by_Prof_W_Haslehner_Prof_A_Rust_and_Prof_GW_Kofler .
+# 
+# http://clokman.com/ontologies/scientific-research#Brenner_Eli
+
+:Brenner_Eli a owl:NamedIndividual ;
+	:isAuthorOf :Potential_Systematic_Interception_Errors_are_Avoided_When_Tracking_the_Target_With_Ones_Eyes , :Why_We_Really_Need_to_Do_Fewer_Statistical_Tests .
+# 
+# http://clokman.com/ontologies/scientific-research#Bronkhorst_AdelbertW
+
+:Bronkhorst_AdelbertW a owl:NamedIndividual ;
+	:isAuthorOf :Noise_annoyance_caused_by_continuous_descent_approaches_compared_to_regular_descent_procedures .
+# 
+# http://clokman.com/ontologies/scientific-research#Brooks_P
+
+:Brooks_P a owl:NamedIndividual ;
+	:isAuthorOf :Just_war_and_cultural_context_A_cross_cultural_hermeneutic_of_contemporary_just_war_defenses_In_the_Works_of_Michael_Walzer_John_Rawls_Abu_Zahra_and_Majid_Khadurri .
+# 
+# http://clokman.com/ontologies/scientific-research#Bruggeman_FrankJ
+
+:Bruggeman_FrankJ a owl:NamedIndividual ;
+	:isAuthorOf :Effects_of_growth_rate_and_promoter_activity_On_single_cell_protein_expression .
+# 
+# http://clokman.com/ontologies/scientific-research#Burgers_CF
+
+:Burgers_CF a owl:NamedIndividual ;
+	:isAuthorOf :How_to_identify_moral_language_In_presidential_speeches_A_comparison_between_a_social_psychological_and_a_cognitive_linguistic_approach_to_corpus_analysis .
+# 
+# http://clokman.com/ontologies/scientific-research#Buried_Landscapes_of_War_The_archaeology_and_heritage_of_the_Second_World_War_In_The_Netherlands
+
+:Buried_Landscapes_of_War_The_archaeology_and_heritage_of_the_Second_World_War_In_The_Netherlands a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#CXCR4_Specific_Nanobodies_as_Potential_Therapeutics_For_WHIM_syndrome
+
+:CXCR4_Specific_Nanobodies_as_Potential_Therapeutics_For_WHIM_syndrome a owl:NamedIndividual , :article ;
+	:isPublishedOn :TheJournalofPharmacologyandExperimentalTherapeutics .
+# 
+# http://clokman.com/ontologies/scientific-research#Chapter_7_Tax_Merger_Directive_and_Chapter_12_Tax_Aspects_of_the_EEIG_the_SE_and_the_SCE
+
+:Chapter_7_Tax_Merger_Directive_and_Chapter_12_Tax_Aspects_of_the_EEIG_the_SE_and_the_SCE a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Christ_In_the_City
+
+:Christ_In_the_City a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Christian_Historiography_between_Empires_4th8th_Centuries
+
+:Christian_Historiography_between_Empires_4th8th_Centuries a owl:NamedIndividual , :book .
+# 
+# http://clokman.com/ontologies/scientific-research#Christology_of_Jonathan_Edwards
+
+:Christology_of_Jonathan_Edwards a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Climate_aggression_and_violence_CLASH_a_cultural_evolutionary_approach
+
+:Climate_aggression_and_violence_CLASH_a_cultural_evolutionary_approach a owl:NamedIndividual , :article ;
+	:isPublishedOn :CurrentOpinionInPsychology .
+# 
+# http://clokman.com/ontologies/scientific-research#Common_and_civil_law_approaches_to_group_criminality_A_practical_analysis_of_JCE_and_co_perpetration_The_Common_Law_and_the_Civil_Law_Today___Convergence_and_Divergence
+
+:Common_and_civil_law_approaches_to_group_criminality_A_practical_analysis_of_JCE_and_co_perpetration_The_Common_Law_and_the_Civil_Law_Today___Convergence_and_Divergence a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Comparison_of_landfarming_amendments_to_improve_bioremediation_of_petroleum_hydrocarbons_In_Niger_Delta_soils
+
+:Comparison_of_landfarming_amendments_to_improve_bioremediation_of_petroleum_hydrocarbons_In_Niger_Delta_soils a owl:NamedIndividual , :article ;
+	:isPublishedOn :ScienceoftheTotalEnvironment .
+# 
+# http://clokman.com/ontologies/scientific-research#Compromise_value_pluralism_and_democratic_liberalism
+
+:Compromise_value_pluralism_and_democratic_liberalism a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#CorpusLinguisticsandLinguisticTheory
+
+:CorpusLinguisticsandLinguisticTheory a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Creating_From_within_A_study_On_interpersonal_networking_approaches_and_intuition_In_task_related_interaction
+
+:Creating_From_within_A_study_On_interpersonal_networking_approaches_and_intuition_In_task_related_interaction a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Creating_connections_the_case_of_new_welfare
+
+:Creating_connections_the_case_of_new_welfare a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Cupido_M
+
+:Cupido_M a owl:NamedIndividual ;
+	:isAuthorOf :Common_and_civil_law_approaches_to_group_criminality_A_practical_analysis_of_JCE_and_co_perpetration_The_Common_Law_and_the_Civil_Law_Today___Convergence_and_Divergence .
+# 
+# http://clokman.com/ontologies/scientific-research#CurrentOpinionInEnvironmentalSustainability
+
+:CurrentOpinionInEnvironmentalSustainability a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#CurrentOpinionInPsychology
+
+:CurrentOpinionInPsychology a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#DOdorico_Paolo
+
+:DOdorico_Paolo a owl:NamedIndividual ;
+	:isAuthorOf :The_Global_Water_Grabbing_Syndrome .
+# 
+# http://clokman.com/ontologies/scientific-research#Davies_GarethR
+
+:Davies_GarethR a owl:NamedIndividual ;
+	:isAuthorOf :Archaean_and_Proterozoic_diamond_growth_From_contrasting_styles_of_large_scale_magmatism .
+# 
+# http://clokman.com/ontologies/scientific-research#De_Altviolist_van_het_AEX_team
+
+:De_Altviolist_van_het_AEX_team a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#De_Indianizing_Hijra_Intra_regional_effacements_and_inequalities_In_South_Asian_queer_space
+
+:De_Indianizing_Hijra_Intra_regional_effacements_and_inequalities_In_South_Asian_queer_space a owl:NamedIndividual , :article ;
+	:isPublishedOn :TransgenderStudiesQuarterly .
+# 
+# http://clokman.com/ontologies/scientific-research#Du_JD
+
+:Du_JD a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#Always_on?_Explicating_impulsive_influences_On_media_use> .
+# 
+# http://clokman.com/ontologies/scientific-research#Dullaert_Wout
+
+:Dullaert_Wout a owl:NamedIndividual ;
+	:isAuthorOf :Why_to_climb_if_one_can_jump_a_hill_jumping_algorithm_For_the_vehicle_routing_problem_With_time_windows .
+# 
+# http://clokman.com/ontologies/scientific-research#EcologicalEconomics
+
+:EcologicalEconomics a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#EcologicalIndicators
+
+:EcologicalIndicators a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#EconomischStatistischeBerichten
+
+:EconomischStatistischeBerichten a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#EcotoxicologyandEnvironmentalSafety
+
+:EcotoxicologyandEnvironmentalSafety a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Effects_of_growth_rate_and_promoter_activity_On_single_cell_protein_expression
+
+:Effects_of_growth_rate_and_promoter_activity_On_single_cell_protein_expression a owl:NamedIndividual , :article ;
+	:isPublishedOn :ScientificReports .
+# 
+# http://clokman.com/ontologies/scientific-research#Egberts_LR
+
+:Egberts_LR a owl:NamedIndividual ;
+	:isAuthorOf :A_Future_For_Cultural_History_of_the_Dutch_Wadden_Region_Challenges_and_Policies_In_a_Maritime_Agricultural_Landscape , :Heritage_In_European_Coastal_Landscapes_Four_Reasons_For_Interregional_Knowledge_Exchange .
+# 
+# http://clokman.com/ontologies/scientific-research#Electricity_generation_and_GHG_emission_reduction_potentials_through_different_municipal_solid_waste_management_technologies_A_comparative_review
+
+:Electricity_generation_and_GHG_emission_reduction_potentials_through_different_municipal_solid_waste_management_technologies_A_comparative_review a owl:NamedIndividual , :article ;
+	:isPublishedOn :RenewableandSustainableEnergyReviews .
+# 
+# http://clokman.com/ontologies/scientific-research#Emmer_Julia
+
+:Emmer_Julia a owl:NamedIndividual ;
+	:isAuthorOf :Ideological_Responses_to_the_EU_Refugee_Crisis_The_Left_the_Right_and_the_Extremes .
+# 
+# http://clokman.com/ontologies/scientific-research#Entscheidende_Momente_im_Coaching
+
+:Entscheidende_Momente_im_Coaching a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Ewoldsen_DR
+
+:Ewoldsen_DR a owl:NamedIndividual ;
+	:isAuthorOf :The_experience_of_narrative_In_the_permanently_online_permanently_connected_environment_Multitasking_self_expansion_and_entertainment_effects .
+# 
+# http://clokman.com/ontologies/scientific-research#Facebook_In_Brazilian_schools_mobilizing_to_fight_back
+
+:Facebook_In_Brazilian_schools_mobilizing_to_fight_back a owl:NamedIndividual , :article ;
+	:isPublishedOn :MindCultureandActivity .
+# 
+# http://clokman.com/ontologies/scientific-research#Framing_Objects_of_International_Law
+
+:Framing_Objects_of_International_Law a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Game_Based_Transmedia_Storytelling_ASSASSINS_CREED
+
+:Game_Based_Transmedia_Storytelling_ASSASSINS_CREED a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Geerlings_AJM
+
+:Geerlings_AJM a owl:NamedIndividual ;
+	:isAuthorOf :Performances_In_the_Theatre_of_the_Cold_War_The_American_Society_of_African_Culture_AMSAC_and_the_1961_Lagos_Festival .
+# 
+# http://clokman.com/ontologies/scientific-research#Geloof_en_rechtvaardiging
+
+:Geloof_en_rechtvaardiging a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Gereformeerde_katholiciteit_In_de_zeventiende_eeuw
+
+:Gereformeerde_katholiciteit_In_de_zeventiende_eeuw a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Gonzalez_CJ
+
+:Gonzalez_CJ a owl:NamedIndividual ;
+	:isAuthorOf :NT_Wright_and_Missional_Hermeneutics .
+# 
+# http://clokman.com/ontologies/scientific-research#Governing_For_resilience_the_role_of_institutional_work
+
+:Governing_For_resilience_the_role_of_institutional_work a owl:NamedIndividual , :article ;
+	:isPublishedOn :CurrentOpinionInEnvironmentalSustainability .
+# 
+# http://clokman.com/ontologies/scientific-research#Groot_MH
+
+:Groot_MH a owl:NamedIndividual ;
+	:isAuthorOf :Women_and_katagami_a_place_In_historiography .
+# 
+# http://clokman.com/ontologies/scientific-research#Hamilton_M
+
+:Hamilton_M a owl:NamedIndividual ;
+	:isAuthorOf :Christology_of_Jonathan_Edwards .
+# 
+# http://clokman.com/ontologies/scientific-research#Hartevelt_LDA
+
+:Hartevelt_LDA a owl:NamedIndividual ;
+	:isAuthorOf :Gereformeerde_katholiciteit_In_de_zeventiende_eeuw .
+# 
+# http://clokman.com/ontologies/scientific-research#HealthEducationResearch
+
+:HealthEducationResearch a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Heritage_In_European_Coastal_Landscapes_Four_Reasons_For_Interregional_Knowledge_Exchange
+
+:Heritage_In_European_Coastal_Landscapes_Four_Reasons_For_Interregional_Knowledge_Exchange a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Hiddink_Frans
+
+:Hiddink_Frans a owl:NamedIndividual ;
+	:isAuthorOf :Ondersteunen_van_communicatieve_vaardigheden_In_de_kleuterklas .
+# 
+# http://clokman.com/ontologies/scientific-research#Holding_business_leaders_accountable_For_international_crimes_Lessons_From_abroad_On_tackling_remoteness
+
+:Holding_business_leaders_accountable_For_international_crimes_Lessons_From_abroad_On_tackling_remoteness a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Hoogerwerf_Cornelis
+
+:Hoogerwerf_Cornelis a owl:NamedIndividual ;
+	:isAuthorOf :Theodore_of_Mopsuestias_Commentary_On_Genesis_126_Its_Fragments_and_Reconstruction .
+# 
+# http://clokman.com/ontologies/scientific-research#Hoogstraten_M
+
+:Hoogstraten_M a owl:NamedIndividual ;
+	:isAuthorOf :Post_metaphysical_developments_In_continental_philosophy_of_religions_hermeneutic_pluralism_and_interreligious_encounters .
+# 
+# http://clokman.com/ontologies/scientific-research#Hornman_MJ
+
+:Hornman_MJ a owl:NamedIndividual ;
+	:isAuthorOf :Holding_business_leaders_accountable_For_international_crimes_Lessons_From_abroad_On_tackling_remoteness .
+# 
+# http://clokman.com/ontologies/scientific-research#Hossain_A
+
+:Hossain_A a owl:NamedIndividual ;
+	:isAuthorOf :De_Indianizing_Hijra_Intra_regional_effacements_and_inequalities_In_South_Asian_queer_space .
+# 
+# http://clokman.com/ontologies/scientific-research#How_to_identify_moral_language_In_presidential_speeches_A_comparison_between_a_social_psychological_and_a_cognitive_linguistic_approach_to_corpus_analysis
+
+:How_to_identify_moral_language_In_presidential_speeches_A_comparison_between_a_social_psychological_and_a_cognitive_linguistic_approach_to_corpus_analysis a owl:NamedIndividual , :article ;
+	:isPublishedOn :CorpusLinguisticsandLinguisticTheory .
+# 
+# http://clokman.com/ontologies/scientific-research#HumanBrainMapping
+
+:HumanBrainMapping a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Hyde_D
+
+:Hyde_D a owl:NamedIndividual ;
+	:isAuthorOf :Liturgy_John_Owen .
+# 
+# http://clokman.com/ontologies/scientific-research#IJzerman_RichardG
+
+:IJzerman_RichardG a owl:NamedIndividual ;
+	:isAuthorOf :Overweight_is_associated_With_lower_resting_state_functional_connectivity_In_females_after_eliminating_genetic_effects_A_twin_study .
+# 
+# http://clokman.com/ontologies/scientific-research#Ideological_Responses_to_the_EU_Refugee_Crisis_The_Left_the_Right_and_the_Extremes
+
+:Ideological_Responses_to_the_EU_Refugee_Crisis_The_Left_the_Right_and_the_Extremes a owl:NamedIndividual , :article ;
+	:isPublishedOn <http://clokman.com/ontologies/scientific-research#SocialPsychological&PersonalityScience> .
+# 
+# http://clokman.com/ontologies/scientific-research#Improviseren_kun_je_leren_de_kunst_van_improvisatie_en_het_brain
+
+:Improviseren_kun_je_leren_de_kunst_van_improvisatie_en_het_brain a owl:NamedIndividual , :book .
+# 
+# http://clokman.com/ontologies/scientific-research#Influence_of_environmental_conditions_On_the_toxicokinetics_of_cadmium_In_the_marine_copepod_Acartia_tonsa
+
+:Influence_of_environmental_conditions_On_the_toxicokinetics_of_cadmium_In_the_marine_copepod_Acartia_tonsa a owl:NamedIndividual , :article ;
+	:isPublishedOn :EcotoxicologyandEnvironmentalSafety .
+# 
+# http://clokman.com/ontologies/scientific-research#Introduction_Experience_of_Values
+
+:Introduction_Experience_of_Values a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Introduction_Scientism_On_the_Philosophical_Agenda
+
+:Introduction_Scientism_On_the_Philosophical_Agenda a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#It_Seems_Good_to_the_Holy_Spirit_and_Us_How_Reformed_Churches_In_America_May_Move_Past_Binary_and_Beyond_Opaque_into_Missional_Decision_Making
+
+:It_Seems_Good_to_the_Holy_Spirit_and_Us_How_Reformed_Churches_In_America_May_Move_Past_Binary_and_Beyond_Opaque_into_Missional_Decision_Making a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Jaschke_AC
+
+:Jaschke_AC a owl:NamedIndividual ;
+	:isAuthorOf :Improviseren_kun_je_leren_de_kunst_van_improvisatie_en_het_brain .
+# 
+# http://clokman.com/ontologies/scientific-research#Johann_Friedrich_Stapfer_1708_1775_Theology_Orthodoxy_and_Polemics_In_the_Late_Orthodoxy_Period
+
+:Johann_Friedrich_Stapfer_1708_1775_Theology_Orthodoxy_and_Polemics_In_the_Late_Orthodoxy_Period a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#JournalFortheScientificStudyofReligion
+
+:JournalFortheScientificStudyofReligion a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#JournalofEconomicPsychology
+
+:JournalofEconomicPsychology a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#JournalofReformedTheology
+
+:JournalofReformedTheology a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#JournalofTransatlanticStudies
+
+:JournalofTransatlanticStudies a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Just_war_and_cultural_context_A_cross_cultural_hermeneutic_of_contemporary_just_war_defenses_In_the_Works_of_Michael_Walzer_John_Rawls_Abu_Zahra_and_Majid_Khadurri
+
+:Just_war_and_cultural_context_A_cross_cultural_hermeneutic_of_contemporary_just_war_defenses_In_the_Works_of_Michael_Walzer_John_Rawls_Abu_Zahra_and_Majid_Khadurri a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Kaandorp_MS
+
+:Kaandorp_MS a owl:NamedIndividual ;
+	:isAuthorOf :Creating_From_within_A_study_On_interpersonal_networking_approaches_and_intuition_In_task_related_interaction .
+# 
+# http://clokman.com/ontologies/scientific-research#Kinds_of_Knowledge_Limits_of_Science
+
+:Kinds_of_Knowledge_Limits_of_Science a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Kirchler_Erich
+
+:Kirchler_Erich a owl:NamedIndividual ;
+	:isAuthorOf :The_backfiring_effect_of_auditing_On_tax_compliance .
+# 
+# http://clokman.com/ontologies/scientific-research#Kool_Jeroen
+
+:Kool_Jeroen a owl:NamedIndividual ;
+	:isAuthorOf :Rapid_screening_and_identification_of_ACE_inhibitors_In_snake_venoms_using_at_line_nanofractionation_LC_MS .
+# 
+# http://clokman.com/ontologies/scientific-research#Kosters_B
+
+:Kosters_B a owl:NamedIndividual ;
+	:isAuthorOf :Wegwijs_In_het_Internationaal_en_Europees_Belastingrecht .
+# 
+# http://clokman.com/ontologies/scientific-research#Liturgy_John_Owen
+
+:Liturgy_John_Owen a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Loureiro_Susana
+
+:Loureiro_Susana a owl:NamedIndividual ;
+	:isAuthorOf :Influence_of_environmental_conditions_On_the_toxicokinetics_of_cadmium_In_the_marine_copepod_Acartia_tonsa .
+# 
+# http://clokman.com/ontologies/scientific-research#Market_manipulation_and_insider_trading_regulatory_challenges_In_United_States_of_America_the_European_Union_the_United_Kingdom
+
+:Market_manipulation_and_insider_trading_regulatory_challenges_In_United_States_of_America_the_European_Union_the_United_Kingdom a owl:NamedIndividual , :book .
+# 
+# http://clokman.com/ontologies/scientific-research#MindCultureandActivity
+
+:MindCultureandActivity a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Ministry_and_Mission_An_investigation_of_the_missional_challenges_For_the_Reformed_Presbyterian_theology_of_ministry_In_a_post_Christendom_age
+
+:Ministry_and_Mission_An_investigation_of_the_missional_challenges_For_the_Reformed_Presbyterian_theology_of_ministry_In_a_post_Christendom_age a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Missie_en_Gemeenschap_Een_onderzoek_naar_missionaire_gemeenschapsvorming
+
+:Missie_en_Gemeenschap_Een_onderzoek_naar_missionaire_gemeenschapsvorming a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Mofateh_Razie
+
+:Mofateh_Razie a owl:NamedIndividual ;
+	:isAuthorOf :Predicting_falls_among_patients_With_multiple_sclerosis_Comparison_of_patient_reported_outcomes_and_performance_based_measures_of_lower_extremity_functions .
+# 
+# http://clokman.com/ontologies/scientific-research#Moving_Images_Documentary_Film_and_Audiovisual_Promotion_of_the_ICC
+
+:Moving_Images_Documentary_Film_and_Audiovisual_Promotion_of_the_ICC a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#MultipleSclerosisandRelatedDisorders
+
+:MultipleSclerosisandRelatedDisorders a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Murray_DP
+
+:Murray_DP a owl:NamedIndividual ;
+	:isAuthorOf :Reasonableness_and_Pleasantness_of_christianity_In_Matthew_Henry .
+# 
+# http://clokman.com/ontologies/scientific-research#NT_Wright_and_Missional_Hermeneutics
+
+:NT_Wright_and_Missional_Hermeneutics a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#NatureCommunications
+
+:NatureCommunications a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Niess_C
+
+:Niess_C a owl:NamedIndividual ;
+	:isAuthorOf :Entscheidende_Momente_im_Coaching .
+# 
+# http://clokman.com/ontologies/scientific-research#Noise_annoyance_caused_by_continuous_descent_approaches_compared_to_regular_descent_procedures
+
+:Noise_annoyance_caused_by_continuous_descent_approaches_compared_to_regular_descent_procedures a owl:NamedIndividual , :article ;
+	:isPublishedOn :AppliedAcoustics .
+# 
+# http://clokman.com/ontologies/scientific-research#Nullens_Patrick
+
+:Nullens_Patrick a owl:NamedIndividual ;
+	:isAuthorOf :Introduction_Experience_of_Values .
+# 
+# http://clokman.com/ontologies/scientific-research#Ondersteunen_van_communicatieve_vaardigheden_In_de_kleuterklas
+
+:Ondersteunen_van_communicatieve_vaardigheden_In_de_kleuterklas a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Organizational_intelligence_In_the_digital_age_Analytics_and_the_cycle_of_choice
+
+:Organizational_intelligence_In_the_digital_age_Analytics_and_the_cycle_of_choice a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Overeem_P
+
+:Overeem_P a owl:NamedIndividual ;
+	:isAuthorOf :Aristotles_politikos_Statesmanship_magnanimity_and_the_rule_of_the_many , :Compromise_value_pluralism_and_democratic_liberalism .
+# 
+# http://clokman.com/ontologies/scientific-research#Overweight_is_associated_With_lower_resting_state_functional_connectivity_In_females_after_eliminating_genetic_effects_A_twin_study
+
+:Overweight_is_associated_With_lower_resting_state_functional_connectivity_In_females_after_eliminating_genetic_effects_A_twin_study a owl:NamedIndividual , :article ;
+	:isPublishedOn :HumanBrainMapping .
+# 
+# http://clokman.com/ontologies/scientific-research#Parise_Mario
+
+:Parise_Mario a owl:NamedIndividual ;
+	:isAuthorOf :Variations_In_the_susceptibility_to_landslides_as_a_consequence_of_land_cover_changes_A_look_to_the_past_and_another_towards_the_future .
+# 
+# http://clokman.com/ontologies/scientific-research#Park_S
+
+:Park_S a owl:NamedIndividual ;
+	:isAuthorOf :Una_Sancta___Towards_a_Contextualised_Ecclesiology_For_the_Korean_Churches .
+# 
+# http://clokman.com/ontologies/scientific-research#Perception
+
+:Perception a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Perczel_Istvn
+
+:Perczel_Istvn a owl:NamedIndividual ;
+	:isAuthorOf :Christian_Historiography_between_Empires_4th8th_Centuries .
+# 
+# http://clokman.com/ontologies/scientific-research#Performances_In_the_Theatre_of_the_Cold_War_The_American_Society_of_African_Culture_AMSAC_and_the_1961_Lagos_Festival
+
+:Performances_In_the_Theatre_of_the_Cold_War_The_American_Society_of_African_Culture_AMSAC_and_the_1961_Lagos_Festival a owl:NamedIndividual , :article ;
+	:isPublishedOn :JournalofTransatlanticStudies .
+# 
+# http://clokman.com/ontologies/scientific-research#PhD_begeleiding_Sien_de_Groot_Universiteit_Gent_promotor_Marc_de_Groote
+
+:PhD_begeleiding_Sien_de_Groot_Universiteit_Gent_promotor_Marc_de_Groote a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Poelhekke_S
+
+:Poelhekke_S a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#Voor_een_optimale_prijs_is_een_CO2_belasting_nodig_How_high_should_the_tax_On_CO2_be?> .
+# 
+# http://clokman.com/ontologies/scientific-research#Porkka_PasiP
+
+:Porkka_PasiP a owl:NamedIndividual ;
+	:isAuthorOf :A_simple_metaheuristic_For_the_fleetsize_and_mix_problem_With_TimeWindows .
+# 
+# http://clokman.com/ontologies/scientific-research#Post_metaphysical_developments_In_continental_philosophy_of_religions_hermeneutic_pluralism_and_interreligious_encounters
+
+:Post_metaphysical_developments_In_continental_philosophy_of_religions_hermeneutic_pluralism_and_interreligious_encounters a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Potential_Systematic_Interception_Errors_are_Avoided_When_Tracking_the_Target_With_Ones_Eyes
+
+:Potential_Systematic_Interception_Errors_are_Avoided_When_Tracking_the_Target_With_Ones_Eyes a owl:NamedIndividual , :article ;
+	:isPublishedOn :ScientificReports .
+# 
+# http://clokman.com/ontologies/scientific-research#Pragmatic_Ontology_of_religious_Value_Experience_A_discussion_With_Charles_Taylor_William_James_and_Max_Scheler
+
+:Pragmatic_Ontology_of_religious_Value_Experience_A_discussion_With_Charles_Taylor_William_James_and_Max_Scheler a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Predicting_falls_among_patients_With_multiple_sclerosis_Comparison_of_patient_reported_outcomes_and_performance_based_measures_of_lower_extremity_functions
+
+:Predicting_falls_among_patients_With_multiple_sclerosis_Comparison_of_patient_reported_outcomes_and_performance_based_measures_of_lower_extremity_functions a owl:NamedIndividual , :article ;
+	:isPublishedOn :MultipleSclerosisandRelatedDisorders .
+# 
+# http://clokman.com/ontologies/scientific-research#Psychoneuroendocrinology
+
+:Psychoneuroendocrinology a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Rapid_screening_and_identification_of_ACE_inhibitors_In_snake_venoms_using_at_line_nanofractionation_LC_MS
+
+:Rapid_screening_and_identification_of_ACE_inhibitors_In_snake_venoms_using_at_line_nanofractionation_LC_MS a owl:NamedIndividual , :article ;
+	:isPublishedOn :AnalyticalandBioanalyticalChemistry .
+# 
+# http://clokman.com/ontologies/scientific-research#Reasonableness_and_Pleasantness_of_christianity_In_Matthew_Henry
+
+:Reasonableness_and_Pleasantness_of_christianity_In_Matthew_Henry a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Reformed_Theology_In_its_Scholastic_Development
+
+:Reformed_Theology_In_its_Scholastic_Development a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Reformed_and_Ever_Reforming_Reformed_Ecclesiology_and_Multiculturalism_In_a_Missionary_Context
+
+:Reformed_and_Ever_Reforming_Reformed_Ecclesiology_and_Multiculturalism_In_a_Missionary_Context a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Regulating_Speed_Social_Acceleration_and_International_Law
+
+:Regulating_Speed_Social_Acceleration_and_International_Law a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#RenewableandSustainableEnergyReviews
+
+:RenewableandSustainableEnergyReviews a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Retrieving_the_Law_and_Gospel_Distinction_For_the_Task_of_Dogmatics
+
+:Retrieving_the_Law_and_Gospel_Distinction_For_the_Task_of_Dogmatics a owl:NamedIndividual , :article ;
+	:isPublishedOn :JournalofReformedTheology .
+# 
+# http://clokman.com/ontologies/scientific-research#Reward_captures_attention_independent_of_the_current_focus_of_attention
+
+:Reward_captures_attention_independent_of_the_current_focus_of_attention a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#RezendeDaCunhaJnior_F
+
+:RezendeDaCunhaJnior_F a owl:NamedIndividual ;
+	:isAuthorOf :Facebook_In_Brazilian_schools_mobilizing_to_fight_back .
+# 
+# http://clokman.com/ontologies/scientific-research#Roothaan_ACM
+
+:Roothaan_ACM a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#Hospitality_versus_Personalism?_Weil_Levinas_and_Derrida_On_the_Encounter_With_the_Other> .
+# 
+# http://clokman.com/ontologies/scientific-research#Roothaan_Angela
+
+:Roothaan_Angela a owl:NamedIndividual ;
+	:isAuthorOf :Pragmatic_Ontology_of_religious_Value_Experience_A_discussion_With_Charles_Taylor_William_James_and_Max_Scheler .
+# 
+# http://clokman.com/ontologies/scientific-research#Rossi_S
+
+:Rossi_S a owl:NamedIndividual ;
+	:isAuthorOf :The_Mission_of_North_American_Church_Planting_In_Europe_Motivations_and_effectiveness_of_North_American_church_planting_In_continental_Europe .
+# 
+# http://clokman.com/ontologies/scientific-research#Ryder_N
+
+:Ryder_N a owl:NamedIndividual ;
+	:isAuthorOf :Market_manipulation_and_insider_trading_regulatory_challenges_In_United_States_of_America_the_European_Union_the_United_Kingdom .
+# 
+# http://clokman.com/ontologies/scientific-research#ScandinavianJournalofMedicineandScienceInSports
+
+:ScandinavianJournalofMedicineandScienceInSports a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Schwoebel_Christine
+
+:Schwoebel_Christine a owl:NamedIndividual ;
+	:isAuthorOf :The_Screen .
+# 
+# http://clokman.com/ontologies/scientific-research#ScienceoftheTotalEnvironment
+
+:ScienceoftheTotalEnvironment a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#ScientificReports
+
+:ScientificReports a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Scientism_Prospects_and_Problems
+
+:Scientism_Prospects_and_Problems a owl:NamedIndividual , :book .
+# 
+# http://clokman.com/ontologies/scientific-research#Self_Confrontation_Method_as_a_means_to_elicit_and_discuss_student_teachers_personal_world_view
+
+:Self_Confrontation_Method_as_a_means_to_elicit_and_discuss_student_teachers_personal_world_view a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Silventoinen_K
+
+:Silventoinen_K a owl:NamedIndividual ;
+	:isAuthorOf :The_effects_of_parental_education_On_exercise_behavior_In_childhood_and_youth_a_study_In_Dutch_and_Finnish_twins .
+# 
+# http://clokman.com/ontologies/scientific-research#Situation_of_Readmitted_Migrants_and_Refugees_From_Greece_to_Turkey_under_the_EU_Turkey_Statement
+
+:Situation_of_Readmitted_Migrants_and_Refugees_From_Greece_to_Turkey_under_the_EU_Turkey_Statement a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Smalbrugge_MA
+
+:Smalbrugge_MA a owl:NamedIndividual ;
+	:isAuthorOf :The_notion_of_persona_In_Early_Christianity .
+# 
+# http://clokman.com/ontologies/scientific-research#Smit_MartineJ
+
+:Smit_MartineJ a owl:NamedIndividual ;
+	:isAuthorOf :CXCR4_Specific_Nanobodies_as_Potential_Therapeutics_For_WHIM_syndrome .
+# 
+# http://clokman.com/ontologies/scientific-research#Smith_JonathanWN
+
+:Smith_JonathanWN a owl:NamedIndividual ;
+	:isAuthorOf :Comparison_of_landfarming_amendments_to_improve_bioremediation_of_petroleum_hydrocarbons_In_Niger_Delta_soils .
+# 
+# http://clokman.com/ontologies/scientific-research#Solutions_For_global_marine_litter_pollution
+
+:Solutions_For_global_marine_litter_pollution a owl:NamedIndividual , :article ;
+	:isPublishedOn :CurrentOpinionInEnvironmentalSustainability .
+# 
+# http://clokman.com/ontologies/scientific-research#Soteria
+
+:Soteria a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Spectacular_Images_Georges_Antoine_Rochegrosses_illustrations_For_Flauberts_Salammb_and_Giovanni_Pastrones_Cabiria
+
+:Spectacular_Images_Georges_Antoine_Rochegrosses_illustrations_For_Flauberts_Salammb_and_Giovanni_Pastrones_Cabiria a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Stolk_S
+
+:Stolk_S a owl:NamedIndividual ;
+	:isAuthorOf :Moving_Images_Documentary_Film_and_Audiovisual_Promotion_of_the_ICC .
+# 
+# http://clokman.com/ontologies/scientific-research#Stoppels_S
+
+:Stoppels_S a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#De_kerk_is_een_zootje_en_ik_hoor_bij_dat_zootje_Gedachten_bij_Henk_Stoorvogels_boek_Viva_de_kerk!> .
+# 
+# http://clokman.com/ontologies/scientific-research#Tabatabaei_Meisam
+
+:Tabatabaei_Meisam a owl:NamedIndividual ;
+	:isAuthorOf :Electricity_generation_and_GHG_emission_reduction_potentials_through_different_municipal_solid_waste_management_technologies_A_comparative_review .
+# 
+# http://clokman.com/ontologies/scientific-research#Testing_the_applicability_of_ecosystem_services_mapping_methods_For_peri_urban_contexts_A_case_study_For_Paris
+
+:Testing_the_applicability_of_ecosystem_services_mapping_methods_For_peri_urban_contexts_A_case_study_For_Paris a owl:NamedIndividual , :article ;
+	:isPublishedOn :EcologicalIndicators .
+# 
+# http://clokman.com/ontologies/scientific-research#TheJournalofPharmacologyandExperimentalTherapeutics
+
+:TheJournalofPharmacologyandExperimentalTherapeutics a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#The_Beauty_of_the_Forzuti_Irresistible_Male_Bodies_On_and_Off_Screen
+
+:The_Beauty_of_the_Forzuti_Irresistible_Male_Bodies_On_and_Off_Screen a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#The_Global_Water_Grabbing_Syndrome
+
+:The_Global_Water_Grabbing_Syndrome a owl:NamedIndividual , :article ;
+	:isPublishedOn :EcologicalEconomics .
+# 
+# http://clokman.com/ontologies/scientific-research#The_Law_At_Hand_Manuals_In_International_Humanitarian_Law
+
+:The_Law_At_Hand_Manuals_In_International_Humanitarian_Law a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#The_Mission_of_North_American_Church_Planting_In_Europe_Motivations_and_effectiveness_of_North_American_church_planting_In_continental_Europe
+
+:The_Mission_of_North_American_Church_Planting_In_Europe_Motivations_and_effectiveness_of_North_American_church_planting_In_continental_Europe a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#The_Screen
+
+:The_Screen a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#The_backfiring_effect_of_auditing_On_tax_compliance
+
+:The_backfiring_effect_of_auditing_On_tax_compliance a owl:NamedIndividual , :article ;
+	:isPublishedOn :JournalofEconomicPsychology .
+# 
+# http://clokman.com/ontologies/scientific-research#The_cost_effectiveness_and_return_on_investment_of_a_combined_social_and_physical_environmental_intervention_In_office_employees
+
+:The_cost_effectiveness_and_return_on_investment_of_a_combined_social_and_physical_environmental_intervention_In_office_employees a owl:NamedIndividual , :article ;
+	:isPublishedOn :HealthEducationResearch .
+# 
+# http://clokman.com/ontologies/scientific-research#The_effects_of_parental_education_On_exercise_behavior_In_childhood_and_youth_a_study_In_Dutch_and_Finnish_twins
+
+:The_effects_of_parental_education_On_exercise_behavior_In_childhood_and_youth_a_study_In_Dutch_and_Finnish_twins a owl:NamedIndividual , :article ;
+	:isPublishedOn :ScandinavianJournalofMedicineandScienceInSports .
+# 
+# http://clokman.com/ontologies/scientific-research#The_experience_of_narrative_In_the_permanently_online_permanently_connected_environment_Multitasking_self_expansion_and_entertainment_effects
+
+:The_experience_of_narrative_In_the_permanently_online_permanently_connected_environment_Multitasking_self_expansion_and_entertainment_effects a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#The_low_single_nucleotide_polymorphism_heritability_of_plasma_and_saliva_cortisol_levels
+
+:The_low_single_nucleotide_polymorphism_heritability_of_plasma_and_saliva_cortisol_levels a owl:NamedIndividual , :article ;
+	:isPublishedOn :Psychoneuroendocrinology .
+# 
+# http://clokman.com/ontologies/scientific-research#The_notion_of_persona_In_Early_Christianity
+
+:The_notion_of_persona_In_Early_Christianity a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#The_significance_of_Ricoeurs_notions_of_happiness_unhappiness_and_luck_For_contemporary_philosophy_of_culture_and_religion
+
+:The_significance_of_Ricoeurs_notions_of_happiness_unhappiness_and_luck_For_contemporary_philosophy_of_culture_and_religion a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Theeuwes_JL
+
+:Theeuwes_JL a owl:NamedIndividual ;
+	:isAuthorOf :Reward_captures_attention_independent_of_the_current_focus_of_attention .
+# 
+# http://clokman.com/ontologies/scientific-research#Theodore_of_Mopsuestias_Commentary_On_Genesis_126_Its_Fragments_and_Reconstruction
+
+:Theodore_of_Mopsuestias_Commentary_On_Genesis_126_Its_Fragments_and_Reconstruction a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Theological_Ethics_and_Moral_Value_Phenomena_The_Experience_of_Values
+
+:Theological_Ethics_and_Moral_Value_Phenomena_The_Experience_of_Values a owl:NamedIndividual , :book .
+# 
+# http://clokman.com/ontologies/scientific-research#Tiemeier_Henning
+
+:Tiemeier_Henning a owl:NamedIndividual ;
+	:isAuthorOf :The_low_single_nucleotide_polymorphism_heritability_of_plasma_and_saliva_cortisol_levels .
+# 
+# http://clokman.com/ontologies/scientific-research#Time_Tax_and_the_Merger_Directive_Edited_by_Prof_W_Haslehner_Prof_A_Rust_and_Prof_GW_Kofler
+
+:Time_Tax_and_the_Merger_Directive_Edited_by_Prof_W_Haslehner_Prof_A_Rust_and_Prof_GW_Kofler a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#TransgenderStudiesQuarterly
+
+:TransgenderStudiesQuarterly a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Treur_J
+
+:Treur_J a owl:NamedIndividual ;
+	:isAuthorOf :A_Computational_Cognitive_Model_of_Self_Monitoring_and_Decision_Making_For_Desire_Regulation , :A_Computational_Model_For_the_Role_of_Advertisement_and_Expectation_In_Lifestyle_Changes .
+# 
+# http://clokman.com/ontologies/scientific-research#Truth_and_Truth_Telling_Engaging_South_Africas_Post_Apartheid_Public_Religious_Discourse
+
+:Truth_and_Truth_Telling_Engaging_South_Africas_Post_Apartheid_Public_Religious_Discourse a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Typologisch_preken
+
+:Typologisch_preken a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Una_Sancta___Towards_a_Contextualised_Ecclesiology_For_the_Korean_Churches
+
+:Una_Sancta___Towards_a_Contextualised_Ecclesiology_For_the_Korean_Churches a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#VanAssche_Kristof
+
+:VanAssche_Kristof a owl:NamedIndividual ;
+	:isAuthorOf :Governing_For_resilience_the_role_of_institutional_work .
+# 
+# http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank
+
+:VanBelleghem_Frank a owl:NamedIndividual ;
+	:isAuthorOf :Solutions_For_global_marine_litter_pollution .
+# 
+# http://clokman.com/ontologies/scientific-research#VanLange_PaulAM
+
+:VanLange_PaulAM a owl:NamedIndividual ;
+	:isAuthorOf :Climate_aggression_and_violence_CLASH_a_cultural_evolutionary_approach .
+# 
+# http://clokman.com/ontologies/scientific-research#Variations_In_the_susceptibility_to_landslides_as_a_consequence_of_land_cover_changes_A_look_to_the_past_and_another_towards_the_future
+
+:Variations_In_the_susceptibility_to_landslides_as_a_consequence_of_land_cover_changes_A_look_to_the_past_and_another_towards_the_future a owl:NamedIndividual , :article ;
+	:isPublishedOn :ScienceoftheTotalEnvironment .
+# 
+# http://clokman.com/ontologies/scientific-research#Verhoef_A
+
+:Verhoef_A a owl:NamedIndividual ;
+	:isAuthorOf :The_significance_of_Ricoeurs_notions_of_happiness_unhappiness_and_luck_For_contemporary_philosophy_of_culture_and_religion .
+# 
+# http://clokman.com/ontologies/scientific-research#Veugen_JIL
+
+:Veugen_JIL a owl:NamedIndividual ;
+	:isAuthorOf :Game_Based_Transmedia_Storytelling_ASSASSINS_CREED .
+# 
+# http://clokman.com/ontologies/scientific-research#Wegwijs_In_het_Internationaal_en_Europees_Belastingrecht
+
+:Wegwijs_In_het_Internationaal_en_Europees_Belastingrecht a owl:NamedIndividual , :book .
+# 
+# http://clokman.com/ontologies/scientific-research#Werner_WG
+
+:Werner_WG a owl:NamedIndividual ;
+	:isAuthorOf :Framing_Objects_of_International_Law , :Regulating_Speed_Social_Acceleration_and_International_Law , :The_Law_At_Hand_Manuals_In_International_Humanitarian_Law .
+# 
+# http://clokman.com/ontologies/scientific-research#White_anti_apartheid_theologies_as_resource_For_a_theological_response_to_whiteness_In_post_apartheid_South_Africa
+
+:White_anti_apartheid_theologies_as_resource_For_a_theological_response_to_whiteness_In_post_apartheid_South_Africa a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Why_We_Really_Need_to_Do_Fewer_Statistical_Tests
+
+:Why_We_Really_Need_to_Do_Fewer_Statistical_Tests a owl:NamedIndividual , :article ;
+	:isPublishedOn :Perception .
+# 
+# http://clokman.com/ontologies/scientific-research#Why_to_climb_if_one_can_jump_a_hill_jumping_algorithm_For_the_vehicle_routing_problem_With_time_windows
+
+:Why_to_climb_if_one_can_jump_a_hill_jumping_algorithm_For_the_vehicle_routing_problem_With_time_windows a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Widmer_CJ
+
+:Widmer_CJ a owl:NamedIndividual ;
+	:isAuthorOf :Reformed_and_Ever_Reforming_Reformed_Ecclesiology_and_Multiculturalism_In_a_Missionary_Context .
+# 
+# http://clokman.com/ontologies/scientific-research#Wilson_M
+
+:Wilson_M a owl:NamedIndividual ;
+	:isAuthorOf :It_Seems_Good_to_the_Holy_Spirit_and_Us_How_Reformed_Churches_In_America_May_Move_Past_Binary_and_Beyond_Opaque_into_Missional_Decision_Making .
+# 
+# http://clokman.com/ontologies/scientific-research#Wisse_Maarten
+
+:Wisse_Maarten a owl:NamedIndividual ;
+	:isAuthorOf :Reformed_Theology_In_its_Scholastic_Development , :Retrieving_the_Law_and_Gospel_Distinction_For_the_Task_of_Dogmatics .
+# 
+# http://clokman.com/ontologies/scientific-research#Women_and_katagami_a_place_In_historiography
+
+:Women_and_katagami_a_place_In_historiography a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#deGraaff_NA
+
+:deGraaff_NA a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#Hate_Trumps_Love?_The_Day_After> .
+# 
+# http://clokman.com/ontologies/scientific-research#deJonge_AM
+
+:deJonge_AM a owl:NamedIndividual ;
+	:isAuthorOf :Missie_en_Gemeenschap_Een_onderzoek_naar_missionaire_gemeenschapsvorming .
+# 
+# http://clokman.com/ontologies/scientific-research#deRidder_GJ
+
+:deRidder_GJ a owl:NamedIndividual ;
+	:isAuthorOf :Introduction_Scientism_On_the_Philosophical_Agenda , :Kinds_of_Knowledge_Limits_of_Science .
+# 
+# http://clokman.com/ontologies/scientific-research#denHertog_RG
+
+:denHertog_RG a owl:NamedIndividual ;
+	:isAuthorOf :Ministry_and_Mission_An_investigation_of_the_missional_challenges_For_the_Reformed_Presbyterian_theology_of_ministry_In_a_post_Christendom_age .
+# 
+# http://clokman.com/ontologies/scientific-research#huysman
+
+:huysman a owl:NamedIndividual ;
+	:isAuthorOf :Organizational_intelligence_In_the_digital_age_Analytics_and_the_cycle_of_choice .
+# 
+# http://clokman.com/ontologies/scientific-research#terAvest_I
+
+:terAvest_I a owl:NamedIndividual ;
+	:isAuthorOf :Self_Confrontation_Method_as_a_means_to_elicit_and_discuss_student_teachers_personal_world_view .
+# 
+# http://clokman.com/ontologies/scientific-research#vanDam_H
+
+:vanDam_H a owl:NamedIndividual ;
+	:isAuthorOf <http://clokman.com/ontologies/scientific-research#Neo_Latin_or_vernacular?_The_poetry_of_Petrus_Scriverius_1576_1660> .
+# 
+# http://clokman.com/ontologies/scientific-research#vanOpstall_EM
+
+:vanOpstall_EM a owl:NamedIndividual ;
+	:isAuthorOf :PhD_begeleiding_Sien_de_Groot_Universiteit_Gent_promotor_Marc_de_Groote .
+# 
+# http://clokman.com/ontologies/scientific-research#vanTeeffelen_AstridJA
+
+:vanTeeffelen_AstridJA a owl:NamedIndividual ;
+	:isAuthorOf :Testing_the_applicability_of_ecosystem_services_mapping_methods_For_peri_urban_contexts_A_case_study_For_Paris .
+# 
+# http://clokman.com/ontologies/scientific-research#vanTulder_MW
+
+:vanTulder_MW a owl:NamedIndividual ;
+	:isAuthorOf :The_cost_effectiveness_and_return_on_investment_of_a_combined_social_and_physical_environmental_intervention_In_office_employees .
+# 
+# http://clokman.com/ontologies/scientific-research#vanWoudenberg_R
+
+:vanWoudenberg_R a owl:NamedIndividual ;
+	:isAuthorOf :Scientism_Prospects_and_Problems .
+# 
+# http://clokman.com/ontologies/scientific-research#vanWyngaard_GJ
+
+:vanWyngaard_GJ a owl:NamedIndividual ;
+	:isAuthorOf :White_anti_apartheid_theologies_as_resource_For_a_theological_response_to_whiteness_In_post_apartheid_South_Africa .
+# 
+# http://clokman.com/ontologies/scientific-research#vandenHeuvel_Steven
+
+:vandenHeuvel_Steven a owl:NamedIndividual ;
+	:isAuthorOf :Theological_Ethics_and_Moral_Value_Phenomena_The_Experience_of_Values .
+# 
+# http://clokman.com/ontologies/scientific-research#vanderRiet_RL
+
+:vanderRiet_RL a owl:NamedIndividual ;
+	:isAuthorOf :Truth_and_Truth_Telling_Engaging_South_Africas_Post_Apartheid_Public_Religious_Discourse .
+# 
+# http://clokman.com/ontologies/scientific-research#vanderSchalie_R
+
+:vanderSchalie_R a owl:NamedIndividual ;
+	:isAuthorOf :Advancing_soil_moisture_climate_records_through_the_integration_of_SMOS_observations .
+# 
+# http://clokman.com/ontologies/scientific-research#vanderSchriek_M
+
+:vanderSchriek_M a owl:NamedIndividual ;
+	:isAuthorOf :Buried_Landscapes_of_War_The_archaeology_and_heritage_of_the_Second_World_War_In_The_Netherlands .
+# 
+# http://clokman.com/ontologies/scientific-research#vdWeg_AAF
+
+:vdWeg_AAF a owl:NamedIndividual ;
+	:isAuthorOf :Typologisch_preken .
+# 
+# http://clokman.com/ontologies/scientific-research#Always_on?_Explicating_impulsive_influences_On_media_use
+
+<http://clokman.com/ontologies/scientific-research#Always_on?_Explicating_impulsive_influences_On_media_use> a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#De_kerk_is_een_zootje_en_ik_hoor_bij_dat_zootje_Gedachten_bij_Henk_Stoorvogels_boek_Viva_de_kerk!
+
+<http://clokman.com/ontologies/scientific-research#De_kerk_is_een_zootje_en_ik_hoor_bij_dat_zootje_Gedachten_bij_Henk_Stoorvogels_boek_Viva_de_kerk!> a owl:NamedIndividual , :article ;
+	:isPublishedOn :Soteria .
+# 
+# http://clokman.com/ontologies/scientific-research#Hate_Trumps_Love?_The_Day_After
+
+<http://clokman.com/ontologies/scientific-research#Hate_Trumps_Love?_The_Day_After> a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#Hospitality_versus_Personalism?_Weil_Levinas_and_Derrida_On_the_Encounter_With_the_Other
+
+<http://clokman.com/ontologies/scientific-research#Hospitality_versus_Personalism?_Weil_Levinas_and_Derrida_On_the_Encounter_With_the_Other> a owl:NamedIndividual , :inbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Neo_Latin_or_vernacular?_The_poetry_of_Petrus_Scriverius_1576_1660
+
+<http://clokman.com/ontologies/scientific-research#Neo_Latin_or_vernacular?_The_poetry_of_Petrus_Scriverius_1576_1660> a owl:NamedIndividual , :misc .
+# 
+# http://clokman.com/ontologies/scientific-research#SocialPsychological&PersonalityScience
+
+<http://clokman.com/ontologies/scientific-research#SocialPsychological&PersonalityScience> a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Spiritual_care_For_everyone?_Personal_and_organizational_differences_In_interfaith_spiritual_care_among_chaplains_In_the_Netherlands
+
+<http://clokman.com/ontologies/scientific-research#Spiritual_care_For_everyone?_Personal_and_organizational_differences_In_interfaith_spiritual_care_among_chaplains_In_the_Netherlands> a owl:NamedIndividual , :article ;
+	:isPublishedOn :JournalFortheScientificStudyofReligion .
+# 
+# http://clokman.com/ontologies/scientific-research#Voor_een_optimale_prijs_is_een_CO2_belasting_nodig_How_high_should_the_tax_On_CO2_be?
+
+<http://clokman.com/ontologies/scientific-research#Voor_een_optimale_prijs_is_een_CO2_belasting_nodig_How_high_should_the_tax_On_CO2_be?> a owl:NamedIndividual , :article ;
+	:isPublishedOn :EconomischStatistischeBerichten .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
