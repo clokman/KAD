@@ -39,7 +39,7 @@ def transform_to_ontology_property(bib_data_object, target_entry_id, parsed_bibt
         pass
 
 
-# loop through the individual references
+# loop through individual reference entries in the parsed bib file
 for each_unicode_entry_id in bibdata.entries:
     each_entry_id = each_unicode_entry_id.encode("ascii",errors="ignore")
 
@@ -48,37 +48,47 @@ for each_unicode_entry_id in bibdata.entries:
     current_entry_fields    = current_entry.fields
     current_entry_persons   = current_entry.persons
 
-    current_title = current_entry_fields["title"]
+    current_title = current_entry_fields["title"].encode("ascii",errors="ignore")
 
     bibDictionary[each_entry_id] = {} # create a new item in bibDictionary for each entry id,
                                                                       # and let each of these items contain a subdictionary.
                                                                       # e.g., bibDictionary = { 34324242235:{}, 43214321421421:{}, ... }
 
 
+    ######################### CURRENT TITLE -> B_LABEL ############################
+
+    bibDictionary[each_entry_id]["b_document_label"] = current_title
+
+
     ############################ AUTHOR -> B AUTHOR ################################
 
     try:
-        bibDictionary[each_entry_id]["b_authors"] = []  # prepare an empty container for author entities...
-        for author in current_entry_persons["author"]:      # for each author
-                                                                                            # so it can be appended later with merged author first names and last names.
+        bibDictionary[each_entry_id]["b_authors"]        = []  # prepare an empty container for author entities (which is a sub-dictionary of bibDictionary) so it can be appended later with merged author first names and last names.
+        bibDictionary[each_entry_id]["b_author_labels"] = []   # prepare an empty container for author labels
+
+        for author in current_entry_persons["author"]:  # for each author
 
             omittedCharacters = "[\{\}\ \.\'\"\(\)]"                                        # these characters will be omitted from author names after they are combined
 
             try:
+                # Format names
                 lastName = re.sub(omittedCharacters, "", author.last()[0].encode("ascii",errors="ignore"))   # simplify the format of author last and first names by omitting the specified characters
                 firstName = re.sub(omittedCharacters, "", author.first()[0].encode("ascii",errors="ignore")) # ...
 
-                bibDictionary[each_entry_id]["b_authors"].append((str(lastName + "_" + firstName))) # stitch last and first names to each other
-                                                                                                                                   # and add them to the container constructed before
+                # Add to dictionary
+                bibDictionary[each_entry_id]["b_authors"].append(str(lastName + "_" + firstName))         # stitch last and first names to each other and add them to the container constructed before
+                bibDictionary[each_entry_id]["b_author_labels"].append(str(lastName + ", " + firstName))  # do the same to create author labels
 
-            except: # if author's first name is missing:
+            except:  # if author's first name is missing:
+                # Format last name
                 lastName = re.sub(omittedCharacters, "", author.last()[0].encode("ascii",errors="ignore"))
+
+                # Add to dictionary
                 bibDictionary[each_entry_id]["b_authors"].append((str(lastName)))
 
-                # a case where author's last name is missing but first name is present was deliberately not included.
+            # a case where author's last name is missing but first name is present was deliberately not included.
 
-    # the whole author field is missing from bibliography
-    except(KeyError):
+    except:  # If the whole author field is missing from bibliography:
         pass
 
 
@@ -102,11 +112,12 @@ for each_unicode_entry_id in bibdata.entries:
 
         current_title = re.sub(omitted_characters_for_instance_names, "", current_title) # omit the given characters
 
-        bibDictionary[each_entry_id]["b_document_instance"] = current_title
+        bibDictionary[each_entry_id]["b_document_instance_name"] = current_title
 
     # if title field missing from bibliography:
     except(KeyError):
         pass
+
 
     ######################### TYPE -> B TYPE (OF DOCUMENT) ############################
 

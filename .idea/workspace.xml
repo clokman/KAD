@@ -4,48 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/Milestone_2-Domain_and_Ontology/b_bibtex_to_rdf.py" line="46" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="Milestone 3 is finished and LD-R is up and running.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Milestone_2-Domain_and_Ontology/CLN-940-KAD_Milestones_1_and_2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Backup/Python_scripts.7z" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/CLN-940-KAD_Milestones_1_and_2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Backup/pure_bib_limited_0.3.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Backup/scientific-research-v2.4.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited.bib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited_test.bib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/catalog-v001.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/integrator0.3.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/pure_bib_limited_0.3.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/scientific-research-v2.4.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/wos_categories.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.3.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Output/web_of_science_categories.ttl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/d_web-of-science-categories.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/facets.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/facets.sample.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/general.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/general.sample.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/reactor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/reactor.sample.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/routes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/server.sample.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/CLN940-KAD-Milestones-1-2-3.pdf" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/CLN940-KAD-Milestones-1-2-3.pdf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/facets.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/facets.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/facets.sample.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/facets.sample.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/general.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/general.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/general.sample.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/general.sample.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/reactor.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/reactor.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/reactor.sample.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/reactor.sample.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/routes.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/routes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/server.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/server.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Milestone_3-Application_Prorotype/ld-r/configs/server.sample.js" afterPath="$PROJECT_DIR$/Milestone_3-Application_Prototype/ld-r/configs/server.sample.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/KAD.iml" afterPath="$PROJECT_DIR$/.idea/KAD.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="Refactoring completed">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Milestone_2-Domain_and_Ontology/b_bibtex_to_rdf.py" afterPath="$PROJECT_DIR$/Milestone_2-Domain_and_Ontology/b_bibtex_to_rdf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" afterPath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" afterPath="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +20,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/KAD$second_approach_enhanced.coverage" NAME="second_approach_enhanced Coverage Results" MODIFIED="1508234448023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$bibtex.coverage" NAME="bibtex Coverage Results" MODIFIED="1508251216719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
-    <SUITE FILE_PATH="coverage/KAD$b_bibtex_to_rdf.coverage" NAME="b_bibtex_to_rdf Coverage Results" MODIFIED="1508782641432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
+    <SUITE FILE_PATH="coverage/KAD$b_bibtex_to_rdf.coverage" NAME="b_bibtex_to_rdf Coverage Results" MODIFIED="1508856190475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$scratch_17.coverage" NAME="scratch_17 Coverage Results" MODIFIED="1508759684582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/KAD$scratch2.coverage" NAME="scratch2 Coverage Results" MODIFIED="1508759852559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$bibtex_parser.coverage" NAME="bibtex_parser Coverage Results" MODIFIED="1508244375877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
@@ -74,7 +37,7 @@
     <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf__1_.coverage" NAME="bibtex-to-rdf (1) Coverage Results" MODIFIED="1508259596096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$temp1.coverage" NAME="temp1 Coverage Results" MODIFIED="1508759996332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$b_bibtex_to_rdf__1_.coverage" NAME="b_bibtex_to_rdf (1) Coverage Results" MODIFIED="1508754521383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2-Domain_and_Ontology" />
-    <SUITE FILE_PATH="coverage/KAD$a_bibtex_parser_ascii.coverage" NAME="a_bibtex_parser_ascii Coverage Results" MODIFIED="1508782625456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
+    <SUITE FILE_PATH="coverage/KAD$a_bibtex_parser_ascii.coverage" NAME="a_bibtex_parser_ascii Coverage Results" MODIFIED="1508856187472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$bib_to_rdf.coverage" NAME="bib-to-rdf Coverage Results" MODIFIED="1508189330790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone2" />
     <SUITE FILE_PATH="coverage/KAD$temp4.coverage" NAME="temp4 Coverage Results" MODIFIED="1508771629799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$a_bibtex_parser_ascii__1_.coverage" NAME="a_bibtex_parser_ascii (1) Coverage Results" MODIFIED="1508756806608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
@@ -105,11 +68,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="a_bibtex_parser_ascii.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="a_bibtex_parser_ascii.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state relative-caret-position="417">
+              <caret line="78" column="106" lean-forward="false" selection-start-line="78" selection-start-column="106" selection-end-line="78" selection-end-column="106" />
               <folding>
                 <element signature="e#123#163#0" expanded="true" />
               </folding>
@@ -117,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="b_bibtex_to_rdf.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="b_bibtex_to_rdf.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="100" column="68" lean-forward="false" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -147,74 +110,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="temp3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/temp3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="57" column="47" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="47" />
-              <caret line="56" column="73" lean-forward="false" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="73" />
-              <caret line="55" column="53" lean-forward="false" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="53" />
-              <caret line="54" column="42" lean-forward="false" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="42" />
-              <caret line="53" column="46" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp3.1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/temp3.1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp3.1-scratch.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/temp3.1-scratch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="39" column="40" lean-forward="false" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
-              <folding>
-                <element signature="e#163#203#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp4.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/temp4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-              <folding>
-                <element signature="e#163#203#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp6.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/temp6.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/temp1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -226,12 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>AAAAA</find>
-      <find>working</find>
-      <find>paper</find>
-      <find>aaa</find>
-      <find>ser</find>
-      <find>series</find>
       <find>edit</find>
       <find>published_by</find>
       <find>isbn</find>
@@ -256,6 +145,12 @@
       <find>b</find>
       <find>each_entry_fields</find>
       <find>print</find>
+      <find>authors_labels</find>
+      <find>label</find>
+      <find>authors</find>
+      <find>label</find>
+      <find>b_document_instance</find>
+      <find>author_instance</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -303,9 +198,10 @@
         <option value="$PROJECT_DIR$/Prototype_Final/temp4.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/temp3.1.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/temp3.py" />
+        <option value="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited_test.bib" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
-        <option value="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited_test.bib" />
       </list>
     </option>
   </component>
@@ -879,7 +775,28 @@
       <option name="project" value="LOCAL" />
       <updated>1508627372748</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Refactoring completed">
+      <created>1508782700615</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1508782700615</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Refactoring completed">
+      <created>1508782744179</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1508782744179</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Refactoring completed">
+      <created>1508782800887</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1508782800888</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -925,8 +842,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19315404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19315404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.40874037" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -983,7 +901,8 @@
     <MESSAGE value="Pure.bib is parsed, WOS fields added, and integrated to the ontology." />
     <MESSAGE value="Cleaning up after milestone 2." />
     <MESSAGE value="Milestone 3 is finished and LD-R is up and running." />
-    <option name="LAST_COMMIT_MESSAGE" value="Milestone 3 is finished and LD-R is up and running." />
+    <MESSAGE value="Refactoring completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -992,7 +911,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Milestone2/Pure_research_output-51017-short.bib" />
     <entry file="file://$PROJECT_DIR$/Milestone2/Pure_research_output-51017.bib" />
     <entry file="file://$PROJECT_DIR$/Milestone2/test.bib" />
     <entry file="file://$PROJECT_DIR$/Milestone2/bibtex-to-rdf-example.py" />
@@ -1142,6 +1060,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="1172" column="0" lean-forward="true" selection-start-line="1172" selection-start-column="0" selection-end-line="1172" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1186,9 +1105,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="39" column="40" lean-forward="false" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
-          <folding>
-            <element signature="e#163#203#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1196,9 +1113,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-          <folding>
-            <element signature="e#163#203#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1238,16 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="e#123#163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited_test.bib">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1256,11 +1161,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="34">
+            <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="100" column="68" lean-forward="false" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="68" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="78" column="106" lean-forward="false" selection-start-line="78" selection-start-column="106" selection-end-line="78" selection-end-column="106" />
+          <folding>
+            <element signature="e#123#163#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
