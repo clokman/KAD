@@ -1,21 +1,22 @@
 # TODO: Conversion to Python 3
-# TODO: Change "publication"  to "jounal"
+# DONE: Change "publication"  to "jounal"
 # DONE: Add labels
 # DONE: Multi-author support
 
 
 from pybtex.database.input import bibtex
+from pprint import pprint
 import re
 
 # Parse input file
 parser = bibtex.Parser()                                            # shorten parser function
-bibdata = parser.parse_file("Input//pure_bib_limited_test.bib")     # parse the given bibtex file into variables
+bibdata = parser.parse_file("Input//pure_bib_limited.bib")     # parse the given bibtex file into variables
 
 # Output container
 bibDictionary = {}  # container for the main dictionary that will be outputted from the script
 
 
-def transform_to_ontology_property(bib_data_object, target_entry_id, parsed_bibtex_field_name, new_ontology_property_name):
+def transform_to_ontology_property(bib_data_object, target_entry_id, parsed_bibtex_field_name, new_ontology_property_name):  # local function
     """
     Function for basic transformation of parsed bibtex values to a triple-ready format.
     :param target_entry_id: the index key of the bibliography entry (e.g., 321098471224)
@@ -229,5 +230,4 @@ for each_unicode_entry_id in bibdata.entries:
 #    pass
 
 # MAIN PRINT FUNCTION
-from pprint import pprint
 pprint(bibDictionary)
