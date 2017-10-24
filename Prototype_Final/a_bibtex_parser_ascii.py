@@ -1,6 +1,6 @@
-# TODO: Add labels
 # TODO: Conversion to Python 3
 # TODO: Change "publication"  to "jounal"
+# DONE: Add labels
 # DONE: Multi-author support
 
 
@@ -63,7 +63,7 @@ for each_unicode_entry_id in bibdata.entries:
     ############################ AUTHOR -> B AUTHOR ################################
 
     try:
-        bibDictionary[each_entry_id]["b_authors"]        = []  # prepare an empty container for author entities (which is a sub-dictionary of bibDictionary) so it can be appended later with merged author first names and last names.
+        bibDictionary[each_entry_id]["b_authors"]       = []  # prepare an empty container for author entities (which is a sub-dictionary of bibDictionary) so it can be appended later with merged author first names and last names.
         bibDictionary[each_entry_id]["b_author_labels"] = []   # prepare an empty container for author labels
 
         for author in current_entry_persons["author"]:  # for each author
@@ -143,7 +143,7 @@ for each_unicode_entry_id in bibdata.entries:
         omitted_characters_for_journal_names = "[\{\}\ \. ,\'\"\(\)]"  # these will be omitted from the journal's instance name
         current_journal = re.sub(omitted_characters_for_journal_names, "", current_journal) # omit previously specified characters
 
-        bibDictionary[each_entry_id]["b_publication"] = current_journal # add the formatted journal name, which is now an in instance name format to the dictionary
+        bibDictionary[each_entry_id]["b_journal"] = current_journal # add the formatted journal name, which is now an in instance name format to the dictionary
 
     except(KeyError): # if journal field missing from bibliography:
         pass          # skip this action

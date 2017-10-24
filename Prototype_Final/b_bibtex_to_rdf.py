@@ -139,7 +139,7 @@ for each_entry in bibDictionary.items():
     #######  PUBLICATION INSTANCE + PUBLISHED ON  #######
     # NOTE: Use this "try-except" structure except identifier, authors, document instance, type--all fields except these ones may not always be present.
     try:
-        current_publication = current_fields["b_publication"]         # extract current publication instance
+        current_publication = current_fields["b_journal"]         # extract current publication instance
         i_publication       = construct_URI(sr, current_publication)  # create  URI from publication instance
 
         # Bind the instances to each other and define their types
