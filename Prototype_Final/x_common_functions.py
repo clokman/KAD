@@ -43,6 +43,8 @@ def add_triple(sub, prop, obj, triples_list_to_append=triples_list):  # local fu
 
     :return: Adds the triple to triples_list.
     :example:
+        add_triple("<http://clokman.com/ontologies/scientific-research>", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>", "http://www.w3.org/2002/07/owl#Ontology")
+    :example:
         c_book      = <SOME_URI>
         p_rdf_type  = <SOME URI>
         c_class     = <SOME URI>

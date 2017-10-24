@@ -1069,8 +1069,8 @@
 <http://clokman.com/ontologies/pure-vu#Emmer_Julia> <http://www.w3.org/2000/01/rdf-schema#label> "Krouwel, APM"@en .
 <http://clokman.com/ontologies/pure-vu#Emmer_Julia> <http://www.w3.org/2000/01/rdf-schema#label> "vanProoijen, JW"@en .
 <http://clokman.com/ontologies/pure-vu#Emmer_Julia> <http://www.w3.org/2000/01/rdf-schema#label> "Emmer, Julia"@en .
-<http://clokman.com/ontologies/pure-vu#Ideological_Responses_to_the_EU_Refugee_Crisis_The_Left_the_Right_and_the_Extremes> <http://clokman.com/ontologies/scientific-research#isPublishedOn> <http://clokman.com/ontologies/pure-vu#SocialPsychological&PersonalityScience> .
-<http://clokman.com/ontologies/pure-vu#SocialPsychological&PersonalityScience> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/pure-vu#Ideological_Responses_to_the_EU_Refugee_Crisis_The_Left_the_Right_and_the_Extremes> <http://clokman.com/ontologies/scientific-research#isPublishedOn> <http://clokman.com/ontologies/pure-vu#SocialPsychologicalPersonalityScience> .
+<http://clokman.com/ontologies/pure-vu#SocialPsychologicalPersonalityScience> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://clokman.com/ontologies/pure-vu#inbook> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://clokman.com/ontologies/scientific-research#Document> .
 <http://clokman.com/ontologies/pure-vu#Why_to_climb_if_one_can_jump_a_hill_jumping_algorithm_for_the_vehicle_routing_problem_with_time_windows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://clokman.com/ontologies/pure-vu#Why_to_climb_if_one_can_jump_a_hill_jumping_algorithm_for_the_vehicle_routing_problem_with_time_windows> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://clokman.com/ontologies/pure-vu#inbook> .

@@ -10,12 +10,13 @@ rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 owl  = "http://www.w3.org/2002/07/owl#"
 
-add_prefix_triple("sr",   sr)
-add_prefix_triple("wosc", wosc)
-add_prefix_triple("rdf",  rdf)
-add_prefix_triple("rdfs", rdfs)
-add_prefix_triple("owl",  owl)
+#add_prefix_triple("",     wosc)
+#add_prefix_triple("sr",   sr)
+#add_prefix_triple("rdf",  rdf)
+#add_prefix_triple("rdfs", rdfs)
+#add_prefix_triple("owl",  owl)
 
+#add_triple("<http://clokman.com/ontologies/web-of-science-categories>", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>", "http://www.w3.org/2002/07/owl#Ontology")
 
 # classes and properties
 c_class        = construct_uri(rdfs, "Class")
@@ -35,7 +36,7 @@ for each_category in wos_categories_list:
 from pprint import pprint
 pprint(triples_list)
 
-file_obj = open("Output/web_of_science_categories_0.2.ttl", "w")
+file_obj = open("Output/web_of_science_categories_0.2.2.ttl", "w")
 for each_triple in triples_list:
     file_obj.write(each_triple)
     file_obj.write('\n')

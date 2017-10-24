@@ -9,6 +9,7 @@ from x_common_functions import *
 #                   STATIC DEFINITIONS: PROPERTIES, CLASSES                     #
 #################################################################################
 
+
 ###### NAMESPACE PREFIX DEFINITIONS ######
 sr   = "http://clokman.com/ontologies/scientific-research#"  # assign long domain  name to short variable.
 pvu  = "http://clokman.com/ontologies/pure-vu#"  # assign long domain  name to short variable.
@@ -16,11 +17,16 @@ rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 owl  = "http://www.w3.org/2002/07/owl#"
 
-add_prefix_triple("",    sr)
-add_prefix_triple("pvu",  pvu)
-add_prefix_triple("rdf",  rdf)
-add_prefix_triple("rdfs", rdfs)
-add_prefix_triple("owl",  owl)
+#add_prefix_triple("",    sr)
+#add_prefix_triple("pvu",  pvu)
+#add_prefix_triple("rdf",  rdf)
+#add_prefix_triple("rdfs", rdfs)
+#add_prefix_triple("owl",  owl)
+
+
+###### ONTOLOGY DEFINITIONS ######
+#add_triple("<http://clokman.com/ontologies/scientific-research>", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>", "http://www.w3.org/2002/07/owl#Ontology")
+#add_triple("<http://clokman.com/ontologies/pure-vu>", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>", "http://www.w3.org/2002/07/owl#Ontology")
 
 
 ###### STATIC CLASS DEFINITIONS (c_ )######
@@ -123,7 +129,7 @@ for each_entry in bibDictionary.items():
 
 
     #######  AUTHOR  ########
-    for each_current_author in current_authors:
+    for each_current_author, each_current_author_label in zip(current_authors, current_author_labels):
 
         # Assign author to instance
         i_author = construct_uri(pvu, each_current_author)  # assign this author to an instance variable (denoted by i_), and give it an URI
@@ -132,10 +138,8 @@ for each_entry in bibDictionary.items():
         add_triple( i_author,      p_is_author_of,     i_document_instance)  # the current author is the author of the current document
         add_triple( i_author,      p_rdf_type,         c_named_individual )  # the current author is an an instance
 
-
-    #######  AUTHOR  LABEL  ########
-    for each_current_author_label in current_author_labels:
-        add_triple( i_author,      p_label,            construct_string_literal(each_current_author_label) )  # the current author is an an instance
+        # Add author label
+        add_triple( i_author,      p_label,            construct_string_literal(each_current_author_label))
 
 
     #######  PUBLICATION INSTANCE + PUBLISHED ON  #######
@@ -152,4 +156,3 @@ for each_entry in bibDictionary.items():
         pass
 
 pprint(triples_list)  # resides in x_common_functions.py
-print ("Success: The triples are written to the specified file.")
