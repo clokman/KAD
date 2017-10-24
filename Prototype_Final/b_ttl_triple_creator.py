@@ -16,6 +16,12 @@ rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 owl  = "http://www.w3.org/2002/07/owl#"
 
+add_prefix_triple("",    sr)
+add_prefix_triple("pvu",  pvu)
+add_prefix_triple("rdf",  rdf)
+add_prefix_triple("rdfs", rdfs)
+add_prefix_triple("owl",  owl)
+
 
 ###### STATIC CLASS DEFINITIONS (c_ )######
 c_document         = construct_uri( sr,   "Document"        )  # assign URI to document superclass
@@ -146,3 +152,4 @@ for each_entry in bibDictionary.items():
         pass
 
 pprint(triples_list)  # resides in x_common_functions.py
+print ("Success: The triples are written to the specified file.")

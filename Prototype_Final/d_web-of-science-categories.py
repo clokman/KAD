@@ -10,6 +10,14 @@ rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 owl  = "http://www.w3.org/2002/07/owl#"
 
+add_prefix_triple("sr",   sr)
+add_prefix_triple("wosc", wosc)
+add_prefix_triple("rdf",  rdf)
+add_prefix_triple("rdfs", rdfs)
+add_prefix_triple("owl",  owl)
+
+
+# classes and properties
 c_class        = construct_uri(rdfs, "Class")
 p_subclass_of  = construct_uri(rdfs, "subClassOf")
 

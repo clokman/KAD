@@ -42,7 +42,25 @@ def add_triple(sub, prop, obj, triples_list_to_append=triples_list):  # local fu
     :exception: If no list variable is defined before the function is called, function will return error.
 
     :return: Adds the triple to triples_list.
+    :example:
+        c_book      = <SOME_URI>
+        p_rdf_type  = <SOME URI>
+        c_class     = <SOME URI>
+        add_triple(c_book, p_rdf_type, c_class)
 )
     """
     triple = sub + " " + prop + " " + obj + " ."  # construct a triple in turtle format.
     triples_list_to_append.append(triple)         # add the triples_list
+
+def add_prefix_triple(desired_prefix_name, prefix_uri_string, triples_list_to_append=triples_list):  # local function
+    """
+    Constructs a prefix assertion from given arguments and adds it to triples_list. Is a variant of add_triple function
+    (see add_triple function for full docstring).
+
+    :param desired_prefix_name: Enter empty string ("") to specify default prefix (i.e., ":")
+    :returns: Adds prefixes to triples_list in the following manner (examples):
+        @prefix : <http://clokman.com/ontologies/scientific-research#> .
+        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    """
+    prefix_triple = "@prefix " + desired_prefix_name + ": <" + prefix_uri_string + "> ." # construct a prefix triple in turtle format.
+    triples_list_to_append.append(prefix_triple)                                        # add the triples_list

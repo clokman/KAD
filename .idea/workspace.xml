@@ -8,13 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology/catalog-v001.xml" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/0.2/catalog-v001.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology/integrator0.3.ttl" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/0.2/integrator0.3.ttl" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology/pure_bib_limited_0.3.ttl" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/0.2/pure_bib_limited_0.3.ttl" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology/scientific-research-v2.4.ttl" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/0.2/scientific-research-v2.4.ttl" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology/wos_categories.ttl" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology/0.2/wos_categories.ttl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.4.ttl" afterPath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.4.ttl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" afterPath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py" afterPath="$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py" afterPath="$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/d_web-of-science-categories.py" afterPath="$PROJECT_DIR$/Prototype_Final/d_web-of-science-categories.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" afterPath="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,8 +57,8 @@
     <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf_example__1_.coverage" NAME="bibtex-to-rdf-example (1) Coverage Results" MODIFIED="1508202140017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$b_bibtex_to_rdf__2_.coverage" NAME="b_bibtex_to_rdf (2) Coverage Results" MODIFIED="1508757931990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$x_common_functions.coverage" NAME="x_common_functions Coverage Results" MODIFIED="1508864199826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
-    <SUITE FILE_PATH="coverage/KAD$b_ttl_triple_creator.coverage" NAME="b_ttl_triple_creator Coverage Results" MODIFIED="1508864220043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
-    <SUITE FILE_PATH="coverage/KAD$d_web_of_science_categories.coverage" NAME="d_web-of-science-categories Coverage Results" MODIFIED="1508864326591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
+    <SUITE FILE_PATH="coverage/KAD$b_ttl_triple_creator.coverage" NAME="b_ttl_triple_creator Coverage Results" MODIFIED="1508866637140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
+    <SUITE FILE_PATH="coverage/KAD$d_web_of_science_categories.coverage" NAME="d_web-of-science-categories Coverage Results" MODIFIED="1508866792553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$second_approach.coverage" NAME="second_approach Coverage Results" MODIFIED="1508230420136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$bibtex_parser_ascii.coverage" NAME="bibtex_parser_ascii Coverage Results" MODIFIED="1508251988872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$Doctests_in_temp3_1.coverage" NAME="Doctests in temp3.1 Coverage Results" MODIFIED="1508769645714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
@@ -79,8 +82,8 @@
       <file leaf-file-name="a_bibtex_parser_ascii.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="18" column="125" lean-forward="false" selection-start-line="18" selection-start-column="125" selection-end-line="18" selection-end-column="125" />
+            <state relative-caret-position="338">
+              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding>
                 <element signature="e#123#163#0" expanded="true" />
               </folding>
@@ -91,8 +94,8 @@
       <file leaf-file-name="b_ttl_triple_creator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
               <folding>
                 <element signature="e#174#221#0" expanded="true" />
               </folding>
@@ -103,28 +106,38 @@
       <file leaf-file-name="x_common_functions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/x_common_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+            <state relative-caret-position="447">
+              <caret line="60" column="77" lean-forward="false" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="c_save-as-ttl.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="c_save-as-ttl.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+              <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="d_web-of-science-categories.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scientific-research-v2.4.ttl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prototype_Final/Ontology/0.2/scientific-research-v2.4.ttl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="64" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="d_web-of-science-categories.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/d_web-of-science-categories.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="47" lean-forward="false" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            <state relative-caret-position="323">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -141,7 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>has_title</find>
       <find>edition</find>
       <find>book</find>
       <find>note</find>
@@ -171,6 +183,7 @@
       <find>publication`</find>
       <find>pu</find>
       <find>equivalentClass</find>
+      <find>journal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -225,8 +238,8 @@
         <option value="$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/functions.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
-        <option value="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py" />
+        <option value="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/d_web-of-science-categories.py" />
       </list>
     </option>
@@ -399,19 +412,19 @@
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Prototype_Final\Ontology\0.2" />
+      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\Input" />
+      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\Output" />
+      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\Resources" />
+      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone2" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Prototype_Final\Input" />
       <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Prototype_Final" />
       <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD" />
       <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2" />
       <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone2" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\Input" />
-      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\Output" />
-      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone_2\Resources" />
-      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Milestone2" />
-      <recent name="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Assignment 5" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -426,7 +439,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.c_save-as-ttl">
+  <component name="RunManager" selected="Python.d_web-of-science-categories">
     <configuration default="false" name="a_bibtex_parser_ascii" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -699,9 +712,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.c_save-as-ttl" />
-        <item index="1" class="java.lang.String" itemvalue="Python.d_web-of-science-categories" />
-        <item index="2" class="java.lang.String" itemvalue="Python.b_ttl_triple_creator" />
+        <item index="0" class="java.lang.String" itemvalue="Python.d_web-of-science-categories" />
+        <item index="1" class="java.lang.String" itemvalue="Python.b_ttl_triple_creator" />
+        <item index="2" class="java.lang.String" itemvalue="Python.c_save-as-ttl" />
         <item index="3" class="java.lang.String" itemvalue="Python.x_common_functions" />
         <item index="4" class="java.lang.String" itemvalue="Python.a_bibtex_parser_ascii" />
       </list>
@@ -840,7 +853,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508856800703</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactoring completed">
+      <created>1508864386787</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1508864386787</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -905,6 +925,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="100" width="1480" height="850" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -956,7 +977,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Milestone2/test.bib" />
     <entry file="file://$PROJECT_DIR$/Milestone2/bibtex-to-rdf-example.py" />
     <entry file="file://$PROJECT_DIR$/Milestone2/bibtex-to-rdf.py" />
     <entry file="file://$PROJECT_DIR$/Milestone_2/try2.py" />
@@ -1089,6 +1109,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1202,44 +1223,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="125" lean-forward="false" selection-start-line="18" selection-start-column="125" selection-end-line="18" selection-end-column="125" />
+        <state relative-caret-position="338">
+          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding>
             <element signature="e#123#163#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Prototype_Final/Ontology/0.2/scientific-research-v2.4.ttl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="64" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prototype_Final/x_common_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="60" column="77" lean-forward="false" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding>
             <element signature="e#174#221#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prototype_Final/x_common_functions.py">
+    <entry file="file://$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        <state relative-caret-position="119">
+          <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/d_web-of-science-categories.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="47" lean-forward="false" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="323">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding />
         </state>
       </provider>

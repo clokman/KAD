@@ -141,7 +141,7 @@ for each_unicode_entry_id in bibdata.entries:
         current_journal = re.sub(" with ", " With ", current_journal)
         current_journal = re.sub(" from ", " From ", current_journal)
 
-        omitted_characters_for_journal_names = "[\{\}\ \. ,\'\"\(\)]"  # these will be omitted from the journal's instance name
+        omitted_characters_for_journal_names = "[\{\}\ \. ,\'\"\(\)&]"                      # these will be omitted from the journal's instance name
         current_journal = re.sub(omitted_characters_for_journal_names, "", current_journal) # omit previously specified characters
 
         bibDictionary[each_entry_id]["b_journal"] = current_journal # add the formatted journal name, which is now an in instance name format to the dictionary
