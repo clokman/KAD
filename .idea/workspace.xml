@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.4.ttl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" afterPath="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" afterPath="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +30,8 @@
     <SUITE FILE_PATH="coverage/KAD$temp3_1_scratch.coverage" NAME="temp3.1-scratch Coverage Results" MODIFIED="1508770227215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$scratch1.coverage" NAME="scratch1 Coverage Results" MODIFIED="1508759973405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$temp3_1.coverage" NAME="temp3.1 Coverage Results" MODIFIED="1508776311044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
-    <SUITE FILE_PATH="coverage/KAD$c_save_as_ttl.coverage" NAME="c_save-as-ttl Coverage Results" MODIFIED="1508626969051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$Doctest_transform_to_ontology_property.coverage" NAME="Doctest transform_to_ontology_property Coverage Results" MODIFIED="1508771515478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
+    <SUITE FILE_PATH="coverage/KAD$c_save_as_ttl.coverage" NAME="c_save-as-ttl Coverage Results" MODIFIED="1508856754606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$bibtex_to_rdf__1_.coverage" NAME="bibtex-to-rdf (1) Coverage Results" MODIFIED="1508259596096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2" />
     <SUITE FILE_PATH="coverage/KAD$temp1.coverage" NAME="temp1 Coverage Results" MODIFIED="1508759996332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Prototype_Final" />
     <SUITE FILE_PATH="coverage/KAD$b_bibtex_to_rdf__1_.coverage" NAME="b_bibtex_to_rdf (1) Coverage Results" MODIFIED="1508754521383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Milestone_2-Domain_and_Ontology" />
@@ -70,7 +69,7 @@
       <file leaf-file-name="a_bibtex_parser_ascii.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
+            <state relative-caret-position="-757">
               <caret line="145" column="47" lean-forward="false" selection-start-line="145" selection-start-column="47" selection-end-line="145" selection-end-column="47" />
               <folding>
                 <element signature="e#123#163#0" expanded="true" />
@@ -79,21 +78,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="b_bibtex_to_rdf.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py">
+      <file leaf-file-name="b_ttl_triple_creator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="140" column="8" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
+            <state relative-caret-position="416">
+              <caret line="141" column="59" lean-forward="false" selection-start-line="141" selection-start-column="59" selection-end-line="141" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="c_save-as-ttl.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="c_save-as-ttl.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="102">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -201,6 +200,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py" />
         <option value="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" />
+        <option value="$PROJECT_DIR$/Prototype_Final/b_turtlecreator.py" />
+        <option value="$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py" />
       </list>
     </option>
   </component>
@@ -334,6 +335,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Output" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prototype_Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Input" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -416,7 +435,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.b_bibtex_to_rdf">
+  <component name="RunManager" selected="Python.c_save-as-ttl">
     <configuration default="false" name="temp3.1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -431,25 +450,6 @@
       <module name="KAD" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Prototype_Final/temp3.1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="temp4" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Prototype_Final" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="KAD" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Prototype_Final/temp4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -487,7 +487,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="KAD" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Clokman\Google Drive\__Projects__\Code\KAD\Prototype_Final\b_ttl_triple_creator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -507,6 +507,25 @@
       <module name="KAD" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Prototype_Final/temp3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="c_save-as-ttl" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Prototype_Final" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="KAD" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -682,18 +701,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.second_approach" />
       <item index="1" class="java.lang.String" itemvalue="Python.temp3.1" />
-      <item index="2" class="java.lang.String" itemvalue="Python.temp4" />
-      <item index="3" class="java.lang.String" itemvalue="Python.a_bibtex_parser_ascii" />
-      <item index="4" class="java.lang.String" itemvalue="Python.b_bibtex_to_rdf" />
-      <item index="5" class="java.lang.String" itemvalue="Python.temp3" />
+      <item index="2" class="java.lang.String" itemvalue="Python.a_bibtex_parser_ascii" />
+      <item index="3" class="java.lang.String" itemvalue="Python.b_bibtex_to_rdf" />
+      <item index="4" class="java.lang.String" itemvalue="Python.temp3" />
+      <item index="5" class="java.lang.String" itemvalue="Python.c_save-as-ttl" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.b_bibtex_to_rdf" />
-        <item index="1" class="java.lang.String" itemvalue="Python.a_bibtex_parser_ascii" />
-        <item index="2" class="java.lang.String" itemvalue="Python.temp3" />
-        <item index="3" class="java.lang.String" itemvalue="Python.temp3.1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.temp4" />
+        <item index="0" class="java.lang.String" itemvalue="Python.c_save-as-ttl" />
+        <item index="1" class="java.lang.String" itemvalue="Python.b_bibtex_to_rdf" />
+        <item index="2" class="java.lang.String" itemvalue="Python.a_bibtex_parser_ascii" />
+        <item index="3" class="java.lang.String" itemvalue="Python.temp3" />
+        <item index="4" class="java.lang.String" itemvalue="Python.temp3.1" />
       </list>
     </recent_temporary>
   </component>
@@ -809,7 +828,21 @@
       <option name="project" value="LOCAL" />
       <updated>1508856294782</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Refactoring completed">
+      <created>1508856532555</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1508856532555</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Refactoring completed">
+      <created>1508856777080</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1508856777080</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -863,7 +896,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899868" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3691542" sideWeight="0.59125966" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3691542" sideWeight="0.59125966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1158,14 +1191,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited_test.bib">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1187,7 +1212,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/a_bibtex_parser_ascii.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
+        <state relative-caret-position="-757">
           <caret line="145" column="47" lean-forward="false" selection-start-line="145" selection-start-column="47" selection-end-line="145" selection-end-column="47" />
           <folding>
             <element signature="e#123#163#0" expanded="true" />
@@ -1195,10 +1220,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prototype_Final/b_bibtex_to_rdf.py">
+    <entry file="file://$PROJECT_DIR$/Prototype_Final/b_ttl_triple_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="140" column="8" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
+        <state relative-caret-position="416">
+          <caret line="141" column="59" lean-forward="false" selection-start-line="141" selection-start-column="59" selection-end-line="141" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prototype_Final/c_save-as-ttl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
           <folding />
         </state>
       </provider>

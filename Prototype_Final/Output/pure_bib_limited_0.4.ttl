@@ -1,0 +1,49 @@
+<http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://clokman.com/ontologies/scientific-research#isPublishedOn> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://clokman.com/ontologies/scientific-research#book> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://clokman.com/ontologies/scientific-research#Document> .
+<http://clokman.com/ontologies/scientific-research#Book_with_one_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Book_with_one_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://clokman.com/ontologies/scientific-research#book> .
+<http://clokman.com/ontologies/scientific-research#Book_with_one_author> <http://www.w3.org/2000/01/rdf-schema#label> "Book with one author"@en .
+<http://clokman.com/ontologies/scientific-research#Jaschke_AC> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Book_with_one_author> .
+<http://clokman.com/ontologies/scientific-research#Jaschke_AC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Jaschke_AC> <http://www.w3.org/2000/01/rdf-schema#label> "Jaschke, AC"@en .
+<http://clokman.com/ontologies/scientific-research#article> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://clokman.com/ontologies/scientific-research#Document> .
+<http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://clokman.com/ontologies/scientific-research#article> .
+<http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> <http://www.w3.org/2000/01/rdf-schema#label> "Article with 3 authors with mixed notation"@en .
+<http://clokman.com/ontologies/scientific-research#MendozaRodriguez_JP> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> .
+<http://clokman.com/ontologies/scientific-research#MendozaRodriguez_JP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Wielhouwer_JL> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> .
+<http://clokman.com/ontologies/scientific-research#Wielhouwer_JL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Kirchler_Erich> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> .
+<http://clokman.com/ontologies/scientific-research#Kirchler_Erich> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Kirchler_Erich> <http://www.w3.org/2000/01/rdf-schema#label> "MendozaRodriguez, JP"@en .
+<http://clokman.com/ontologies/scientific-research#Kirchler_Erich> <http://www.w3.org/2000/01/rdf-schema#label> "Wielhouwer, JL"@en .
+<http://clokman.com/ontologies/scientific-research#Kirchler_Erich> <http://www.w3.org/2000/01/rdf-schema#label> "Kirchler, Erich"@en .
+<http://clokman.com/ontologies/scientific-research#Article_with_3_authors_with_mixed_notation> <http://clokman.com/ontologies/scientific-research#isPublishedOn> <http://clokman.com/ontologies/scientific-research#JournalofEconomicPsychology> .
+<http://clokman.com/ontologies/scientific-research#JournalofEconomicPsychology> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#article> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://clokman.com/ontologies/scientific-research#Document> .
+<http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://clokman.com/ontologies/scientific-research#article> .
+<http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> <http://www.w3.org/2000/01/rdf-schema#label> "Article with 5 authors with 'and' notation"@en .
+<http://clokman.com/ontologies/scientific-research#Lohr_Ansje> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> .
+<http://clokman.com/ontologies/scientific-research#Lohr_Ansje> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Beunen_R> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> .
+<http://clokman.com/ontologies/scientific-research#Beunen_R> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Savelli_Heidi> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> .
+<http://clokman.com/ontologies/scientific-research#Savelli_Heidi> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Kalz_Marco> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> .
+<http://clokman.com/ontologies/scientific-research#Kalz_Marco> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#Ragas_Ad> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> .
+<http://clokman.com/ontologies/scientific-research#Ragas_Ad> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://clokman.com/ontologies/scientific-research#isAuthorOf> <http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/2000/01/rdf-schema#label> "Lohr, Ansje"@en .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/2000/01/rdf-schema#label> "Beunen, R"@en .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/2000/01/rdf-schema#label> "Savelli, Heidi"@en .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/2000/01/rdf-schema#label> "Kalz, Marco"@en .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/2000/01/rdf-schema#label> "Ragas, Ad"@en .
+<http://clokman.com/ontologies/scientific-research#VanBelleghem_Frank> <http://www.w3.org/2000/01/rdf-schema#label> "VanBelleghem, Frank"@en .
+<http://clokman.com/ontologies/scientific-research#Article_with_5_authors_with_and_notation> <http://clokman.com/ontologies/scientific-research#isPublishedOn> <http://clokman.com/ontologies/scientific-research#CurrentOpinionInEnvironmentalSustainability> .
+<http://clokman.com/ontologies/scientific-research#CurrentOpinionInEnvironmentalSustainability> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
