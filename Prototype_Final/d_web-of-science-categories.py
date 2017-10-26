@@ -5,12 +5,12 @@ wos_categories_list=["Acoustics","AgriculturalEconomicsandPolicy","AgriculturalE
 
 # namespace prefixes
 sr   = "http://clokman.com/ontologies/scientific-research#"
-wosc = "http://clokman.com/ontologies/web-of-science-categories#"
+wsc = "http://clokman.com/ontologies/web-of-science-categories#"
 rdf  = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 owl  = "http://www.w3.org/2002/07/owl#"
 
-#add_prefix_triple("",     wosc)
+#add_prefix_triple("",     wsc)
 #add_prefix_triple("sr",   sr)
 #add_prefix_triple("rdf",  rdf)
 #add_prefix_triple("rdfs", rdfs)
@@ -27,7 +27,7 @@ c_scientific_field = construct_uri(sr, "ScientificField")
 
 
 for each_category in wos_categories_list:
-    c_current_wos_category = construct_uri(wosc, each_category)
+    c_current_wos_category = construct_uri(wsc, each_category)
     #trpl(c_current_wos_category + " " + p_rdf_type + " " + c_class + " .")
     add_triple(c_current_wos_category, p_subclass_of, c_scientific_field)
     #trpl(c_current_wos_category + " " + p_rdf_type + " " + c_scientific_field + " .")
@@ -36,7 +36,9 @@ for each_category in wos_categories_list:
 from pprint import pprint
 pprint(triples_list)
 
-file_obj = open("Output/web_of_science_categories_0.2.2.ttl", "w")
+# IMPORTANT: CHANGE FILE NAME WITH EACH NEW VERSION IF THE FILE IS TO BE IMPORTED TO PROTEGE.
+# Protege does not always understand that this is a new file if the file name is the same with a previously imported file.
+file_obj = open("Output/web_of_science_categories_0.2.4.ttl", "w")
 for each_triple in triples_list:
     file_obj.write(each_triple)
     file_obj.write('\n')

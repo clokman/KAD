@@ -1,3 +1,48 @@
+from __future__ import print_function
+
+
+###################################################################
+#                   PARSER FUNCTIONS                              #
+###################################################################
+# These functions are mainly used in bibtex_parser_ascii.py
+
+def constuct_instance_name(input_title_string):
+    """
+    Formats a given string into instance title format.
+
+    :param input_title_string: The title string to be formatted.
+    :return: A modified string.
+
+    :example:
+        formatted_title = Constuct_instance_name(current_title)
+
+    """
+    import re
+
+    # Convert to ASCII to remove uncommon unicode characters
+    input_title_string = input_title_string.encode("ascii", errors="ignore")
+
+    # Remove punctuation
+    characters_to_omit = "[\{\}\.,;:\\\#\'\"\(\)]"  # these characters will be omitted from title names
+    input_title_string = re.sub(characters_to_omit, "", input_title_string)  # omit the given characters
+
+    # Convert to title case
+    # NOTE: .title() method does not work well with apostrophes. Therefore, it is necessary for aposthropes to be removed before .title() is called.
+    # (If .title() needs to be used with apostrophes, then check the code at https://docs.python.org/2/library/stdtypes.html)
+    input_title_string = input_title_string.title()
+
+    # Compress: Substitute spaces and dashes with underscores.
+    input_title_string = re.sub(" ", "_", input_title_string)
+    input_title_string = re.sub("-", "_", input_title_string)
+
+    return input_title_string
+
+
+###################################################################
+#                   AND TRIPLE FUNCTIONS                          #
+###################################################################
+# These functions are mainly used in b_ttl_triple_creator.py
+
 def construct_uri(prefix, name):  # universal function
     """
     :return:
@@ -8,7 +53,7 @@ def construct_uri(prefix, name):  # universal function
     return uri
 
 
-def construct_string_literal(input_string):  # universal function
+def construct_string_literal(input_string, language_tag=""):  # universal function
     """
     Constructs an English (@en) string literal in turtle format.
 
@@ -16,17 +61,32 @@ def construct_string_literal(input_string):  # universal function
     :return: English string literal in turtle format
 
     :example:
-        construct_string_literal(current_fields["b_document_label"])
+        construct_string_literal(current_fields["b_document_label"], "@en")
 
     :example:
-        add_triple (i_document_instance, p_label,  construct_string_literal(current_fields["b_document_label"]))
+        add_triple (i_document_instance, p_label,  construct_string_literal(current_fields["b_document_label"], "@en"))
     """
 
-    new_string_literal = "\"" + input_string + "\"" + "@en"
+    new_string_literal = "\"" + input_string + "\"" + language_tag
     return new_string_literal
 
 
+def construct_integer_literal(input_string):  # universal function
+    """
+    Constructs an integer literal in turtle format. (Uses 'int' instead of 'integer').
+
+    :param input_string: The string to be formatted as turtle integer literal.
+    :return: Integer literal in turtle format
+
+    :example:
+    """
+
+    new_integer_literal = "\"" + input_string + "\"" + "^^xsd:int"
+    return new_integer_literal
+
+
 triples_list = []
+
 
 def add_triple(sub, prop, obj, triples_list_to_append=triples_list):  # local function
     """

@@ -4,8 +4,10 @@
 # DONE: Multi-author support
 
 
+from __future__ import print_function
 from pybtex.database.input import bibtex
 from pprint import pprint
+from x_common_functions import constuct_instance_name
 import re
 
 # Parse input file
@@ -16,6 +18,7 @@ bibdata = parser.parse_file("Input//pure_bib_limited.bib")     # parse the given
 bibDictionary = {}  # container for the main dictionary that will be outputted from the script
 
 
+# NOTE: Local function (due to 'each_entry_id' variable). Should not be transferred to an external file without patching.
 def transform_to_ontology_property(bib_data_object, target_entry_id, parsed_bibtex_field_name, new_ontology_property_name):  # local function
     """
     Function for basic transformation of parsed bibtex values to a triple-ready format.
@@ -41,6 +44,7 @@ def transform_to_ontology_property(bib_data_object, target_entry_id, parsed_bibt
 
 
 # loop through individual reference entries in the parsed bib file
+# NOTE: the name 'each_entry_id' should not be changed, as it is used in the local function transform_to_ontology_property()
 for each_unicode_entry_id in bibdata.entries:
     each_entry_id = each_unicode_entry_id.encode("ascii",errors="ignore")
 
@@ -52,8 +56,8 @@ for each_unicode_entry_id in bibdata.entries:
     current_title = current_entry_fields["title"].encode("ascii",errors="ignore")
 
     bibDictionary[each_entry_id] = {} # create a new item in bibDictionary for each entry id,
-                                                                      # and let each of these items contain a subdictionary.
-                                                                      # e.g., bibDictionary = { 34324242235:{}, 43214321421421:{}, ... }
+    # and let each of these items contain a subdictionary.
+    # e.g., bibDictionary = { 34324242235:{}, 43214321421421:{}, ... }
 
 
     ######################### CURRENT TITLE -> B_LABEL ############################
@@ -87,7 +91,7 @@ for each_unicode_entry_id in bibdata.entries:
                 # Add to dictionary
                 bibDictionary[each_entry_id]["b_authors"].append((str(lastName)))
 
-            # a case where author's last name is missing but first name is present was deliberately not included.
+                # a case where author's last name is missing but first name is present was deliberately not included.
 
     except:  # If the whole author field is missing from bibliography:
         pass
@@ -96,27 +100,29 @@ for each_unicode_entry_id in bibdata.entries:
     #################### TITLE -> B DOCUMENT INSTANCE #########################
 
     try:
-        current_title = current_entry_fields["title"]                   # extract title
-        current_title = current_title.encode("ascii", errors="ignore")  # change character encoding for this string to ascii
+        current_title   = current_entry_fields["title"]          # extract title
+        formatted_title = constuct_instance_name(current_title)  # format the current title into a variable name format
 
-        # Format the current title into a variable name format
-        current_title = re.sub(" ", "_", current_title)
-        current_title = re.sub("-", "_", current_title)
-        current_title = re.sub(" in ", " In ", current_title)
-        current_title = re.sub(" on ", " On ", current_title)
-        current_title = re.sub(" at ", " At ", current_title)
-        current_title = re.sub(" for ", " For ", current_title)
-        current_title = re.sub(" with ", " With ", current_title)
-        current_title = re.sub(" from ", " From ", current_title)
+        bibDictionary[each_entry_id]["b_document"] = formatted_title  # add the formatted title as document instance name to dictionary.
 
-        omitted_characters_for_instance_names = "[\{\}\.,;:\\\#\'\"\(\)]" # these characters will be omitted from the final title names
+    except: # if title field missing from bibliography:
+        pass
 
-        current_title = re.sub(omitted_characters_for_instance_names, "", current_title) # omit the given characters
 
-        bibDictionary[each_entry_id]["b_document_instance_name"] = current_title
+    ######################## BOOK TITLE -> B PARENT BOOK LABEL  ###########################
 
-    # if title field missing from bibliography:
-    except(KeyError):
+    transform_to_ontology_property(bibdata, each_entry_id, "booktitle", "b_parent_book_label")
+
+
+    ######################## BOOK TITLE -> PARENT BOOK INSTANCE ###########################
+
+    try:
+        current_parent_book_title   = current_entry_fields["booktitle"]          # extract title
+        formatted_parent_book_title = constuct_instance_name(current_parent_book_title)  # format the current title into a variable name format
+
+        bibDictionary[each_entry_id]["b_parent_book"] = formatted_parent_book_title  # add the formatted title as document instance name to dictionary.
+
+    except: # if title field missing from bibliography:
         pass
 
 
@@ -128,20 +134,21 @@ for each_unicode_entry_id in bibdata.entries:
         pass
 
 
-    ####################### JOURNAL -> B PUBLICATION INSTANCE #############################
+    ####################### JOURNAL -> B JOURNAL #############################
 
     try:
         current_journal = current_entry_fields["journal"]                  # extract journal name from parsed variable
         current_journal = current_journal.encode("ascii",errors="ignore")  # change character encoding for this string to ascii
 
-        current_journal = re.sub(" in ", " In ", current_journal)          # format the journal name
-        current_journal = re.sub(" on ", " On ", current_journal)
-        current_journal = re.sub(" at ", " At ", current_journal)
-        current_journal = re.sub(" for ", " For ", current_journal)
-        current_journal = re.sub(" with ", " With ", current_journal)
-        current_journal = re.sub(" from ", " From ", current_journal)
+        #current_journal = re.sub(" in ", " In ", current_journal)          # format the journal name
+        #current_journal = re.sub(" on ", " On ", current_journal)
+        #current_journal = re.sub(" at ", " At ", current_journal)
+        #current_journal = re.sub(" for ", " For ", current_journal)
+        #current_journal = re.sub(" with ", " With ", current_journal)
+        #current_journal = re.sub(" from ", " From ", current_journal)
+        current_journal = re.sub(" ", "_", current_journal)
 
-        omitted_characters_for_journal_names = "[\{\}\ \. ,\'\"\(\)&]"                      # these will be omitted from the journal's instance name
+        omitted_characters_for_journal_names = "[\{\}.,\'\"\(\)&]"                      # these will be omitted from the journal's instance name
         current_journal = re.sub(omitted_characters_for_journal_names, "", current_journal) # omit previously specified characters
 
         bibDictionary[each_entry_id]["b_journal"] = current_journal # add the formatted journal name, which is now an in instance name format to the dictionary
@@ -156,14 +163,15 @@ for each_unicode_entry_id in bibdata.entries:
         current_publisher_name = current_entry_fields["publisher"]                         # extract publisher name from parsed variable
         current_publisher_name = current_publisher_name.encode("ascii", errors="ignore")   # change character encoding for this string to ascii
 
-        current_publisher_name = re.sub(" in ", " In ", current_publisher_name)            # format the publisher name
-        current_publisher_name = re.sub(" on ", " On ", current_publisher_name)
-        current_publisher_name = re.sub(" at ", " At ", current_publisher_name)
-        current_publisher_name = re.sub(" for ", " For ", current_publisher_name)
-        current_publisher_name = re.sub(" with ", " With ", current_publisher_name)
-        current_publisher_name = re.sub(" from ", " From ", current_publisher_name)
+        # current_publisher_name = re.sub(" in ", " In ", current_publisher_name)            # format the publisher name
+        # current_publisher_name = re.sub(" on ", " On ", current_publisher_name)
+        # current_publisher_name = re.sub(" at ", " At ", current_publisher_name)
+        # current_publisher_name = re.sub(" for ", " For ", current_publisher_name)
+        # current_publisher_name = re.sub(" with ", " With ", current_publisher_name)
+        # current_publisher_name = re.sub(" from ", " From ", current_publisher_name)
+        current_publisher_name = re.sub(" ", "_", current_publisher_name)
 
-        omittedCharactersForPublisherNames = "[\{\}\ \. ,\'\"\(\)]"             # these will be omitted from the publisher's instance name
+        omittedCharactersForPublisherNames = "[\{\}.,\'\"\(\)]"             # these will be omitted from the publisher's instance name
         current_publisher_name = re.sub(omittedCharactersForPublisherNames, "", current_publisher_name) # omit previously specified characters
 
         bibDictionary[each_entry_id]["b_publisher"] = current_publisher_name    # add the formatted publisher name, which is now in instance name format to the dictionary
@@ -202,9 +210,6 @@ for each_unicode_entry_id in bibdata.entries:
 
     ######################## EDITION -> B EDITION ###########################
     transform_to_ontology_property(bibdata, each_entry_id, "edition", "b_edition")
-
-    ######################## BOOK TITLE -> B BOOK TITLE ###########################
-    transform_to_ontology_property(bibdata, each_entry_id, "booktitle", "b_book_title")
 
     ######################## ABSTRACT -> B ABSTRACT ###########################
     transform_to_ontology_property(bibdata, each_entry_id, "abstract", "b_abstract")
