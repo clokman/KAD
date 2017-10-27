@@ -1,0 +1,928 @@
+@prefix : <http://clokman.com/ontologies/scientific-research#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://clokman.com/ontologies/scientific-research> a owl:Ontology ;
+	rdfs:comment "An ontology about flow of information in scientific research. This version focuses on scientific publications."@en .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#citesDocument
+
+:citesDocument a owl:ObjectProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#collaboratedWith
+
+:collaboratedWith a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://xmlns.com/foaf/0.1/knows> ;
+	a owl:SymmetricProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#employs
+
+:employs a owl:ObjectProperty ;
+	owl:inverseOf :worksAt .
+# 
+# http://clokman.com/ontologies/scientific-research#featuresArticle
+
+:featuresArticle a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasPart ;
+	owl:inverseOf :isPublishedOn ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	rdfs:comment "This property is named as 'featuresArticle' because a name such as 'hasArticle' could also apply to a person, while the current name applies only to a journal document." .
+# 
+# http://clokman.com/ontologies/scientific-research#hasAuthor
+
+:hasAuthor a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasCreator ;
+	owl:inverseOf :isAuthorOf ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasChapter
+
+:hasChapter a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasPart ;
+	owl:inverseOf :isChapterOf ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasCreator
+
+:hasCreator a owl:ObjectProperty ;
+	owl:inverseOf :workedOnProject ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasEditor
+
+:hasEditor a owl:ObjectProperty ;
+	rdfs:subPropertyOf :hasCreator ;
+	owl:inverseOf :isEditorOf ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasFieldOfResearch
+
+:hasFieldOfResearch a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasPart
+
+:hasPart a owl:ObjectProperty , owl:TransitiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasProjectLeader
+
+:hasProjectLeader a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :leadsResearchProject ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isAbout
+
+:isAbout a owl:ObjectProperty ;
+	owl:inverseOf :isTopicOf ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isAuthorOf
+
+:isAuthorOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :workedOnProject ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isChapterOf
+
+:isChapterOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isPartOf ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isCitedByDocument
+
+:isCitedByDocument a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isEditorOf
+
+:isEditorOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf :workedOnProject ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isPartOf
+
+:isPartOf a owl:ObjectProperty , owl:TransitiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isPublishedBy
+
+:isPublishedBy a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :publishes ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	rdfs:comment """Specifies a relationship between a JOURNAL (as document) or BOOK, and their publishing ORGANIZATION.
+
+Different from :isPublishedOn, which is used to specify a relationship between a JOURNAL ARTICLE and the JOURNAL (as document) it is published on."""@en .
+# 
+# http://clokman.com/ontologies/scientific-research#isPublishedOn
+
+:isPublishedOn a owl:ObjectProperty ;
+	rdfs:subPropertyOf :isPartOf ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	rdfs:comment "Specifies a relationship between a JOURNAL ARTICLE and the JOURNAL (as document) it is published on." .
+# 
+# http://clokman.com/ontologies/scientific-research#isSpecializedIn
+
+:isSpecializedIn a owl:ObjectProperty ;
+	rdfs:subPropertyOf :relatedToField ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isTopicOf
+
+:isTopicOf a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#leadsResearchProject
+
+:leadsResearchProject a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#originatesFromField
+
+:originatesFromField a owl:ObjectProperty ;
+	rdfs:subPropertyOf :relatedToField ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#projectsToField
+
+:projectsToField a owl:ObjectProperty ;
+	rdfs:subPropertyOf :relatedToField ;
+	a owl:AsymmetricProperty , owl:IrreflexiveProperty ;
+	rdfs:comment "This is the scientific field/domain where the paper is published. Because a paper may come from numerous authors from diverse scientific backgrounds, a construct like \"paper --hasField--> x\" is replaced with \":originatesFrom\" and \":projectsTo\" properties."@en .
+# 
+# http://clokman.com/ontologies/scientific-research#publishes
+
+:publishes a owl:ObjectProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#relatedToField
+
+:relatedToField a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#workedOnProject
+
+:workedOnProject a owl:ObjectProperty , owl:AsymmetricProperty , owl:IrreflexiveProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#worksAt
+
+:worksAt a owl:ObjectProperty .
+# 
+# http://xmlns.com/foaf/0.1/knows
+
+<http://xmlns.com/foaf/0.1/knows> a owl:ObjectProperty , owl:SymmetricProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#hasArticleMetric
+
+:hasArticleMetric a owl:DatatypeProperty ;
+	rdfs:domain :Document .
+# 
+# http://clokman.com/ontologies/scientific-research#hasAuthorMetric
+
+:hasAuthorMetric a owl:DatatypeProperty ;
+	rdfs:subPropertyOf owl:topDataProperty ;
+	rdfs:domain :Person ;
+	rdfs:range xsd:float .
+# 
+# http://clokman.com/ontologies/scientific-research#hasCitationCount
+
+:hasCitationCount a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasArticleMetric ;
+	a owl:FunctionalProperty ;
+	rdfs:range xsd:int .
+# 
+# http://clokman.com/ontologies/scientific-research#hasDOI
+
+:hasDOI a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasIdentifier ;
+	a owl:FunctionalProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasISBN
+
+:hasISBN a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasIdentifier ;
+	a owl:FunctionalProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasISSN
+
+:hasISSN a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasIdentifier ;
+	a owl:FunctionalProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasIdentifier
+
+:hasIdentifier a owl:DatatypeProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#hasImpactRating
+
+:hasImpactRating a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasJournalMetric ;
+	rdfs:domain :ScientificPublication ;
+	rdfs:range xsd:float .
+# 
+# http://clokman.com/ontologies/scientific-research#hasInfluenceRating
+
+:hasInfluenceRating a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasAuthorMetric .
+# 
+# http://clokman.com/ontologies/scientific-research#hasJournalMetric
+
+:hasJournalMetric a owl:DatatypeProperty ;
+	rdfs:domain :ScientificPublication .
+# 
+# http://clokman.com/ontologies/scientific-research#hasReadabilityRating
+
+:hasReadabilityRating a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasArticleMetric ;
+	rdfs:domain :Document ;
+	rdfs:range xsd:float .
+# 
+# http://clokman.com/ontologies/scientific-research#hasReferenceCount
+
+:hasReferenceCount a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :hasArticleMetric ;
+	rdfs:domain :Document ;
+	rdfs:range xsd:integer .
+# 
+# http://clokman.com/ontologies/scientific-research#isPublishedOnDate
+
+:isPublishedOnDate a owl:DatatypeProperty .
+# 
+# http://clokman.com/ontologies/scientific-research#isPublishedOnMonth
+
+:isPublishedOnMonth a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :isPublishedOnDate .
+# 
+# http://clokman.com/ontologies/scientific-research#isPublishedOnYear
+
+:isPublishedOnYear a owl:DatatypeProperty ;
+	rdfs:subPropertyOf :isPublishedOnDate .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#Author
+
+:Author a owl:Class ;
+	owl:equivalentClass _:genid1 .
+
+_:genid1 a owl:Restriction ;
+	owl:onProperty :isAuthorOf ;
+	owl:someValuesFrom owl:Thing .
+
+:Author rdfs:subClassOf :Person , _:genid2 .
+
+_:genid2 a owl:Restriction ;
+	owl:onProperty :isSpecializedIn ;
+	owl:someValuesFrom :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Book
+
+:Book a owl:Class ;
+	owl:equivalentClass _:genid3 .
+
+_:genid3 a owl:Restriction ;
+	owl:onProperty :hasChapter ;
+	owl:someValuesFrom :BookChapter .
+
+:Book rdfs:subClassOf :Document , _:genid4 .
+
+_:genid4 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:someValuesFrom :Person .
+
+:Book rdfs:subClassOf _:genid5 .
+
+_:genid5 a owl:Restriction ;
+	owl:onProperty :hasEditor ;
+	owl:someValuesFrom :Person .
+
+:Book rdfs:subClassOf _:genid6 .
+
+_:genid6 a owl:Restriction ;
+	owl:onProperty :isPublishedBy ;
+	owl:someValuesFrom owl:Thing .
+
+:Book rdfs:subClassOf _:genid7 .
+
+_:genid7 a owl:Restriction ;
+	owl:onProperty :hasISBN ;
+	owl:someValuesFrom xsd:int .
+
+:Book rdfs:subClassOf _:genid8 .
+
+_:genid8 a owl:Restriction ;
+	owl:onProperty :hasISSN ;
+	owl:someValuesFrom xsd:int .
+
+:Book owl:disjointWith :Journal .
+# 
+# http://clokman.com/ontologies/scientific-research#BookChapter
+
+:BookChapter a owl:Class ;
+	owl:equivalentClass _:genid9 .
+
+_:genid9 a owl:Restriction ;
+	owl:onProperty :isChapterOf ;
+	owl:someValuesFrom :Book .
+
+:BookChapter rdfs:subClassOf :Document , _:genid10 .
+
+_:genid10 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:someValuesFrom :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#CollaborativePaper
+
+:CollaborativePaper a owl:Class ;
+	owl:equivalentClass _:genid11 .
+
+_:genid11 owl:intersectionOf _:genid14 .
+
+_:genid14 a rdf:List ;
+	rdf:first :ScientificPublication ;
+	rdf:rest _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first _:genid13 .
+
+_:genid13 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:minCardinality "2"^^xsd:nonNegativeInteger .
+
+_:genid12 rdf:rest rdf:nil .
+
+_:genid11 a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#Collaborator
+
+:Collaborator a owl:Class ;
+	owl:equivalentClass _:genid15 .
+
+_:genid15 a owl:Restriction ;
+	owl:onProperty :collaboratedWith ;
+	owl:someValuesFrom :Person .
+
+:Collaborator rdfs:subClassOf :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#Company
+
+:Company a owl:Class ;
+	rdfs:subClassOf :Organization .
+# 
+# http://clokman.com/ontologies/scientific-research#ConferencePaper
+
+:ConferencePaper a owl:Class ;
+	rdfs:subClassOf :ScientificPublication , _:genid16 .
+
+_:genid16 a owl:Restriction ;
+	owl:onProperty :hasCitationCount ;
+	owl:someValuesFrom xsd:int .
+# 
+# http://clokman.com/ontologies/scientific-research#Contributor
+
+:Contributor a owl:Class ;
+	rdfs:subClassOf :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#Document
+
+:Document a owl:Class ;
+	owl:equivalentClass _:genid17 .
+
+_:genid17 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:someValuesFrom :Author .
+
+:Document rdfs:subClassOf _:genid18 .
+
+_:genid18 a owl:Restriction ;
+	owl:onProperty :isAbout ;
+	owl:someValuesFrom :Topic .
+
+:Document rdfs:subClassOf _:genid19 .
+
+_:genid19 a owl:Restriction ;
+	owl:onProperty :isPublishedOnDate ;
+	owl:someValuesFrom xsd:int .
+# 
+# http://clokman.com/ontologies/scientific-research#Editor
+
+:Editor a owl:Class ;
+	owl:equivalentClass _:genid20 .
+
+_:genid20 a owl:Restriction ;
+	owl:onProperty :isEditorOf ;
+	owl:someValuesFrom owl:Thing .
+
+:Editor rdfs:subClassOf :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#Educational
+
+:Educational a owl:Class ;
+	rdfs:subClassOf :Organization .
+# 
+# http://clokman.com/ontologies/scientific-research#Government
+
+:Government a owl:Class ;
+	rdfs:subClassOf :Organization .
+# 
+# http://clokman.com/ontologies/scientific-research#HigherEducation
+
+:HigherEducation a owl:Class ;
+	rdfs:subClassOf :Educational .
+# 
+# http://clokman.com/ontologies/scientific-research#InfluentialPublication
+
+:InfluentialPublication a owl:Class ;
+	owl:equivalentClass _:genid21 .
+
+_:genid21 owl:intersectionOf _:genid27 .
+
+_:genid27 a rdf:List ;
+	rdf:first owl:Thing ;
+	rdf:rest _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first _:genid23 .
+
+_:genid23 a owl:Restriction ;
+	owl:onProperty :hasCitationCount ;
+	owl:someValuesFrom _:genid24 .
+
+_:genid24 a rdfs:Datatype ;
+	owl:onDatatype xsd:int ;
+	owl:withRestrictions _:genid25 .
+
+_:genid25 a rdf:List ;
+	rdf:first _:genid26 .
+
+_:genid26 xsd:minInclusive "1000"^^xsd:int .
+
+_:genid25 rdf:rest rdf:nil .
+
+_:genid22 rdf:rest rdf:nil .
+
+_:genid21 a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#Journal
+
+:Journal a owl:Class ;
+	owl:equivalentClass _:genid28 .
+
+_:genid28 a owl:Restriction ;
+	owl:onProperty :featuresArticle ;
+	owl:someValuesFrom :JournalArticle .
+
+:Journal rdfs:subClassOf :ScientificPublication , _:genid29 .
+
+_:genid29 a owl:Restriction ;
+	owl:onProperty :hasEditor ;
+	owl:someValuesFrom :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#JournalArticle
+
+:JournalArticle a owl:Class ;
+	owl:equivalentClass _:genid30 .
+
+_:genid30 a owl:Restriction ;
+	owl:onProperty :isPublishedOn ;
+	owl:someValuesFrom :Journal .
+
+:JournalArticle rdfs:subClassOf :ScientificPublication , _:genid31 .
+
+_:genid31 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:someValuesFrom :Author .
+
+:JournalArticle rdfs:subClassOf _:genid32 .
+
+_:genid32 a owl:Restriction ;
+	owl:onProperty :hasCitationCount ;
+	owl:someValuesFrom xsd:int .
+
+:JournalArticle rdfs:subClassOf _:genid33 .
+
+_:genid33 a owl:Restriction ;
+	owl:onProperty :hasDOI ;
+	owl:someValuesFrom xsd:int .
+# 
+# http://clokman.com/ontologies/scientific-research#Miscellaneous
+
+:Miscellaneous a owl:Class ;
+	rdfs:subClassOf :Document .
+# 
+# http://clokman.com/ontologies/scientific-research#Organization
+
+:Organization a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#Person
+
+:Person a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#PrivateResearch
+
+:PrivateResearch a owl:Class ;
+	rdfs:subClassOf :Organization .
+# 
+# http://clokman.com/ontologies/scientific-research#Publisher
+
+:Publisher a owl:Class ;
+	owl:equivalentClass _:genid34 .
+
+_:genid34 a owl:Restriction ;
+	owl:onProperty :publishes ;
+	owl:someValuesFrom _:genid35 .
+
+_:genid35 a owl:Class ;
+	owl:unionOf _:genid37 .
+
+_:genid37 a rdf:List ;
+	rdf:first :Book ;
+	rdf:rest _:genid36 .
+
+_:genid36 a rdf:List ;
+	rdf:first :Journal ;
+	rdf:rest rdf:nil .
+
+:Publisher rdfs:subClassOf :Organization .
+# 
+# http://clokman.com/ontologies/scientific-research#ResearchProject
+
+:ResearchProject a owl:Class ;
+	owl:equivalentClass _:genid38 .
+
+_:genid38 a owl:Restriction ;
+	owl:onProperty :hasProjectLeader ;
+	owl:someValuesFrom :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#Researcher
+
+:Researcher a owl:Class ;
+	owl:equivalentClass _:genid39 .
+
+_:genid39 owl:intersectionOf _:genid42 .
+
+_:genid42 a rdf:List ;
+	rdf:first _:genid43 .
+
+_:genid43 a owl:Restriction ;
+	owl:onProperty :isAuthorOf ;
+	owl:someValuesFrom _:genid44 .
+
+_:genid44 a owl:Class ;
+	owl:unionOf _:genid46 .
+
+_:genid46 a rdf:List ;
+	rdf:first :Book ;
+	rdf:rest _:genid45 .
+
+_:genid45 a rdf:List ;
+	rdf:first :ScientificPublication ;
+	rdf:rest rdf:nil .
+
+_:genid42 rdf:rest _:genid40 .
+
+_:genid40 a rdf:List ;
+	rdf:first _:genid41 .
+
+_:genid41 a owl:Restriction ;
+	owl:onProperty :worksAt ;
+	owl:someValuesFrom :University .
+
+_:genid40 rdf:rest rdf:nil .
+
+_:genid39 a owl:Class .
+
+:Researcher rdfs:subClassOf :Person , _:genid47 .
+
+_:genid47 a owl:Restriction ;
+	owl:onProperty :originatesFromField ;
+	owl:someValuesFrom :ScientificField .
+
+:Researcher rdfs:subClassOf _:genid48 .
+
+_:genid48 a owl:Restriction ;
+	owl:onProperty :projectsToField ;
+	owl:someValuesFrom :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#ScientificField
+
+:ScientificField a owl:Class .
+# 
+# http://clokman.com/ontologies/scientific-research#ScientificPublication
+
+:ScientificPublication a owl:Class ;
+	owl:equivalentClass _:genid49 .
+
+_:genid49 owl:intersectionOf _:genid52 .
+
+_:genid52 a rdf:List ;
+	rdf:first _:genid53 .
+
+_:genid53 a owl:Restriction ;
+	owl:onProperty :featuresArticle ;
+	owl:someValuesFrom _:genid54 .
+
+_:genid54 a owl:Class ;
+	owl:unionOf _:genid56 .
+
+_:genid56 a rdf:List ;
+	rdf:first :ConferencePaper ;
+	rdf:rest _:genid55 .
+
+_:genid55 a rdf:List ;
+	rdf:first :JournalArticle ;
+	rdf:rest rdf:nil .
+
+_:genid52 rdf:rest _:genid50 .
+
+_:genid50 a rdf:List ;
+	rdf:first _:genid51 .
+
+_:genid51 a owl:Restriction ;
+	owl:onProperty :isPublishedBy ;
+	owl:someValuesFrom :Publisher .
+
+_:genid50 rdf:rest rdf:nil .
+
+_:genid49 a owl:Class .
+
+:ScientificPublication rdfs:subClassOf :Document , _:genid57 .
+
+_:genid57 a owl:Restriction ;
+	owl:onProperty :originatesFromField ;
+	owl:someValuesFrom :ScientificField .
+
+:ScientificPublication rdfs:subClassOf _:genid58 .
+
+_:genid58 a owl:Restriction ;
+	owl:onProperty :projectsToField ;
+	owl:someValuesFrom :ScientificField .
+# 
+# http://clokman.com/ontologies/scientific-research#Textbook
+
+:Textbook a owl:Class ;
+	rdfs:subClassOf :Book , _:genid59 .
+
+_:genid59 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:someValuesFrom :Person .
+
+:Textbook rdfs:subClassOf _:genid60 .
+
+_:genid60 a owl:Restriction ;
+	owl:onProperty :hasEditor ;
+	owl:someValuesFrom :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#Topic
+
+:Topic a owl:Class ;
+	owl:equivalentClass _:genid61 .
+
+_:genid61 a owl:Restriction ;
+	owl:onProperty :isTopicOf ;
+	owl:someValuesFrom owl:Thing .
+# 
+# http://clokman.com/ontologies/scientific-research#University
+
+:University a owl:Class ;
+	rdfs:subClassOf :HigherEducation .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#Can_John_Lokman
+
+:Can_John_Lokman a owl:NamedIndividual , :Person .
+# 
+# http://clokman.com/ontologies/scientific-research#E_Thorndike
+
+:E_Thorndike a owl:NamedIndividual , :Author ;
+	:isAuthorOf :Educational_Psychology .
+# 
+# http://clokman.com/ontologies/scientific-research#Educational_Psychology
+
+:Educational_Psychology a owl:NamedIndividual , _:genid62 .
+
+_:genid62 a owl:Restriction ;
+	owl:onProperty :hasAuthor ;
+	owl:someValuesFrom :Author .
+# 
+# http://clokman.com/ontologies/scientific-research#International_Joint_Conference_on_Artificial_Intelligence_Institution
+
+:International_Joint_Conference_on_Artificial_Intelligence_Institution a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#International_Joint_Conference_on_Artificial_Intelligence_Proceedings
+
+:International_Joint_Conference_on_Artificial_Intelligence_Proceedings a owl:NamedIndividual .
+# 
+# http://clokman.com/ontologies/scientific-research#Journal_of_Educational_Technology
+
+:Journal_of_Educational_Technology a owl:NamedIndividual , :Journal .
+# 
+# http://clokman.com/ontologies/scientific-research#Knowledge_Flows_In_Interdisciplinary_Research
+
+:Knowledge_Flows_In_Interdisciplinary_Research a owl:NamedIndividual , :ResearchProject .
+# 
+# http://clokman.com/ontologies/scientific-research#Non-Standard_Reasoning_Services_for_the_Debugging_of_Description_Logic_Terminologies
+
+:Non-Standard_Reasoning_Services_for_the_Debugging_of_Description_Logic_Terminologies a owl:NamedIndividual , :ConferencePaper ;
+	:hasCitationCount "1200"^^xsd:int .
+# 
+# http://clokman.com/ontologies/scientific-research#Ontology_Learning_for_the_Semantic_Web
+
+:Ontology_Learning_for_the_Semantic_Web a owl:NamedIndividual , :JournalArticle ;
+	:hasCitationCount "1835"^^xsd:int ;
+	:hasReferenceCount "33"^^xsd:integer .
+# 
+# http://clokman.com/ontologies/scientific-research#Ronald_Cornet
+
+:Ronald_Cornet a owl:NamedIndividual , :Author ;
+	:isAuthorOf :Non-Standard_Reasoning_Services_for_the_Debugging_of_Description_Logic_Terminologies .
+# 
+# http://clokman.com/ontologies/scientific-research#Semantic_Web_Primer_3rd_edition
+
+:Semantic_Web_Primer_3rd_edition a owl:NamedIndividual , :Textbook .
+# 
+# http://clokman.com/ontologies/scientific-research#Stefan_Schlobach
+
+:Stefan_Schlobach a owl:NamedIndividual , :Author ;
+	:isAuthorOf :Non-Standard_Reasoning_Services_for_the_Debugging_of_Description_Logic_Terminologies .
+# 
+# http://clokman.com/ontologies/scientific-research#Vrije_Universiteit_Amsterdam
+
+:Vrije_Universiteit_Amsterdam a owl:NamedIndividual , :University .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    General axioms
+# #
+# #################################################################
+# 
+# 
+
+_:genid63 a owl:AllDisjointClasses ;
+	owl:members _:genid68 .
+
+_:genid68 a rdf:List ;
+	rdf:first :Document ;
+	rdf:rest _:genid67 .
+
+_:genid67 a rdf:List ;
+	rdf:first :Organization ;
+	rdf:rest _:genid66 .
+
+_:genid66 a rdf:List ;
+	rdf:first :Person ;
+	rdf:rest _:genid65 .
+
+_:genid65 a rdf:List ;
+	rdf:first :ResearchProject ;
+	rdf:rest _:genid64 .
+
+_:genid64 a rdf:List ;
+	rdf:first :ScientificField ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid69 a owl:AllDisjointClasses ;
+	owl:members _:genid74 .
+
+_:genid74 a rdf:List ;
+	rdf:first :Document ;
+	rdf:rest _:genid73 .
+
+_:genid73 a rdf:List ;
+	rdf:first :Organization ;
+	rdf:rest _:genid72 .
+
+_:genid72 a rdf:List ;
+	rdf:first :Person ;
+	rdf:rest _:genid71 .
+
+_:genid71 a rdf:List ;
+	rdf:first :ResearchProject ;
+	rdf:rest _:genid70 .
+
+_:genid70 a rdf:List ;
+	rdf:first :Topic ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid75 a owl:AllDifferent ;
+	owl:distinctMembers _:genid86 .
+
+_:genid86 a rdf:List ;
+	rdf:first :Can_John_Lokman ;
+	rdf:rest _:genid85 .
+
+_:genid85 a rdf:List ;
+	rdf:first :International_Joint_Conference_on_Artificial_Intelligence_Institution ;
+	rdf:rest _:genid84 .
+
+_:genid84 a rdf:List ;
+	rdf:first :International_Joint_Conference_on_Artificial_Intelligence_Proceedings ;
+	rdf:rest _:genid83 .
+
+_:genid83 a rdf:List ;
+	rdf:first :Journal_of_Educational_Technology ;
+	rdf:rest _:genid82 .
+
+_:genid82 a rdf:List ;
+	rdf:first :Knowledge_Flows_In_Interdisciplinary_Research ;
+	rdf:rest _:genid81 .
+
+_:genid81 a rdf:List ;
+	rdf:first :Non-Standard_Reasoning_Services_for_the_Debugging_of_Description_Logic_Terminologies ;
+	rdf:rest _:genid80 .
+
+_:genid80 a rdf:List ;
+	rdf:first :Ontology_Learning_for_the_Semantic_Web ;
+	rdf:rest _:genid79 .
+
+_:genid79 a rdf:List ;
+	rdf:first :Ronald_Cornet ;
+	rdf:rest _:genid78 .
+
+_:genid78 a rdf:List ;
+	rdf:first :Semantic_Web_Primer_3rd_edition ;
+	rdf:rest _:genid77 .
+
+_:genid77 a rdf:List ;
+	rdf:first :Stefan_Schlobach ;
+	rdf:rest _:genid76 .
+
+_:genid76 a rdf:List ;
+	rdf:first :Vrije_Universiteit_Amsterdam ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid87 a owl:AllDifferent ;
+	owl:distinctMembers _:genid89 .
+
+_:genid89 a rdf:List ;
+	rdf:first :Can_John_Lokman ;
+	rdf:rest _:genid88 .
+
+_:genid88 a rdf:List ;
+	rdf:first :Ronald_Cornet ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid90 a owl:AllDifferent ;
+	owl:distinctMembers _:genid92 .
+
+_:genid92 a rdf:List ;
+	rdf:first :Can_John_Lokman ;
+	rdf:rest _:genid91 .
+
+_:genid91 a rdf:List ;
+	rdf:first :Stefan_Schlobach ;
+	rdf:rest rdf:nil .
+# 
+
+_:genid93 a owl:AllDifferent ;
+	owl:distinctMembers _:genid95 .
+
+_:genid95 a rdf:List ;
+	rdf:first :Ronald_Cornet ;
+	rdf:rest _:genid94 .
+
+_:genid94 a rdf:List ;
+	rdf:first :Stefan_Schlobach ;
+	rdf:rest rdf:nil .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

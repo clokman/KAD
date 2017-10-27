@@ -1,14 +1,16 @@
+# This file is formatted without line wrapping. Turn LINE WRAPPING OFF for optimal viewing.
+
+
 ## TODO: Use different domain names and prefixes for ontology, instances ,datasets, etc...
 ## TODO: Add basic class equivalencies (e.g., article = JournalArticle) to script
 
-from a_bibtex_parser_ascii import bibDictionary
+from step_1_bibtex_parser_ascii import bibDictionary
 from pprint import pprint
 from x_common_functions import *
 
 #################################################################################
 #                   STATIC DEFINITIONS: PROPERTIES, CLASSES                     #
 #################################################################################
-
 
 ###### NAMESPACE PREFIX DEFINITIONS ######
 sr   = "http://clokman.com/ontologies/scientific-research#"  # assign long domain  name to short variable.
@@ -30,30 +32,28 @@ add_prefix_triple("xsd",  xsd)
 #add_triple("<http://clokman.com/ontologies/scientific-research>", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>", "http://www.w3.org/2002/07/owl#Ontology")
 #add_triple("<http://clokman.com/ontologies/pure-vu>", "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>", "http://www.w3.org/2002/07/owl#Ontology")
 
-
-###### STATIC CLASS DEFINITIONS (c_ )######
-c_document         = construct_uri( sr,   "Document"        )  # assign URI to document superclass
-c_journal          = construct_uri( sr,   "Journal"     ) # assign URI to Journal class
-c_named_individual = construct_uri( owl , "NamedIndividual" )  # ...
-c_object_property  = construct_uri( owl , "ObjectProperty"  )  # ...
-c_class            = construct_uri( rdfs, "Class"           )  # ...
+###### A REQUIRED CLASS DEFINITION FOR PROPERTIES ######
+# Although class definitions and assertions will come later, this one is needed for property definitions.
+# ... so it is placed here as an exception.
+c_object_property  = construct_uri(owl,  "ObjectProperty"    )
 
 
 ###### STATIC PROPERTY DEFINITIONS (p_) ######
-p_subclass_of            = construct_uri( rdfs,"subClassOf"          )  # assign URI to subclass of
-p_is_author_of           = construct_uri( sr,  "isAuthorOf"          )  # assign URI to is author of
-p_is_published_on        = construct_uri( sr,  "isPublishedOn"       )
-p_is_published_by        = construct_uri( sr,  "isPublishedBy"       )
-p_is_published_on_year   = construct_uri( sr,  "isPublishedOnYear"   )
-p_is_published_on_month  = construct_uri( sr,  "isPublishedOnMonth"  )
-p_is_published_on_date   = construct_uri( sr,  "isPublishedOnDate"   )
-p_has_doi                = construct_uri( sr,  "hasDOI"              )
-p_has_issn               = construct_uri( sr,  "hasISSN"             )
-p_has_isbn               = construct_uri( sr,  "hasISBN"             )
-p_is_chapter_of          = construct_uri( sr,  "isChapterOf"         )
-p_rdf_type               = construct_uri( rdf, "type"                )
-p_label                  = construct_uri( rdfs,"label"               )
-p_equivalent_class       = construct_uri( owl, "equivalentClass"     )
+p_subclass_of            = construct_uri(rdfs,"subClassOf"        )  # assign URI to subclass of
+p_is_author_of           = construct_uri(sr,  "isAuthorOf"        )  # assign URI to is author of
+p_is_published_on        = construct_uri(sr,  "isPublishedOn"     )
+p_is_published_by        = construct_uri(sr,  "isPublishedBy"     )
+p_is_published_on_year   = construct_uri(sr,  "isPublishedOnYear" )
+p_is_published_on_month  = construct_uri(sr,  "isPublishedOnMonth")
+p_is_published_on_date   = construct_uri(sr,  "isPublishedOnDate" )
+p_has_doi                = construct_uri(sr,  "hasDOI"            )
+p_has_issn               = construct_uri(sr,  "hasISSN"           )
+p_has_isbn               = construct_uri(sr,  "hasISBN"           )
+p_is_chapter_of          = construct_uri(sr,  "isChapterOf"       )
+p_rdf_type               = construct_uri(rdf, "type"              )
+p_label                  = construct_uri(rdfs,"label"             )
+p_is_about               = construct_uri(sr,  "isAbout"           )
+p_equivalent_class       = construct_uri(owl, "equivalentClass"   )
 
 add_triple(p_subclass_of,              p_rdf_type,     c_object_property)  # is author of is a property
 add_triple(p_is_author_of,             p_rdf_type,     c_object_property)  # is author of is a property
@@ -68,12 +68,30 @@ add_triple(p_has_isbn,                 p_rdf_type,     c_object_property)
 add_triple(p_is_chapter_of,            p_rdf_type,     c_object_property)
 add_triple(p_rdf_type,                 p_rdf_type,     c_object_property)
 add_triple(p_label,                    p_rdf_type,     c_object_property)
+add_triple(p_is_about,                 p_rdf_type,     c_object_property)
 add_triple(p_equivalent_class,         p_rdf_type,     c_object_property)
 
 
 #################################################################################
 #       DOCUMENT CLASS DECLARATIONS AND CLASS EQUIVALENCY ASSERTIONS            #
 #################################################################################
+
+###### STATIC CLASS DEFINITIONS (c_ )######
+c_document         = construct_uri(sr,   "Document"          )  # assign URI to document superclass
+c_journal          = construct_uri(sr,   "Journal"           )  # assign URI to Journal class
+c_topic            = construct_uri(sr,   "Topic"             )
+c_named_individual = construct_uri(owl,  "NamedIndividual"   )
+#'c_object_property' is provided before property definitions and assertions, as it is needed by them.
+c_class            = construct_uri(rdfs, "Class"             )
+
+# TODO: TRY TO ADD THESE AND SEE WHAT HAPPENS IN PROTEGE:
+# add_triple(c_document, p_rdf_type, c_class)
+# add_triple(c_journal, p_rdf_type, c_class)
+add_triple(c_topic, p_rdf_type, c_class)
+# add_triple(c_named_individual, p_rdf_type, c_class)
+# add_triple(c_object_property, p_rdf_type, c_class)
+# add_triple(c_class, p_rdf_type, c_class)
+
 
 # SR document type definitions
 # These are not used to categorize instances in the document directly, but necessary for the class equivalencies with Pure-VU document types.
@@ -198,14 +216,17 @@ for each_entry in bibDictionary.items():
         current_date  = current_year + "." + current_month      # extract current publication combine them into a date
 
         # Bind the instances to each other and define their types
-        add_triple(i_document_instance,   p_is_published_on_year,  construct_integer_literal(current_year))   # the current document is published on the current year
-        add_triple(i_document_instance,   p_is_published_on_month, construct_integer_literal(current_month))  # the current document is published on the current month
-        add_triple(i_document_instance,   p_is_published_on_date,  construct_string_literal (current_date))   # the current document is published by the current date
+        # NOTE: Literals are constructed as strings instead of integers due to LD-R compatibility issues.
+        # (LD-R had trouble querying years if they were integers.)
+        # If these string years need to be turned into integers in future, though, use 'construct_integer_literal()'.
+        add_triple(i_document_instance,   p_is_published_on_year,  construct_string_literal(current_year))    # the current document is published on the current year
+        add_triple(i_document_instance,   p_is_published_on_month, construct_string_literal(current_month))   # the current document is published on the current month
+        add_triple(i_document_instance,   p_is_published_on_date,  construct_string_literal(current_date))    # the current document is published by the current date
 
     except:
         try: # In case "month" is missing, just process "year".
             current_year = current_fields["b_publication_year"]  # extract current publication year
-            add_triple(i_document_instance,   p_is_published_on_year,  construct_integer_literal(current_year))   # the current document is published by the current publisher
+            add_triple(i_document_instance,   p_is_published_on_year,  construct_string_literal(current_year)) # the current document is published by the current publisher
 
         except: # In case there is neither year or month
             pass
@@ -269,22 +290,24 @@ for each_entry in bibDictionary.items():
         pass
 
 
-#   #######  KEYWORDS #######
+#   #######  KEYWORDS --> ABOUT #######
 #    # Assign parent book to the current document if available (i.e., if the current document is a book chapter).
 #    # Also infer parent book instance.
 #    # NOTE: Use this "try-except" structure except identifier, authors, document instance, type--all fields except these ones may not always be present.
-#    try:
-#        # Extract current book title
-#        current_keywords = current_fields["b_keywords"]
-#
-#        # Bind the values to instances, and define their types
-#        i_current_parent_book = construct_uri(pvu, current_parent_book)
-#
-#        add_triple(i_document_instance,   p_is_chapter_of,  i_current_parent_book)  # the current document is published by the current publisher
-#        add_triple(i_current_parent_book, p_rdf_type,       c_book)
-#
-#    except:
-#        pass
+    try:
+        current_topics           = current_fields["b_topics"]
+        list_of_topics_to_ignore = ["Journal_Article"]  # ignore these topics
+        for each_topic in current_topics:
+            if each_topic not in list_of_topics_to_ignore: # if the topic is not in the ignore list...
+                # Construct current topic uri dynamically for each topic
+                c_current_topic = construct_uri(pvu, each_topic)
 
+                # Connect document instance to each of these topics
+                add_triple(i_document_instance, p_is_about, c_current_topic)
+
+                # And clarify that the 'current topic' is a subclass of 'topic'
+                add_triple(c_current_topic, p_subclass_of, c_topic)
+    except:
+        pass
 
 pprint(triples_list)  # 'triples list' variable resides in x_common_functions.py

@@ -1,3 +1,5 @@
+# This file is formatted without line wrapping. Turn LINE WRAPPING OFF for optimal viewing.
+
 # TODO: Conversion to Python 3
 # DONE: Change "publication"  to "jounal"
 # DONE: Add labels
@@ -108,6 +110,22 @@ for each_unicode_entry_id in bibdata.entries:
     except: # if title field missing from bibliography:
         pass
 
+    #################### KEYWORDS -> ABOUT #########################
+    try:
+        current_keywords           = current_entry_fields["keywords"] # extract keywords
+        current_keywords = re.sub("\, ", ",", current_keywords)       # remove the space after commas (otherwise there are empty spaces preceeing each parsed keyword)
+        current_keywords_tokenized = current_keywords.split(",")      # tokenize keywords by splitting them by commas. Produces a LIST of keywords.
+
+        current_keywords_standard_formatted = []                                        # placeholder list for output that is to come
+        for each_keyword in current_keywords_tokenized:                                 # for each tokenized keyword
+            each_keyword_standard_formatted = constuct_instance_name(each_keyword)      # convert keywords to standard-format instance names
+            current_keywords_standard_formatted.append(each_keyword_standard_formatted) # append the result to the output list.
+
+        bibDictionary[each_entry_id]["b_topics"] = current_keywords_standard_formatted  # add the formatted title as document instance name to dictionary.
+
+    except:
+        pass
+
 
     ######################## BOOK TITLE -> B PARENT BOOK LABEL  ###########################
 
@@ -184,6 +202,9 @@ for each_unicode_entry_id in bibdata.entries:
     ######################## TITLE -> B TITLE ###########################
     transform_to_ontology_property(bibdata, each_entry_id, "title", "b_title")
 
+    ######################## KEYWORDS -> B KEYWORDS ###########################
+    transform_to_ontology_property(bibdata, each_entry_id, "keywords", "b_keywords")
+
     ######################## YEAR -> B PUBLICATION YEAR ###########################
     transform_to_ontology_property(bibdata, each_entry_id, "year", "b_publication_year")
 
@@ -213,9 +234,6 @@ for each_unicode_entry_id in bibdata.entries:
 
     ######################## ABSTRACT -> B ABSTRACT ###########################
     transform_to_ontology_property(bibdata, each_entry_id, "abstract", "b_abstract")
-
-    ######################## KEYWORDS -> B KEYWORDS ###########################
-    transform_to_ontology_property(bibdata, each_entry_id, "keywords", "b_keywords")
 
     ######################## NOTE -> B NOTE ###########################
     transform_to_ontology_property(bibdata, each_entry_id, "note", "b_note")

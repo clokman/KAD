@@ -1,3 +1,14 @@
+# This is a modified version of Web of Science Categories script. The sections marked with 'EXPERIMENTAL' tag
+# are additions on the original script.
+
+# This file is a demonstration of the RDF behavior that leads to automatic creation of instances in cases
+# where an instance-class relationship is asserted (i.e., if "Some_Instance_A ---someProperty_B--> SomeClassC"
+# then an instance "Some_Instance_C" is created automatically from SomeClassC).
+
+# This demonstrates the RDF behavior that instances can only be connected to classes with rdf:type property;
+# all other instance-class connections have to mediated by an instance of the class that the instance is being related to.
+# In other words, this means that instances can only be connected to instances except in the case of rdf:type of property.
+
 # TODO: Add class-suclass structure for WOS categories
 from x_common_functions import *
 
@@ -25,20 +36,36 @@ p_subclass_of  = construct_uri(rdfs, "subClassOf")
 c_scientific_field = construct_uri(sr, "ScientificField")
 #trpl(c_scientific_field + " " + p_rdf_type + " " + c_class + " .")
 
+### EXPERIMENTATION #############################################
+p_rdf_type         = construct_uri(rdf, "type"               )
+c_named_individual = construct_uri(owl,  "NamedIndividual"   )
+c_object_property  = construct_uri(owl,  "ObjectProperty"    )
+add_triple(p_rdf_type, p_rdf_type, c_object_property)
+add_triple(c_named_individual, p_rdf_type, c_class)
+add_triple(c_object_property, p_rdf_type, c_class)
+add_triple(c_class, p_rdf_type, c_class)
+################################################################
+
+i_test_instance = construct_uri(sr, "Test_Instance")
+p_some_property = construct_uri(sr, "someProperty")
+add_triple(i_test_instance, p_rdf_type, c_named_individual)
+add_triple(p_some_property, p_rdf_type, c_object_property)
 
 for each_category in wos_categories_list:
     c_current_wos_category = construct_uri(wsc, each_category)
-    #trpl(c_current_wos_category + " " + p_rdf_type + " " + c_class + " .")
     add_triple(c_current_wos_category, p_subclass_of, c_scientific_field)
-    #trpl(c_current_wos_category + " " + p_rdf_type + " " + c_scientific_field + " .")
 
+    ### EXPERIMENTATION ################################################
+    # This should automatically create instances for c_current_wos_category (i.e., the equivalent of i_current_wos_category):
+    add_triple(i_test_instance, p_some_property, c_current_wos_category)
+    ####################################################################
 
 from pprint import pprint
 pprint(triples_list)
 
 # IMPORTANT: CHANGE FILE NAME WITH EACH NEW VERSION IF THE FILE IS TO BE IMPORTED TO PROTEGE.
 # Protege does not always understand that this is a new file if the file name is the same with a previously imported file.
-file_obj = open("Output/web_of_science_categories_0.2.4.ttl", "w")
+file_obj = open("Output/web_of_science_categories_0.2.4-test2.ttl", "w")
 for each_triple in triples_list:
     file_obj.write(each_triple)
     file_obj.write('\n')

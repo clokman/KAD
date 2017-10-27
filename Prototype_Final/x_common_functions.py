@@ -8,7 +8,9 @@ from __future__ import print_function
 
 def constuct_instance_name(input_title_string):
     """
-    Formats a given string into instance title format.
+    Formats a given string into instance title format. Title format is chosen instead of an all-lowercase format,
+    in order to avoid using a dictionary of words for demarcating regular words and special names which must be
+    capitalized.
 
     :param input_title_string: The title string to be formatted.
     :return: A modified string.
@@ -29,6 +31,8 @@ def constuct_instance_name(input_title_string):
     # Convert to title case
     # NOTE: .title() method does not work well with apostrophes. Therefore, it is necessary for aposthropes to be removed before .title() is called.
     # (If .title() needs to be used with apostrophes, then check the code at https://docs.python.org/2/library/stdtypes.html)
+    # WARNING: Think well before changing to all-lowercase; the current title-case setting allows avoiding the
+    # complexity of capitalizing first letter of names by capitalizing every first letter.
     input_title_string = input_title_string.title()
 
     # Compress: Substitute spaces and dashes with underscores.
