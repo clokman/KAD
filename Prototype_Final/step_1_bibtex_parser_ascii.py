@@ -15,8 +15,8 @@ import re
 
 # Parse input file
 parser = bibtex.Parser()                                              # shorten parser function
-bibdata = parser.parse_file("Input//pure_bib_head_100k-modified.bib")  # parse the given bibtex file into variables
-#bibdata = parser.parse_file("Input//pure_bib_head_small.bib")           # use this version for small file (for dev / testing purposes)
+bibdata = parser.parse_file("Input//pure_bib_head_small.bib")           # use this version for small file (for dev / testing purposes)
+#bibdata = parser.parse_file("Input//pure_bib_head_100k-modified.bib")  # parse the given bibtex file into variables
 
 # Output container
 bibDictionary = {}  # container for the main dictionary that will be outputted from the script
