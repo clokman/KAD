@@ -35,8 +35,9 @@ export default {
             'localhost/sr2/query': {
                 readOnly: 0,
                 allowInlineConfig: 1,
-                resourceFocusType: ['http://clokman.com/ontologies/scientific-research#JournalArticle'],
-                // When I label the entities in Python parser, this line will make their labels be displayed as their names. 
+                resourceFocusType: ['http://clokman.com/ontologies/scientific-research#Document'],
+                // When I label the entities in Python parser, this line will make their labels be displayed as their names.
+                // Correction, this is already the case for generic configuration
                 // resourceLabelProperty: ['http://www.w3.org/2000/01/rdf-schema#label'],
                 datasetLabel: ['Scientific Publications']
             },

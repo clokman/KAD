@@ -11,12 +11,13 @@ export default {
         //Configuration Manager: change the graph name if you use another name in your general.js config
         // This file is also sepecified in reactor.js and general.js
         // This is where the configuration graph (http://ld-r.org/configurations) is actually configured
+
+        ////////////////////////////////////////////////////////
+        //                 META ONTOLOGY                      //
+        ////////////////////////////////////////////////////////
+
         'http://ld-r.org/configurations': {
 
-
-          ////////////////////////////////////////////////////////
-          //                 META ONTOLOGY                      //
-          ////////////////////////////////////////////////////////
 
             list: [
                 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
@@ -100,14 +101,46 @@ export default {
             list: [
                 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
                 'http://clokman.com/ontologies/scientific-research#hasAuthor',
-                'http://clokman.com/ontologies/scientific-research#isPublishedOn'
+                'http://clokman.com/ontologies/scientific-research#isPublishedOn',
+                'http://clokman.com/ontologies/scientific-research#isPublishedBy',
+                'http://clokman.com/ontologies/scientific-research#isPublishedOnYear',
+                'http://clokman.com/ontologies/scientific-research#isPublishedOnMonth',
+                'http://clokman.com/ontologies/scientific-research#hasDOI',
+                'http://clokman.com/ontologies/scientific-research#hasISSN',
+                'http://clokman.com/ontologies/scientific-research#hasISBN',
+                'http://clokman.com/ontologies/scientific-research#isChapterOf',
+                'http://clokman.com/ontologies/scientific-research#isAbout'
             ],
             config: {
                 'http://clokman.com/ontologies/scientific-research#hasAuthor': {
-                    label: ['Has author']
+                    label: ['Author']
                 },
                 'http://clokman.com/ontologies/scientific-research#isPublishedOn': {
-                    objectBrowser: ['Published on']
+                    label: ['Publication']
+                },
+                'http://clokman.com/ontologies/scientific-research#isPublishedBy': {
+                    label: ['Publisher']
+                },
+                'http://clokman.com/ontologies/scientific-research#isPublishedOnYear': {
+                    label: ['Year']
+                },
+                'http://clokman.com/ontologies/scientific-research#isPublishedOnMonth': {
+                    label: ['Month']
+                },
+                'http://clokman.com/ontologies/scientific-research#hasDOI': {
+                    label: ['DOI']
+                },
+                'http://clokman.com/ontologies/scientific-research#hasISSN': {
+                    label: ['ISSN']
+                },
+                'http://clokman.com/ontologies/scientific-research#hasISBN': {
+                    label: ['ISBN']
+                },
+                'http://clokman.com/ontologies/scientific-research#isChapterOf': {
+                    label: ['Parent Book']
+                },
+                'http://clokman.com/ontologies/scientific-research#isAbout': {
+                    label: ['Topic']
                 }
             }
         }

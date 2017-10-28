@@ -8,43 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_small.bib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/step_7_ldr_configuration_and_import.md" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_limited_test.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.2/catalog-v001.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.2/integrator0.3.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.2/pure_bib_limited_0.3.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.2/scientific-research-v2.4.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.2/wos_categories.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.4/pure_bib_limited_0.4.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.4/scientific-research-v2.4.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.4/web_of_science_categories_0.2.4.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.5/pure_bib_limited_0.4.6.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.5/scientific-research-v2.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.5/untitled-ontology-92" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.5/web_of_science_categories_0.2.4.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.6/pure_bib_limited_0.4.9.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.6/scientific-research-v2.6.1.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.6/untitled-ontology-97" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.6/web_of_science_categories_0.2.4.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.7/pure_bib_limited_0.6.3.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.7/scientific-research-v2.6.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.7/untitled-ontology-107" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.7/web_of_science_categories_0.2.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.8/pure_bib_limited_0.6.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.8/scientific-research-v2.6.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.8/untitled-ontology-108" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/0.8/web_of_science_categories_0.2.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.6.3.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.6.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/scientific-research-v2.6.4.ttl" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_limited_0.6.4.ttl" afterPath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_head_small_0.6.5.ttl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/step_1_bibtex_parser_ascii.py" afterPath="$PROJECT_DIR$/Prototype_Final/step_1_bibtex_parser_ascii.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/step_2_ttl_triple_creator.py" afterPath="$PROJECT_DIR$/Prototype_Final/step_2_ttl_triple_creator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/step_3_save-as-ttl.py" afterPath="$PROJECT_DIR$/Prototype_Final/step_3_save-as-ttl.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" afterPath="$PROJECT_DIR$/Prototype_Final/x_common_functions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/facets.js" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/facets.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/reactor.js" afterPath="$PROJECT_DIR$/Prototype_Final/ld-r/configs/reactor.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -132,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/Prototype_Final/step_1_bibtex_parser_ascii.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-3383">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="e#256#293#0" expanded="true" />
               </folding>
@@ -176,7 +142,7 @@
         <entry file="file://$PROJECT_DIR$/Prototype_Final/Output/pure_bib_head_small_0.6.5.ttl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="63" lean-forward="true" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
+              <caret line="16" column="63" lean-forward="false" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -187,7 +153,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="0">
-                <caret line="0" column="210" lean-forward="true" selection-start-line="0" selection-start-column="210" selection-end-line="0" selection-end-column="210" />
+                <caret line="0" column="210" lean-forward="false" selection-start-line="0" selection-start-column="210" selection-end-line="0" selection-end-column="210" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -303,6 +269,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/Prototype_Final/ld-r/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -956,7 +925,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509209694605</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="KAD prototype complete.">
+      <created>1509209701178</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1509209701178</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1358,7 +1334,7 @@
     <entry file="file://$PROJECT_DIR$/Prototype_Final/step_1_bibtex_parser_ascii.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3383">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="e#256#293#0" expanded="true" />
           </folding>
@@ -1394,7 +1370,7 @@
     <entry file="file://$PROJECT_DIR$/Prototype_Final/Output/pure_bib_head_small_0.6.5.ttl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="63" lean-forward="true" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
+          <caret line="16" column="63" lean-forward="false" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -1403,7 +1379,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
-            <caret line="0" column="210" lean-forward="true" selection-start-line="0" selection-start-column="210" selection-end-line="0" selection-end-column="210" />
+            <caret line="0" column="210" lean-forward="false" selection-start-line="0" selection-start-column="210" selection-end-line="0" selection-end-column="210" />
             <folding />
           </first_editor>
           <second_editor />
