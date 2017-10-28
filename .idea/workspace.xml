@@ -8,53 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final Project Report - Modelling Scientific Publication Landscape with Linked Data Reactor.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/small_0.8/CLN940_Ontologies.7z" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/01 - Propositional Logic.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/02 - RDF.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/03 - Turtle.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/04 - SPARQL.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/05 - OWL-1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/06 - OWL-2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/07 - Ontology Engineering.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/__Illustrations__/07x- Entailment-Rules-Compact.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/small_0.8/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/small_0.8/integrator-ontology" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_1.5k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_100k-modified.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_100k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_10k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_1k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_250k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_2k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_3k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_4k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_500k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_50k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_5k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_6k.bib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Ontology Packs/small_0.8/untitled-ontology-108" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_head_2k_0.6.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/pure_bib_head_3k_0.6.5.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Output/scientific-research-v2.4.ttl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Project Report - Modelling Scientific Publication Landscape with Linked Data Reactor.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/__Illustrations__/KAD.pdf" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_1.5k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_1.5k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_100k-modified.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_100k-modified.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_100k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_100k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_10k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_10k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_1k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_1k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_250k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_250k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_2k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_2k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_3k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_3k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_4k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_4k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_500k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_500k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_50k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_50k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_5k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_5k.bib" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_head_6k.bib" afterPath="$PROJECT_DIR$/Prototype_Final/Input/pure_bib_versions/pure_bib_head_6k.bib" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Videos/kad-ldr-showcase-short-version.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Prototype_Final/Videos/kad-ldr-showcase.mp4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/step_1_bibtex_parser_ascii.py" afterPath="$PROJECT_DIR$/Prototype_Final/step_1_bibtex_parser_ascii.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Prototype_Final/step_3_save-as-ttl.py" afterPath="$PROJECT_DIR$/Prototype_Final/step_3_save-as-ttl.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -165,8 +121,8 @@
       <file leaf-file-name="step_3_save-as-ttl.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prototype_Final/step_3_save-as-ttl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state relative-caret-position="272">
+              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -466,6 +422,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Prototype_Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KAD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Prototype_Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Videos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1011,7 +985,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509218426487</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Finalizing KAD prototype">
+      <created>1509226582248</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1509226582248</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1057,6 +1038,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.40874037" order="7" side_tool="true" content_ui="tabs" />
@@ -1064,7 +1046,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21762785" sideWeight="0.59125966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1809291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1809291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1126,7 +1108,8 @@
     <MESSAGE value="Topics added and more refactoring done." />
     <MESSAGE value="KAD prototype complete." />
     <MESSAGE value="Finalizing KAD prototype and added LD-R directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalizing KAD prototype and added LD-R directory" />
+    <MESSAGE value="Finalizing KAD prototype" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizing KAD prototype" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1460,8 +1443,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prototype_Final/step_3_save-as-ttl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="272">
+          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
           <folding />
         </state>
       </provider>
