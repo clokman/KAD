@@ -8,8 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939bd714-10cc-4a04-a191-11774f03e442" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Videos/kad-ldr-showcase-short-version.mp4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Prototype_Final/Videos/kad-ldr-showcase.mp4" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-ldr-showcase-short-version_First_Frame.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-ldr-showcase-short-version_Thumbnails.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/kad-ldr-showcase-short-version.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/kad-ldr-showcase.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-ldr-showcase-short-version.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-ldr-showcase-short-version_config.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-ldr-showcase-short-version_embed.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-ldr-showcase-short-version_player.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad-short.tscproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/kad.tscproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/scripts/config_xml.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/scripts/techsmith-smart-player.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Videos/Production/skins/remix/techsmith-smart-player.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -981,7 +992,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509226742030</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added videos">
+      <created>1509226847392</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1509226847392</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1027,6 +1045,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.40874037" order="7" side_tool="true" content_ui="tabs" />
@@ -1034,7 +1053,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21762785" sideWeight="0.59125966" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1809291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1809291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
