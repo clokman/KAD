@@ -25,7 +25,7 @@ def constuct_instance_name(input_title_string):
     input_title_string = input_title_string.encode("ascii", errors="ignore")
 
     # Remove punctuation
-    characters_to_omit = "[\{\}\.,;:\\\#\'\"\(\)]"  # these characters will be omitted from title names
+    characters_to_omit = "[\{\}\.,;:\\\#\'\"\(\)\>\<\+\-\*\[\]\|]"  # these characters will be omitted from title names
     input_title_string = re.sub(characters_to_omit, "", input_title_string)  # omit the given characters
 
     # Convert to title case

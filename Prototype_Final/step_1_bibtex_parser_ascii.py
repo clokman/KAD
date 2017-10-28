@@ -1,6 +1,7 @@
 # This file is formatted without line wrapping. Turn LINE WRAPPING OFF for optimal viewing.
 
 # TODO: Conversion to Python 3
+# TODO: Dealing with unicode characters
 # DONE: Change "publication"  to "jounal"
 # DONE: Add labels
 # DONE: Multi-author support
@@ -13,8 +14,9 @@ from x_common_functions import constuct_instance_name
 import re
 
 # Parse input file
-parser = bibtex.Parser()                                            # shorten parser function
-bibdata = parser.parse_file("Input//pure_bib_limited.bib")     # parse the given bibtex file into variables
+parser = bibtex.Parser()                                              # shorten parser function
+bibdata = parser.parse_file("Input//pure_bib_head_100k-modified.bib")  # parse the given bibtex file into variables
+#bibdata = parser.parse_file("Input//pure_bib_head_small.bib")           # use this version for small file (for dev / testing purposes)
 
 # Output container
 bibDictionary = {}  # container for the main dictionary that will be outputted from the script
@@ -56,6 +58,13 @@ for each_unicode_entry_id in bibdata.entries:
     current_entry_persons   = current_entry.persons
 
     current_title = current_entry_fields["title"].encode("ascii",errors="ignore")
+    try:
+        #  There are characters that are problematic for .ttl files. Remove them if encountered.
+        current_title = re.sub("\{\}\[\]\$\^",  "",    current_title)
+        current_title = re.sub("\"",  "",    current_title)
+        current_title = re.sub("\'",  "",    current_title)
+    except:
+        pass
 
     bibDictionary[each_entry_id] = {} # create a new item in bibDictionary for each entry id,
     # and let each of these items contain a subdictionary.
@@ -253,4 +262,4 @@ for each_unicode_entry_id in bibdata.entries:
 #    pass
 
 # MAIN PRINT FUNCTION
-pprint(bibDictionary)
+#pprint(bibDictionary)
