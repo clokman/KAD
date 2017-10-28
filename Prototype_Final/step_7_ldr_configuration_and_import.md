@@ -1,1 +1,1 @@
-In order to import and integrate the triple store that is hosted by STARDOG, numerous adjustments were made to the configuration files of LD-R. These modified configuration files can be found in ld-r directory.   
+In order to import and integrate the triple store that is hosted by STARDOG, numerous adjustments were made to the configuration files of LD-R. These modified configuration files can be found in ld-r/configs directory.   
