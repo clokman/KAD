@@ -262,4 +262,4 @@ for each_unicode_entry_id in bibdata.entries:
 #    pass
 
 # MAIN PRINT FUNCTION
-#pprint(bibDictionary)
+pprint(bibDictionary)
