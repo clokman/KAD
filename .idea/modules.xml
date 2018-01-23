@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://C:\Users\Clokman\Google Drive\[Projects]\VUAI\DMT\Code\.idea\Code.iml" filepath="C:\Users\Clokman\Google Drive\[Projects]\VUAI\DMT\Code\.idea\Code.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/KAD.iml" filepath="$PROJECT_DIR$/.idea/KAD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../KFIR/.idea/KFIR.iml" filepath="$PROJECT_DIR$/../KFIR/.idea/KFIR.iml" />
     </modules>
   </component>
 </project>

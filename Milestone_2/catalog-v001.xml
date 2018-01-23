@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://clokman.com/ontologies/scientific-research" uri="scientific-research-v2.2.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://clokman.com/ontologies/scientific-research" uri="scientific-research-v2.0.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1508287126767" name="http://www.semanticweb.org/clokman/ontologies/2017/9/untitled-ontology-63" uri="test.owl"/>
+    </group>
+</catalog>

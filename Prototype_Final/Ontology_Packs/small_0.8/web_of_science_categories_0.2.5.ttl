@@ -1,0 +1,1266 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+_:genid210680419 a owl:Ontology .
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://clokman.com/ontologies/scientific-research#ScientificField
+
+<http://clokman.com/ontologies/scientific-research#ScientificField> a owl:Class .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Acoustics
+
+<http://clokman.com/ontologies/web-of-science-categories#Acoustics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AgriculturalEconomicsandPolicy
+
+<http://clokman.com/ontologies/web-of-science-categories#AgriculturalEconomicsandPolicy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AgriculturalEngineering
+
+<http://clokman.com/ontologies/web-of-science-categories#AgriculturalEngineering> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AgricultureDairyandAnimalScience
+
+<http://clokman.com/ontologies/web-of-science-categories#AgricultureDairyandAnimalScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AgricultureMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#AgricultureMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Agronomy
+
+<http://clokman.com/ontologies/web-of-science-categories#Agronomy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Allergy
+
+<http://clokman.com/ontologies/web-of-science-categories#Allergy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AnatomyandMorphology
+
+<http://clokman.com/ontologies/web-of-science-categories#AnatomyandMorphology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Andrology
+
+<http://clokman.com/ontologies/web-of-science-categories#Andrology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Anesthesiology
+
+<http://clokman.com/ontologies/web-of-science-categories#Anesthesiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Anthropology
+
+<http://clokman.com/ontologies/web-of-science-categories#Anthropology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Archaeology
+
+<http://clokman.com/ontologies/web-of-science-categories#Archaeology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Architecture
+
+<http://clokman.com/ontologies/web-of-science-categories#Architecture> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AreaStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#AreaStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Art
+
+<http://clokman.com/ontologies/web-of-science-categories#Art> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AsianStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#AsianStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AstronomyandAstrophysics
+
+<http://clokman.com/ontologies/web-of-science-categories#AstronomyandAstrophysics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#AutomationandControlSystems
+
+<http://clokman.com/ontologies/web-of-science-categories#AutomationandControlSystems> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#BehavioralSciences
+
+<http://clokman.com/ontologies/web-of-science-categories#BehavioralSciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#BiochemicalResearchMethods
+
+<http://clokman.com/ontologies/web-of-science-categories#BiochemicalResearchMethods> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#BiochemistryandMolecularBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#BiochemistryandMolecularBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#BiodiversityConservation
+
+<http://clokman.com/ontologies/web-of-science-categories#BiodiversityConservation> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Biology
+
+<http://clokman.com/ontologies/web-of-science-categories#Biology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Biophysics
+
+<http://clokman.com/ontologies/web-of-science-categories#Biophysics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#BiotechnologyandAppliedMicrobiology
+
+<http://clokman.com/ontologies/web-of-science-categories#BiotechnologyandAppliedMicrobiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Business
+
+<http://clokman.com/ontologies/web-of-science-categories#Business> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#BusinessFinance
+
+<http://clokman.com/ontologies/web-of-science-categories#BusinessFinance> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#CardiacandCardiovascularSystems
+
+<http://clokman.com/ontologies/web-of-science-categories#CardiacandCardiovascularSystems> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#CellBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#CellBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#CellandTissueEngineering
+
+<http://clokman.com/ontologies/web-of-science-categories#CellandTissueEngineering> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryAnalytical
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryAnalytical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryApplied
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryApplied> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryInorganicandNuclear
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryInorganicandNuclear> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryMedicinal
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryMedicinal> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryOrganic
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryOrganic> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ChemistryPhysical
+
+<http://clokman.com/ontologies/web-of-science-categories#ChemistryPhysical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Classics
+
+<http://clokman.com/ontologies/web-of-science-categories#Classics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ClinicalNeurology
+
+<http://clokman.com/ontologies/web-of-science-categories#ClinicalNeurology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Communication
+
+<http://clokman.com/ontologies/web-of-science-categories#Communication> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceArtificialIntelligence
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceArtificialIntelligence> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceCybernetics
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceCybernetics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceHardwareandArchitecture
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceHardwareandArchitecture> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceInformationSystems
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceInformationSystems> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceInterdisciplinaryApplications
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceInterdisciplinaryApplications> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceSoftwareEngineering
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceSoftwareEngineering> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ComputerScienceTheoryandMethods
+
+<http://clokman.com/ontologies/web-of-science-categories#ComputerScienceTheoryandMethods> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ConstructionandBuildingTechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#ConstructionandBuildingTechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#CriminologyandPenology
+
+<http://clokman.com/ontologies/web-of-science-categories#CriminologyandPenology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#CriticalCareMedicine
+
+<http://clokman.com/ontologies/web-of-science-categories#CriticalCareMedicine> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Crystallography
+
+<http://clokman.com/ontologies/web-of-science-categories#Crystallography> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#CulturalStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#CulturalStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Dance
+
+<http://clokman.com/ontologies/web-of-science-categories#Dance> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Demography
+
+<http://clokman.com/ontologies/web-of-science-categories#Demography> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#DentistryOralSurgeryandMedicine
+
+<http://clokman.com/ontologies/web-of-science-categories#DentistryOralSurgeryandMedicine> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Dermatology
+
+<http://clokman.com/ontologies/web-of-science-categories#Dermatology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#DevelopmentalBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#DevelopmentalBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Ecology
+
+<http://clokman.com/ontologies/web-of-science-categories#Ecology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Economics
+
+<http://clokman.com/ontologies/web-of-science-categories#Economics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EducationScientificDisciplines
+
+<http://clokman.com/ontologies/web-of-science-categories#EducationScientificDisciplines> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EducationSpecial
+
+<http://clokman.com/ontologies/web-of-science-categories#EducationSpecial> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EducationandEducationalResearch
+
+<http://clokman.com/ontologies/web-of-science-categories#EducationandEducationalResearch> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Electrochemistry
+
+<http://clokman.com/ontologies/web-of-science-categories#Electrochemistry> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EmergencyMedicine
+
+<http://clokman.com/ontologies/web-of-science-categories#EmergencyMedicine> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EndocrinologyandMetabolism
+
+<http://clokman.com/ontologies/web-of-science-categories#EndocrinologyandMetabolism> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EnergyandFuels
+
+<http://clokman.com/ontologies/web-of-science-categories#EnergyandFuels> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringAerospace
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringAerospace> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringBiomedical
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringBiomedical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringChemical
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringChemical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringCivil
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringCivil> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringElectricalandElectronic
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringElectricalandElectronic> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringEnvironmental
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringEnvironmental> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringGeological
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringGeological> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringIndustrial
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringIndustrial> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringManufacturing
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringManufacturing> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringMarine
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringMarine> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringMechanical
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringMechanical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringOcean
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringOcean> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EngineeringPetroleum
+
+<http://clokman.com/ontologies/web-of-science-categories#EngineeringPetroleum> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Entomology
+
+<http://clokman.com/ontologies/web-of-science-categories#Entomology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EnvironmentalSciences
+
+<http://clokman.com/ontologies/web-of-science-categories#EnvironmentalSciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EnvironmentalStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#EnvironmentalStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Ergonomics
+
+<http://clokman.com/ontologies/web-of-science-categories#Ergonomics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Ethics
+
+<http://clokman.com/ontologies/web-of-science-categories#Ethics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EthnicStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#EthnicStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#EvolutionaryBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#EvolutionaryBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#FamilyStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#FamilyStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#FilmRadioTelevision
+
+<http://clokman.com/ontologies/web-of-science-categories#FilmRadioTelevision> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Fisheries
+
+<http://clokman.com/ontologies/web-of-science-categories#Fisheries> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Folklore
+
+<http://clokman.com/ontologies/web-of-science-categories#Folklore> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#FoodScienceandTechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#FoodScienceandTechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Forestry
+
+<http://clokman.com/ontologies/web-of-science-categories#Forestry> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#GastroenterologyandHepatology
+
+<http://clokman.com/ontologies/web-of-science-categories#GastroenterologyandHepatology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#GeneticsandHeredity
+
+<http://clokman.com/ontologies/web-of-science-categories#GeneticsandHeredity> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#GeochemistryandGeophysics
+
+<http://clokman.com/ontologies/web-of-science-categories#GeochemistryandGeophysics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Geography
+
+<http://clokman.com/ontologies/web-of-science-categories#Geography> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#GeographyPhysical
+
+<http://clokman.com/ontologies/web-of-science-categories#GeographyPhysical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Geology
+
+<http://clokman.com/ontologies/web-of-science-categories#Geology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#GeosciencesMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#GeosciencesMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#GeriatricsandGerontology
+
+<http://clokman.com/ontologies/web-of-science-categories#GeriatricsandGerontology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Gerontology
+
+<http://clokman.com/ontologies/web-of-science-categories#Gerontology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#HealthCareSciencesandServices
+
+<http://clokman.com/ontologies/web-of-science-categories#HealthCareSciencesandServices> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#HealthPolicyandServices
+
+<http://clokman.com/ontologies/web-of-science-categories#HealthPolicyandServices> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Hematology
+
+<http://clokman.com/ontologies/web-of-science-categories#Hematology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#History
+
+<http://clokman.com/ontologies/web-of-science-categories#History> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#HistoryandPhilosophyofScience
+
+<http://clokman.com/ontologies/web-of-science-categories#HistoryandPhilosophyofScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#HistoryofSocialSciences
+
+<http://clokman.com/ontologies/web-of-science-categories#HistoryofSocialSciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Horticulture
+
+<http://clokman.com/ontologies/web-of-science-categories#Horticulture> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#HospitalityLeisureSportandTourism
+
+<http://clokman.com/ontologies/web-of-science-categories#HospitalityLeisureSportandTourism> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#HumanitiesMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#HumanitiesMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ImagingScienceandPhotographicTechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#ImagingScienceandPhotographicTechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Immunology
+
+<http://clokman.com/ontologies/web-of-science-categories#Immunology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#IndustrialRelationsandLabor
+
+<http://clokman.com/ontologies/web-of-science-categories#IndustrialRelationsandLabor> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#InfectiousDiseases
+
+<http://clokman.com/ontologies/web-of-science-categories#InfectiousDiseases> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#InformationScienceandLibraryScience
+
+<http://clokman.com/ontologies/web-of-science-categories#InformationScienceandLibraryScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#InstrumentsandInstrumentation
+
+<http://clokman.com/ontologies/web-of-science-categories#InstrumentsandInstrumentation> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#IntegrativeandComplementaryMedicine
+
+<http://clokman.com/ontologies/web-of-science-categories#IntegrativeandComplementaryMedicine> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#InternationalRelations
+
+<http://clokman.com/ontologies/web-of-science-categories#InternationalRelations> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LanguageandLinguistics
+
+<http://clokman.com/ontologies/web-of-science-categories#LanguageandLinguistics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Law
+
+<http://clokman.com/ontologies/web-of-science-categories#Law> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Limnology
+
+<http://clokman.com/ontologies/web-of-science-categories#Limnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Linguistics
+
+<http://clokman.com/ontologies/web-of-science-categories#Linguistics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteraryReviews
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteraryReviews> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteraryTheoryandCriticism
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteraryTheoryandCriticism> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Literature
+
+<http://clokman.com/ontologies/web-of-science-categories#Literature> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteratureAfricaAustralianCanadian
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteratureAfricaAustralianCanadian> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteratureAmerican
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteratureAmerican> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteratureBritishIsles
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteratureBritishIsles> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteratureGermanDutchScandinavian
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteratureGermanDutchScandinavian> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteratureRomance
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteratureRomance> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#LiteratureSlavic
+
+<http://clokman.com/ontologies/web-of-science-categories#LiteratureSlavic> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Management
+
+<http://clokman.com/ontologies/web-of-science-categories#Management> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MarineandFreshwaterBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#MarineandFreshwaterBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceBiomaterials
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceBiomaterials> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceCeramics
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceCeramics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceCharacterizationandTesting
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceCharacterizationandTesting> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceCoatingsandFilms
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceCoatingsandFilms> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceComposites
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceComposites> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsSciencePaperandWood
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsSciencePaperandWood> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceTextiles
+
+<http://clokman.com/ontologies/web-of-science-categories#MaterialsScienceTextiles> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MathematicalandComputationalBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#MathematicalandComputationalBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Mathematics
+
+<http://clokman.com/ontologies/web-of-science-categories#Mathematics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MathematicsApplied
+
+<http://clokman.com/ontologies/web-of-science-categories#MathematicsApplied> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MathematicsInterdisciplinaryApplications
+
+<http://clokman.com/ontologies/web-of-science-categories#MathematicsInterdisciplinaryApplications> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Mechanics
+
+<http://clokman.com/ontologies/web-of-science-categories#Mechanics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedicalEthics
+
+<http://clokman.com/ontologies/web-of-science-categories#MedicalEthics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedicalInformatics
+
+<http://clokman.com/ontologies/web-of-science-categories#MedicalInformatics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedicalLaboratoryTechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#MedicalLaboratoryTechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedicineGeneralandInternal
+
+<http://clokman.com/ontologies/web-of-science-categories#MedicineGeneralandInternal> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedicineLegal
+
+<http://clokman.com/ontologies/web-of-science-categories#MedicineLegal> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedicineResearchandExperimental
+
+<http://clokman.com/ontologies/web-of-science-categories#MedicineResearchandExperimental> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MedievalandRenaissanceStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#MedievalandRenaissanceStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MetallurgyandMetallurgicalEngineering
+
+<http://clokman.com/ontologies/web-of-science-categories#MetallurgyandMetallurgicalEngineering> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MeteorologyandAtmosphericSciences
+
+<http://clokman.com/ontologies/web-of-science-categories#MeteorologyandAtmosphericSciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Microbiology
+
+<http://clokman.com/ontologies/web-of-science-categories#Microbiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Microscopy
+
+<http://clokman.com/ontologies/web-of-science-categories#Microscopy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Mineralogy
+
+<http://clokman.com/ontologies/web-of-science-categories#Mineralogy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MiningandMineralProcessing
+
+<http://clokman.com/ontologies/web-of-science-categories#MiningandMineralProcessing> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#MultidisciplinarySciences
+
+<http://clokman.com/ontologies/web-of-science-categories#MultidisciplinarySciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Music
+
+<http://clokman.com/ontologies/web-of-science-categories#Music> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Mycology
+
+<http://clokman.com/ontologies/web-of-science-categories#Mycology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#NanoscienceandNanotechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#NanoscienceandNanotechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Neuroimaging
+
+<http://clokman.com/ontologies/web-of-science-categories#Neuroimaging> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Neurosciences
+
+<http://clokman.com/ontologies/web-of-science-categories#Neurosciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#NuclearScienceandTechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#NuclearScienceandTechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Nursing
+
+<http://clokman.com/ontologies/web-of-science-categories#Nursing> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#NutritionandDietetics
+
+<http://clokman.com/ontologies/web-of-science-categories#NutritionandDietetics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ObstetricsandGynecology
+
+<http://clokman.com/ontologies/web-of-science-categories#ObstetricsandGynecology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Oceanography
+
+<http://clokman.com/ontologies/web-of-science-categories#Oceanography> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Oncology
+
+<http://clokman.com/ontologies/web-of-science-categories#Oncology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#OperationsResearchandManagementScience
+
+<http://clokman.com/ontologies/web-of-science-categories#OperationsResearchandManagementScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Ophthalmology
+
+<http://clokman.com/ontologies/web-of-science-categories#Ophthalmology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Optics
+
+<http://clokman.com/ontologies/web-of-science-categories#Optics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Ornithology
+
+<http://clokman.com/ontologies/web-of-science-categories#Ornithology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Orthopedics
+
+<http://clokman.com/ontologies/web-of-science-categories#Orthopedics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Otorhinolaryngology
+
+<http://clokman.com/ontologies/web-of-science-categories#Otorhinolaryngology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Paleontology
+
+<http://clokman.com/ontologies/web-of-science-categories#Paleontology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Parasitology
+
+<http://clokman.com/ontologies/web-of-science-categories#Parasitology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Pathology
+
+<http://clokman.com/ontologies/web-of-science-categories#Pathology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Pediatrics
+
+<http://clokman.com/ontologies/web-of-science-categories#Pediatrics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PeripheralVascularDisease
+
+<http://clokman.com/ontologies/web-of-science-categories#PeripheralVascularDisease> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PharmacologyandPharmacy
+
+<http://clokman.com/ontologies/web-of-science-categories#PharmacologyandPharmacy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Philosophy
+
+<http://clokman.com/ontologies/web-of-science-categories#Philosophy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsApplied
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsApplied> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsAtomicMolecularandChemical
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsAtomicMolecularandChemical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsCondensedMatter
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsCondensedMatter> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsFluidsandPlasmas
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsFluidsandPlasmas> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsMathematical
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsMathematical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsNuclear
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsNuclear> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PhysicsParticlesandFields
+
+<http://clokman.com/ontologies/web-of-science-categories#PhysicsParticlesandFields> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Physiology
+
+<http://clokman.com/ontologies/web-of-science-categories#Physiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PlanningandDevelopment
+
+<http://clokman.com/ontologies/web-of-science-categories#PlanningandDevelopment> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PlantSciences
+
+<http://clokman.com/ontologies/web-of-science-categories#PlantSciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Poetry
+
+<http://clokman.com/ontologies/web-of-science-categories#Poetry> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PoliticalScience
+
+<http://clokman.com/ontologies/web-of-science-categories#PoliticalScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PolymerScience
+
+<http://clokman.com/ontologies/web-of-science-categories#PolymerScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PrimaryHealthCare
+
+<http://clokman.com/ontologies/web-of-science-categories#PrimaryHealthCare> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Psychiatry
+
+<http://clokman.com/ontologies/web-of-science-categories#Psychiatry> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Psychology
+
+<http://clokman.com/ontologies/web-of-science-categories#Psychology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyApplied
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyApplied> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyBiological
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyBiological> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyClinical
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyClinical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyDevelopmental
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyDevelopmental> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyEducational
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyEducational> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyExperimental
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyExperimental> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyMathematical
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyMathematical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyMultidisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyMultidisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologyPsychoanalysis
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologyPsychoanalysis> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PsychologySocial
+
+<http://clokman.com/ontologies/web-of-science-categories#PsychologySocial> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PublicAdministration
+
+<http://clokman.com/ontologies/web-of-science-categories#PublicAdministration> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#PublicEnvironmentalandOccupationalHealth
+
+<http://clokman.com/ontologies/web-of-science-categories#PublicEnvironmentalandOccupationalHealth> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#RadiologyNuclearMedicineandMedicalImaging
+
+<http://clokman.com/ontologies/web-of-science-categories#RadiologyNuclearMedicineandMedicalImaging> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Rehabilitation
+
+<http://clokman.com/ontologies/web-of-science-categories#Rehabilitation> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Religion
+
+<http://clokman.com/ontologies/web-of-science-categories#Religion> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#RemoteSensing
+
+<http://clokman.com/ontologies/web-of-science-categories#RemoteSensing> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#ReproductiveBiology
+
+<http://clokman.com/ontologies/web-of-science-categories#ReproductiveBiology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#RespiratorySystem
+
+<http://clokman.com/ontologies/web-of-science-categories#RespiratorySystem> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Rheumatology
+
+<http://clokman.com/ontologies/web-of-science-categories#Rheumatology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Robotics
+
+<http://clokman.com/ontologies/web-of-science-categories#Robotics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SocialIssues
+
+<http://clokman.com/ontologies/web-of-science-categories#SocialIssues> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SocialSciencesBiomedical
+
+<http://clokman.com/ontologies/web-of-science-categories#SocialSciencesBiomedical> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SocialSciencesInterdisciplinary
+
+<http://clokman.com/ontologies/web-of-science-categories#SocialSciencesInterdisciplinary> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SocialSciencesMathematicalMethods
+
+<http://clokman.com/ontologies/web-of-science-categories#SocialSciencesMathematicalMethods> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SocialWork
+
+<http://clokman.com/ontologies/web-of-science-categories#SocialWork> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Sociology
+
+<http://clokman.com/ontologies/web-of-science-categories#Sociology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SoilScience
+
+<http://clokman.com/ontologies/web-of-science-categories#SoilScience> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Spectroscopy
+
+<http://clokman.com/ontologies/web-of-science-categories#Spectroscopy> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SportSciences
+
+<http://clokman.com/ontologies/web-of-science-categories#SportSciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#StatisticsandProbability
+
+<http://clokman.com/ontologies/web-of-science-categories#StatisticsandProbability> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#SubstanceAbuse
+
+<http://clokman.com/ontologies/web-of-science-categories#SubstanceAbuse> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Surgery
+
+<http://clokman.com/ontologies/web-of-science-categories#Surgery> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Telecommunications
+
+<http://clokman.com/ontologies/web-of-science-categories#Telecommunications> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Theater
+
+<http://clokman.com/ontologies/web-of-science-categories#Theater> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Thermodynamics
+
+<http://clokman.com/ontologies/web-of-science-categories#Thermodynamics> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Toxicology
+
+<http://clokman.com/ontologies/web-of-science-categories#Toxicology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Transplantation
+
+<http://clokman.com/ontologies/web-of-science-categories#Transplantation> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Transportation
+
+<http://clokman.com/ontologies/web-of-science-categories#Transportation> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#TransportationScienceandTechnology
+
+<http://clokman.com/ontologies/web-of-science-categories#TransportationScienceandTechnology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#TropicalMedicine
+
+<http://clokman.com/ontologies/web-of-science-categories#TropicalMedicine> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#UrbanStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#UrbanStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#UrologyandNephrology
+
+<http://clokman.com/ontologies/web-of-science-categories#UrologyandNephrology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#VeterinarySciences
+
+<http://clokman.com/ontologies/web-of-science-categories#VeterinarySciences> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Virology
+
+<http://clokman.com/ontologies/web-of-science-categories#Virology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#WaterResources
+
+<http://clokman.com/ontologies/web-of-science-categories#WaterResources> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#WomensStudies
+
+<http://clokman.com/ontologies/web-of-science-categories#WomensStudies> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# http://clokman.com/ontologies/web-of-science-categories#Zoology
+
+<http://clokman.com/ontologies/web-of-science-categories#Zoology> a owl:Class ;
+	rdfs:subClassOf <http://clokman.com/ontologies/scientific-research#ScientificField> .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
